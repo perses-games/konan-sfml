@@ -1,5 +1,5 @@
 # SFML/Audio.h SFML/Config.h SFML/Graphics.h SFML/Network.h SFML/OpenGL.h SFML/System.h SFML/Window.h
-headers = SFML/Config.h SFML/Graphics.h SFML/System.h SFML/Window.h
+headers = SFML/Audio.h SFML/Config.h SFML/Graphics.h SFML/Network.h SFML/System.h SFML/Window.h
 compilerOpts =
 excludedFunctions =
 compilerOpts.linux = -ICSFML-2.4/include -I/usr/include

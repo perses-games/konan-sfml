@@ -157,6 +157,890 @@ fun sfThread_terminate(thread: CValuesRef<sfThread>?): Unit {
     }
 }
 
+@SymbolName("kni_sfml_sfListener_setGlobalVolume")
+external fun sfListener_setGlobalVolume(volume: Float): Unit
+
+@SymbolName("kni_sfml_sfListener_getGlobalVolume")
+external fun sfListener_getGlobalVolume(): Float
+
+fun sfListener_setPosition(position: CValue<sfVector3f>): Unit {
+    return memScoped {
+        val _position = position.getPointer(memScope).rawValue
+        val res = kni_sfListener_setPosition(_position)
+        res
+    }
+}
+
+fun sfListener_getPosition(): CValue<sfVector3f> {
+    return memScoped {
+        val res = kni_sfListener_getPosition(alloc<sfVector3f>().rawPtr)
+        interpretPointed<sfVector3f>(res).readValue()
+    }
+}
+
+fun sfListener_setDirection(direction: CValue<sfVector3f>): Unit {
+    return memScoped {
+        val _direction = direction.getPointer(memScope).rawValue
+        val res = kni_sfListener_setDirection(_direction)
+        res
+    }
+}
+
+fun sfListener_getDirection(): CValue<sfVector3f> {
+    return memScoped {
+        val res = kni_sfListener_getDirection(alloc<sfVector3f>().rawPtr)
+        interpretPointed<sfVector3f>(res).readValue()
+    }
+}
+
+fun sfListener_setUpVector(upVector: CValue<sfVector3f>): Unit {
+    return memScoped {
+        val _upVector = upVector.getPointer(memScope).rawValue
+        val res = kni_sfListener_setUpVector(_upVector)
+        res
+    }
+}
+
+fun sfListener_getUpVector(): CValue<sfVector3f> {
+    return memScoped {
+        val res = kni_sfListener_getUpVector(alloc<sfVector3f>().rawPtr)
+        interpretPointed<sfVector3f>(res).readValue()
+    }
+}
+
+fun sfMusic_createFromFile(filename: String?): CPointer<sfMusic>? {
+    return memScoped {
+        val _filename = filename?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_createFromFile(_filename)
+        interpretCPointer<sfMusic>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfMusic_createFromMemory")
+external fun sfMusic_createFromMemory(data: COpaquePointer?, sizeInBytes: size_t): CPointer<sfMusic>?
+
+fun sfMusic_createFromStream(stream: CValuesRef<sfInputStream>?): CPointer<sfMusic>? {
+    return memScoped {
+        val _stream = stream?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_createFromStream(_stream)
+        interpretCPointer<sfMusic>(res)
+    }
+}
+
+fun sfMusic_destroy(music: CValuesRef<sfMusic>?): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_destroy(_music)
+        res
+    }
+}
+
+fun sfMusic_setLoop(music: CValuesRef<sfMusic>?, loop: sfBool): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _loop = loop
+        val res = kni_sfMusic_setLoop(_music, _loop)
+        res
+    }
+}
+
+fun sfMusic_getLoop(music: CValuesRef<sfMusic>?): sfBool {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getLoop(_music)
+        res
+    }
+}
+
+fun sfMusic_getDuration(music: CValuesRef<sfMusic>?): CValue<sfTime> {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getDuration(_music, alloc<sfTime>().rawPtr)
+        interpretPointed<sfTime>(res).readValue()
+    }
+}
+
+fun sfMusic_play(music: CValuesRef<sfMusic>?): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_play(_music)
+        res
+    }
+}
+
+fun sfMusic_pause(music: CValuesRef<sfMusic>?): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_pause(_music)
+        res
+    }
+}
+
+fun sfMusic_stop(music: CValuesRef<sfMusic>?): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_stop(_music)
+        res
+    }
+}
+
+fun sfMusic_getChannelCount(music: CValuesRef<sfMusic>?): Int {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getChannelCount(_music)
+        res
+    }
+}
+
+fun sfMusic_getSampleRate(music: CValuesRef<sfMusic>?): Int {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getSampleRate(_music)
+        res
+    }
+}
+
+fun sfMusic_getStatus(music: CValuesRef<sfMusic>?): sfSoundStatus {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getStatus(_music)
+        sfSoundStatus.byValue(res)
+    }
+}
+
+fun sfMusic_getPlayingOffset(music: CValuesRef<sfMusic>?): CValue<sfTime> {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getPlayingOffset(_music, alloc<sfTime>().rawPtr)
+        interpretPointed<sfTime>(res).readValue()
+    }
+}
+
+fun sfMusic_setPitch(music: CValuesRef<sfMusic>?, pitch: Float): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _pitch = pitch
+        val res = kni_sfMusic_setPitch(_music, _pitch)
+        res
+    }
+}
+
+fun sfMusic_setVolume(music: CValuesRef<sfMusic>?, volume: Float): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _volume = volume
+        val res = kni_sfMusic_setVolume(_music, _volume)
+        res
+    }
+}
+
+fun sfMusic_setPosition(music: CValuesRef<sfMusic>?, position: CValue<sfVector3f>): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _position = position.getPointer(memScope).rawValue
+        val res = kni_sfMusic_setPosition(_music, _position)
+        res
+    }
+}
+
+fun sfMusic_setRelativeToListener(music: CValuesRef<sfMusic>?, relative: sfBool): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _relative = relative
+        val res = kni_sfMusic_setRelativeToListener(_music, _relative)
+        res
+    }
+}
+
+fun sfMusic_setMinDistance(music: CValuesRef<sfMusic>?, distance: Float): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _distance = distance
+        val res = kni_sfMusic_setMinDistance(_music, _distance)
+        res
+    }
+}
+
+fun sfMusic_setAttenuation(music: CValuesRef<sfMusic>?, attenuation: Float): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _attenuation = attenuation
+        val res = kni_sfMusic_setAttenuation(_music, _attenuation)
+        res
+    }
+}
+
+fun sfMusic_setPlayingOffset(music: CValuesRef<sfMusic>?, timeOffset: CValue<sfTime>): Unit {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val _timeOffset = timeOffset.getPointer(memScope).rawValue
+        val res = kni_sfMusic_setPlayingOffset(_music, _timeOffset)
+        res
+    }
+}
+
+fun sfMusic_getPitch(music: CValuesRef<sfMusic>?): Float {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getPitch(_music)
+        res
+    }
+}
+
+fun sfMusic_getVolume(music: CValuesRef<sfMusic>?): Float {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getVolume(_music)
+        res
+    }
+}
+
+fun sfMusic_getPosition(music: CValuesRef<sfMusic>?): CValue<sfVector3f> {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getPosition(_music, alloc<sfVector3f>().rawPtr)
+        interpretPointed<sfVector3f>(res).readValue()
+    }
+}
+
+fun sfMusic_isRelativeToListener(music: CValuesRef<sfMusic>?): sfBool {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_isRelativeToListener(_music)
+        res
+    }
+}
+
+fun sfMusic_getMinDistance(music: CValuesRef<sfMusic>?): Float {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getMinDistance(_music)
+        res
+    }
+}
+
+fun sfMusic_getAttenuation(music: CValuesRef<sfMusic>?): Float {
+    return memScoped {
+        val _music = music?.getPointer(memScope).rawValue
+        val res = kni_sfMusic_getAttenuation(_music)
+        res
+    }
+}
+
+@SymbolName("kni_sfml_sfSound_create")
+external fun sfSound_create(): CPointer<sfSound>?
+
+fun sfSound_copy(sound: CValuesRef<sfSound>?): CPointer<sfSound>? {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_copy(_sound)
+        interpretCPointer<sfSound>(res)
+    }
+}
+
+fun sfSound_destroy(sound: CValuesRef<sfSound>?): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_destroy(_sound)
+        res
+    }
+}
+
+fun sfSound_play(sound: CValuesRef<sfSound>?): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_play(_sound)
+        res
+    }
+}
+
+fun sfSound_pause(sound: CValuesRef<sfSound>?): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_pause(_sound)
+        res
+    }
+}
+
+fun sfSound_stop(sound: CValuesRef<sfSound>?): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_stop(_sound)
+        res
+    }
+}
+
+fun sfSound_setBuffer(sound: CValuesRef<sfSound>?, buffer: CValuesRef<sfSoundBuffer>?): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _buffer = buffer?.getPointer(memScope).rawValue
+        val res = kni_sfSound_setBuffer(_sound, _buffer)
+        res
+    }
+}
+
+fun sfSound_getBuffer(sound: CValuesRef<sfSound>?): CPointer<sfSoundBuffer>? {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getBuffer(_sound)
+        interpretCPointer<sfSoundBuffer>(res)
+    }
+}
+
+fun sfSound_setLoop(sound: CValuesRef<sfSound>?, loop: sfBool): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _loop = loop
+        val res = kni_sfSound_setLoop(_sound, _loop)
+        res
+    }
+}
+
+fun sfSound_getLoop(sound: CValuesRef<sfSound>?): sfBool {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getLoop(_sound)
+        res
+    }
+}
+
+fun sfSound_getStatus(sound: CValuesRef<sfSound>?): sfSoundStatus {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getStatus(_sound)
+        sfSoundStatus.byValue(res)
+    }
+}
+
+fun sfSound_setPitch(sound: CValuesRef<sfSound>?, pitch: Float): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _pitch = pitch
+        val res = kni_sfSound_setPitch(_sound, _pitch)
+        res
+    }
+}
+
+fun sfSound_setVolume(sound: CValuesRef<sfSound>?, volume: Float): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _volume = volume
+        val res = kni_sfSound_setVolume(_sound, _volume)
+        res
+    }
+}
+
+fun sfSound_setPosition(sound: CValuesRef<sfSound>?, position: CValue<sfVector3f>): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _position = position.getPointer(memScope).rawValue
+        val res = kni_sfSound_setPosition(_sound, _position)
+        res
+    }
+}
+
+fun sfSound_setRelativeToListener(sound: CValuesRef<sfSound>?, relative: sfBool): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _relative = relative
+        val res = kni_sfSound_setRelativeToListener(_sound, _relative)
+        res
+    }
+}
+
+fun sfSound_setMinDistance(sound: CValuesRef<sfSound>?, distance: Float): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _distance = distance
+        val res = kni_sfSound_setMinDistance(_sound, _distance)
+        res
+    }
+}
+
+fun sfSound_setAttenuation(sound: CValuesRef<sfSound>?, attenuation: Float): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _attenuation = attenuation
+        val res = kni_sfSound_setAttenuation(_sound, _attenuation)
+        res
+    }
+}
+
+fun sfSound_setPlayingOffset(sound: CValuesRef<sfSound>?, timeOffset: CValue<sfTime>): Unit {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val _timeOffset = timeOffset.getPointer(memScope).rawValue
+        val res = kni_sfSound_setPlayingOffset(_sound, _timeOffset)
+        res
+    }
+}
+
+fun sfSound_getPitch(sound: CValuesRef<sfSound>?): Float {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getPitch(_sound)
+        res
+    }
+}
+
+fun sfSound_getVolume(sound: CValuesRef<sfSound>?): Float {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getVolume(_sound)
+        res
+    }
+}
+
+fun sfSound_getPosition(sound: CValuesRef<sfSound>?): CValue<sfVector3f> {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getPosition(_sound, alloc<sfVector3f>().rawPtr)
+        interpretPointed<sfVector3f>(res).readValue()
+    }
+}
+
+fun sfSound_isRelativeToListener(sound: CValuesRef<sfSound>?): sfBool {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_isRelativeToListener(_sound)
+        res
+    }
+}
+
+fun sfSound_getMinDistance(sound: CValuesRef<sfSound>?): Float {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getMinDistance(_sound)
+        res
+    }
+}
+
+fun sfSound_getAttenuation(sound: CValuesRef<sfSound>?): Float {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getAttenuation(_sound)
+        res
+    }
+}
+
+fun sfSound_getPlayingOffset(sound: CValuesRef<sfSound>?): CValue<sfTime> {
+    return memScoped {
+        val _sound = sound?.getPointer(memScope).rawValue
+        val res = kni_sfSound_getPlayingOffset(_sound, alloc<sfTime>().rawPtr)
+        interpretPointed<sfTime>(res).readValue()
+    }
+}
+
+fun sfSoundBuffer_createFromFile(filename: String?): CPointer<sfSoundBuffer>? {
+    return memScoped {
+        val _filename = filename?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_createFromFile(_filename)
+        interpretCPointer<sfSoundBuffer>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfSoundBuffer_createFromMemory")
+external fun sfSoundBuffer_createFromMemory(data: COpaquePointer?, sizeInBytes: size_t): CPointer<sfSoundBuffer>?
+
+fun sfSoundBuffer_createFromStream(stream: CValuesRef<sfInputStream>?): CPointer<sfSoundBuffer>? {
+    return memScoped {
+        val _stream = stream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_createFromStream(_stream)
+        interpretCPointer<sfSoundBuffer>(res)
+    }
+}
+
+fun sfSoundBuffer_createFromSamples(samples: CValuesRef<sfInt16Var>?, sampleCount: sfUint64, channelCount: Int, sampleRate: Int): CPointer<sfSoundBuffer>? {
+    return memScoped {
+        val _samples = samples?.getPointer(memScope).rawValue
+        val _sampleCount = sampleCount
+        val _channelCount = channelCount
+        val _sampleRate = sampleRate
+        val res = kni_sfSoundBuffer_createFromSamples(_samples, _sampleCount, _channelCount, _sampleRate)
+        interpretCPointer<sfSoundBuffer>(res)
+    }
+}
+
+fun sfSoundBuffer_copy(soundBuffer: CValuesRef<sfSoundBuffer>?): CPointer<sfSoundBuffer>? {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_copy(_soundBuffer)
+        interpretCPointer<sfSoundBuffer>(res)
+    }
+}
+
+fun sfSoundBuffer_destroy(soundBuffer: CValuesRef<sfSoundBuffer>?): Unit {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_destroy(_soundBuffer)
+        res
+    }
+}
+
+fun sfSoundBuffer_saveToFile(soundBuffer: CValuesRef<sfSoundBuffer>?, filename: String?): sfBool {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val _filename = filename?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_saveToFile(_soundBuffer, _filename)
+        res
+    }
+}
+
+fun sfSoundBuffer_getSamples(soundBuffer: CValuesRef<sfSoundBuffer>?): CPointer<sfInt16Var>? {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_getSamples(_soundBuffer)
+        interpretCPointer<sfInt16Var>(res)
+    }
+}
+
+fun sfSoundBuffer_getSampleCount(soundBuffer: CValuesRef<sfSoundBuffer>?): sfUint64 {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_getSampleCount(_soundBuffer)
+        res
+    }
+}
+
+fun sfSoundBuffer_getSampleRate(soundBuffer: CValuesRef<sfSoundBuffer>?): Int {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_getSampleRate(_soundBuffer)
+        res
+    }
+}
+
+fun sfSoundBuffer_getChannelCount(soundBuffer: CValuesRef<sfSoundBuffer>?): Int {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_getChannelCount(_soundBuffer)
+        res
+    }
+}
+
+fun sfSoundBuffer_getDuration(soundBuffer: CValuesRef<sfSoundBuffer>?): CValue<sfTime> {
+    return memScoped {
+        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBuffer_getDuration(_soundBuffer, alloc<sfTime>().rawPtr)
+        interpretPointed<sfTime>(res).readValue()
+    }
+}
+
+@SymbolName("kni_sfml_sfSoundBufferRecorder_create")
+external fun sfSoundBufferRecorder_create(): CPointer<sfSoundBufferRecorder>?
+
+fun sfSoundBufferRecorder_destroy(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): Unit {
+    return memScoped {
+        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBufferRecorder_destroy(_soundBufferRecorder)
+        res
+    }
+}
+
+fun sfSoundBufferRecorder_start(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?, sampleRate: Int): Unit {
+    return memScoped {
+        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
+        val _sampleRate = sampleRate
+        val res = kni_sfSoundBufferRecorder_start(_soundBufferRecorder, _sampleRate)
+        res
+    }
+}
+
+fun sfSoundBufferRecorder_stop(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): Unit {
+    return memScoped {
+        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBufferRecorder_stop(_soundBufferRecorder)
+        res
+    }
+}
+
+fun sfSoundBufferRecorder_getSampleRate(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): Int {
+    return memScoped {
+        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBufferRecorder_getSampleRate(_soundBufferRecorder)
+        res
+    }
+}
+
+fun sfSoundBufferRecorder_getBuffer(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): CPointer<sfSoundBuffer>? {
+    return memScoped {
+        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundBufferRecorder_getBuffer(_soundBufferRecorder)
+        interpretCPointer<sfSoundBuffer>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfSoundRecorder_create")
+external fun sfSoundRecorder_create(onStart: sfSoundRecorderStartCallback?, onProcess: sfSoundRecorderProcessCallback?, onStop: sfSoundRecorderStopCallback?, userData: COpaquePointer?): CPointer<sfSoundRecorder>?
+
+fun sfSoundRecorder_destroy(soundRecorder: CValuesRef<sfSoundRecorder>?): Unit {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_destroy(_soundRecorder)
+        res
+    }
+}
+
+fun sfSoundRecorder_start(soundRecorder: CValuesRef<sfSoundRecorder>?, sampleRate: Int): sfBool {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val _sampleRate = sampleRate
+        val res = kni_sfSoundRecorder_start(_soundRecorder, _sampleRate)
+        res
+    }
+}
+
+fun sfSoundRecorder_stop(soundRecorder: CValuesRef<sfSoundRecorder>?): Unit {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_stop(_soundRecorder)
+        res
+    }
+}
+
+fun sfSoundRecorder_getSampleRate(soundRecorder: CValuesRef<sfSoundRecorder>?): Int {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_getSampleRate(_soundRecorder)
+        res
+    }
+}
+
+@SymbolName("kni_sfml_sfSoundRecorder_isAvailable")
+external fun sfSoundRecorder_isAvailable(): sfBool
+
+fun sfSoundRecorder_setProcessingInterval(soundRecorder: CValuesRef<sfSoundRecorder>?, interval: CValue<sfTime>): Unit {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val _interval = interval.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_setProcessingInterval(_soundRecorder, _interval)
+        res
+    }
+}
+
+fun sfSoundRecorder_getAvailableDevices(count: CValuesRef<size_tVar>?): CPointer<CPointerVar<ByteVar>>? {
+    return memScoped {
+        val _count = count?.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_getAvailableDevices(_count)
+        interpretCPointer<CPointerVar<ByteVar>>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfSoundRecorder_getDefaultDevice")
+external fun sfSoundRecorder_getDefaultDevice(): CPointer<ByteVar>?
+
+fun sfSoundRecorder_setDevice(soundRecorder: CValuesRef<sfSoundRecorder>?, name: String?): sfBool {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val _name = name?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_setDevice(_soundRecorder, _name)
+        res
+    }
+}
+
+fun sfSoundRecorder_getDevice(soundRecorder: CValuesRef<sfSoundRecorder>?): CPointer<ByteVar>? {
+    return memScoped {
+        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
+        val res = kni_sfSoundRecorder_getDevice(_soundRecorder)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfSoundStream_create")
+external fun sfSoundStream_create(onGetData: sfSoundStreamGetDataCallback?, onSeek: sfSoundStreamSeekCallback?, channelCount: Int, sampleRate: Int, userData: COpaquePointer?): CPointer<sfSoundStream>?
+
+fun sfSoundStream_destroy(soundStream: CValuesRef<sfSoundStream>?): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_destroy(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_play(soundStream: CValuesRef<sfSoundStream>?): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_play(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_pause(soundStream: CValuesRef<sfSoundStream>?): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_pause(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_stop(soundStream: CValuesRef<sfSoundStream>?): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_stop(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getStatus(soundStream: CValuesRef<sfSoundStream>?): sfSoundStatus {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getStatus(_soundStream)
+        sfSoundStatus.byValue(res)
+    }
+}
+
+fun sfSoundStream_getChannelCount(soundStream: CValuesRef<sfSoundStream>?): Int {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getChannelCount(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getSampleRate(soundStream: CValuesRef<sfSoundStream>?): Int {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getSampleRate(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_setPitch(soundStream: CValuesRef<sfSoundStream>?, pitch: Float): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _pitch = pitch
+        val res = kni_sfSoundStream_setPitch(_soundStream, _pitch)
+        res
+    }
+}
+
+fun sfSoundStream_setVolume(soundStream: CValuesRef<sfSoundStream>?, volume: Float): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _volume = volume
+        val res = kni_sfSoundStream_setVolume(_soundStream, _volume)
+        res
+    }
+}
+
+fun sfSoundStream_setPosition(soundStream: CValuesRef<sfSoundStream>?, position: CValue<sfVector3f>): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _position = position.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_setPosition(_soundStream, _position)
+        res
+    }
+}
+
+fun sfSoundStream_setRelativeToListener(soundStream: CValuesRef<sfSoundStream>?, relative: sfBool): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _relative = relative
+        val res = kni_sfSoundStream_setRelativeToListener(_soundStream, _relative)
+        res
+    }
+}
+
+fun sfSoundStream_setMinDistance(soundStream: CValuesRef<sfSoundStream>?, distance: Float): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _distance = distance
+        val res = kni_sfSoundStream_setMinDistance(_soundStream, _distance)
+        res
+    }
+}
+
+fun sfSoundStream_setAttenuation(soundStream: CValuesRef<sfSoundStream>?, attenuation: Float): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _attenuation = attenuation
+        val res = kni_sfSoundStream_setAttenuation(_soundStream, _attenuation)
+        res
+    }
+}
+
+fun sfSoundStream_setPlayingOffset(soundStream: CValuesRef<sfSoundStream>?, timeOffset: CValue<sfTime>): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _timeOffset = timeOffset.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_setPlayingOffset(_soundStream, _timeOffset)
+        res
+    }
+}
+
+fun sfSoundStream_setLoop(soundStream: CValuesRef<sfSoundStream>?, loop: sfBool): Unit {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val _loop = loop
+        val res = kni_sfSoundStream_setLoop(_soundStream, _loop)
+        res
+    }
+}
+
+fun sfSoundStream_getPitch(soundStream: CValuesRef<sfSoundStream>?): Float {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getPitch(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getVolume(soundStream: CValuesRef<sfSoundStream>?): Float {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getVolume(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getPosition(soundStream: CValuesRef<sfSoundStream>?): CValue<sfVector3f> {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getPosition(_soundStream, alloc<sfVector3f>().rawPtr)
+        interpretPointed<sfVector3f>(res).readValue()
+    }
+}
+
+fun sfSoundStream_isRelativeToListener(soundStream: CValuesRef<sfSoundStream>?): sfBool {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_isRelativeToListener(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getMinDistance(soundStream: CValuesRef<sfSoundStream>?): Float {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getMinDistance(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getAttenuation(soundStream: CValuesRef<sfSoundStream>?): Float {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getAttenuation(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getLoop(soundStream: CValuesRef<sfSoundStream>?): sfBool {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getLoop(_soundStream)
+        res
+    }
+}
+
+fun sfSoundStream_getPlayingOffset(soundStream: CValuesRef<sfSoundStream>?): CValue<sfTime> {
+    return memScoped {
+        val _soundStream = soundStream?.getPointer(memScope).rawValue
+        val res = kni_sfSoundStream_getPlayingOffset(_soundStream, alloc<sfTime>().rawPtr)
+        interpretPointed<sfTime>(res).readValue()
+    }
+}
+
 @SymbolName("kni_sfml_sfContext_create")
 external fun sfContext_create(): CPointer<sfContext>?
 
@@ -3854,6 +4738,1126 @@ fun sfView_zoom(view: CValuesRef<sfView>?, factor: Float): Unit {
     }
 }
 
+fun sfIpAddress_fromString(address: String?): CValue<sfIpAddress> {
+    return memScoped {
+        val _address = address?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfIpAddress_fromString(_address, alloc<sfIpAddress>().rawPtr)
+        interpretPointed<sfIpAddress>(res).readValue()
+    }
+}
+
+fun sfIpAddress_fromBytes(byte0: sfUint8, byte1: sfUint8, byte2: sfUint8, byte3: sfUint8): CValue<sfIpAddress> {
+    return memScoped {
+        val _byte0 = byte0
+        val _byte1 = byte1
+        val _byte2 = byte2
+        val _byte3 = byte3
+        val res = kni_sfIpAddress_fromBytes(_byte0, _byte1, _byte2, _byte3, alloc<sfIpAddress>().rawPtr)
+        interpretPointed<sfIpAddress>(res).readValue()
+    }
+}
+
+fun sfIpAddress_fromInteger(address: sfUint32): CValue<sfIpAddress> {
+    return memScoped {
+        val _address = address
+        val res = kni_sfIpAddress_fromInteger(_address, alloc<sfIpAddress>().rawPtr)
+        interpretPointed<sfIpAddress>(res).readValue()
+    }
+}
+
+fun sfIpAddress_toString(address: CValue<sfIpAddress>, string: CValuesRef<ByteVar>?): Unit {
+    return memScoped {
+        val _address = address.getPointer(memScope).rawValue
+        val _string = string?.getPointer(memScope).rawValue
+        val res = kni_sfIpAddress_toString(_address, _string)
+        res
+    }
+}
+
+fun sfIpAddress_toInteger(address: CValue<sfIpAddress>): sfUint32 {
+    return memScoped {
+        val _address = address.getPointer(memScope).rawValue
+        val res = kni_sfIpAddress_toInteger(_address)
+        res
+    }
+}
+
+fun sfIpAddress_getLocalAddress(): CValue<sfIpAddress> {
+    return memScoped {
+        val res = kni_sfIpAddress_getLocalAddress(alloc<sfIpAddress>().rawPtr)
+        interpretPointed<sfIpAddress>(res).readValue()
+    }
+}
+
+fun sfIpAddress_getPublicAddress(timeout: CValue<sfTime>): CValue<sfIpAddress> {
+    return memScoped {
+        val _timeout = timeout.getPointer(memScope).rawValue
+        val res = kni_sfIpAddress_getPublicAddress(_timeout, alloc<sfIpAddress>().rawPtr)
+        interpretPointed<sfIpAddress>(res).readValue()
+    }
+}
+
+fun sfFtpListingResponse_destroy(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): Unit {
+    return memScoped {
+        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpListingResponse_destroy(_ftpListingResponse)
+        res
+    }
+}
+
+fun sfFtpListingResponse_isOk(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): sfBool {
+    return memScoped {
+        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpListingResponse_isOk(_ftpListingResponse)
+        res
+    }
+}
+
+fun sfFtpListingResponse_getStatus(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): sfFtpStatus {
+    return memScoped {
+        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpListingResponse_getStatus(_ftpListingResponse)
+        res
+    }
+}
+
+fun sfFtpListingResponse_getMessage(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): CPointer<ByteVar>? {
+    return memScoped {
+        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpListingResponse_getMessage(_ftpListingResponse)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+fun sfFtpListingResponse_getCount(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): size_t {
+    return memScoped {
+        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpListingResponse_getCount(_ftpListingResponse)
+        res
+    }
+}
+
+fun sfFtpListingResponse_getName(ftpListingResponse: CValuesRef<sfFtpListingResponse>?, index: size_t): CPointer<ByteVar>? {
+    return memScoped {
+        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
+        val _index = index
+        val res = kni_sfFtpListingResponse_getName(_ftpListingResponse, _index)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+fun sfFtpDirectoryResponse_destroy(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): Unit {
+    return memScoped {
+        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpDirectoryResponse_destroy(_ftpDirectoryResponse)
+        res
+    }
+}
+
+fun sfFtpDirectoryResponse_isOk(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): sfBool {
+    return memScoped {
+        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpDirectoryResponse_isOk(_ftpDirectoryResponse)
+        res
+    }
+}
+
+fun sfFtpDirectoryResponse_getStatus(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): sfFtpStatus {
+    return memScoped {
+        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpDirectoryResponse_getStatus(_ftpDirectoryResponse)
+        res
+    }
+}
+
+fun sfFtpDirectoryResponse_getMessage(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): CPointer<ByteVar>? {
+    return memScoped {
+        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpDirectoryResponse_getMessage(_ftpDirectoryResponse)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+fun sfFtpDirectoryResponse_getDirectory(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): CPointer<ByteVar>? {
+    return memScoped {
+        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpDirectoryResponse_getDirectory(_ftpDirectoryResponse)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+fun sfFtpResponse_destroy(ftpResponse: CValuesRef<sfFtpResponse>?): Unit {
+    return memScoped {
+        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpResponse_destroy(_ftpResponse)
+        res
+    }
+}
+
+fun sfFtpResponse_isOk(ftpResponse: CValuesRef<sfFtpResponse>?): sfBool {
+    return memScoped {
+        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpResponse_isOk(_ftpResponse)
+        res
+    }
+}
+
+fun sfFtpResponse_getStatus(ftpResponse: CValuesRef<sfFtpResponse>?): sfFtpStatus {
+    return memScoped {
+        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpResponse_getStatus(_ftpResponse)
+        res
+    }
+}
+
+fun sfFtpResponse_getMessage(ftpResponse: CValuesRef<sfFtpResponse>?): CPointer<ByteVar>? {
+    return memScoped {
+        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfFtpResponse_getMessage(_ftpResponse)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfFtp_create")
+external fun sfFtp_create(): CPointer<sfFtp>?
+
+fun sfFtp_destroy(ftp: CValuesRef<sfFtp>?): Unit {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_destroy(_ftp)
+        res
+    }
+}
+
+fun sfFtp_connect(ftp: CValuesRef<sfFtp>?, server: CValue<sfIpAddress>, port: Short, timeout: CValue<sfTime>): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _server = server.getPointer(memScope).rawValue
+        val _port = port
+        val _timeout = timeout.getPointer(memScope).rawValue
+        val res = kni_sfFtp_connect(_ftp, _server, _port, _timeout)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_loginAnonymous(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_loginAnonymous(_ftp)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_login(ftp: CValuesRef<sfFtp>?, userName: String?, password: String?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _userName = userName?.cstr?.getPointer(memScope).rawValue
+        val _password = password?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_login(_ftp, _userName, _password)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_disconnect(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_disconnect(_ftp)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_keepAlive(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_keepAlive(_ftp)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_getWorkingDirectory(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpDirectoryResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_getWorkingDirectory(_ftp)
+        interpretCPointer<sfFtpDirectoryResponse>(res)
+    }
+}
+
+fun sfFtp_getDirectoryListing(ftp: CValuesRef<sfFtp>?, directory: String?): CPointer<sfFtpListingResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _directory = directory?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_getDirectoryListing(_ftp, _directory)
+        interpretCPointer<sfFtpListingResponse>(res)
+    }
+}
+
+fun sfFtp_changeDirectory(ftp: CValuesRef<sfFtp>?, directory: String?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _directory = directory?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_changeDirectory(_ftp, _directory)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_parentDirectory(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_parentDirectory(_ftp)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_createDirectory(ftp: CValuesRef<sfFtp>?, name: String?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _name = name?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_createDirectory(_ftp, _name)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_deleteDirectory(ftp: CValuesRef<sfFtp>?, name: String?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _name = name?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_deleteDirectory(_ftp, _name)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_renameFile(ftp: CValuesRef<sfFtp>?, file: String?, newName: String?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _file = file?.cstr?.getPointer(memScope).rawValue
+        val _newName = newName?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_renameFile(_ftp, _file, _newName)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_deleteFile(ftp: CValuesRef<sfFtp>?, name: String?): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _name = name?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfFtp_deleteFile(_ftp, _name)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_download(ftp: CValuesRef<sfFtp>?, distantFile: String?, destPath: String?, mode: sfFtpTransferMode): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _distantFile = distantFile?.cstr?.getPointer(memScope).rawValue
+        val _destPath = destPath?.cstr?.getPointer(memScope).rawValue
+        val _mode = mode.value
+        val res = kni_sfFtp_download(_ftp, _distantFile, _destPath, _mode)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+fun sfFtp_upload(ftp: CValuesRef<sfFtp>?, localFile: String?, destPath: String?, mode: sfFtpTransferMode): CPointer<sfFtpResponse>? {
+    return memScoped {
+        val _ftp = ftp?.getPointer(memScope).rawValue
+        val _localFile = localFile?.cstr?.getPointer(memScope).rawValue
+        val _destPath = destPath?.cstr?.getPointer(memScope).rawValue
+        val _mode = mode.value
+        val res = kni_sfFtp_upload(_ftp, _localFile, _destPath, _mode)
+        interpretCPointer<sfFtpResponse>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfHttpRequest_create")
+external fun sfHttpRequest_create(): CPointer<sfHttpRequest>?
+
+fun sfHttpRequest_destroy(httpRequest: CValuesRef<sfHttpRequest>?): Unit {
+    return memScoped {
+        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
+        val res = kni_sfHttpRequest_destroy(_httpRequest)
+        res
+    }
+}
+
+fun sfHttpRequest_setField(httpRequest: CValuesRef<sfHttpRequest>?, field: String?, value: String?): Unit {
+    return memScoped {
+        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
+        val _field = field?.cstr?.getPointer(memScope).rawValue
+        val _value = value?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfHttpRequest_setField(_httpRequest, _field, _value)
+        res
+    }
+}
+
+fun sfHttpRequest_setMethod(httpRequest: CValuesRef<sfHttpRequest>?, method: sfHttpMethod): Unit {
+    return memScoped {
+        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
+        val _method = method.value
+        val res = kni_sfHttpRequest_setMethod(_httpRequest, _method)
+        res
+    }
+}
+
+fun sfHttpRequest_setUri(httpRequest: CValuesRef<sfHttpRequest>?, uri: String?): Unit {
+    return memScoped {
+        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
+        val _uri = uri?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfHttpRequest_setUri(_httpRequest, _uri)
+        res
+    }
+}
+
+fun sfHttpRequest_setHttpVersion(httpRequest: CValuesRef<sfHttpRequest>?, major: Int, minor: Int): Unit {
+    return memScoped {
+        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
+        val _major = major
+        val _minor = minor
+        val res = kni_sfHttpRequest_setHttpVersion(_httpRequest, _major, _minor)
+        res
+    }
+}
+
+fun sfHttpRequest_setBody(httpRequest: CValuesRef<sfHttpRequest>?, body: String?): Unit {
+    return memScoped {
+        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
+        val _body = body?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfHttpRequest_setBody(_httpRequest, _body)
+        res
+    }
+}
+
+fun sfHttpResponse_destroy(httpResponse: CValuesRef<sfHttpResponse>?): Unit {
+    return memScoped {
+        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfHttpResponse_destroy(_httpResponse)
+        res
+    }
+}
+
+fun sfHttpResponse_getField(httpResponse: CValuesRef<sfHttpResponse>?, field: String?): CPointer<ByteVar>? {
+    return memScoped {
+        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
+        val _field = field?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfHttpResponse_getField(_httpResponse, _field)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+fun sfHttpResponse_getStatus(httpResponse: CValuesRef<sfHttpResponse>?): sfHttpStatus {
+    return memScoped {
+        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfHttpResponse_getStatus(_httpResponse)
+        res
+    }
+}
+
+fun sfHttpResponse_getMajorVersion(httpResponse: CValuesRef<sfHttpResponse>?): Int {
+    return memScoped {
+        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfHttpResponse_getMajorVersion(_httpResponse)
+        res
+    }
+}
+
+fun sfHttpResponse_getMinorVersion(httpResponse: CValuesRef<sfHttpResponse>?): Int {
+    return memScoped {
+        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfHttpResponse_getMinorVersion(_httpResponse)
+        res
+    }
+}
+
+fun sfHttpResponse_getBody(httpResponse: CValuesRef<sfHttpResponse>?): CPointer<ByteVar>? {
+    return memScoped {
+        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
+        val res = kni_sfHttpResponse_getBody(_httpResponse)
+        interpretCPointer<ByteVar>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfHttp_create")
+external fun sfHttp_create(): CPointer<sfHttp>?
+
+fun sfHttp_destroy(http: CValuesRef<sfHttp>?): Unit {
+    return memScoped {
+        val _http = http?.getPointer(memScope).rawValue
+        val res = kni_sfHttp_destroy(_http)
+        res
+    }
+}
+
+fun sfHttp_setHost(http: CValuesRef<sfHttp>?, host: String?, port: Short): Unit {
+    return memScoped {
+        val _http = http?.getPointer(memScope).rawValue
+        val _host = host?.cstr?.getPointer(memScope).rawValue
+        val _port = port
+        val res = kni_sfHttp_setHost(_http, _host, _port)
+        res
+    }
+}
+
+fun sfHttp_sendRequest(http: CValuesRef<sfHttp>?, request: CValuesRef<sfHttpRequest>?, timeout: CValue<sfTime>): CPointer<sfHttpResponse>? {
+    return memScoped {
+        val _http = http?.getPointer(memScope).rawValue
+        val _request = request?.getPointer(memScope).rawValue
+        val _timeout = timeout.getPointer(memScope).rawValue
+        val res = kni_sfHttp_sendRequest(_http, _request, _timeout)
+        interpretCPointer<sfHttpResponse>(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfPacket_create")
+external fun sfPacket_create(): CPointer<sfPacket>?
+
+fun sfPacket_copy(packet: CValuesRef<sfPacket>?): CPointer<sfPacket>? {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_copy(_packet)
+        interpretCPointer<sfPacket>(res)
+    }
+}
+
+fun sfPacket_destroy(packet: CValuesRef<sfPacket>?): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_destroy(_packet)
+        res
+    }
+}
+
+fun sfPacket_append(packet: CValuesRef<sfPacket>?, data: COpaquePointer?, sizeInBytes: size_t): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _data = data.rawValue
+        val _sizeInBytes = sizeInBytes
+        val res = kni_sfPacket_append(_packet, _data, _sizeInBytes)
+        res
+    }
+}
+
+fun sfPacket_clear(packet: CValuesRef<sfPacket>?): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_clear(_packet)
+        res
+    }
+}
+
+fun sfPacket_getData(packet: CValuesRef<sfPacket>?): COpaquePointer? {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_getData(_packet)
+        interpretCPointer<COpaque>(res)
+    }
+}
+
+fun sfPacket_getDataSize(packet: CValuesRef<sfPacket>?): size_t {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_getDataSize(_packet)
+        res
+    }
+}
+
+fun sfPacket_endOfPacket(packet: CValuesRef<sfPacket>?): sfBool {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_endOfPacket(_packet)
+        res
+    }
+}
+
+fun sfPacket_canRead(packet: CValuesRef<sfPacket>?): sfBool {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_canRead(_packet)
+        res
+    }
+}
+
+fun sfPacket_readBool(packet: CValuesRef<sfPacket>?): sfBool {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readBool(_packet)
+        res
+    }
+}
+
+fun sfPacket_readInt8(packet: CValuesRef<sfPacket>?): sfInt8 {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readInt8(_packet)
+        res
+    }
+}
+
+fun sfPacket_readUint8(packet: CValuesRef<sfPacket>?): sfUint8 {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readUint8(_packet)
+        res
+    }
+}
+
+fun sfPacket_readInt16(packet: CValuesRef<sfPacket>?): sfInt16 {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readInt16(_packet)
+        res
+    }
+}
+
+fun sfPacket_readUint16(packet: CValuesRef<sfPacket>?): sfUint16 {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readUint16(_packet)
+        res
+    }
+}
+
+fun sfPacket_readInt32(packet: CValuesRef<sfPacket>?): sfInt32 {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readInt32(_packet)
+        res
+    }
+}
+
+fun sfPacket_readUint32(packet: CValuesRef<sfPacket>?): sfUint32 {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readUint32(_packet)
+        res
+    }
+}
+
+fun sfPacket_readFloat(packet: CValuesRef<sfPacket>?): Float {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readFloat(_packet)
+        res
+    }
+}
+
+fun sfPacket_readDouble(packet: CValuesRef<sfPacket>?): Double {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readDouble(_packet)
+        res
+    }
+}
+
+fun sfPacket_readString(packet: CValuesRef<sfPacket>?, string: CValuesRef<ByteVar>?): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _string = string?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readString(_packet, _string)
+        res
+    }
+}
+
+fun sfPacket_readWideString(packet: CValuesRef<sfPacket>?, string: CValuesRef<wchar_tVar>?): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _string = string?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_readWideString(_packet, _string)
+        res
+    }
+}
+
+fun sfPacket_writeBool(packet: CValuesRef<sfPacket>?, arg1: sfBool): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeBool(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeInt8(packet: CValuesRef<sfPacket>?, arg1: sfInt8): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeInt8(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeUint8(packet: CValuesRef<sfPacket>?, arg1: sfUint8): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeUint8(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeInt16(packet: CValuesRef<sfPacket>?, arg1: sfInt16): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeInt16(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeUint16(packet: CValuesRef<sfPacket>?, arg1: sfUint16): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeUint16(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeInt32(packet: CValuesRef<sfPacket>?, arg1: sfInt32): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeInt32(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeUint32(packet: CValuesRef<sfPacket>?, arg1: sfUint32): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeUint32(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeFloat(packet: CValuesRef<sfPacket>?, arg1: Float): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeFloat(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeDouble(packet: CValuesRef<sfPacket>?, arg1: Double): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _arg1 = arg1
+        val res = kni_sfPacket_writeDouble(_packet, _arg1)
+        res
+    }
+}
+
+fun sfPacket_writeString(packet: CValuesRef<sfPacket>?, string: String?): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _string = string?.cstr?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_writeString(_packet, _string)
+        res
+    }
+}
+
+fun sfPacket_writeWideString(packet: CValuesRef<sfPacket>?, string: CValuesRef<wchar_tVar>?): Unit {
+    return memScoped {
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _string = string?.getPointer(memScope).rawValue
+        val res = kni_sfPacket_writeWideString(_packet, _string)
+        res
+    }
+}
+
+@SymbolName("kni_sfml_sfSocketSelector_create")
+external fun sfSocketSelector_create(): CPointer<sfSocketSelector>?
+
+fun sfSocketSelector_copy(selector: CValuesRef<sfSocketSelector>?): CPointer<sfSocketSelector>? {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_copy(_selector)
+        interpretCPointer<sfSocketSelector>(res)
+    }
+}
+
+fun sfSocketSelector_destroy(selector: CValuesRef<sfSocketSelector>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_destroy(_selector)
+        res
+    }
+}
+
+fun sfSocketSelector_addTcpListener(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpListener>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_addTcpListener(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_addTcpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpSocket>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_addTcpSocket(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_addUdpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfUdpSocket>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_addUdpSocket(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_removeTcpListener(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpListener>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_removeTcpListener(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_removeTcpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpSocket>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_removeTcpSocket(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_removeUdpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfUdpSocket>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_removeUdpSocket(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_clear(selector: CValuesRef<sfSocketSelector>?): Unit {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_clear(_selector)
+        res
+    }
+}
+
+fun sfSocketSelector_wait(selector: CValuesRef<sfSocketSelector>?, timeout: CValue<sfTime>): sfBool {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _timeout = timeout.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_wait(_selector, _timeout)
+        res
+    }
+}
+
+fun sfSocketSelector_isTcpListenerReady(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpListener>?): sfBool {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_isTcpListenerReady(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_isTcpSocketReady(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpSocket>?): sfBool {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_isTcpSocketReady(_selector, _socket)
+        res
+    }
+}
+
+fun sfSocketSelector_isUdpSocketReady(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfUdpSocket>?): sfBool {
+    return memScoped {
+        val _selector = selector?.getPointer(memScope).rawValue
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfSocketSelector_isUdpSocketReady(_selector, _socket)
+        res
+    }
+}
+
+@SymbolName("kni_sfml_sfTcpListener_create")
+external fun sfTcpListener_create(): CPointer<sfTcpListener>?
+
+fun sfTcpListener_destroy(listener: CValuesRef<sfTcpListener>?): Unit {
+    return memScoped {
+        val _listener = listener?.getPointer(memScope).rawValue
+        val res = kni_sfTcpListener_destroy(_listener)
+        res
+    }
+}
+
+fun sfTcpListener_setBlocking(listener: CValuesRef<sfTcpListener>?, blocking: sfBool): Unit {
+    return memScoped {
+        val _listener = listener?.getPointer(memScope).rawValue
+        val _blocking = blocking
+        val res = kni_sfTcpListener_setBlocking(_listener, _blocking)
+        res
+    }
+}
+
+fun sfTcpListener_isBlocking(listener: CValuesRef<sfTcpListener>?): sfBool {
+    return memScoped {
+        val _listener = listener?.getPointer(memScope).rawValue
+        val res = kni_sfTcpListener_isBlocking(_listener)
+        res
+    }
+}
+
+fun sfTcpListener_getLocalPort(listener: CValuesRef<sfTcpListener>?): Short {
+    return memScoped {
+        val _listener = listener?.getPointer(memScope).rawValue
+        val res = kni_sfTcpListener_getLocalPort(_listener)
+        res
+    }
+}
+
+fun sfTcpListener_listen(listener: CValuesRef<sfTcpListener>?, port: Short): sfSocketStatus {
+    return memScoped {
+        val _listener = listener?.getPointer(memScope).rawValue
+        val _port = port
+        val res = kni_sfTcpListener_listen(_listener, _port)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfTcpListener_accept(listener: CValuesRef<sfTcpListener>?, connected: CValuesRef<CPointerVar<sfTcpSocket>>?): sfSocketStatus {
+    return memScoped {
+        val _listener = listener?.getPointer(memScope).rawValue
+        val _connected = connected?.getPointer(memScope).rawValue
+        val res = kni_sfTcpListener_accept(_listener, _connected)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfTcpSocket_create")
+external fun sfTcpSocket_create(): CPointer<sfTcpSocket>?
+
+fun sfTcpSocket_destroy(socket: CValuesRef<sfTcpSocket>?): Unit {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_destroy(_socket)
+        res
+    }
+}
+
+fun sfTcpSocket_setBlocking(socket: CValuesRef<sfTcpSocket>?, blocking: sfBool): Unit {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _blocking = blocking
+        val res = kni_sfTcpSocket_setBlocking(_socket, _blocking)
+        res
+    }
+}
+
+fun sfTcpSocket_isBlocking(socket: CValuesRef<sfTcpSocket>?): sfBool {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_isBlocking(_socket)
+        res
+    }
+}
+
+fun sfTcpSocket_getLocalPort(socket: CValuesRef<sfTcpSocket>?): Short {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_getLocalPort(_socket)
+        res
+    }
+}
+
+fun sfTcpSocket_getRemoteAddress(socket: CValuesRef<sfTcpSocket>?): CValue<sfIpAddress> {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_getRemoteAddress(_socket, alloc<sfIpAddress>().rawPtr)
+        interpretPointed<sfIpAddress>(res).readValue()
+    }
+}
+
+fun sfTcpSocket_getRemotePort(socket: CValuesRef<sfTcpSocket>?): Short {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_getRemotePort(_socket)
+        res
+    }
+}
+
+fun sfTcpSocket_connect(socket: CValuesRef<sfTcpSocket>?, host: CValue<sfIpAddress>, port: Short, timeout: CValue<sfTime>): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _host = host.getPointer(memScope).rawValue
+        val _port = port
+        val _timeout = timeout.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_connect(_socket, _host, _port, _timeout)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfTcpSocket_disconnect(socket: CValuesRef<sfTcpSocket>?): Unit {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_disconnect(_socket)
+        res
+    }
+}
+
+fun sfTcpSocket_send(socket: CValuesRef<sfTcpSocket>?, data: COpaquePointer?, size: size_t): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _data = data.rawValue
+        val _size = size
+        val res = kni_sfTcpSocket_send(_socket, _data, _size)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfTcpSocket_sendPartial(socket: CValuesRef<sfTcpSocket>?, data: COpaquePointer?, size: size_t, sent: CValuesRef<size_tVar>?): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _data = data.rawValue
+        val _size = size
+        val _sent = sent?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_sendPartial(_socket, _data, _size, _sent)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfTcpSocket_receive(socket: CValuesRef<sfTcpSocket>?, data: COpaquePointer?, maxSize: size_t, sizeReceived: CValuesRef<size_tVar>?): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _data = data.rawValue
+        val _maxSize = maxSize
+        val _sizeReceived = sizeReceived?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_receive(_socket, _data, _maxSize, _sizeReceived)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfTcpSocket_sendPacket(socket: CValuesRef<sfTcpSocket>?, packet: CValuesRef<sfPacket>?): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_sendPacket(_socket, _packet)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfTcpSocket_receivePacket(socket: CValuesRef<sfTcpSocket>?, packet: CValuesRef<sfPacket>?): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _packet = packet?.getPointer(memScope).rawValue
+        val res = kni_sfTcpSocket_receivePacket(_socket, _packet)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfUdpSocket_create")
+external fun sfUdpSocket_create(): CPointer<sfUdpSocket>?
+
+fun sfUdpSocket_destroy(socket: CValuesRef<sfUdpSocket>?): Unit {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfUdpSocket_destroy(_socket)
+        res
+    }
+}
+
+fun sfUdpSocket_setBlocking(socket: CValuesRef<sfUdpSocket>?, blocking: sfBool): Unit {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _blocking = blocking
+        val res = kni_sfUdpSocket_setBlocking(_socket, _blocking)
+        res
+    }
+}
+
+fun sfUdpSocket_isBlocking(socket: CValuesRef<sfUdpSocket>?): sfBool {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfUdpSocket_isBlocking(_socket)
+        res
+    }
+}
+
+fun sfUdpSocket_getLocalPort(socket: CValuesRef<sfUdpSocket>?): Short {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfUdpSocket_getLocalPort(_socket)
+        res
+    }
+}
+
+fun sfUdpSocket_bind(socket: CValuesRef<sfUdpSocket>?, port: Short): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _port = port
+        val res = kni_sfUdpSocket_bind(_socket, _port)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfUdpSocket_unbind(socket: CValuesRef<sfUdpSocket>?): Unit {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val res = kni_sfUdpSocket_unbind(_socket)
+        res
+    }
+}
+
+fun sfUdpSocket_send(socket: CValuesRef<sfUdpSocket>?, data: COpaquePointer?, size: size_t, address: CValue<sfIpAddress>, port: Short): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _data = data.rawValue
+        val _size = size
+        val _address = address.getPointer(memScope).rawValue
+        val _port = port
+        val res = kni_sfUdpSocket_send(_socket, _data, _size, _address, _port)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfUdpSocket_receive(socket: CValuesRef<sfUdpSocket>?, data: COpaquePointer?, maxSize: size_t, sizeReceived: CValuesRef<size_tVar>?, address: CValuesRef<sfIpAddress>?, port: CValuesRef<ShortVar>?): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _data = data.rawValue
+        val _maxSize = maxSize
+        val _sizeReceived = sizeReceived?.getPointer(memScope).rawValue
+        val _address = address?.getPointer(memScope).rawValue
+        val _port = port?.getPointer(memScope).rawValue
+        val res = kni_sfUdpSocket_receive(_socket, _data, _maxSize, _sizeReceived, _address, _port)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfUdpSocket_sendPacket(socket: CValuesRef<sfUdpSocket>?, packet: CValuesRef<sfPacket>?, address: CValue<sfIpAddress>, port: Short): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _address = address.getPointer(memScope).rawValue
+        val _port = port
+        val res = kni_sfUdpSocket_sendPacket(_socket, _packet, _address, _port)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+fun sfUdpSocket_receivePacket(socket: CValuesRef<sfUdpSocket>?, packet: CValuesRef<sfPacket>?, address: CValuesRef<sfIpAddress>?, port: CValuesRef<ShortVar>?): sfSocketStatus {
+    return memScoped {
+        val _socket = socket?.getPointer(memScope).rawValue
+        val _packet = packet?.getPointer(memScope).rawValue
+        val _address = address?.getPointer(memScope).rawValue
+        val _port = port?.getPointer(memScope).rawValue
+        val res = kni_sfUdpSocket_receivePacket(_socket, _packet, _address, _port)
+        sfSocketStatus.byValue(res)
+    }
+}
+
+@SymbolName("kni_sfml_sfUdpSocket_maxDatagramSize")
+external fun sfUdpSocket_maxDatagramSize(): Int
+
 val __llvm__: Int = 1
 val __clang__: Int = 1
 val __clang_major__: Int = 3
@@ -4133,6 +6137,42 @@ class sfVector3f(override val rawPtr: NativePtr) : CStructVar() {
     var z: Float
         get() = memberAt<FloatVar>(8).value
         set(value) { memberAt<FloatVar>(8).value = value }
+    
+}
+
+class sfMusic(override val rawPtr: NativePtr) : COpaque
+
+class sfSound(override val rawPtr: NativePtr) : COpaque
+
+class sfSoundBuffer(override val rawPtr: NativePtr) : COpaque
+
+class sfSoundBufferRecorder(override val rawPtr: NativePtr) : COpaque
+
+class sfSoundRecorder(override val rawPtr: NativePtr) : COpaque
+
+class sfSoundStream(override val rawPtr: NativePtr) : COpaque
+
+class max_align_t(override val rawPtr: NativePtr) : CStructVar() {
+    
+    companion object : Type(32, 16)
+    
+    var __clang_max_align_nonce1: Long
+        get() = memberAt<LongVar>(0).value
+        set(value) { memberAt<LongVar>(0).value = value }
+    
+}
+
+class sfSoundStreamChunk(override val rawPtr: NativePtr) : CStructVar() {
+    
+    companion object : Type(16, 8)
+    
+    var samples: CPointer<sfInt16Var>?
+        get() = memberAt<CPointerVar<sfInt16Var>>(0).value
+        set(value) { memberAt<CPointerVar<sfInt16Var>>(0).value = value }
+    
+    var sampleCount: Int
+        get() = memberAt<IntVar>(8).value
+        set(value) { memberAt<IntVar>(8).value = value }
     
 }
 
@@ -4456,16 +6496,6 @@ class sfEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class max_align_t(override val rawPtr: NativePtr) : CStructVar() {
-    
-    companion object : Type(32, 16)
-    
-    var __clang_max_align_nonce1: Long
-        get() = memberAt<LongVar>(0).value
-        set(value) { memberAt<LongVar>(0).value = value }
-    
-}
-
 class sfVideoMode(override val rawPtr: NativePtr) : CStructVar() {
     
     companion object : Type(12, 4)
@@ -4708,6 +6738,57 @@ class sfVertex(override val rawPtr: NativePtr) : CStructVar() {
     val texCoords: sfVector2f
         get() = memberAt(12)
     
+}
+
+class sfIpAddress(override val rawPtr: NativePtr) : CStructVar() {
+    
+    companion object : Type(16, 1)
+    
+    val address: CArrayPointer<ByteVar>
+        get() = arrayMemberAt(0)
+    
+}
+
+class sfFtpDirectoryResponse(override val rawPtr: NativePtr) : COpaque
+
+class sfFtpListingResponse(override val rawPtr: NativePtr) : COpaque
+
+class sfFtpResponse(override val rawPtr: NativePtr) : COpaque
+
+class sfFtp(override val rawPtr: NativePtr) : COpaque
+
+class sfHttpRequest(override val rawPtr: NativePtr) : COpaque
+
+class sfHttpResponse(override val rawPtr: NativePtr) : COpaque
+
+class sfHttp(override val rawPtr: NativePtr) : COpaque
+
+class sfPacket(override val rawPtr: NativePtr) : COpaque
+
+class sfSocketSelector(override val rawPtr: NativePtr) : COpaque
+
+class sfTcpListener(override val rawPtr: NativePtr) : COpaque
+
+class sfTcpSocket(override val rawPtr: NativePtr) : COpaque
+
+class sfUdpSocket(override val rawPtr: NativePtr) : COpaque
+
+enum class sfSoundStatus(override val value: Int) : CEnum {
+    sfStopped(0),
+    sfPaused(1),
+    sfPlaying(2),
+    ;
+    
+    companion object {
+        fun byValue(value: Int) = sfSoundStatus.values().find { it.value == value }!!
+    }
+    
+    class Var(override val rawPtr: NativePtr) : CEnumVar() {
+        companion object : Type(IntVar.size.toInt())
+        var value: sfSoundStatus
+            get() = byValue(this.reinterpret<IntVar>().value)
+            set(value) { this.reinterpret<IntVar>().value = value.value }
+    }
 }
 
 // enum (anonymous at /usr/include/SFML/Window/Joystick.h:39:1):
@@ -5034,6 +7115,138 @@ val sfTextItalic: sfTextStyle = 2
 val sfTextUnderlined: sfTextStyle = 4
 val sfTextStrikeThrough: sfTextStyle = 8
 
+enum class sfFtpTransferMode(override val value: Int) : CEnum {
+    sfFtpBinary(0),
+    sfFtpAscii(1),
+    sfFtpEbcdic(2),
+    ;
+    
+    companion object {
+        fun byValue(value: Int) = sfFtpTransferMode.values().find { it.value == value }!!
+    }
+    
+    class Var(override val rawPtr: NativePtr) : CEnumVar() {
+        companion object : Type(IntVar.size.toInt())
+        var value: sfFtpTransferMode
+            get() = byValue(this.reinterpret<IntVar>().value)
+            set(value) { this.reinterpret<IntVar>().value = value.value }
+    }
+}
+
+typealias sfFtpStatusVar = IntVarOf<sfFtpStatus>
+typealias sfFtpStatus = Int
+
+val sfFtpRestartMarkerReply: sfFtpStatus = 110
+val sfFtpServiceReadySoon: sfFtpStatus = 120
+val sfFtpDataConnectionAlreadyOpened: sfFtpStatus = 125
+val sfFtpOpeningDataConnection: sfFtpStatus = 150
+val sfFtpOk: sfFtpStatus = 200
+val sfFtpPointlessCommand: sfFtpStatus = 202
+val sfFtpSystemStatus: sfFtpStatus = 211
+val sfFtpDirectoryStatus: sfFtpStatus = 212
+val sfFtpFileStatus: sfFtpStatus = 213
+val sfFtpHelpMessage: sfFtpStatus = 214
+val sfFtpSystemType: sfFtpStatus = 215
+val sfFtpServiceReady: sfFtpStatus = 220
+val sfFtpClosingConnection: sfFtpStatus = 221
+val sfFtpDataConnectionOpened: sfFtpStatus = 225
+val sfFtpClosingDataConnection: sfFtpStatus = 226
+val sfFtpEnteringPassiveMode: sfFtpStatus = 227
+val sfFtpLoggedIn: sfFtpStatus = 230
+val sfFtpFileActionOk: sfFtpStatus = 250
+val sfFtpDirectoryOk: sfFtpStatus = 257
+val sfFtpNeedPassword: sfFtpStatus = 331
+val sfFtpNeedAccountToLogIn: sfFtpStatus = 332
+val sfFtpNeedInformation: sfFtpStatus = 350
+val sfFtpServiceUnavailable: sfFtpStatus = 421
+val sfFtpDataConnectionUnavailable: sfFtpStatus = 425
+val sfFtpTransferAborted: sfFtpStatus = 426
+val sfFtpFileActionAborted: sfFtpStatus = 450
+val sfFtpLocalError: sfFtpStatus = 451
+val sfFtpInsufficientStorageSpace: sfFtpStatus = 452
+val sfFtpCommandUnknown: sfFtpStatus = 500
+val sfFtpParametersUnknown: sfFtpStatus = 501
+val sfFtpCommandNotImplemented: sfFtpStatus = 502
+val sfFtpBadCommandSequence: sfFtpStatus = 503
+val sfFtpParameterNotImplemented: sfFtpStatus = 504
+val sfFtpNotLoggedIn: sfFtpStatus = 530
+val sfFtpNeedAccountToStore: sfFtpStatus = 532
+val sfFtpFileUnavailable: sfFtpStatus = 550
+val sfFtpPageTypeUnknown: sfFtpStatus = 551
+val sfFtpNotEnoughMemory: sfFtpStatus = 552
+val sfFtpFilenameNotAllowed: sfFtpStatus = 553
+val sfFtpInvalidResponse: sfFtpStatus = 1000
+val sfFtpConnectionFailed: sfFtpStatus = 1001
+val sfFtpConnectionClosed: sfFtpStatus = 1002
+val sfFtpInvalidFile: sfFtpStatus = 1003
+
+enum class sfHttpMethod(override val value: Int) : CEnum {
+    sfHttpGet(0),
+    sfHttpPost(1),
+    sfHttpHead(2),
+    sfHttpPut(3),
+    sfHttpDelete(4),
+    ;
+    
+    companion object {
+        fun byValue(value: Int) = sfHttpMethod.values().find { it.value == value }!!
+    }
+    
+    class Var(override val rawPtr: NativePtr) : CEnumVar() {
+        companion object : Type(IntVar.size.toInt())
+        var value: sfHttpMethod
+            get() = byValue(this.reinterpret<IntVar>().value)
+            set(value) { this.reinterpret<IntVar>().value = value.value }
+    }
+}
+
+typealias sfHttpStatusVar = IntVarOf<sfHttpStatus>
+typealias sfHttpStatus = Int
+
+val sfHttpOk: sfHttpStatus = 200
+val sfHttpCreated: sfHttpStatus = 201
+val sfHttpAccepted: sfHttpStatus = 202
+val sfHttpNoContent: sfHttpStatus = 204
+val sfHttpResetContent: sfHttpStatus = 205
+val sfHttpPartialContent: sfHttpStatus = 206
+val sfHttpMultipleChoices: sfHttpStatus = 300
+val sfHttpMovedPermanently: sfHttpStatus = 301
+val sfHttpMovedTemporarily: sfHttpStatus = 302
+val sfHttpNotModified: sfHttpStatus = 304
+val sfHttpBadRequest: sfHttpStatus = 400
+val sfHttpUnauthorized: sfHttpStatus = 401
+val sfHttpForbidden: sfHttpStatus = 403
+val sfHttpNotFound: sfHttpStatus = 404
+val sfHttpRangeNotSatisfiable: sfHttpStatus = 407
+val sfHttpInternalServerError: sfHttpStatus = 500
+val sfHttpNotImplemented: sfHttpStatus = 501
+val sfHttpBadGateway: sfHttpStatus = 502
+val sfHttpServiceNotAvailable: sfHttpStatus = 503
+val sfHttpGatewayTimeout: sfHttpStatus = 504
+val sfHttpVersionNotSupported: sfHttpStatus = 505
+val sfHttpInvalidResponse: sfHttpStatus = 1000
+val sfHttpConnectionFailed: sfHttpStatus = 1001
+
+enum class sfSocketStatus(override val value: Int) : CEnum {
+    sfSocketDone(0),
+    sfSocketNotReady(1),
+    sfSocketPartial(2),
+    sfSocketDisconnected(3),
+    sfSocketError(4),
+    ;
+    
+    companion object {
+        fun byValue(value: Int) = sfSocketStatus.values().find { it.value == value }!!
+    }
+    
+    class Var(override val rawPtr: NativePtr) : CEnumVar() {
+        companion object : Type(IntVar.size.toInt())
+        var value: sfSocketStatus
+            get() = byValue(this.reinterpret<IntVar>().value)
+            set(value) { this.reinterpret<IntVar>().value = value.value }
+    }
+}
+
 typealias sfBoolVar = IntVarOf<sfBool>
 typealias sfBool = Int
 
@@ -5062,16 +7275,16 @@ typealias sfUint64Var = LongVarOf<sfUint64>
 typealias sfUint64 = Long
 
 typealias sfInputStreamReadFuncVar = CPointerVarOf<sfInputStreamReadFunc>
-typealias sfInputStreamReadFunc = CPointer<CFunction<CFunctionType4>>
+typealias sfInputStreamReadFunc = CPointer<CFunction<CFunctionType8>>
 
 typealias sfInputStreamSeekFuncVar = CPointerVarOf<sfInputStreamSeekFunc>
-typealias sfInputStreamSeekFunc = CPointer<CFunction<CFunctionType5>>
+typealias sfInputStreamSeekFunc = CPointer<CFunction<CFunctionType9>>
 
 typealias sfInputStreamTellFuncVar = CPointerVarOf<sfInputStreamTellFunc>
-typealias sfInputStreamTellFunc = CPointer<CFunction<CFunctionType6>>
+typealias sfInputStreamTellFunc = CPointer<CFunction<CFunctionType10>>
 
 typealias sfInputStreamGetSizeFuncVar = CPointerVarOf<sfInputStreamGetSizeFunc>
-typealias sfInputStreamGetSizeFunc = CPointer<CFunction<CFunctionType6>>
+typealias sfInputStreamGetSizeFunc = CPointer<CFunction<CFunctionType10>>
 
 typealias ptrdiff_tVar = LongVarOf<ptrdiff_t>
 typealias ptrdiff_t = Long
@@ -5082,26 +7295,49 @@ typealias size_t = Long
 typealias wchar_tVar = IntVarOf<wchar_t>
 typealias wchar_t = Int
 
+typealias sfSoundRecorderStartCallbackVar = CPointerVarOf<sfSoundRecorderStartCallback>
+typealias sfSoundRecorderStartCallback = CPointer<CFunction<CFunctionType2>>
+
+typealias sfSoundRecorderProcessCallbackVar = CPointerVarOf<sfSoundRecorderProcessCallback>
+typealias sfSoundRecorderProcessCallback = CPointer<CFunction<CFunctionType3>>
+
+typealias sfSoundRecorderStopCallbackVar = CPointerVarOf<sfSoundRecorderStopCallback>
+typealias sfSoundRecorderStopCallback = CPointer<CFunction<CFunctionType1>>
+
+typealias sfSoundStreamGetDataCallbackVar = CPointerVarOf<sfSoundStreamGetDataCallback>
+typealias sfSoundStreamGetDataCallback = CPointer<CFunction<CFunctionType4>>
+
+typealias sfSoundStreamSeekCallbackVar = CPointerVarOf<sfSoundStreamSeekCallback>
+typealias sfSoundStreamSeekCallback = CPointer<CFunction<CFunctionType5>>
+
 typealias sfWindowHandleVar = LongVarOf<sfWindowHandle>
 typealias sfWindowHandle = Long
 
 typealias sfShapeGetPointCountCallbackVar = CPointerVarOf<sfShapeGetPointCountCallback>
-typealias sfShapeGetPointCountCallback = CPointer<CFunction<CFunctionType2>>
+typealias sfShapeGetPointCountCallback = CPointer<CFunction<CFunctionType6>>
 
 typealias sfShapeGetPointCallbackVar = CPointerVarOf<sfShapeGetPointCallback>
-typealias sfShapeGetPointCallback = CPointer<CFunction<CFunctionType3>>
+typealias sfShapeGetPointCallback = CPointer<CFunction<CFunctionType7>>
 
 object CFunctionType1 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Unit>()
 
-object CFunctionType2 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Long>()
+object CFunctionType2 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Int>()
 
-object CFunctionType3 : CFunctionType {}
+object CFunctionType3 : CTriviallyAdaptedFunctionType<(CPointer<ShortVar>?, Long, COpaquePointer?) -> Int>()
 
-object CFunctionType4 : CTriviallyAdaptedFunctionType<(COpaquePointer?, Long, COpaquePointer?) -> Long>()
+object CFunctionType4 : CTriviallyAdaptedFunctionType<(CPointer<sfSoundStreamChunk>?, COpaquePointer?) -> Int>()
 
-object CFunctionType5 : CTriviallyAdaptedFunctionType<(Long, COpaquePointer?) -> Long>()
+object CFunctionType5 : CFunctionType {}
 
 object CFunctionType6 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Long>()
+
+object CFunctionType7 : CFunctionType {}
+
+object CFunctionType8 : CTriviallyAdaptedFunctionType<(COpaquePointer?, Long, COpaquePointer?) -> Long>()
+
+object CFunctionType9 : CTriviallyAdaptedFunctionType<(Long, COpaquePointer?) -> Long>()
+
+object CFunctionType10 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Long>()
 
 @SymbolName("kni_sfml_sfTime_asSeconds")
 private external fun kni_sfTime_asSeconds(time: NativePtr): Float
@@ -5156,6 +7392,315 @@ private external fun kni_sfThread_wait(thread: NativePtr): Unit
 
 @SymbolName("kni_sfml_sfThread_terminate")
 private external fun kni_sfThread_terminate(thread: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfListener_setPosition")
+private external fun kni_sfListener_setPosition(position: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfListener_getPosition")
+private external fun kni_sfListener_getPosition(retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfListener_setDirection")
+private external fun kni_sfListener_setDirection(direction: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfListener_getDirection")
+private external fun kni_sfListener_getDirection(retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfListener_setUpVector")
+private external fun kni_sfListener_setUpVector(upVector: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfListener_getUpVector")
+private external fun kni_sfListener_getUpVector(retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfMusic_createFromFile")
+private external fun kni_sfMusic_createFromFile(filename: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfMusic_createFromStream")
+private external fun kni_sfMusic_createFromStream(stream: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfMusic_destroy")
+private external fun kni_sfMusic_destroy(music: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfMusic_setLoop")
+private external fun kni_sfMusic_setLoop(music: NativePtr, loop: Int): Unit
+
+@SymbolName("kni_sfml_sfMusic_getLoop")
+private external fun kni_sfMusic_getLoop(music: NativePtr): Int
+
+@SymbolName("kni_sfml_sfMusic_getDuration")
+private external fun kni_sfMusic_getDuration(music: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfMusic_play")
+private external fun kni_sfMusic_play(music: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfMusic_pause")
+private external fun kni_sfMusic_pause(music: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfMusic_stop")
+private external fun kni_sfMusic_stop(music: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfMusic_getChannelCount")
+private external fun kni_sfMusic_getChannelCount(music: NativePtr): Int
+
+@SymbolName("kni_sfml_sfMusic_getSampleRate")
+private external fun kni_sfMusic_getSampleRate(music: NativePtr): Int
+
+@SymbolName("kni_sfml_sfMusic_getStatus")
+private external fun kni_sfMusic_getStatus(music: NativePtr): Int
+
+@SymbolName("kni_sfml_sfMusic_getPlayingOffset")
+private external fun kni_sfMusic_getPlayingOffset(music: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfMusic_setPitch")
+private external fun kni_sfMusic_setPitch(music: NativePtr, pitch: Float): Unit
+
+@SymbolName("kni_sfml_sfMusic_setVolume")
+private external fun kni_sfMusic_setVolume(music: NativePtr, volume: Float): Unit
+
+@SymbolName("kni_sfml_sfMusic_setPosition")
+private external fun kni_sfMusic_setPosition(music: NativePtr, position: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfMusic_setRelativeToListener")
+private external fun kni_sfMusic_setRelativeToListener(music: NativePtr, relative: Int): Unit
+
+@SymbolName("kni_sfml_sfMusic_setMinDistance")
+private external fun kni_sfMusic_setMinDistance(music: NativePtr, distance: Float): Unit
+
+@SymbolName("kni_sfml_sfMusic_setAttenuation")
+private external fun kni_sfMusic_setAttenuation(music: NativePtr, attenuation: Float): Unit
+
+@SymbolName("kni_sfml_sfMusic_setPlayingOffset")
+private external fun kni_sfMusic_setPlayingOffset(music: NativePtr, timeOffset: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfMusic_getPitch")
+private external fun kni_sfMusic_getPitch(music: NativePtr): Float
+
+@SymbolName("kni_sfml_sfMusic_getVolume")
+private external fun kni_sfMusic_getVolume(music: NativePtr): Float
+
+@SymbolName("kni_sfml_sfMusic_getPosition")
+private external fun kni_sfMusic_getPosition(music: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfMusic_isRelativeToListener")
+private external fun kni_sfMusic_isRelativeToListener(music: NativePtr): Int
+
+@SymbolName("kni_sfml_sfMusic_getMinDistance")
+private external fun kni_sfMusic_getMinDistance(music: NativePtr): Float
+
+@SymbolName("kni_sfml_sfMusic_getAttenuation")
+private external fun kni_sfMusic_getAttenuation(music: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSound_copy")
+private external fun kni_sfSound_copy(sound: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSound_destroy")
+private external fun kni_sfSound_destroy(sound: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_play")
+private external fun kni_sfSound_play(sound: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_pause")
+private external fun kni_sfSound_pause(sound: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_stop")
+private external fun kni_sfSound_stop(sound: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_setBuffer")
+private external fun kni_sfSound_setBuffer(sound: NativePtr, buffer: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_getBuffer")
+private external fun kni_sfSound_getBuffer(sound: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSound_setLoop")
+private external fun kni_sfSound_setLoop(sound: NativePtr, loop: Int): Unit
+
+@SymbolName("kni_sfml_sfSound_getLoop")
+private external fun kni_sfSound_getLoop(sound: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSound_getStatus")
+private external fun kni_sfSound_getStatus(sound: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSound_setPitch")
+private external fun kni_sfSound_setPitch(sound: NativePtr, pitch: Float): Unit
+
+@SymbolName("kni_sfml_sfSound_setVolume")
+private external fun kni_sfSound_setVolume(sound: NativePtr, volume: Float): Unit
+
+@SymbolName("kni_sfml_sfSound_setPosition")
+private external fun kni_sfSound_setPosition(sound: NativePtr, position: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_setRelativeToListener")
+private external fun kni_sfSound_setRelativeToListener(sound: NativePtr, relative: Int): Unit
+
+@SymbolName("kni_sfml_sfSound_setMinDistance")
+private external fun kni_sfSound_setMinDistance(sound: NativePtr, distance: Float): Unit
+
+@SymbolName("kni_sfml_sfSound_setAttenuation")
+private external fun kni_sfSound_setAttenuation(sound: NativePtr, attenuation: Float): Unit
+
+@SymbolName("kni_sfml_sfSound_setPlayingOffset")
+private external fun kni_sfSound_setPlayingOffset(sound: NativePtr, timeOffset: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSound_getPitch")
+private external fun kni_sfSound_getPitch(sound: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSound_getVolume")
+private external fun kni_sfSound_getVolume(sound: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSound_getPosition")
+private external fun kni_sfSound_getPosition(sound: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSound_isRelativeToListener")
+private external fun kni_sfSound_isRelativeToListener(sound: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSound_getMinDistance")
+private external fun kni_sfSound_getMinDistance(sound: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSound_getAttenuation")
+private external fun kni_sfSound_getAttenuation(sound: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSound_getPlayingOffset")
+private external fun kni_sfSound_getPlayingOffset(sound: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBuffer_createFromFile")
+private external fun kni_sfSoundBuffer_createFromFile(filename: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBuffer_createFromStream")
+private external fun kni_sfSoundBuffer_createFromStream(stream: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBuffer_createFromSamples")
+private external fun kni_sfSoundBuffer_createFromSamples(samples: NativePtr, sampleCount: Long, channelCount: Int, sampleRate: Int): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBuffer_copy")
+private external fun kni_sfSoundBuffer_copy(soundBuffer: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBuffer_destroy")
+private external fun kni_sfSoundBuffer_destroy(soundBuffer: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundBuffer_saveToFile")
+private external fun kni_sfSoundBuffer_saveToFile(soundBuffer: NativePtr, filename: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundBuffer_getSamples")
+private external fun kni_sfSoundBuffer_getSamples(soundBuffer: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBuffer_getSampleCount")
+private external fun kni_sfSoundBuffer_getSampleCount(soundBuffer: NativePtr): Long
+
+@SymbolName("kni_sfml_sfSoundBuffer_getSampleRate")
+private external fun kni_sfSoundBuffer_getSampleRate(soundBuffer: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundBuffer_getChannelCount")
+private external fun kni_sfSoundBuffer_getChannelCount(soundBuffer: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundBuffer_getDuration")
+private external fun kni_sfSoundBuffer_getDuration(soundBuffer: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundBufferRecorder_destroy")
+private external fun kni_sfSoundBufferRecorder_destroy(soundBufferRecorder: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundBufferRecorder_start")
+private external fun kni_sfSoundBufferRecorder_start(soundBufferRecorder: NativePtr, sampleRate: Int): Unit
+
+@SymbolName("kni_sfml_sfSoundBufferRecorder_stop")
+private external fun kni_sfSoundBufferRecorder_stop(soundBufferRecorder: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundBufferRecorder_getSampleRate")
+private external fun kni_sfSoundBufferRecorder_getSampleRate(soundBufferRecorder: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundBufferRecorder_getBuffer")
+private external fun kni_sfSoundBufferRecorder_getBuffer(soundBufferRecorder: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundRecorder_destroy")
+private external fun kni_sfSoundRecorder_destroy(soundRecorder: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundRecorder_start")
+private external fun kni_sfSoundRecorder_start(soundRecorder: NativePtr, sampleRate: Int): Int
+
+@SymbolName("kni_sfml_sfSoundRecorder_stop")
+private external fun kni_sfSoundRecorder_stop(soundRecorder: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundRecorder_getSampleRate")
+private external fun kni_sfSoundRecorder_getSampleRate(soundRecorder: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundRecorder_setProcessingInterval")
+private external fun kni_sfSoundRecorder_setProcessingInterval(soundRecorder: NativePtr, interval: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundRecorder_getAvailableDevices")
+private external fun kni_sfSoundRecorder_getAvailableDevices(count: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundRecorder_setDevice")
+private external fun kni_sfSoundRecorder_setDevice(soundRecorder: NativePtr, name: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundRecorder_getDevice")
+private external fun kni_sfSoundRecorder_getDevice(soundRecorder: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundStream_destroy")
+private external fun kni_sfSoundStream_destroy(soundStream: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_play")
+private external fun kni_sfSoundStream_play(soundStream: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_pause")
+private external fun kni_sfSoundStream_pause(soundStream: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_stop")
+private external fun kni_sfSoundStream_stop(soundStream: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_getStatus")
+private external fun kni_sfSoundStream_getStatus(soundStream: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundStream_getChannelCount")
+private external fun kni_sfSoundStream_getChannelCount(soundStream: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundStream_getSampleRate")
+private external fun kni_sfSoundStream_getSampleRate(soundStream: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundStream_setPitch")
+private external fun kni_sfSoundStream_setPitch(soundStream: NativePtr, pitch: Float): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setVolume")
+private external fun kni_sfSoundStream_setVolume(soundStream: NativePtr, volume: Float): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setPosition")
+private external fun kni_sfSoundStream_setPosition(soundStream: NativePtr, position: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setRelativeToListener")
+private external fun kni_sfSoundStream_setRelativeToListener(soundStream: NativePtr, relative: Int): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setMinDistance")
+private external fun kni_sfSoundStream_setMinDistance(soundStream: NativePtr, distance: Float): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setAttenuation")
+private external fun kni_sfSoundStream_setAttenuation(soundStream: NativePtr, attenuation: Float): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setPlayingOffset")
+private external fun kni_sfSoundStream_setPlayingOffset(soundStream: NativePtr, timeOffset: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_setLoop")
+private external fun kni_sfSoundStream_setLoop(soundStream: NativePtr, loop: Int): Unit
+
+@SymbolName("kni_sfml_sfSoundStream_getPitch")
+private external fun kni_sfSoundStream_getPitch(soundStream: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSoundStream_getVolume")
+private external fun kni_sfSoundStream_getVolume(soundStream: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSoundStream_getPosition")
+private external fun kni_sfSoundStream_getPosition(soundStream: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSoundStream_isRelativeToListener")
+private external fun kni_sfSoundStream_isRelativeToListener(soundStream: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundStream_getMinDistance")
+private external fun kni_sfSoundStream_getMinDistance(soundStream: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSoundStream_getAttenuation")
+private external fun kni_sfSoundStream_getAttenuation(soundStream: NativePtr): Float
+
+@SymbolName("kni_sfml_sfSoundStream_getLoop")
+private external fun kni_sfSoundStream_getLoop(soundStream: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSoundStream_getPlayingOffset")
+private external fun kni_sfSoundStream_getPlayingOffset(soundStream: NativePtr, retValPlacement: NativePtr): NativePtr
 
 @SymbolName("kni_sfml_sfContext_destroy")
 private external fun kni_sfContext_destroy(context: NativePtr): Unit
@@ -6389,4 +8934,379 @@ private external fun kni_sfView_rotate(view: NativePtr, angle: Float): Unit
 
 @SymbolName("kni_sfml_sfView_zoom")
 private external fun kni_sfView_zoom(view: NativePtr, factor: Float): Unit
+
+@SymbolName("kni_sfml_sfIpAddress_fromString")
+private external fun kni_sfIpAddress_fromString(address: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfIpAddress_fromBytes")
+private external fun kni_sfIpAddress_fromBytes(byte0: Byte, byte1: Byte, byte2: Byte, byte3: Byte, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfIpAddress_fromInteger")
+private external fun kni_sfIpAddress_fromInteger(address: Int, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfIpAddress_toString")
+private external fun kni_sfIpAddress_toString(address: NativePtr, string: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfIpAddress_toInteger")
+private external fun kni_sfIpAddress_toInteger(address: NativePtr): Int
+
+@SymbolName("kni_sfml_sfIpAddress_getLocalAddress")
+private external fun kni_sfIpAddress_getLocalAddress(retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfIpAddress_getPublicAddress")
+private external fun kni_sfIpAddress_getPublicAddress(timeout: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtpListingResponse_destroy")
+private external fun kni_sfFtpListingResponse_destroy(ftpListingResponse: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfFtpListingResponse_isOk")
+private external fun kni_sfFtpListingResponse_isOk(ftpListingResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfFtpListingResponse_getStatus")
+private external fun kni_sfFtpListingResponse_getStatus(ftpListingResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfFtpListingResponse_getMessage")
+private external fun kni_sfFtpListingResponse_getMessage(ftpListingResponse: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtpListingResponse_getCount")
+private external fun kni_sfFtpListingResponse_getCount(ftpListingResponse: NativePtr): Long
+
+@SymbolName("kni_sfml_sfFtpListingResponse_getName")
+private external fun kni_sfFtpListingResponse_getName(ftpListingResponse: NativePtr, index: Long): NativePtr
+
+@SymbolName("kni_sfml_sfFtpDirectoryResponse_destroy")
+private external fun kni_sfFtpDirectoryResponse_destroy(ftpDirectoryResponse: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfFtpDirectoryResponse_isOk")
+private external fun kni_sfFtpDirectoryResponse_isOk(ftpDirectoryResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfFtpDirectoryResponse_getStatus")
+private external fun kni_sfFtpDirectoryResponse_getStatus(ftpDirectoryResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfFtpDirectoryResponse_getMessage")
+private external fun kni_sfFtpDirectoryResponse_getMessage(ftpDirectoryResponse: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtpDirectoryResponse_getDirectory")
+private external fun kni_sfFtpDirectoryResponse_getDirectory(ftpDirectoryResponse: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtpResponse_destroy")
+private external fun kni_sfFtpResponse_destroy(ftpResponse: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfFtpResponse_isOk")
+private external fun kni_sfFtpResponse_isOk(ftpResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfFtpResponse_getStatus")
+private external fun kni_sfFtpResponse_getStatus(ftpResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfFtpResponse_getMessage")
+private external fun kni_sfFtpResponse_getMessage(ftpResponse: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_destroy")
+private external fun kni_sfFtp_destroy(ftp: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfFtp_connect")
+private external fun kni_sfFtp_connect(ftp: NativePtr, server: NativePtr, port: Short, timeout: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_loginAnonymous")
+private external fun kni_sfFtp_loginAnonymous(ftp: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_login")
+private external fun kni_sfFtp_login(ftp: NativePtr, userName: NativePtr, password: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_disconnect")
+private external fun kni_sfFtp_disconnect(ftp: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_keepAlive")
+private external fun kni_sfFtp_keepAlive(ftp: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_getWorkingDirectory")
+private external fun kni_sfFtp_getWorkingDirectory(ftp: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_getDirectoryListing")
+private external fun kni_sfFtp_getDirectoryListing(ftp: NativePtr, directory: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_changeDirectory")
+private external fun kni_sfFtp_changeDirectory(ftp: NativePtr, directory: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_parentDirectory")
+private external fun kni_sfFtp_parentDirectory(ftp: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_createDirectory")
+private external fun kni_sfFtp_createDirectory(ftp: NativePtr, name: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_deleteDirectory")
+private external fun kni_sfFtp_deleteDirectory(ftp: NativePtr, name: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_renameFile")
+private external fun kni_sfFtp_renameFile(ftp: NativePtr, file: NativePtr, newName: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_deleteFile")
+private external fun kni_sfFtp_deleteFile(ftp: NativePtr, name: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_download")
+private external fun kni_sfFtp_download(ftp: NativePtr, distantFile: NativePtr, destPath: NativePtr, mode: Int): NativePtr
+
+@SymbolName("kni_sfml_sfFtp_upload")
+private external fun kni_sfFtp_upload(ftp: NativePtr, localFile: NativePtr, destPath: NativePtr, mode: Int): NativePtr
+
+@SymbolName("kni_sfml_sfHttpRequest_destroy")
+private external fun kni_sfHttpRequest_destroy(httpRequest: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfHttpRequest_setField")
+private external fun kni_sfHttpRequest_setField(httpRequest: NativePtr, field: NativePtr, value: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfHttpRequest_setMethod")
+private external fun kni_sfHttpRequest_setMethod(httpRequest: NativePtr, method: Int): Unit
+
+@SymbolName("kni_sfml_sfHttpRequest_setUri")
+private external fun kni_sfHttpRequest_setUri(httpRequest: NativePtr, uri: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfHttpRequest_setHttpVersion")
+private external fun kni_sfHttpRequest_setHttpVersion(httpRequest: NativePtr, major: Int, minor: Int): Unit
+
+@SymbolName("kni_sfml_sfHttpRequest_setBody")
+private external fun kni_sfHttpRequest_setBody(httpRequest: NativePtr, body: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfHttpResponse_destroy")
+private external fun kni_sfHttpResponse_destroy(httpResponse: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfHttpResponse_getField")
+private external fun kni_sfHttpResponse_getField(httpResponse: NativePtr, field: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfHttpResponse_getStatus")
+private external fun kni_sfHttpResponse_getStatus(httpResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfHttpResponse_getMajorVersion")
+private external fun kni_sfHttpResponse_getMajorVersion(httpResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfHttpResponse_getMinorVersion")
+private external fun kni_sfHttpResponse_getMinorVersion(httpResponse: NativePtr): Int
+
+@SymbolName("kni_sfml_sfHttpResponse_getBody")
+private external fun kni_sfHttpResponse_getBody(httpResponse: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfHttp_destroy")
+private external fun kni_sfHttp_destroy(http: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfHttp_setHost")
+private external fun kni_sfHttp_setHost(http: NativePtr, host: NativePtr, port: Short): Unit
+
+@SymbolName("kni_sfml_sfHttp_sendRequest")
+private external fun kni_sfHttp_sendRequest(http: NativePtr, request: NativePtr, timeout: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfPacket_copy")
+private external fun kni_sfPacket_copy(packet: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfPacket_destroy")
+private external fun kni_sfPacket_destroy(packet: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfPacket_append")
+private external fun kni_sfPacket_append(packet: NativePtr, data: NativePtr, sizeInBytes: Long): Unit
+
+@SymbolName("kni_sfml_sfPacket_clear")
+private external fun kni_sfPacket_clear(packet: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfPacket_getData")
+private external fun kni_sfPacket_getData(packet: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfPacket_getDataSize")
+private external fun kni_sfPacket_getDataSize(packet: NativePtr): Long
+
+@SymbolName("kni_sfml_sfPacket_endOfPacket")
+private external fun kni_sfPacket_endOfPacket(packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfPacket_canRead")
+private external fun kni_sfPacket_canRead(packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfPacket_readBool")
+private external fun kni_sfPacket_readBool(packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfPacket_readInt8")
+private external fun kni_sfPacket_readInt8(packet: NativePtr): Byte
+
+@SymbolName("kni_sfml_sfPacket_readUint8")
+private external fun kni_sfPacket_readUint8(packet: NativePtr): Byte
+
+@SymbolName("kni_sfml_sfPacket_readInt16")
+private external fun kni_sfPacket_readInt16(packet: NativePtr): Short
+
+@SymbolName("kni_sfml_sfPacket_readUint16")
+private external fun kni_sfPacket_readUint16(packet: NativePtr): Short
+
+@SymbolName("kni_sfml_sfPacket_readInt32")
+private external fun kni_sfPacket_readInt32(packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfPacket_readUint32")
+private external fun kni_sfPacket_readUint32(packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfPacket_readFloat")
+private external fun kni_sfPacket_readFloat(packet: NativePtr): Float
+
+@SymbolName("kni_sfml_sfPacket_readDouble")
+private external fun kni_sfPacket_readDouble(packet: NativePtr): Double
+
+@SymbolName("kni_sfml_sfPacket_readString")
+private external fun kni_sfPacket_readString(packet: NativePtr, string: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfPacket_readWideString")
+private external fun kni_sfPacket_readWideString(packet: NativePtr, string: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeBool")
+private external fun kni_sfPacket_writeBool(packet: NativePtr, arg1: Int): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeInt8")
+private external fun kni_sfPacket_writeInt8(packet: NativePtr, arg1: Byte): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeUint8")
+private external fun kni_sfPacket_writeUint8(packet: NativePtr, arg1: Byte): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeInt16")
+private external fun kni_sfPacket_writeInt16(packet: NativePtr, arg1: Short): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeUint16")
+private external fun kni_sfPacket_writeUint16(packet: NativePtr, arg1: Short): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeInt32")
+private external fun kni_sfPacket_writeInt32(packet: NativePtr, arg1: Int): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeUint32")
+private external fun kni_sfPacket_writeUint32(packet: NativePtr, arg1: Int): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeFloat")
+private external fun kni_sfPacket_writeFloat(packet: NativePtr, arg1: Float): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeDouble")
+private external fun kni_sfPacket_writeDouble(packet: NativePtr, arg1: Double): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeString")
+private external fun kni_sfPacket_writeString(packet: NativePtr, string: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfPacket_writeWideString")
+private external fun kni_sfPacket_writeWideString(packet: NativePtr, string: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_copy")
+private external fun kni_sfSocketSelector_copy(selector: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfSocketSelector_destroy")
+private external fun kni_sfSocketSelector_destroy(selector: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_addTcpListener")
+private external fun kni_sfSocketSelector_addTcpListener(selector: NativePtr, socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_addTcpSocket")
+private external fun kni_sfSocketSelector_addTcpSocket(selector: NativePtr, socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_addUdpSocket")
+private external fun kni_sfSocketSelector_addUdpSocket(selector: NativePtr, socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_removeTcpListener")
+private external fun kni_sfSocketSelector_removeTcpListener(selector: NativePtr, socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_removeTcpSocket")
+private external fun kni_sfSocketSelector_removeTcpSocket(selector: NativePtr, socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_removeUdpSocket")
+private external fun kni_sfSocketSelector_removeUdpSocket(selector: NativePtr, socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_clear")
+private external fun kni_sfSocketSelector_clear(selector: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfSocketSelector_wait")
+private external fun kni_sfSocketSelector_wait(selector: NativePtr, timeout: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSocketSelector_isTcpListenerReady")
+private external fun kni_sfSocketSelector_isTcpListenerReady(selector: NativePtr, socket: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSocketSelector_isTcpSocketReady")
+private external fun kni_sfSocketSelector_isTcpSocketReady(selector: NativePtr, socket: NativePtr): Int
+
+@SymbolName("kni_sfml_sfSocketSelector_isUdpSocketReady")
+private external fun kni_sfSocketSelector_isUdpSocketReady(selector: NativePtr, socket: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpListener_destroy")
+private external fun kni_sfTcpListener_destroy(listener: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfTcpListener_setBlocking")
+private external fun kni_sfTcpListener_setBlocking(listener: NativePtr, blocking: Int): Unit
+
+@SymbolName("kni_sfml_sfTcpListener_isBlocking")
+private external fun kni_sfTcpListener_isBlocking(listener: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpListener_getLocalPort")
+private external fun kni_sfTcpListener_getLocalPort(listener: NativePtr): Short
+
+@SymbolName("kni_sfml_sfTcpListener_listen")
+private external fun kni_sfTcpListener_listen(listener: NativePtr, port: Short): Int
+
+@SymbolName("kni_sfml_sfTcpListener_accept")
+private external fun kni_sfTcpListener_accept(listener: NativePtr, connected: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_destroy")
+private external fun kni_sfTcpSocket_destroy(socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfTcpSocket_setBlocking")
+private external fun kni_sfTcpSocket_setBlocking(socket: NativePtr, blocking: Int): Unit
+
+@SymbolName("kni_sfml_sfTcpSocket_isBlocking")
+private external fun kni_sfTcpSocket_isBlocking(socket: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_getLocalPort")
+private external fun kni_sfTcpSocket_getLocalPort(socket: NativePtr): Short
+
+@SymbolName("kni_sfml_sfTcpSocket_getRemoteAddress")
+private external fun kni_sfTcpSocket_getRemoteAddress(socket: NativePtr, retValPlacement: NativePtr): NativePtr
+
+@SymbolName("kni_sfml_sfTcpSocket_getRemotePort")
+private external fun kni_sfTcpSocket_getRemotePort(socket: NativePtr): Short
+
+@SymbolName("kni_sfml_sfTcpSocket_connect")
+private external fun kni_sfTcpSocket_connect(socket: NativePtr, host: NativePtr, port: Short, timeout: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_disconnect")
+private external fun kni_sfTcpSocket_disconnect(socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfTcpSocket_send")
+private external fun kni_sfTcpSocket_send(socket: NativePtr, data: NativePtr, size: Long): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_sendPartial")
+private external fun kni_sfTcpSocket_sendPartial(socket: NativePtr, data: NativePtr, size: Long, sent: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_receive")
+private external fun kni_sfTcpSocket_receive(socket: NativePtr, data: NativePtr, maxSize: Long, sizeReceived: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_sendPacket")
+private external fun kni_sfTcpSocket_sendPacket(socket: NativePtr, packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfTcpSocket_receivePacket")
+private external fun kni_sfTcpSocket_receivePacket(socket: NativePtr, packet: NativePtr): Int
+
+@SymbolName("kni_sfml_sfUdpSocket_destroy")
+private external fun kni_sfUdpSocket_destroy(socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfUdpSocket_setBlocking")
+private external fun kni_sfUdpSocket_setBlocking(socket: NativePtr, blocking: Int): Unit
+
+@SymbolName("kni_sfml_sfUdpSocket_isBlocking")
+private external fun kni_sfUdpSocket_isBlocking(socket: NativePtr): Int
+
+@SymbolName("kni_sfml_sfUdpSocket_getLocalPort")
+private external fun kni_sfUdpSocket_getLocalPort(socket: NativePtr): Short
+
+@SymbolName("kni_sfml_sfUdpSocket_bind")
+private external fun kni_sfUdpSocket_bind(socket: NativePtr, port: Short): Int
+
+@SymbolName("kni_sfml_sfUdpSocket_unbind")
+private external fun kni_sfUdpSocket_unbind(socket: NativePtr): Unit
+
+@SymbolName("kni_sfml_sfUdpSocket_send")
+private external fun kni_sfUdpSocket_send(socket: NativePtr, data: NativePtr, size: Long, address: NativePtr, port: Short): Int
+
+@SymbolName("kni_sfml_sfUdpSocket_receive")
+private external fun kni_sfUdpSocket_receive(socket: NativePtr, data: NativePtr, maxSize: Long, sizeReceived: NativePtr, address: NativePtr, port: NativePtr): Int
+
+@SymbolName("kni_sfml_sfUdpSocket_sendPacket")
+private external fun kni_sfUdpSocket_sendPacket(socket: NativePtr, packet: NativePtr, address: NativePtr, port: Short): Int
+
+@SymbolName("kni_sfml_sfUdpSocket_receivePacket")
+private external fun kni_sfUdpSocket_receivePacket(socket: NativePtr, packet: NativePtr, address: NativePtr, port: NativePtr): Int
 
