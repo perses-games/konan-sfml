@@ -8,7 +8,7 @@ import sfml.*
  * Date: 12-4-17
  * Time: 11:45
  */
-
+@ThreadLocal
 object Textures {
     val textures: MutableMap<String, Texture> = HashMap()
 
@@ -47,6 +47,7 @@ object Textures {
     }
 }
 
+@ThreadLocal
 object Sprites {
     val sprites: MutableList<Sprite> = ArrayList()
 

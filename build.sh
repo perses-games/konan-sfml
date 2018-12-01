@@ -22,4 +22,4 @@ LINKER_ARGS=${!var}
 var=COMPILER_ARGS_${TARGET}
 COMPILER_ARGS=${!var} # add -opt for an optimized build.
 
-konanc $COMPILER_ARGS -target $TARGET src -library sfml.kt.bc -linkerArgs "$LINKER_ARGS" -o HelloSfml.kexe -opt || exit 1
+konanc $COMPILER_ARGS -target $TARGET src -library sfml.kt.bc -linker-options "$LINKER_ARGS" -o HelloSfml.kexe -opt || exit 1
