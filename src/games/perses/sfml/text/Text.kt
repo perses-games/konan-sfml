@@ -11,7 +11,7 @@ import sfml.*
  */
 
 class Font(
-  val filename: String
+        val filename: String
 ) {
     val fontHandle = sfFont_createFromFile(filename)
 
@@ -21,23 +21,23 @@ class Font(
 }
 
 class Text(
-  font: Font,
-  var x: Float,
-  var y: Float,
-  text: String,
-  size: Int,
-  red: Byte = 255.toByte(),
-  green: Byte = 255.toByte(),
-  blue: Byte = 255.toByte()
-  ) {
+        font: Font,
+        var x: Float,
+        var y: Float,
+        text: String,
+        size: Int,
+        red: Byte = 255.toByte(),
+        green: Byte = 255.toByte(),
+        blue: Byte = 255.toByte()
+) {
     val textHandle = sfText_create()
     val position = nativeHeap.alloc<sfVector2f>()
 
     init {
         sfText_setFont(textHandle, font.fontHandle)
         sfText_setString(textHandle, text)
-        sfText_setCharacterSize(textHandle, size)
-        sfText_setColor(textHandle, sfColor_fromRGB(red, green ,blue))
+        sfText_setCharacterSize(textHandle, size.toUInt())
+        sfText_setColor(textHandle, sfColor_fromRGB(red.toUByte(), green.toUByte(), blue.toUByte()))
     }
 
     fun destroy() {

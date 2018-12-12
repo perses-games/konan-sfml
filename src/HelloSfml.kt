@@ -18,9 +18,9 @@ fun main(args: Array<String>) {
     memScoped {
         val videoMode = alloc<sfVideoMode>()
 
-        videoMode.width = 800
-        videoMode.height = 600
-        videoMode.bitsPerPixel = 24
+        videoMode.width = 800u
+        videoMode.height = 600u
+        videoMode.bitsPerPixel = 24u
 
         val window = sfRenderWindow_create(videoMode.readValue(), "It works!", sfDefaultStyle, null)
 
@@ -37,8 +37,8 @@ fun main(args: Array<String>) {
 
             sfCircleShape_setPosition(circle, circlePosition.readValue())
             sfCircleShape_setRadius(circle, 95f)
-            sfCircleShape_setFillColor(circle, sfColor_fromRGB(0, 255.toByte(), 0))
-            sfCircleShape_setOutlineColor(circle, sfColor_fromRGB(0, 0, 255.toByte()))
+            sfCircleShape_setFillColor(circle, sfColor_fromRGB(0, 255, 0))
+            sfCircleShape_setOutlineColor(circle, sfColor_fromRGB(0, 0, 255))
             sfCircleShape_setOutlineThickness(circle, 10f)
 
             val sprite = Sprites.create("data/img/smiley.png")
@@ -64,7 +64,7 @@ fun main(args: Array<String>) {
                     blue = 511 - blue
                 }
 
-                val clearColor = sfColor_fromRGB(red.toByte(), green.toByte(), blue.toByte())
+                val clearColor = sfColor_fromRGB(red.toUByte(), green.toUByte(), blue.toUByte())
 
                 while (sfRenderWindow_pollEvent(window, event.ptr) > 0) {
                     when (event.type) {

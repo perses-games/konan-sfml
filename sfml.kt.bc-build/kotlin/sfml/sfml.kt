@@ -1,6044 +1,5035 @@
-@file:Suppress("UNUSED_EXPRESSION", "UNUSED_VARIABLE")
+@file:kotlinx.cinterop.InteropStubs
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_EXPRESSION")
 package sfml
 
-import konan.SymbolName
+import kotlin.native.SymbolName
 import kotlinx.cinterop.*
+import cnames.structs.sfCircleShape
+import cnames.structs.sfClock
+import cnames.structs.sfContext
+import cnames.structs.sfConvexShape
+import cnames.structs.sfFont
+import cnames.structs.sfFtp
+import cnames.structs.sfFtpDirectoryResponse
+import cnames.structs.sfFtpListingResponse
+import cnames.structs.sfFtpResponse
+import cnames.structs.sfHttp
+import cnames.structs.sfHttpRequest
+import cnames.structs.sfHttpResponse
+import cnames.structs.sfImage
+import cnames.structs.sfMusic
+import cnames.structs.sfMutex
+import cnames.structs.sfPacket
+import cnames.structs.sfRectangleShape
+import cnames.structs.sfRenderTexture
+import cnames.structs.sfRenderWindow
+import cnames.structs.sfShader
+import cnames.structs.sfShape
+import cnames.structs.sfSocketSelector
+import cnames.structs.sfSound
+import cnames.structs.sfSoundBuffer
+import cnames.structs.sfSoundBufferRecorder
+import cnames.structs.sfSoundRecorder
+import cnames.structs.sfSoundStream
+import cnames.structs.sfSprite
+import cnames.structs.sfTcpListener
+import cnames.structs.sfTcpSocket
+import cnames.structs.sfText
+import cnames.structs.sfTexture
+import cnames.structs.sfThread
+import cnames.structs.sfTransformable
+import cnames.structs.sfUdpSocket
+import cnames.structs.sfVertexArray
+import cnames.structs.sfView
+import cnames.structs.sfWindow
+import platform.posix.size_t
+import platform.posix.size_tVar
+import platform.posix.wchar_tVar
+
+// NOTE THIS FILE IS AUTO-GENERATED
 
 fun sfTime_asSeconds(time: CValue<sfTime>): Float {
-    return memScoped {
-        val _time = time.getPointer(memScope).rawValue
-        val res = kni_sfTime_asSeconds(_time)
-        res
+    memScoped {
+        return kniBridge0(time.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTime_asMilliseconds(time: CValue<sfTime>): sfInt32 {
-    return memScoped {
-        val _time = time.getPointer(memScope).rawValue
-        val res = kni_sfTime_asMilliseconds(_time)
-        res
+    memScoped {
+        return kniBridge1(time.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTime_asMicroseconds(time: CValue<sfTime>): sfInt64 {
-    return memScoped {
-        val _time = time.getPointer(memScope).rawValue
-        val res = kni_sfTime_asMicroseconds(_time)
-        res
+    memScoped {
+        return kniBridge2(time.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSeconds(amount: Float): CValue<sfTime> {
-    return memScoped {
-        val _amount = amount
-        val res = kni_sfSeconds(_amount, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfTime>()
+    try {
+        kniBridge3(amount, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfMilliseconds(amount: sfInt32): CValue<sfTime> {
-    return memScoped {
-        val _amount = amount
-        val res = kni_sfMilliseconds(_amount, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfTime>()
+    try {
+        kniBridge4(amount, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfMicroseconds(amount: sfInt64): CValue<sfTime> {
-    return memScoped {
-        val _amount = amount
-        val res = kni_sfMicroseconds(_amount, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfTime>()
+    try {
+        kniBridge5(amount, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
-@SymbolName("kni_sfml_sfClock_create")
-external fun sfClock_create(): CPointer<sfClock>?
+fun sfClock_create(): CPointer<sfClock>? {
+    return interpretCPointer<sfClock>(kniBridge6())
+}
 
 fun sfClock_copy(clock: CValuesRef<sfClock>?): CPointer<sfClock>? {
-    return memScoped {
-        val _clock = clock?.getPointer(memScope).rawValue
-        val res = kni_sfClock_copy(_clock)
-        interpretCPointer<sfClock>(res)
+    memScoped {
+        return interpretCPointer<sfClock>(kniBridge7(clock?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfClock_destroy(clock: CValuesRef<sfClock>?): Unit {
-    return memScoped {
-        val _clock = clock?.getPointer(memScope).rawValue
-        val res = kni_sfClock_destroy(_clock)
-        res
+    memScoped {
+        return kniBridge8(clock?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfClock_getElapsedTime(clock: CValuesRef<sfClock>?): CValue<sfTime> {
-    return memScoped {
-        val _clock = clock?.getPointer(memScope).rawValue
-        val res = kni_sfClock_getElapsedTime(_clock, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge9(clock?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfClock_restart(clock: CValuesRef<sfClock>?): CValue<sfTime> {
-    return memScoped {
-        val _clock = clock?.getPointer(memScope).rawValue
-        val res = kni_sfClock_restart(_clock, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge10(clock?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfMutex_create")
-external fun sfMutex_create(): CPointer<sfMutex>?
+fun sfMutex_create(): CPointer<sfMutex>? {
+    return interpretCPointer<sfMutex>(kniBridge11())
+}
 
 fun sfMutex_destroy(mutex: CValuesRef<sfMutex>?): Unit {
-    return memScoped {
-        val _mutex = mutex?.getPointer(memScope).rawValue
-        val res = kni_sfMutex_destroy(_mutex)
-        res
+    memScoped {
+        return kniBridge12(mutex?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMutex_lock(mutex: CValuesRef<sfMutex>?): Unit {
-    return memScoped {
-        val _mutex = mutex?.getPointer(memScope).rawValue
-        val res = kni_sfMutex_lock(_mutex)
-        res
+    memScoped {
+        return kniBridge13(mutex?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMutex_unlock(mutex: CValuesRef<sfMutex>?): Unit {
-    return memScoped {
-        val _mutex = mutex?.getPointer(memScope).rawValue
-        val res = kni_sfMutex_unlock(_mutex)
-        res
+    memScoped {
+        return kniBridge14(mutex?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSleep(duration: CValue<sfTime>): Unit {
-    return memScoped {
-        val _duration = duration.getPointer(memScope).rawValue
-        val res = kni_sfSleep(_duration)
-        res
+    memScoped {
+        return kniBridge15(duration.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfThread_create")
-external fun sfThread_create(function: CPointer<CFunction<CFunctionType1>>?, userData: COpaquePointer?): CPointer<sfThread>?
+fun sfThread_create(function: CPointer<CFunction<(COpaquePointer?) -> Unit>>?, userData: CValuesRef<*>?): CPointer<sfThread>? {
+    memScoped {
+        return interpretCPointer<sfThread>(kniBridge16(function.rawValue, userData?.getPointer(memScope).rawValue))
+    }
+}
 
 fun sfThread_destroy(thread: CValuesRef<sfThread>?): Unit {
-    return memScoped {
-        val _thread = thread?.getPointer(memScope).rawValue
-        val res = kni_sfThread_destroy(_thread)
-        res
+    memScoped {
+        return kniBridge17(thread?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfThread_launch(thread: CValuesRef<sfThread>?): Unit {
-    return memScoped {
-        val _thread = thread?.getPointer(memScope).rawValue
-        val res = kni_sfThread_launch(_thread)
-        res
+    memScoped {
+        return kniBridge18(thread?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfThread_wait(thread: CValuesRef<sfThread>?): Unit {
-    return memScoped {
-        val _thread = thread?.getPointer(memScope).rawValue
-        val res = kni_sfThread_wait(_thread)
-        res
+    memScoped {
+        return kniBridge19(thread?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfThread_terminate(thread: CValuesRef<sfThread>?): Unit {
-    return memScoped {
-        val _thread = thread?.getPointer(memScope).rawValue
-        val res = kni_sfThread_terminate(_thread)
-        res
+    memScoped {
+        return kniBridge20(thread?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfListener_setGlobalVolume")
-external fun sfListener_setGlobalVolume(volume: Float): Unit
+fun sfListener_setGlobalVolume(volume: Float): Unit {
+    return kniBridge21(volume)
+}
 
-@SymbolName("kni_sfml_sfListener_getGlobalVolume")
-external fun sfListener_getGlobalVolume(): Float
+fun sfListener_getGlobalVolume(): Float {
+    return kniBridge22()
+}
 
 fun sfListener_setPosition(position: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfListener_setPosition(_position)
-        res
+    memScoped {
+        return kniBridge23(position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfListener_getPosition(): CValue<sfVector3f> {
-    return memScoped {
-        val res = kni_sfListener_getPosition(alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfVector3f>()
+    try {
+        kniBridge24(kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfListener_setDirection(direction: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _direction = direction.getPointer(memScope).rawValue
-        val res = kni_sfListener_setDirection(_direction)
-        res
+    memScoped {
+        return kniBridge25(direction.getPointer(memScope).rawValue)
     }
 }
 
 fun sfListener_getDirection(): CValue<sfVector3f> {
-    return memScoped {
-        val res = kni_sfListener_getDirection(alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfVector3f>()
+    try {
+        kniBridge26(kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfListener_setUpVector(upVector: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _upVector = upVector.getPointer(memScope).rawValue
-        val res = kni_sfListener_setUpVector(_upVector)
-        res
+    memScoped {
+        return kniBridge27(upVector.getPointer(memScope).rawValue)
     }
 }
 
 fun sfListener_getUpVector(): CValue<sfVector3f> {
-    return memScoped {
-        val res = kni_sfListener_getUpVector(alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfVector3f>()
+    try {
+        kniBridge28(kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfMusic_createFromFile(filename: String?): CPointer<sfMusic>? {
-    return memScoped {
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_createFromFile(_filename)
-        interpretCPointer<sfMusic>(res)
+    memScoped {
+        return interpretCPointer<sfMusic>(kniBridge29(filename?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfMusic_createFromMemory")
-external fun sfMusic_createFromMemory(data: COpaquePointer?, sizeInBytes: size_t): CPointer<sfMusic>?
+fun sfMusic_createFromMemory(data: CValuesRef<*>?, sizeInBytes: size_t): CPointer<sfMusic>? {
+    memScoped {
+        return interpretCPointer<sfMusic>(kniBridge30(data?.getPointer(memScope).rawValue, sizeInBytes))
+    }
+}
 
 fun sfMusic_createFromStream(stream: CValuesRef<sfInputStream>?): CPointer<sfMusic>? {
-    return memScoped {
-        val _stream = stream?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_createFromStream(_stream)
-        interpretCPointer<sfMusic>(res)
+    memScoped {
+        return interpretCPointer<sfMusic>(kniBridge31(stream?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfMusic_destroy(music: CValuesRef<sfMusic>?): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_destroy(_music)
-        res
+    memScoped {
+        return kniBridge32(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_setLoop(music: CValuesRef<sfMusic>?, loop: sfBool): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _loop = loop
-        val res = kni_sfMusic_setLoop(_music, _loop)
-        res
+    memScoped {
+        return kniBridge33(music?.getPointer(memScope).rawValue, loop)
     }
 }
 
 fun sfMusic_getLoop(music: CValuesRef<sfMusic>?): sfBool {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getLoop(_music)
-        res
+    memScoped {
+        return kniBridge34(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getDuration(music: CValuesRef<sfMusic>?): CValue<sfTime> {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getDuration(_music, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge35(music?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfMusic_play(music: CValuesRef<sfMusic>?): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_play(_music)
-        res
+    memScoped {
+        return kniBridge36(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_pause(music: CValuesRef<sfMusic>?): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_pause(_music)
-        res
+    memScoped {
+        return kniBridge37(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_stop(music: CValuesRef<sfMusic>?): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_stop(_music)
-        res
+    memScoped {
+        return kniBridge38(music?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfMusic_getChannelCount(music: CValuesRef<sfMusic>?): Int {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getChannelCount(_music)
-        res
+fun sfMusic_getChannelCount(music: CValuesRef<sfMusic>?): UInt {
+    memScoped {
+        return kniBridge39(music?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfMusic_getSampleRate(music: CValuesRef<sfMusic>?): Int {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getSampleRate(_music)
-        res
+fun sfMusic_getSampleRate(music: CValuesRef<sfMusic>?): UInt {
+    memScoped {
+        return kniBridge40(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getStatus(music: CValuesRef<sfMusic>?): sfSoundStatus {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getStatus(_music)
-        sfSoundStatus.byValue(res)
+    memScoped {
+        return sfSoundStatus.byValue(kniBridge41(music?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfMusic_getPlayingOffset(music: CValuesRef<sfMusic>?): CValue<sfTime> {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getPlayingOffset(_music, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge42(music?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfMusic_setPitch(music: CValuesRef<sfMusic>?, pitch: Float): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _pitch = pitch
-        val res = kni_sfMusic_setPitch(_music, _pitch)
-        res
+    memScoped {
+        return kniBridge43(music?.getPointer(memScope).rawValue, pitch)
     }
 }
 
 fun sfMusic_setVolume(music: CValuesRef<sfMusic>?, volume: Float): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _volume = volume
-        val res = kni_sfMusic_setVolume(_music, _volume)
-        res
+    memScoped {
+        return kniBridge44(music?.getPointer(memScope).rawValue, volume)
     }
 }
 
 fun sfMusic_setPosition(music: CValuesRef<sfMusic>?, position: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfMusic_setPosition(_music, _position)
-        res
+    memScoped {
+        return kniBridge45(music?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_setRelativeToListener(music: CValuesRef<sfMusic>?, relative: sfBool): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _relative = relative
-        val res = kni_sfMusic_setRelativeToListener(_music, _relative)
-        res
+    memScoped {
+        return kniBridge46(music?.getPointer(memScope).rawValue, relative)
     }
 }
 
 fun sfMusic_setMinDistance(music: CValuesRef<sfMusic>?, distance: Float): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _distance = distance
-        val res = kni_sfMusic_setMinDistance(_music, _distance)
-        res
+    memScoped {
+        return kniBridge47(music?.getPointer(memScope).rawValue, distance)
     }
 }
 
 fun sfMusic_setAttenuation(music: CValuesRef<sfMusic>?, attenuation: Float): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _attenuation = attenuation
-        val res = kni_sfMusic_setAttenuation(_music, _attenuation)
-        res
+    memScoped {
+        return kniBridge48(music?.getPointer(memScope).rawValue, attenuation)
     }
 }
 
 fun sfMusic_setPlayingOffset(music: CValuesRef<sfMusic>?, timeOffset: CValue<sfTime>): Unit {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val _timeOffset = timeOffset.getPointer(memScope).rawValue
-        val res = kni_sfMusic_setPlayingOffset(_music, _timeOffset)
-        res
+    memScoped {
+        return kniBridge49(music?.getPointer(memScope).rawValue, timeOffset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getPitch(music: CValuesRef<sfMusic>?): Float {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getPitch(_music)
-        res
+    memScoped {
+        return kniBridge50(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getVolume(music: CValuesRef<sfMusic>?): Float {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getVolume(_music)
-        res
+    memScoped {
+        return kniBridge51(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getPosition(music: CValuesRef<sfMusic>?): CValue<sfVector3f> {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getPosition(_music, alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector3f>()
+        try {
+            kniBridge52(music?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfMusic_isRelativeToListener(music: CValuesRef<sfMusic>?): sfBool {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_isRelativeToListener(_music)
-        res
+    memScoped {
+        return kniBridge53(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getMinDistance(music: CValuesRef<sfMusic>?): Float {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getMinDistance(_music)
-        res
+    memScoped {
+        return kniBridge54(music?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfMusic_getAttenuation(music: CValuesRef<sfMusic>?): Float {
-    return memScoped {
-        val _music = music?.getPointer(memScope).rawValue
-        val res = kni_sfMusic_getAttenuation(_music)
-        res
+    memScoped {
+        return kniBridge55(music?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfSound_create")
-external fun sfSound_create(): CPointer<sfSound>?
+fun sfSound_create(): CPointer<sfSound>? {
+    return interpretCPointer<sfSound>(kniBridge56())
+}
 
 fun sfSound_copy(sound: CValuesRef<sfSound>?): CPointer<sfSound>? {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_copy(_sound)
-        interpretCPointer<sfSound>(res)
+    memScoped {
+        return interpretCPointer<sfSound>(kniBridge57(sound?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSound_destroy(sound: CValuesRef<sfSound>?): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_destroy(_sound)
-        res
+    memScoped {
+        return kniBridge58(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_play(sound: CValuesRef<sfSound>?): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_play(_sound)
-        res
+    memScoped {
+        return kniBridge59(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_pause(sound: CValuesRef<sfSound>?): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_pause(_sound)
-        res
+    memScoped {
+        return kniBridge60(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_stop(sound: CValuesRef<sfSound>?): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_stop(_sound)
-        res
+    memScoped {
+        return kniBridge61(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_setBuffer(sound: CValuesRef<sfSound>?, buffer: CValuesRef<sfSoundBuffer>?): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _buffer = buffer?.getPointer(memScope).rawValue
-        val res = kni_sfSound_setBuffer(_sound, _buffer)
-        res
+    memScoped {
+        return kniBridge62(sound?.getPointer(memScope).rawValue, buffer?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getBuffer(sound: CValuesRef<sfSound>?): CPointer<sfSoundBuffer>? {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getBuffer(_sound)
-        interpretCPointer<sfSoundBuffer>(res)
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge63(sound?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSound_setLoop(sound: CValuesRef<sfSound>?, loop: sfBool): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _loop = loop
-        val res = kni_sfSound_setLoop(_sound, _loop)
-        res
+    memScoped {
+        return kniBridge64(sound?.getPointer(memScope).rawValue, loop)
     }
 }
 
 fun sfSound_getLoop(sound: CValuesRef<sfSound>?): sfBool {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getLoop(_sound)
-        res
+    memScoped {
+        return kniBridge65(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getStatus(sound: CValuesRef<sfSound>?): sfSoundStatus {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getStatus(_sound)
-        sfSoundStatus.byValue(res)
+    memScoped {
+        return sfSoundStatus.byValue(kniBridge66(sound?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSound_setPitch(sound: CValuesRef<sfSound>?, pitch: Float): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _pitch = pitch
-        val res = kni_sfSound_setPitch(_sound, _pitch)
-        res
+    memScoped {
+        return kniBridge67(sound?.getPointer(memScope).rawValue, pitch)
     }
 }
 
 fun sfSound_setVolume(sound: CValuesRef<sfSound>?, volume: Float): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _volume = volume
-        val res = kni_sfSound_setVolume(_sound, _volume)
-        res
+    memScoped {
+        return kniBridge68(sound?.getPointer(memScope).rawValue, volume)
     }
 }
 
 fun sfSound_setPosition(sound: CValuesRef<sfSound>?, position: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfSound_setPosition(_sound, _position)
-        res
+    memScoped {
+        return kniBridge69(sound?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_setRelativeToListener(sound: CValuesRef<sfSound>?, relative: sfBool): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _relative = relative
-        val res = kni_sfSound_setRelativeToListener(_sound, _relative)
-        res
+    memScoped {
+        return kniBridge70(sound?.getPointer(memScope).rawValue, relative)
     }
 }
 
 fun sfSound_setMinDistance(sound: CValuesRef<sfSound>?, distance: Float): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _distance = distance
-        val res = kni_sfSound_setMinDistance(_sound, _distance)
-        res
+    memScoped {
+        return kniBridge71(sound?.getPointer(memScope).rawValue, distance)
     }
 }
 
 fun sfSound_setAttenuation(sound: CValuesRef<sfSound>?, attenuation: Float): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _attenuation = attenuation
-        val res = kni_sfSound_setAttenuation(_sound, _attenuation)
-        res
+    memScoped {
+        return kniBridge72(sound?.getPointer(memScope).rawValue, attenuation)
     }
 }
 
 fun sfSound_setPlayingOffset(sound: CValuesRef<sfSound>?, timeOffset: CValue<sfTime>): Unit {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val _timeOffset = timeOffset.getPointer(memScope).rawValue
-        val res = kni_sfSound_setPlayingOffset(_sound, _timeOffset)
-        res
+    memScoped {
+        return kniBridge73(sound?.getPointer(memScope).rawValue, timeOffset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getPitch(sound: CValuesRef<sfSound>?): Float {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getPitch(_sound)
-        res
+    memScoped {
+        return kniBridge74(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getVolume(sound: CValuesRef<sfSound>?): Float {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getVolume(_sound)
-        res
+    memScoped {
+        return kniBridge75(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getPosition(sound: CValuesRef<sfSound>?): CValue<sfVector3f> {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getPosition(_sound, alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector3f>()
+        try {
+            kniBridge76(sound?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSound_isRelativeToListener(sound: CValuesRef<sfSound>?): sfBool {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_isRelativeToListener(_sound)
-        res
+    memScoped {
+        return kniBridge77(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getMinDistance(sound: CValuesRef<sfSound>?): Float {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getMinDistance(_sound)
-        res
+    memScoped {
+        return kniBridge78(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getAttenuation(sound: CValuesRef<sfSound>?): Float {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getAttenuation(_sound)
-        res
+    memScoped {
+        return kniBridge79(sound?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSound_getPlayingOffset(sound: CValuesRef<sfSound>?): CValue<sfTime> {
-    return memScoped {
-        val _sound = sound?.getPointer(memScope).rawValue
-        val res = kni_sfSound_getPlayingOffset(_sound, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge80(sound?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSoundBuffer_createFromFile(filename: String?): CPointer<sfSoundBuffer>? {
-    return memScoped {
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_createFromFile(_filename)
-        interpretCPointer<sfSoundBuffer>(res)
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge81(filename?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfSoundBuffer_createFromMemory")
-external fun sfSoundBuffer_createFromMemory(data: COpaquePointer?, sizeInBytes: size_t): CPointer<sfSoundBuffer>?
+fun sfSoundBuffer_createFromMemory(data: CValuesRef<*>?, sizeInBytes: size_t): CPointer<sfSoundBuffer>? {
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge82(data?.getPointer(memScope).rawValue, sizeInBytes))
+    }
+}
 
 fun sfSoundBuffer_createFromStream(stream: CValuesRef<sfInputStream>?): CPointer<sfSoundBuffer>? {
-    return memScoped {
-        val _stream = stream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_createFromStream(_stream)
-        interpretCPointer<sfSoundBuffer>(res)
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge83(stream?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfSoundBuffer_createFromSamples(samples: CValuesRef<sfInt16Var>?, sampleCount: sfUint64, channelCount: Int, sampleRate: Int): CPointer<sfSoundBuffer>? {
-    return memScoped {
-        val _samples = samples?.getPointer(memScope).rawValue
-        val _sampleCount = sampleCount
-        val _channelCount = channelCount
-        val _sampleRate = sampleRate
-        val res = kni_sfSoundBuffer_createFromSamples(_samples, _sampleCount, _channelCount, _sampleRate)
-        interpretCPointer<sfSoundBuffer>(res)
+fun sfSoundBuffer_createFromSamples(samples: CValuesRef<sfInt16Var>?, sampleCount: sfUint64, channelCount: UInt, sampleRate: UInt): CPointer<sfSoundBuffer>? {
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge84(samples?.getPointer(memScope).rawValue, sampleCount, channelCount, sampleRate))
     }
 }
 
 fun sfSoundBuffer_copy(soundBuffer: CValuesRef<sfSoundBuffer>?): CPointer<sfSoundBuffer>? {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_copy(_soundBuffer)
-        interpretCPointer<sfSoundBuffer>(res)
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge85(soundBuffer?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSoundBuffer_destroy(soundBuffer: CValuesRef<sfSoundBuffer>?): Unit {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_destroy(_soundBuffer)
-        res
+    memScoped {
+        return kniBridge86(soundBuffer?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundBuffer_saveToFile(soundBuffer: CValuesRef<sfSoundBuffer>?, filename: String?): sfBool {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_saveToFile(_soundBuffer, _filename)
-        res
+    memScoped {
+        return kniBridge87(soundBuffer?.getPointer(memScope).rawValue, filename?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundBuffer_getSamples(soundBuffer: CValuesRef<sfSoundBuffer>?): CPointer<sfInt16Var>? {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_getSamples(_soundBuffer)
-        interpretCPointer<sfInt16Var>(res)
+    memScoped {
+        return interpretCPointer<sfInt16Var>(kniBridge88(soundBuffer?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSoundBuffer_getSampleCount(soundBuffer: CValuesRef<sfSoundBuffer>?): sfUint64 {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_getSampleCount(_soundBuffer)
-        res
+    memScoped {
+        return kniBridge89(soundBuffer?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundBuffer_getSampleRate(soundBuffer: CValuesRef<sfSoundBuffer>?): Int {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_getSampleRate(_soundBuffer)
-        res
+fun sfSoundBuffer_getSampleRate(soundBuffer: CValuesRef<sfSoundBuffer>?): UInt {
+    memScoped {
+        return kniBridge90(soundBuffer?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundBuffer_getChannelCount(soundBuffer: CValuesRef<sfSoundBuffer>?): Int {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_getChannelCount(_soundBuffer)
-        res
+fun sfSoundBuffer_getChannelCount(soundBuffer: CValuesRef<sfSoundBuffer>?): UInt {
+    memScoped {
+        return kniBridge91(soundBuffer?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundBuffer_getDuration(soundBuffer: CValuesRef<sfSoundBuffer>?): CValue<sfTime> {
-    return memScoped {
-        val _soundBuffer = soundBuffer?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBuffer_getDuration(_soundBuffer, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge92(soundBuffer?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfSoundBufferRecorder_create")
-external fun sfSoundBufferRecorder_create(): CPointer<sfSoundBufferRecorder>?
+fun sfSoundBufferRecorder_create(): CPointer<sfSoundBufferRecorder>? {
+    return interpretCPointer<sfSoundBufferRecorder>(kniBridge93())
+}
 
 fun sfSoundBufferRecorder_destroy(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): Unit {
-    return memScoped {
-        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBufferRecorder_destroy(_soundBufferRecorder)
-        res
+    memScoped {
+        return kniBridge94(soundBufferRecorder?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundBufferRecorder_start(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?, sampleRate: Int): Unit {
-    return memScoped {
-        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
-        val _sampleRate = sampleRate
-        val res = kni_sfSoundBufferRecorder_start(_soundBufferRecorder, _sampleRate)
-        res
+fun sfSoundBufferRecorder_start(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?, sampleRate: UInt): sfBool {
+    memScoped {
+        return kniBridge95(soundBufferRecorder?.getPointer(memScope).rawValue, sampleRate)
     }
 }
 
 fun sfSoundBufferRecorder_stop(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): Unit {
-    return memScoped {
-        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBufferRecorder_stop(_soundBufferRecorder)
-        res
+    memScoped {
+        return kniBridge96(soundBufferRecorder?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundBufferRecorder_getSampleRate(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): Int {
-    return memScoped {
-        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBufferRecorder_getSampleRate(_soundBufferRecorder)
-        res
+fun sfSoundBufferRecorder_getSampleRate(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): UInt {
+    memScoped {
+        return kniBridge97(soundBufferRecorder?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundBufferRecorder_getBuffer(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): CPointer<sfSoundBuffer>? {
-    return memScoped {
-        val _soundBufferRecorder = soundBufferRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundBufferRecorder_getBuffer(_soundBufferRecorder)
-        interpretCPointer<sfSoundBuffer>(res)
+    memScoped {
+        return interpretCPointer<sfSoundBuffer>(kniBridge98(soundBufferRecorder?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfSoundRecorder_create")
-external fun sfSoundRecorder_create(onStart: sfSoundRecorderStartCallback?, onProcess: sfSoundRecorderProcessCallback?, onStop: sfSoundRecorderStopCallback?, userData: COpaquePointer?): CPointer<sfSoundRecorder>?
+fun sfSoundBufferRecorder_setDevice(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?, name: String?): sfBool {
+    memScoped {
+        return kniBridge99(soundBufferRecorder?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfSoundBufferRecorder_getDevice(soundBufferRecorder: CValuesRef<sfSoundBufferRecorder>?): CPointer<ByteVar>? {
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge100(soundBufferRecorder?.getPointer(memScope).rawValue))
+    }
+}
+
+fun sfSoundRecorder_create(onStart: sfSoundRecorderStartCallback?, onProcess: sfSoundRecorderProcessCallback?, onStop: sfSoundRecorderStopCallback?, userData: CValuesRef<*>?): CPointer<sfSoundRecorder>? {
+    memScoped {
+        return interpretCPointer<sfSoundRecorder>(kniBridge101(onStart.rawValue, onProcess.rawValue, onStop.rawValue, userData?.getPointer(memScope).rawValue))
+    }
+}
 
 fun sfSoundRecorder_destroy(soundRecorder: CValuesRef<sfSoundRecorder>?): Unit {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_destroy(_soundRecorder)
-        res
+    memScoped {
+        return kniBridge102(soundRecorder?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundRecorder_start(soundRecorder: CValuesRef<sfSoundRecorder>?, sampleRate: Int): sfBool {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val _sampleRate = sampleRate
-        val res = kni_sfSoundRecorder_start(_soundRecorder, _sampleRate)
-        res
+fun sfSoundRecorder_start(soundRecorder: CValuesRef<sfSoundRecorder>?, sampleRate: UInt): sfBool {
+    memScoped {
+        return kniBridge103(soundRecorder?.getPointer(memScope).rawValue, sampleRate)
     }
 }
 
 fun sfSoundRecorder_stop(soundRecorder: CValuesRef<sfSoundRecorder>?): Unit {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_stop(_soundRecorder)
-        res
+    memScoped {
+        return kniBridge104(soundRecorder?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundRecorder_getSampleRate(soundRecorder: CValuesRef<sfSoundRecorder>?): Int {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_getSampleRate(_soundRecorder)
-        res
+fun sfSoundRecorder_getSampleRate(soundRecorder: CValuesRef<sfSoundRecorder>?): UInt {
+    memScoped {
+        return kniBridge105(soundRecorder?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfSoundRecorder_isAvailable")
-external fun sfSoundRecorder_isAvailable(): sfBool
+fun sfSoundRecorder_isAvailable(): sfBool {
+    return kniBridge106()
+}
 
 fun sfSoundRecorder_setProcessingInterval(soundRecorder: CValuesRef<sfSoundRecorder>?, interval: CValue<sfTime>): Unit {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val _interval = interval.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_setProcessingInterval(_soundRecorder, _interval)
-        res
+    memScoped {
+        return kniBridge107(soundRecorder?.getPointer(memScope).rawValue, interval.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundRecorder_getAvailableDevices(count: CValuesRef<size_tVar>?): CPointer<CPointerVar<ByteVar>>? {
-    return memScoped {
-        val _count = count?.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_getAvailableDevices(_count)
-        interpretCPointer<CPointerVar<ByteVar>>(res)
+    memScoped {
+        return interpretCPointer<CPointerVar<ByteVar>>(kniBridge108(count?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfSoundRecorder_getDefaultDevice")
-external fun sfSoundRecorder_getDefaultDevice(): CPointer<ByteVar>?
+fun sfSoundRecorder_getDefaultDevice(): CPointer<ByteVar>? {
+    return interpretCPointer<ByteVar>(kniBridge109())
+}
 
 fun sfSoundRecorder_setDevice(soundRecorder: CValuesRef<sfSoundRecorder>?, name: String?): sfBool {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_setDevice(_soundRecorder, _name)
-        res
+    memScoped {
+        return kniBridge110(soundRecorder?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundRecorder_getDevice(soundRecorder: CValuesRef<sfSoundRecorder>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _soundRecorder = soundRecorder?.getPointer(memScope).rawValue
-        val res = kni_sfSoundRecorder_getDevice(_soundRecorder)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge111(soundRecorder?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfSoundStream_create")
-external fun sfSoundStream_create(onGetData: sfSoundStreamGetDataCallback?, onSeek: sfSoundStreamSeekCallback?, channelCount: Int, sampleRate: Int, userData: COpaquePointer?): CPointer<sfSoundStream>?
+fun sfSoundRecorder_setChannelCount(soundRecorder: CValuesRef<sfSoundRecorder>?, channelCount: UInt): Unit {
+    memScoped {
+        return kniBridge112(soundRecorder?.getPointer(memScope).rawValue, channelCount)
+    }
+}
+
+fun sfSoundRecorder_getChannelCount(soundRecorder: CValuesRef<sfSoundRecorder>?): UInt {
+    memScoped {
+        return kniBridge113(soundRecorder?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfSoundStream_create(onGetData: sfSoundStreamGetDataCallback?, onSeek: sfSoundStreamSeekCallback?, channelCount: UInt, sampleRate: UInt, userData: CValuesRef<*>?): CPointer<sfSoundStream>? {
+    memScoped {
+        return interpretCPointer<sfSoundStream>(kniBridge114(onGetData.rawValue, onSeek.rawValue, channelCount, sampleRate, userData?.getPointer(memScope).rawValue))
+    }
+}
 
 fun sfSoundStream_destroy(soundStream: CValuesRef<sfSoundStream>?): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_destroy(_soundStream)
-        res
+    memScoped {
+        return kniBridge115(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_play(soundStream: CValuesRef<sfSoundStream>?): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_play(_soundStream)
-        res
+    memScoped {
+        return kniBridge116(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_pause(soundStream: CValuesRef<sfSoundStream>?): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_pause(_soundStream)
-        res
+    memScoped {
+        return kniBridge117(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_stop(soundStream: CValuesRef<sfSoundStream>?): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_stop(_soundStream)
-        res
+    memScoped {
+        return kniBridge118(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getStatus(soundStream: CValuesRef<sfSoundStream>?): sfSoundStatus {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getStatus(_soundStream)
-        sfSoundStatus.byValue(res)
+    memScoped {
+        return sfSoundStatus.byValue(kniBridge119(soundStream?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfSoundStream_getChannelCount(soundStream: CValuesRef<sfSoundStream>?): Int {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getChannelCount(_soundStream)
-        res
+fun sfSoundStream_getChannelCount(soundStream: CValuesRef<sfSoundStream>?): UInt {
+    memScoped {
+        return kniBridge120(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfSoundStream_getSampleRate(soundStream: CValuesRef<sfSoundStream>?): Int {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getSampleRate(_soundStream)
-        res
+fun sfSoundStream_getSampleRate(soundStream: CValuesRef<sfSoundStream>?): UInt {
+    memScoped {
+        return kniBridge121(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_setPitch(soundStream: CValuesRef<sfSoundStream>?, pitch: Float): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _pitch = pitch
-        val res = kni_sfSoundStream_setPitch(_soundStream, _pitch)
-        res
+    memScoped {
+        return kniBridge122(soundStream?.getPointer(memScope).rawValue, pitch)
     }
 }
 
 fun sfSoundStream_setVolume(soundStream: CValuesRef<sfSoundStream>?, volume: Float): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _volume = volume
-        val res = kni_sfSoundStream_setVolume(_soundStream, _volume)
-        res
+    memScoped {
+        return kniBridge123(soundStream?.getPointer(memScope).rawValue, volume)
     }
 }
 
 fun sfSoundStream_setPosition(soundStream: CValuesRef<sfSoundStream>?, position: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_setPosition(_soundStream, _position)
-        res
+    memScoped {
+        return kniBridge124(soundStream?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_setRelativeToListener(soundStream: CValuesRef<sfSoundStream>?, relative: sfBool): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _relative = relative
-        val res = kni_sfSoundStream_setRelativeToListener(_soundStream, _relative)
-        res
+    memScoped {
+        return kniBridge125(soundStream?.getPointer(memScope).rawValue, relative)
     }
 }
 
 fun sfSoundStream_setMinDistance(soundStream: CValuesRef<sfSoundStream>?, distance: Float): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _distance = distance
-        val res = kni_sfSoundStream_setMinDistance(_soundStream, _distance)
-        res
+    memScoped {
+        return kniBridge126(soundStream?.getPointer(memScope).rawValue, distance)
     }
 }
 
 fun sfSoundStream_setAttenuation(soundStream: CValuesRef<sfSoundStream>?, attenuation: Float): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _attenuation = attenuation
-        val res = kni_sfSoundStream_setAttenuation(_soundStream, _attenuation)
-        res
+    memScoped {
+        return kniBridge127(soundStream?.getPointer(memScope).rawValue, attenuation)
     }
 }
 
 fun sfSoundStream_setPlayingOffset(soundStream: CValuesRef<sfSoundStream>?, timeOffset: CValue<sfTime>): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _timeOffset = timeOffset.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_setPlayingOffset(_soundStream, _timeOffset)
-        res
+    memScoped {
+        return kniBridge128(soundStream?.getPointer(memScope).rawValue, timeOffset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_setLoop(soundStream: CValuesRef<sfSoundStream>?, loop: sfBool): Unit {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val _loop = loop
-        val res = kni_sfSoundStream_setLoop(_soundStream, _loop)
-        res
+    memScoped {
+        return kniBridge129(soundStream?.getPointer(memScope).rawValue, loop)
     }
 }
 
 fun sfSoundStream_getPitch(soundStream: CValuesRef<sfSoundStream>?): Float {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getPitch(_soundStream)
-        res
+    memScoped {
+        return kniBridge130(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getVolume(soundStream: CValuesRef<sfSoundStream>?): Float {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getVolume(_soundStream)
-        res
+    memScoped {
+        return kniBridge131(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getPosition(soundStream: CValuesRef<sfSoundStream>?): CValue<sfVector3f> {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getPosition(_soundStream, alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector3f>()
+        try {
+            kniBridge132(soundStream?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSoundStream_isRelativeToListener(soundStream: CValuesRef<sfSoundStream>?): sfBool {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_isRelativeToListener(_soundStream)
-        res
+    memScoped {
+        return kniBridge133(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getMinDistance(soundStream: CValuesRef<sfSoundStream>?): Float {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getMinDistance(_soundStream)
-        res
+    memScoped {
+        return kniBridge134(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getAttenuation(soundStream: CValuesRef<sfSoundStream>?): Float {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getAttenuation(_soundStream)
-        res
+    memScoped {
+        return kniBridge135(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getLoop(soundStream: CValuesRef<sfSoundStream>?): sfBool {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getLoop(_soundStream)
-        res
+    memScoped {
+        return kniBridge136(soundStream?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSoundStream_getPlayingOffset(soundStream: CValuesRef<sfSoundStream>?): CValue<sfTime> {
-    return memScoped {
-        val _soundStream = soundStream?.getPointer(memScope).rawValue
-        val res = kni_sfSoundStream_getPlayingOffset(_soundStream, alloc<sfTime>().rawPtr)
-        interpretPointed<sfTime>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTime>()
+        try {
+            kniBridge137(soundStream?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfContext_create")
-external fun sfContext_create(): CPointer<sfContext>?
-
-fun sfContext_destroy(context: CValuesRef<sfContext>?): Unit {
-    return memScoped {
-        val _context = context?.getPointer(memScope).rawValue
-        val res = kni_sfContext_destroy(_context)
-        res
-    }
+fun sfJoystick_isConnected(joystick: UInt): sfBool {
+    return kniBridge138(joystick)
 }
 
-fun sfContext_setActive(context: CValuesRef<sfContext>?, active: sfBool): Unit {
-    return memScoped {
-        val _context = context?.getPointer(memScope).rawValue
-        val _active = active
-        val res = kni_sfContext_setActive(_context, _active)
-        res
-    }
+fun sfJoystick_getButtonCount(joystick: UInt): UInt {
+    return kniBridge139(joystick)
 }
 
-@SymbolName("kni_sfml_sfJoystick_isConnected")
-external fun sfJoystick_isConnected(joystick: Int): sfBool
-
-@SymbolName("kni_sfml_sfJoystick_getButtonCount")
-external fun sfJoystick_getButtonCount(joystick: Int): Int
-
-@SymbolName("kni_sfml_sfJoystick_hasAxis")
-external fun sfJoystick_hasAxis(joystick: Int, axis: sfJoystickAxis): sfBool
-
-@SymbolName("kni_sfml_sfJoystick_isButtonPressed")
-external fun sfJoystick_isButtonPressed(joystick: Int, button: Int): sfBool
-
-@SymbolName("kni_sfml_sfJoystick_getAxisPosition")
-external fun sfJoystick_getAxisPosition(joystick: Int, axis: sfJoystickAxis): Float
-
-fun sfJoystick_getIdentification(joystick: Int): CValue<sfJoystickIdentification> {
-    return memScoped {
-        val _joystick = joystick
-        val res = kni_sfJoystick_getIdentification(_joystick, alloc<sfJoystickIdentification>().rawPtr)
-        interpretPointed<sfJoystickIdentification>(res).readValue()
-    }
+fun sfJoystick_hasAxis(joystick: UInt, axis: sfJoystickAxis): sfBool {
+    return kniBridge140(joystick, axis.value)
 }
 
-@SymbolName("kni_sfml_sfJoystick_update")
-external fun sfJoystick_update(): Unit
+fun sfJoystick_isButtonPressed(joystick: UInt, button: UInt): sfBool {
+    return kniBridge141(joystick, button)
+}
 
-@SymbolName("kni_sfml_sfKeyboard_isKeyPressed")
-external fun sfKeyboard_isKeyPressed(key: sfKeyCode): sfBool
+fun sfJoystick_getAxisPosition(joystick: UInt, axis: sfJoystickAxis): Float {
+    return kniBridge142(joystick, axis.value)
+}
 
-@SymbolName("kni_sfml_sfMouse_isButtonPressed")
-external fun sfMouse_isButtonPressed(button: sfMouseButton): sfBool
+fun sfJoystick_getIdentification(joystick: UInt): CValue<sfJoystickIdentification> {
+    val kniRetVal = nativeHeap.alloc<sfJoystickIdentification>()
+    try {
+        kniBridge143(joystick, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
+}
+
+fun sfJoystick_update(): Unit {
+    return kniBridge144()
+}
+
+fun sfKeyboard_isKeyPressed(key: sfKeyCode): sfBool {
+    return kniBridge145(key)
+}
+
+fun sfKeyboard_setVirtualKeyboardVisible(visible: sfBool): Unit {
+    return kniBridge146(visible)
+}
+
+fun sfMouse_isButtonPressed(button: sfMouseButton): sfBool {
+    return kniBridge147(button.value)
+}
 
 fun sfMouse_getPosition(relativeTo: CValuesRef<sfWindow>?): CValue<sfVector2i> {
-    return memScoped {
-        val _relativeTo = relativeTo?.getPointer(memScope).rawValue
-        val res = kni_sfMouse_getPosition(_relativeTo, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge148(relativeTo?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfMouse_setPosition(position: CValue<sfVector2i>, relativeTo: CValuesRef<sfWindow>?): Unit {
-    return memScoped {
-        val _position = position.getPointer(memScope).rawValue
-        val _relativeTo = relativeTo?.getPointer(memScope).rawValue
-        val res = kni_sfMouse_setPosition(_position, _relativeTo)
-        res
+    memScoped {
+        return kniBridge149(position.getPointer(memScope).rawValue, relativeTo?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfSensor_isAvailable")
-external fun sfSensor_isAvailable(sensor: sfSensorType): sfBool
+fun sfSensor_isAvailable(sensor: sfSensorType): sfBool {
+    return kniBridge150(sensor.value)
+}
 
-@SymbolName("kni_sfml_sfSensor_setEnabled")
-external fun sfSensor_setEnabled(sensor: sfSensorType, enabled: sfBool): Unit
+fun sfSensor_setEnabled(sensor: sfSensorType, enabled: sfBool): Unit {
+    return kniBridge151(sensor.value, enabled)
+}
 
 fun sfSensor_getValue(sensor: sfSensorType): CValue<sfVector3f> {
-    return memScoped {
-        val _sensor = sensor.value
-        val res = kni_sfSensor_getValue(_sensor, alloc<sfVector3f>().rawPtr)
-        interpretPointed<sfVector3f>(res).readValue()
-    }
-}
-
-@SymbolName("kni_sfml_sfTouch_isDown")
-external fun sfTouch_isDown(finger: Int): sfBool
-
-fun sfTouch_getPosition(finger: Int, relativeTo: CValuesRef<sfWindow>?): CValue<sfVector2i> {
-    return memScoped {
-        val _finger = finger
-        val _relativeTo = relativeTo?.getPointer(memScope).rawValue
-        val res = kni_sfTouch_getPosition(_finger, _relativeTo, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfVector3f>()
+    try {
+        kniBridge152(sensor.value, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfVideoMode_getDesktopMode(): CValue<sfVideoMode> {
-    return memScoped {
-        val res = kni_sfVideoMode_getDesktopMode(alloc<sfVideoMode>().rawPtr)
-        interpretPointed<sfVideoMode>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfVideoMode>()
+    try {
+        kniBridge153(kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
-fun sfVideoMode_getFullscreenModes(Count: CValuesRef<size_tVar>?): CPointer<sfVideoMode>? {
-    return memScoped {
-        val _Count = Count?.getPointer(memScope).rawValue
-        val res = kni_sfVideoMode_getFullscreenModes(_Count)
-        interpretCPointer<sfVideoMode>(res)
+fun sfVideoMode_getFullscreenModes(count: CValuesRef<size_tVar>?): CPointer<sfVideoMode>? {
+    memScoped {
+        return interpretCPointer<sfVideoMode>(kniBridge154(count?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfVideoMode_isValid(mode: CValue<sfVideoMode>): sfBool {
-    return memScoped {
-        val _mode = mode.getPointer(memScope).rawValue
-        val res = kni_sfVideoMode_isValid(_mode)
-        res
+    memScoped {
+        return kniBridge155(mode.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_create(mode: CValue<sfVideoMode>, title: String?, style: sfUint32, settings: CValuesRef<sfContextSettings>?): CPointer<sfWindow>? {
-    return memScoped {
-        val _mode = mode.getPointer(memScope).rawValue
-        val _title = title?.cstr?.getPointer(memScope).rawValue
-        val _style = style
-        val _settings = settings?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_create(_mode, _title, _style, _settings)
-        interpretCPointer<sfWindow>(res)
+    memScoped {
+        return interpretCPointer<sfWindow>(kniBridge156(mode.getPointer(memScope).rawValue, title?.cstr?.getPointer(memScope).rawValue, style, settings?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfWindow_createUnicode(mode: CValue<sfVideoMode>, title: CValuesRef<sfUint32Var>?, style: sfUint32, settings: CValuesRef<sfContextSettings>?): CPointer<sfWindow>? {
-    return memScoped {
-        val _mode = mode.getPointer(memScope).rawValue
-        val _title = title?.getPointer(memScope).rawValue
-        val _style = style
-        val _settings = settings?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_createUnicode(_mode, _title, _style, _settings)
-        interpretCPointer<sfWindow>(res)
+    memScoped {
+        return interpretCPointer<sfWindow>(kniBridge157(mode.getPointer(memScope).rawValue, title?.getPointer(memScope).rawValue, style, settings?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfWindow_createFromHandle(handle: sfWindowHandle, settings: CValuesRef<sfContextSettings>?): CPointer<sfWindow>? {
-    return memScoped {
-        val _handle = handle
-        val _settings = settings?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_createFromHandle(_handle, _settings)
-        interpretCPointer<sfWindow>(res)
+    memScoped {
+        return interpretCPointer<sfWindow>(kniBridge158(handle, settings?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfWindow_destroy(window: CValuesRef<sfWindow>?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_destroy(_window)
-        res
+    memScoped {
+        return kniBridge159(window?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_close(window: CValuesRef<sfWindow>?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_close(_window)
-        res
+    memScoped {
+        return kniBridge160(window?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_isOpen(window: CValuesRef<sfWindow>?): sfBool {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_isOpen(_window)
-        res
+    memScoped {
+        return kniBridge161(window?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_getSettings(window: CValuesRef<sfWindow>?): CValue<sfContextSettings> {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_getSettings(_window, alloc<sfContextSettings>().rawPtr)
-        interpretPointed<sfContextSettings>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfContextSettings>()
+        try {
+            kniBridge162(window?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfWindow_pollEvent(window: CValuesRef<sfWindow>?, event: CValuesRef<sfEvent>?): sfBool {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _event = event?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_pollEvent(_window, _event)
-        res
+    memScoped {
+        return kniBridge163(window?.getPointer(memScope).rawValue, event?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_waitEvent(window: CValuesRef<sfWindow>?, event: CValuesRef<sfEvent>?): sfBool {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _event = event?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_waitEvent(_window, _event)
-        res
+    memScoped {
+        return kniBridge164(window?.getPointer(memScope).rawValue, event?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_getPosition(window: CValuesRef<sfWindow>?): CValue<sfVector2i> {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_getPosition(_window, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge165(window?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfWindow_setPosition(window: CValuesRef<sfWindow>?, position: CValue<sfVector2i>): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfWindow_setPosition(_window, _position)
-        res
+    memScoped {
+        return kniBridge166(window?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_getSize(window: CValuesRef<sfWindow>?): CValue<sfVector2u> {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_getSize(_window, alloc<sfVector2u>().rawPtr)
-        interpretPointed<sfVector2u>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2u>()
+        try {
+            kniBridge167(window?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfWindow_setSize(window: CValuesRef<sfWindow>?, size: CValue<sfVector2u>): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _size = size.getPointer(memScope).rawValue
-        val res = kni_sfWindow_setSize(_window, _size)
-        res
+    memScoped {
+        return kniBridge168(window?.getPointer(memScope).rawValue, size.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_setTitle(window: CValuesRef<sfWindow>?, title: String?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _title = title?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_setTitle(_window, _title)
-        res
+    memScoped {
+        return kniBridge169(window?.getPointer(memScope).rawValue, title?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_setUnicodeTitle(window: CValuesRef<sfWindow>?, title: CValuesRef<sfUint32Var>?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _title = title?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_setUnicodeTitle(_window, _title)
-        res
+    memScoped {
+        return kniBridge170(window?.getPointer(memScope).rawValue, title?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfWindow_setIcon(window: CValuesRef<sfWindow>?, width: Int, height: Int, pixels: CValuesRef<sfUint8Var>?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _width = width
-        val _height = height
-        val _pixels = pixels?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_setIcon(_window, _width, _height, _pixels)
-        res
+fun sfWindow_setIcon(window: CValuesRef<sfWindow>?, width: UInt, height: UInt, pixels: CValuesRef<sfUint8Var>?): Unit {
+    memScoped {
+        return kniBridge171(window?.getPointer(memScope).rawValue, width, height, pixels?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_setVisible(window: CValuesRef<sfWindow>?, visible: sfBool): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _visible = visible
-        val res = kni_sfWindow_setVisible(_window, _visible)
-        res
-    }
-}
-
-fun sfWindow_setMouseCursorVisible(window: CValuesRef<sfWindow>?, visible: sfBool): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _visible = visible
-        val res = kni_sfWindow_setMouseCursorVisible(_window, _visible)
-        res
+    memScoped {
+        return kniBridge172(window?.getPointer(memScope).rawValue, visible)
     }
 }
 
 fun sfWindow_setVerticalSyncEnabled(window: CValuesRef<sfWindow>?, enabled: sfBool): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _enabled = enabled
-        val res = kni_sfWindow_setVerticalSyncEnabled(_window, _enabled)
-        res
+    memScoped {
+        return kniBridge173(window?.getPointer(memScope).rawValue, enabled)
+    }
+}
+
+fun sfWindow_setMouseCursorVisible(window: CValuesRef<sfWindow>?, visible: sfBool): Unit {
+    memScoped {
+        return kniBridge174(window?.getPointer(memScope).rawValue, visible)
+    }
+}
+
+fun sfWindow_setMouseCursorGrabbed(window: CValuesRef<sfWindow>?, grabbed: sfBool): Unit {
+    memScoped {
+        return kniBridge175(window?.getPointer(memScope).rawValue, grabbed)
     }
 }
 
 fun sfWindow_setKeyRepeatEnabled(window: CValuesRef<sfWindow>?, enabled: sfBool): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _enabled = enabled
-        val res = kni_sfWindow_setKeyRepeatEnabled(_window, _enabled)
-        res
+    memScoped {
+        return kniBridge176(window?.getPointer(memScope).rawValue, enabled)
     }
 }
 
-fun sfWindow_setActive(window: CValuesRef<sfWindow>?, active: sfBool): sfBool {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _active = active
-        val res = kni_sfWindow_setActive(_window, _active)
-        res
-    }
-}
-
-fun sfWindow_requestFocus(window: CValuesRef<sfWindow>?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_requestFocus(_window)
-        res
-    }
-}
-
-fun sfWindow_hasFocus(window: CValuesRef<sfWindow>?): sfBool {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_hasFocus(_window)
-        res
-    }
-}
-
-fun sfWindow_display(window: CValuesRef<sfWindow>?): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_display(_window)
-        res
-    }
-}
-
-fun sfWindow_setFramerateLimit(window: CValuesRef<sfWindow>?, limit: Int): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _limit = limit
-        val res = kni_sfWindow_setFramerateLimit(_window, _limit)
-        res
+fun sfWindow_setFramerateLimit(window: CValuesRef<sfWindow>?, limit: UInt): Unit {
+    memScoped {
+        return kniBridge177(window?.getPointer(memScope).rawValue, limit)
     }
 }
 
 fun sfWindow_setJoystickThreshold(window: CValuesRef<sfWindow>?, threshold: Float): Unit {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val _threshold = threshold
-        val res = kni_sfWindow_setJoystickThreshold(_window, _threshold)
-        res
+    memScoped {
+        return kniBridge178(window?.getPointer(memScope).rawValue, threshold)
+    }
+}
+
+fun sfWindow_setActive(window: CValuesRef<sfWindow>?, active: sfBool): sfBool {
+    memScoped {
+        return kniBridge179(window?.getPointer(memScope).rawValue, active)
+    }
+}
+
+fun sfWindow_requestFocus(window: CValuesRef<sfWindow>?): Unit {
+    memScoped {
+        return kniBridge180(window?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfWindow_hasFocus(window: CValuesRef<sfWindow>?): sfBool {
+    memScoped {
+        return kniBridge181(window?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfWindow_display(window: CValuesRef<sfWindow>?): Unit {
+    memScoped {
+        return kniBridge182(window?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfWindow_getSystemHandle(window: CValuesRef<sfWindow>?): sfWindowHandle {
-    return memScoped {
-        val _window = window?.getPointer(memScope).rawValue
-        val res = kni_sfWindow_getSystemHandle(_window)
-        res
+    memScoped {
+        return kniBridge183(window?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfContext_create(): CPointer<sfContext>? {
+    return interpretCPointer<sfContext>(kniBridge184())
+}
+
+fun sfContext_destroy(context: CValuesRef<sfContext>?): Unit {
+    memScoped {
+        return kniBridge185(context?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfContext_setActive(context: CValuesRef<sfContext>?, active: sfBool): sfBool {
+    memScoped {
+        return kniBridge186(context?.getPointer(memScope).rawValue, active)
+    }
+}
+
+fun sfContext_getSettings(context: CValuesRef<sfContext>?): CValue<sfContextSettings> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfContextSettings>()
+        try {
+            kniBridge187(context?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
+    }
+}
+
+fun sfTouch_isDown(finger: UInt): sfBool {
+    return kniBridge188(finger)
+}
+
+fun sfTouch_getPosition(finger: UInt, relativeTo: CValuesRef<sfWindow>?): CValue<sfVector2i> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge189(finger, relativeTo?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfColor_fromRGB(red: sfUint8, green: sfUint8, blue: sfUint8): CValue<sfColor> {
-    return memScoped {
-        val _red = red
-        val _green = green
-        val _blue = blue
-        val res = kni_sfColor_fromRGB(_red, _green, _blue, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfColor>()
+    try {
+        kniBridge190(red, green, blue, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfColor_fromRGBA(red: sfUint8, green: sfUint8, blue: sfUint8, alpha: sfUint8): CValue<sfColor> {
-    return memScoped {
-        val _red = red
-        val _green = green
-        val _blue = blue
-        val _alpha = alpha
-        val res = kni_sfColor_fromRGBA(_red, _green, _blue, _alpha, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfColor>()
+    try {
+        kniBridge191(red, green, blue, alpha, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfColor_fromInteger(color: sfUint32): CValue<sfColor> {
-    return memScoped {
-        val _color = color
-        val res = kni_sfColor_fromInteger(_color, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfColor>()
+    try {
+        kniBridge192(color, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfColor_toInteger(color: CValue<sfColor>): sfUint32 {
-    return memScoped {
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfColor_toInteger(_color)
-        res
+    memScoped {
+        return kniBridge193(color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfColor_add(color1: CValue<sfColor>, color2: CValue<sfColor>): CValue<sfColor> {
-    return memScoped {
-        val _color1 = color1.getPointer(memScope).rawValue
-        val _color2 = color2.getPointer(memScope).rawValue
-        val res = kni_sfColor_add(_color1, _color2, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge194(color1.getPointer(memScope).rawValue, color2.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfColor_subtract(color1: CValue<sfColor>, color2: CValue<sfColor>): CValue<sfColor> {
-    return memScoped {
-        val _color1 = color1.getPointer(memScope).rawValue
-        val _color2 = color2.getPointer(memScope).rawValue
-        val res = kni_sfColor_subtract(_color1, _color2, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge195(color1.getPointer(memScope).rawValue, color2.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfColor_modulate(color1: CValue<sfColor>, color2: CValue<sfColor>): CValue<sfColor> {
-    return memScoped {
-        val _color1 = color1.getPointer(memScope).rawValue
-        val _color2 = color2.getPointer(memScope).rawValue
-        val res = kni_sfColor_modulate(_color1, _color2, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge196(color1.getPointer(memScope).rawValue, color2.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfFloatRect_contains(rect: CValuesRef<sfFloatRect>?, x: Float, y: Float): sfBool {
-    return memScoped {
-        val _rect = rect?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfFloatRect_contains(_rect, _x, _y)
-        res
+    memScoped {
+        return kniBridge197(rect?.getPointer(memScope).rawValue, x, y)
     }
 }
 
 fun sfIntRect_contains(rect: CValuesRef<sfIntRect>?, x: Int, y: Int): sfBool {
-    return memScoped {
-        val _rect = rect?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfIntRect_contains(_rect, _x, _y)
-        res
+    memScoped {
+        return kniBridge198(rect?.getPointer(memScope).rawValue, x, y)
     }
 }
 
 fun sfFloatRect_intersects(rect1: CValuesRef<sfFloatRect>?, rect2: CValuesRef<sfFloatRect>?, intersection: CValuesRef<sfFloatRect>?): sfBool {
-    return memScoped {
-        val _rect1 = rect1?.getPointer(memScope).rawValue
-        val _rect2 = rect2?.getPointer(memScope).rawValue
-        val _intersection = intersection?.getPointer(memScope).rawValue
-        val res = kni_sfFloatRect_intersects(_rect1, _rect2, _intersection)
-        res
+    memScoped {
+        return kniBridge199(rect1?.getPointer(memScope).rawValue, rect2?.getPointer(memScope).rawValue, intersection?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfIntRect_intersects(rect1: CValuesRef<sfIntRect>?, rect2: CValuesRef<sfIntRect>?, intersection: CValuesRef<sfIntRect>?): sfBool {
-    return memScoped {
-        val _rect1 = rect1?.getPointer(memScope).rawValue
-        val _rect2 = rect2?.getPointer(memScope).rawValue
-        val _intersection = intersection?.getPointer(memScope).rawValue
-        val res = kni_sfIntRect_intersects(_rect1, _rect2, _intersection)
-        res
+    memScoped {
+        return kniBridge200(rect1?.getPointer(memScope).rawValue, rect2?.getPointer(memScope).rawValue, intersection?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransform_fromMatrix(a00: Float, a01: Float, a02: Float, a10: Float, a11: Float, a12: Float, a20: Float, a21: Float, a22: Float): CValue<sfTransform> {
-    return memScoped {
-        val _a00 = a00
-        val _a01 = a01
-        val _a02 = a02
-        val _a10 = a10
-        val _a11 = a11
-        val _a12 = a12
-        val _a20 = a20
-        val _a21 = a21
-        val _a22 = a22
-        val res = kni_sfTransform_fromMatrix(_a00, _a01, _a02, _a10, _a11, _a12, _a20, _a21, _a22, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfTransform>()
+    try {
+        kniBridge201(a00, a01, a02, a10, a11, a12, a20, a21, a22, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfTransform_getMatrix(transform: CValuesRef<sfTransform>?, matrix: CValuesRef<FloatVar>?): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _matrix = matrix?.getPointer(memScope).rawValue
-        val res = kni_sfTransform_getMatrix(_transform, _matrix)
-        res
+    memScoped {
+        return kniBridge202(transform?.getPointer(memScope).rawValue, matrix?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransform_getInverse(transform: CValuesRef<sfTransform>?): CValue<sfTransform> {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val res = kni_sfTransform_getInverse(_transform, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge203(transform?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransform_transformPoint(transform: CValuesRef<sfTransform>?, point: CValue<sfVector2f>): CValue<sfVector2f> {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _point = point.getPointer(memScope).rawValue
-        val res = kni_sfTransform_transformPoint(_transform, _point, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge204(transform?.getPointer(memScope).rawValue, point.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransform_transformRect(transform: CValuesRef<sfTransform>?, rectangle: CValue<sfFloatRect>): CValue<sfFloatRect> {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _rectangle = rectangle.getPointer(memScope).rawValue
-        val res = kni_sfTransform_transformRect(_transform, _rectangle, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge205(transform?.getPointer(memScope).rawValue, rectangle.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransform_combine(transform: CValuesRef<sfTransform>?, other: CValuesRef<sfTransform>?): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _other = other?.getPointer(memScope).rawValue
-        val res = kni_sfTransform_combine(_transform, _other)
-        res
+    memScoped {
+        return kniBridge206(transform?.getPointer(memScope).rawValue, other?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransform_translate(transform: CValuesRef<sfTransform>?, x: Float, y: Float): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfTransform_translate(_transform, _x, _y)
-        res
+    memScoped {
+        return kniBridge207(transform?.getPointer(memScope).rawValue, x, y)
     }
 }
 
 fun sfTransform_rotate(transform: CValuesRef<sfTransform>?, angle: Float): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfTransform_rotate(_transform, _angle)
-        res
+    memScoped {
+        return kniBridge208(transform?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfTransform_rotateWithCenter(transform: CValuesRef<sfTransform>?, angle: Float, centerX: Float, centerY: Float): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _angle = angle
-        val _centerX = centerX
-        val _centerY = centerY
-        val res = kni_sfTransform_rotateWithCenter(_transform, _angle, _centerX, _centerY)
-        res
+    memScoped {
+        return kniBridge209(transform?.getPointer(memScope).rawValue, angle, centerX, centerY)
     }
 }
 
 fun sfTransform_scale(transform: CValuesRef<sfTransform>?, scaleX: Float, scaleY: Float): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _scaleX = scaleX
-        val _scaleY = scaleY
-        val res = kni_sfTransform_scale(_transform, _scaleX, _scaleY)
-        res
+    memScoped {
+        return kniBridge210(transform?.getPointer(memScope).rawValue, scaleX, scaleY)
     }
 }
 
 fun sfTransform_scaleWithCenter(transform: CValuesRef<sfTransform>?, scaleX: Float, scaleY: Float, centerX: Float, centerY: Float): Unit {
-    return memScoped {
-        val _transform = transform?.getPointer(memScope).rawValue
-        val _scaleX = scaleX
-        val _scaleY = scaleY
-        val _centerX = centerX
-        val _centerY = centerY
-        val res = kni_sfTransform_scaleWithCenter(_transform, _scaleX, _scaleY, _centerX, _centerY)
-        res
+    memScoped {
+        return kniBridge211(transform?.getPointer(memScope).rawValue, scaleX, scaleY, centerX, centerY)
     }
 }
 
-@SymbolName("kni_sfml_sfCircleShape_create")
-external fun sfCircleShape_create(): CPointer<sfCircleShape>?
+fun sfCircleShape_create(): CPointer<sfCircleShape>? {
+    return interpretCPointer<sfCircleShape>(kniBridge212())
+}
 
 fun sfCircleShape_copy(shape: CValuesRef<sfCircleShape>?): CPointer<sfCircleShape>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_copy(_shape)
-        interpretCPointer<sfCircleShape>(res)
+    memScoped {
+        return interpretCPointer<sfCircleShape>(kniBridge213(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfCircleShape_destroy(shape: CValuesRef<sfCircleShape>?): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_destroy(_shape)
-        res
+    memScoped {
+        return kniBridge214(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setPosition(shape: CValuesRef<sfCircleShape>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_setPosition(_shape, _position)
-        res
+    memScoped {
+        return kniBridge215(shape?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setRotation(shape: CValuesRef<sfCircleShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfCircleShape_setRotation(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge216(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfCircleShape_setScale(shape: CValuesRef<sfCircleShape>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_setScale(_shape, _scale)
-        res
+    memScoped {
+        return kniBridge217(shape?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setOrigin(shape: CValuesRef<sfCircleShape>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_setOrigin(_shape, _origin)
-        res
+    memScoped {
+        return kniBridge218(shape?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_getPosition(shape: CValuesRef<sfCircleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getPosition(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge219(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getRotation(shape: CValuesRef<sfCircleShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getRotation(_shape)
-        res
+    memScoped {
+        return kniBridge220(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_getScale(shape: CValuesRef<sfCircleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getScale(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge221(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getOrigin(shape: CValuesRef<sfCircleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getOrigin(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge222(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_move(shape: CValuesRef<sfCircleShape>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_move(_shape, _offset)
-        res
+    memScoped {
+        return kniBridge223(shape?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_rotate(shape: CValuesRef<sfCircleShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfCircleShape_rotate(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge224(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfCircleShape_scale(shape: CValuesRef<sfCircleShape>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_scale(_shape, _factors)
-        res
+    memScoped {
+        return kniBridge225(shape?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_getTransform(shape: CValuesRef<sfCircleShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge226(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getInverseTransform(shape: CValuesRef<sfCircleShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getInverseTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge227(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_setTexture(shape: CValuesRef<sfCircleShape>?, texture: CValuesRef<sfTexture>?, resetRect: sfBool): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _resetRect = resetRect
-        val res = kni_sfCircleShape_setTexture(_shape, _texture, _resetRect)
-        res
+    memScoped {
+        return kniBridge228(shape?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue, resetRect)
     }
 }
 
 fun sfCircleShape_setTextureRect(shape: CValuesRef<sfCircleShape>?, rect: CValue<sfIntRect>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _rect = rect.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_setTextureRect(_shape, _rect)
-        res
+    memScoped {
+        return kniBridge229(shape?.getPointer(memScope).rawValue, rect.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setFillColor(shape: CValuesRef<sfCircleShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_setFillColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge230(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setOutlineColor(shape: CValuesRef<sfCircleShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_setOutlineColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge231(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setOutlineThickness(shape: CValuesRef<sfCircleShape>?, thickness: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _thickness = thickness
-        val res = kni_sfCircleShape_setOutlineThickness(_shape, _thickness)
-        res
+    memScoped {
+        return kniBridge232(shape?.getPointer(memScope).rawValue, thickness)
     }
 }
 
 fun sfCircleShape_getTexture(shape: CValuesRef<sfCircleShape>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getTexture(_shape)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge233(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfCircleShape_getTextureRect(shape: CValuesRef<sfCircleShape>?): CValue<sfIntRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getTextureRect(_shape, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge234(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getFillColor(shape: CValuesRef<sfCircleShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getFillColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge235(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getOutlineColor(shape: CValuesRef<sfCircleShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getOutlineColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge236(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getOutlineThickness(shape: CValuesRef<sfCircleShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getOutlineThickness(_shape)
-        res
+    memScoped {
+        return kniBridge237(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_getPointCount(shape: CValuesRef<sfCircleShape>?): size_t {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getPointCount(_shape)
-        res
+    memScoped {
+        return kniBridge238(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_getPoint(shape: CValuesRef<sfCircleShape>?, index: size_t): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfCircleShape_getPoint(_shape, _index, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge239(shape?.getPointer(memScope).rawValue, index, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_setRadius(shape: CValuesRef<sfCircleShape>?, radius: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _radius = radius
-        val res = kni_sfCircleShape_setRadius(_shape, _radius)
-        res
+    memScoped {
+        return kniBridge240(shape?.getPointer(memScope).rawValue, radius)
     }
 }
 
 fun sfCircleShape_getRadius(shape: CValuesRef<sfCircleShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getRadius(_shape)
-        res
+    memScoped {
+        return kniBridge241(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfCircleShape_setPointCount(shape: CValuesRef<sfCircleShape>?, count: size_t): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _count = count
-        val res = kni_sfCircleShape_setPointCount(_shape, _count)
-        res
+    memScoped {
+        return kniBridge242(shape?.getPointer(memScope).rawValue, count)
     }
 }
 
 fun sfCircleShape_getLocalBounds(shape: CValuesRef<sfCircleShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getLocalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge243(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfCircleShape_getGlobalBounds(shape: CValuesRef<sfCircleShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfCircleShape_getGlobalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge244(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfConvexShape_create")
-external fun sfConvexShape_create(): CPointer<sfConvexShape>?
+fun sfConvexShape_create(): CPointer<sfConvexShape>? {
+    return interpretCPointer<sfConvexShape>(kniBridge245())
+}
 
 fun sfConvexShape_copy(shape: CValuesRef<sfConvexShape>?): CPointer<sfConvexShape>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_copy(_shape)
-        interpretCPointer<sfConvexShape>(res)
+    memScoped {
+        return interpretCPointer<sfConvexShape>(kniBridge246(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfConvexShape_destroy(shape: CValuesRef<sfConvexShape>?): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_destroy(_shape)
-        res
+    memScoped {
+        return kniBridge247(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_setPosition(shape: CValuesRef<sfConvexShape>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setPosition(_shape, _position)
-        res
+    memScoped {
+        return kniBridge248(shape?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_setRotation(shape: CValuesRef<sfConvexShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfConvexShape_setRotation(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge249(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfConvexShape_setScale(shape: CValuesRef<sfConvexShape>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setScale(_shape, _scale)
-        res
+    memScoped {
+        return kniBridge250(shape?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_setOrigin(shape: CValuesRef<sfConvexShape>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setOrigin(_shape, _origin)
-        res
+    memScoped {
+        return kniBridge251(shape?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_getPosition(shape: CValuesRef<sfConvexShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getPosition(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge252(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getRotation(shape: CValuesRef<sfConvexShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getRotation(_shape)
-        res
+    memScoped {
+        return kniBridge253(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_getScale(shape: CValuesRef<sfConvexShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getScale(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge254(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getOrigin(shape: CValuesRef<sfConvexShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getOrigin(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge255(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_move(shape: CValuesRef<sfConvexShape>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_move(_shape, _offset)
-        res
+    memScoped {
+        return kniBridge256(shape?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_rotate(shape: CValuesRef<sfConvexShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfConvexShape_rotate(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge257(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfConvexShape_scale(shape: CValuesRef<sfConvexShape>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_scale(_shape, _factors)
-        res
+    memScoped {
+        return kniBridge258(shape?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_getTransform(shape: CValuesRef<sfConvexShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge259(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getInverseTransform(shape: CValuesRef<sfConvexShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getInverseTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge260(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_setTexture(shape: CValuesRef<sfConvexShape>?, texture: CValuesRef<sfTexture>?, resetRect: sfBool): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _resetRect = resetRect
-        val res = kni_sfConvexShape_setTexture(_shape, _texture, _resetRect)
-        res
+    memScoped {
+        return kniBridge261(shape?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue, resetRect)
     }
 }
 
 fun sfConvexShape_setTextureRect(shape: CValuesRef<sfConvexShape>?, rect: CValue<sfIntRect>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _rect = rect.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setTextureRect(_shape, _rect)
-        res
+    memScoped {
+        return kniBridge262(shape?.getPointer(memScope).rawValue, rect.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_setFillColor(shape: CValuesRef<sfConvexShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setFillColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge263(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_setOutlineColor(shape: CValuesRef<sfConvexShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setOutlineColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge264(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_setOutlineThickness(shape: CValuesRef<sfConvexShape>?, thickness: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _thickness = thickness
-        val res = kni_sfConvexShape_setOutlineThickness(_shape, _thickness)
-        res
+    memScoped {
+        return kniBridge265(shape?.getPointer(memScope).rawValue, thickness)
     }
 }
 
 fun sfConvexShape_getTexture(shape: CValuesRef<sfConvexShape>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getTexture(_shape)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge266(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfConvexShape_getTextureRect(shape: CValuesRef<sfConvexShape>?): CValue<sfIntRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getTextureRect(_shape, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge267(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getFillColor(shape: CValuesRef<sfConvexShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getFillColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge268(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getOutlineColor(shape: CValuesRef<sfConvexShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getOutlineColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge269(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getOutlineThickness(shape: CValuesRef<sfConvexShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getOutlineThickness(_shape)
-        res
+    memScoped {
+        return kniBridge270(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_getPointCount(shape: CValuesRef<sfConvexShape>?): size_t {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getPointCount(_shape)
-        res
+    memScoped {
+        return kniBridge271(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_getPoint(shape: CValuesRef<sfConvexShape>?, index: size_t): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfConvexShape_getPoint(_shape, _index, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge272(shape?.getPointer(memScope).rawValue, index, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_setPointCount(shape: CValuesRef<sfConvexShape>?, count: size_t): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _count = count
-        val res = kni_sfConvexShape_setPointCount(_shape, _count)
-        res
+    memScoped {
+        return kniBridge273(shape?.getPointer(memScope).rawValue, count)
     }
 }
 
 fun sfConvexShape_setPoint(shape: CValuesRef<sfConvexShape>?, index: size_t, point: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _index = index
-        val _point = point.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_setPoint(_shape, _index, _point)
-        res
+    memScoped {
+        return kniBridge274(shape?.getPointer(memScope).rawValue, index, point.getPointer(memScope).rawValue)
     }
 }
 
 fun sfConvexShape_getLocalBounds(shape: CValuesRef<sfConvexShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getLocalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge275(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfConvexShape_getGlobalBounds(shape: CValuesRef<sfConvexShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfConvexShape_getGlobalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge276(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfFont_createFromFile(filename: String?): CPointer<sfFont>? {
-    return memScoped {
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFont_createFromFile(_filename)
-        interpretCPointer<sfFont>(res)
+    memScoped {
+        return interpretCPointer<sfFont>(kniBridge277(filename?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfFont_createFromMemory")
-external fun sfFont_createFromMemory(data: COpaquePointer?, sizeInBytes: size_t): CPointer<sfFont>?
+fun sfFont_createFromMemory(data: CValuesRef<*>?, sizeInBytes: size_t): CPointer<sfFont>? {
+    memScoped {
+        return interpretCPointer<sfFont>(kniBridge278(data?.getPointer(memScope).rawValue, sizeInBytes))
+    }
+}
 
 fun sfFont_createFromStream(stream: CValuesRef<sfInputStream>?): CPointer<sfFont>? {
-    return memScoped {
-        val _stream = stream?.getPointer(memScope).rawValue
-        val res = kni_sfFont_createFromStream(_stream)
-        interpretCPointer<sfFont>(res)
+    memScoped {
+        return interpretCPointer<sfFont>(kniBridge279(stream?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFont_copy(font: CValuesRef<sfFont>?): CPointer<sfFont>? {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val res = kni_sfFont_copy(_font)
-        interpretCPointer<sfFont>(res)
+    memScoped {
+        return interpretCPointer<sfFont>(kniBridge280(font?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFont_destroy(font: CValuesRef<sfFont>?): Unit {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val res = kni_sfFont_destroy(_font)
-        res
+    memScoped {
+        return kniBridge281(font?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfFont_getGlyph(font: CValuesRef<sfFont>?, codePoint: sfUint32, characterSize: Int, bold: sfBool): CValue<sfGlyph> {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val _codePoint = codePoint
-        val _characterSize = characterSize
-        val _bold = bold
-        val res = kni_sfFont_getGlyph(_font, _codePoint, _characterSize, _bold, alloc<sfGlyph>().rawPtr)
-        interpretPointed<sfGlyph>(res).readValue()
+fun sfFont_getGlyph(font: CValuesRef<sfFont>?, codePoint: sfUint32, characterSize: UInt, bold: sfBool, outlineThickness: Float): CValue<sfGlyph> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfGlyph>()
+        try {
+            kniBridge282(font?.getPointer(memScope).rawValue, codePoint, characterSize, bold, outlineThickness, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-fun sfFont_getKerning(font: CValuesRef<sfFont>?, first: sfUint32, second: sfUint32, characterSize: Int): Float {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val _first = first
-        val _second = second
-        val _characterSize = characterSize
-        val res = kni_sfFont_getKerning(_font, _first, _second, _characterSize)
-        res
+fun sfFont_getKerning(font: CValuesRef<sfFont>?, first: sfUint32, second: sfUint32, characterSize: UInt): Float {
+    memScoped {
+        return kniBridge283(font?.getPointer(memScope).rawValue, first, second, characterSize)
     }
 }
 
-fun sfFont_getLineSpacing(font: CValuesRef<sfFont>?, characterSize: Int): Float {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val _characterSize = characterSize
-        val res = kni_sfFont_getLineSpacing(_font, _characterSize)
-        res
+fun sfFont_getLineSpacing(font: CValuesRef<sfFont>?, characterSize: UInt): Float {
+    memScoped {
+        return kniBridge284(font?.getPointer(memScope).rawValue, characterSize)
     }
 }
 
-fun sfFont_getUnderlinePosition(font: CValuesRef<sfFont>?, characterSize: Int): Float {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val _characterSize = characterSize
-        val res = kni_sfFont_getUnderlinePosition(_font, _characterSize)
-        res
+fun sfFont_getUnderlinePosition(font: CValuesRef<sfFont>?, characterSize: UInt): Float {
+    memScoped {
+        return kniBridge285(font?.getPointer(memScope).rawValue, characterSize)
     }
 }
 
-fun sfFont_getUnderlineThickness(font: CValuesRef<sfFont>?, characterSize: Int): Float {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val _characterSize = characterSize
-        val res = kni_sfFont_getUnderlineThickness(_font, _characterSize)
-        res
+fun sfFont_getUnderlineThickness(font: CValuesRef<sfFont>?, characterSize: UInt): Float {
+    memScoped {
+        return kniBridge286(font?.getPointer(memScope).rawValue, characterSize)
     }
 }
 
-fun sfFont_getTexture(font: CValuesRef<sfFont>?, characterSize: Int): CPointer<sfTexture>? {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val _characterSize = characterSize
-        val res = kni_sfFont_getTexture(_font, _characterSize)
-        interpretCPointer<sfTexture>(res)
+fun sfFont_getTexture(font: CValuesRef<sfFont>?, characterSize: UInt): CPointer<sfTexture>? {
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge287(font?.getPointer(memScope).rawValue, characterSize))
     }
 }
 
 fun sfFont_getInfo(font: CValuesRef<sfFont>?): CValue<sfFontInfo> {
-    return memScoped {
-        val _font = font?.getPointer(memScope).rawValue
-        val res = kni_sfFont_getInfo(_font, alloc<sfFontInfo>().rawPtr)
-        interpretPointed<sfFontInfo>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFontInfo>()
+        try {
+            kniBridge288(font?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfImage_create")
-external fun sfImage_create(width: Int, height: Int): CPointer<sfImage>?
+fun sfImage_create(width: UInt, height: UInt): CPointer<sfImage>? {
+    return interpretCPointer<sfImage>(kniBridge289(width, height))
+}
 
-fun sfImage_createFromColor(width: Int, height: Int, color: CValue<sfColor>): CPointer<sfImage>? {
-    return memScoped {
-        val _width = width
-        val _height = height
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfImage_createFromColor(_width, _height, _color)
-        interpretCPointer<sfImage>(res)
+fun sfImage_createFromColor(width: UInt, height: UInt, color: CValue<sfColor>): CPointer<sfImage>? {
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge290(width, height, color.getPointer(memScope).rawValue))
     }
 }
 
-fun sfImage_createFromPixels(width: Int, height: Int, pixels: CValuesRef<sfUint8Var>?): CPointer<sfImage>? {
-    return memScoped {
-        val _width = width
-        val _height = height
-        val _pixels = pixels?.getPointer(memScope).rawValue
-        val res = kni_sfImage_createFromPixels(_width, _height, _pixels)
-        interpretCPointer<sfImage>(res)
+fun sfImage_createFromPixels(width: UInt, height: UInt, pixels: CValuesRef<sfUint8Var>?): CPointer<sfImage>? {
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge291(width, height, pixels?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfImage_createFromFile(filename: String?): CPointer<sfImage>? {
-    return memScoped {
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfImage_createFromFile(_filename)
-        interpretCPointer<sfImage>(res)
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge292(filename?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfImage_createFromMemory")
-external fun sfImage_createFromMemory(data: COpaquePointer?, size: size_t): CPointer<sfImage>?
+fun sfImage_createFromMemory(data: CValuesRef<*>?, size: size_t): CPointer<sfImage>? {
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge293(data?.getPointer(memScope).rawValue, size))
+    }
+}
 
 fun sfImage_createFromStream(stream: CValuesRef<sfInputStream>?): CPointer<sfImage>? {
-    return memScoped {
-        val _stream = stream?.getPointer(memScope).rawValue
-        val res = kni_sfImage_createFromStream(_stream)
-        interpretCPointer<sfImage>(res)
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge294(stream?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfImage_copy(image: CValuesRef<sfImage>?): CPointer<sfImage>? {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val res = kni_sfImage_copy(_image)
-        interpretCPointer<sfImage>(res)
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge295(image?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfImage_destroy(image: CValuesRef<sfImage>?): Unit {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val res = kni_sfImage_destroy(_image)
-        res
+    memScoped {
+        return kniBridge296(image?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfImage_saveToFile(image: CValuesRef<sfImage>?, filename: String?): sfBool {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfImage_saveToFile(_image, _filename)
-        res
+    memScoped {
+        return kniBridge297(image?.getPointer(memScope).rawValue, filename?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfImage_getSize(image: CValuesRef<sfImage>?): CValue<sfVector2u> {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val res = kni_sfImage_getSize(_image, alloc<sfVector2u>().rawPtr)
-        interpretPointed<sfVector2u>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2u>()
+        try {
+            kniBridge298(image?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfImage_createMaskFromColor(image: CValuesRef<sfImage>?, color: CValue<sfColor>, alpha: sfUint8): Unit {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val _alpha = alpha
-        val res = kni_sfImage_createMaskFromColor(_image, _color, _alpha)
-        res
+    memScoped {
+        return kniBridge299(image?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue, alpha)
     }
 }
 
-fun sfImage_copyImage(image: CValuesRef<sfImage>?, source: CValuesRef<sfImage>?, destX: Int, destY: Int, sourceRect: CValue<sfIntRect>, applyAlpha: sfBool): Unit {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val _source = source?.getPointer(memScope).rawValue
-        val _destX = destX
-        val _destY = destY
-        val _sourceRect = sourceRect.getPointer(memScope).rawValue
-        val _applyAlpha = applyAlpha
-        val res = kni_sfImage_copyImage(_image, _source, _destX, _destY, _sourceRect, _applyAlpha)
-        res
+fun sfImage_copyImage(image: CValuesRef<sfImage>?, source: CValuesRef<sfImage>?, destX: UInt, destY: UInt, sourceRect: CValue<sfIntRect>, applyAlpha: sfBool): Unit {
+    memScoped {
+        return kniBridge300(image?.getPointer(memScope).rawValue, source?.getPointer(memScope).rawValue, destX, destY, sourceRect.getPointer(memScope).rawValue, applyAlpha)
     }
 }
 
-fun sfImage_setPixel(image: CValuesRef<sfImage>?, x: Int, y: Int, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfImage_setPixel(_image, _x, _y, _color)
-        res
+fun sfImage_setPixel(image: CValuesRef<sfImage>?, x: UInt, y: UInt, color: CValue<sfColor>): Unit {
+    memScoped {
+        return kniBridge301(image?.getPointer(memScope).rawValue, x, y, color.getPointer(memScope).rawValue)
     }
 }
 
-fun sfImage_getPixel(image: CValuesRef<sfImage>?, x: Int, y: Int): CValue<sfColor> {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfImage_getPixel(_image, _x, _y, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+fun sfImage_getPixel(image: CValuesRef<sfImage>?, x: UInt, y: UInt): CValue<sfColor> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge302(image?.getPointer(memScope).rawValue, x, y, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfImage_getPixelsPtr(image: CValuesRef<sfImage>?): CPointer<sfUint8Var>? {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val res = kni_sfImage_getPixelsPtr(_image)
-        interpretCPointer<sfUint8Var>(res)
+    memScoped {
+        return interpretCPointer<sfUint8Var>(kniBridge303(image?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfImage_flipHorizontally(image: CValuesRef<sfImage>?): Unit {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val res = kni_sfImage_flipHorizontally(_image)
-        res
+    memScoped {
+        return kniBridge304(image?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfImage_flipVertically(image: CValuesRef<sfImage>?): Unit {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val res = kni_sfImage_flipVertically(_image)
-        res
+    memScoped {
+        return kniBridge305(image?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfRectangleShape_create")
-external fun sfRectangleShape_create(): CPointer<sfRectangleShape>?
+fun sfRectangleShape_create(): CPointer<sfRectangleShape>? {
+    return interpretCPointer<sfRectangleShape>(kniBridge306())
+}
 
 fun sfRectangleShape_copy(shape: CValuesRef<sfRectangleShape>?): CPointer<sfRectangleShape>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_copy(_shape)
-        interpretCPointer<sfRectangleShape>(res)
+    memScoped {
+        return interpretCPointer<sfRectangleShape>(kniBridge307(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRectangleShape_destroy(shape: CValuesRef<sfRectangleShape>?): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_destroy(_shape)
-        res
+    memScoped {
+        return kniBridge308(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_setPosition(shape: CValuesRef<sfRectangleShape>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setPosition(_shape, _position)
-        res
+    memScoped {
+        return kniBridge309(shape?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_setRotation(shape: CValuesRef<sfRectangleShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfRectangleShape_setRotation(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge310(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfRectangleShape_setScale(shape: CValuesRef<sfRectangleShape>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setScale(_shape, _scale)
-        res
+    memScoped {
+        return kniBridge311(shape?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_setOrigin(shape: CValuesRef<sfRectangleShape>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setOrigin(_shape, _origin)
-        res
+    memScoped {
+        return kniBridge312(shape?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_getPosition(shape: CValuesRef<sfRectangleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getPosition(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge313(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getRotation(shape: CValuesRef<sfRectangleShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getRotation(_shape)
-        res
+    memScoped {
+        return kniBridge314(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_getScale(shape: CValuesRef<sfRectangleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getScale(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge315(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getOrigin(shape: CValuesRef<sfRectangleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getOrigin(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge316(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_move(shape: CValuesRef<sfRectangleShape>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_move(_shape, _offset)
-        res
+    memScoped {
+        return kniBridge317(shape?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_rotate(shape: CValuesRef<sfRectangleShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfRectangleShape_rotate(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge318(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfRectangleShape_scale(shape: CValuesRef<sfRectangleShape>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_scale(_shape, _factors)
-        res
+    memScoped {
+        return kniBridge319(shape?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_getTransform(shape: CValuesRef<sfRectangleShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge320(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getInverseTransform(shape: CValuesRef<sfRectangleShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getInverseTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge321(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_setTexture(shape: CValuesRef<sfRectangleShape>?, texture: CValuesRef<sfTexture>?, resetRect: sfBool): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _resetRect = resetRect
-        val res = kni_sfRectangleShape_setTexture(_shape, _texture, _resetRect)
-        res
+    memScoped {
+        return kniBridge322(shape?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue, resetRect)
     }
 }
 
 fun sfRectangleShape_setTextureRect(shape: CValuesRef<sfRectangleShape>?, rect: CValue<sfIntRect>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _rect = rect.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setTextureRect(_shape, _rect)
-        res
+    memScoped {
+        return kniBridge323(shape?.getPointer(memScope).rawValue, rect.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_setFillColor(shape: CValuesRef<sfRectangleShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setFillColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge324(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_setOutlineColor(shape: CValuesRef<sfRectangleShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setOutlineColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge325(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_setOutlineThickness(shape: CValuesRef<sfRectangleShape>?, thickness: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _thickness = thickness
-        val res = kni_sfRectangleShape_setOutlineThickness(_shape, _thickness)
-        res
+    memScoped {
+        return kniBridge326(shape?.getPointer(memScope).rawValue, thickness)
     }
 }
 
 fun sfRectangleShape_getTexture(shape: CValuesRef<sfRectangleShape>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getTexture(_shape)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge327(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRectangleShape_getTextureRect(shape: CValuesRef<sfRectangleShape>?): CValue<sfIntRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getTextureRect(_shape, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge328(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getFillColor(shape: CValuesRef<sfRectangleShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getFillColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge329(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getOutlineColor(shape: CValuesRef<sfRectangleShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getOutlineColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge330(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getOutlineThickness(shape: CValuesRef<sfRectangleShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getOutlineThickness(_shape)
-        res
+    memScoped {
+        return kniBridge331(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_getPointCount(shape: CValuesRef<sfRectangleShape>?): size_t {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getPointCount(_shape)
-        res
+    memScoped {
+        return kniBridge332(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_getPoint(shape: CValuesRef<sfRectangleShape>?, index: size_t): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfRectangleShape_getPoint(_shape, _index, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge333(shape?.getPointer(memScope).rawValue, index, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_setSize(shape: CValuesRef<sfRectangleShape>?, size: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _size = size.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_setSize(_shape, _size)
-        res
+    memScoped {
+        return kniBridge334(shape?.getPointer(memScope).rawValue, size.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRectangleShape_getSize(shape: CValuesRef<sfRectangleShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getSize(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge335(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getLocalBounds(shape: CValuesRef<sfRectangleShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getLocalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge336(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRectangleShape_getGlobalBounds(shape: CValuesRef<sfRectangleShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfRectangleShape_getGlobalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge337(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfRenderTexture_create")
-external fun sfRenderTexture_create(width: Int, height: Int, depthBuffer: sfBool): CPointer<sfRenderTexture>?
+fun sfRenderTexture_create(width: UInt, height: UInt, depthBuffer: sfBool): CPointer<sfRenderTexture>? {
+    return interpretCPointer<sfRenderTexture>(kniBridge338(width, height, depthBuffer))
+}
 
 fun sfRenderTexture_destroy(renderTexture: CValuesRef<sfRenderTexture>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_destroy(_renderTexture)
-        res
+    memScoped {
+        return kniBridge339(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_getSize(renderTexture: CValuesRef<sfRenderTexture>?): CValue<sfVector2u> {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_getSize(_renderTexture, alloc<sfVector2u>().rawPtr)
-        interpretPointed<sfVector2u>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2u>()
+        try {
+            kniBridge340(renderTexture?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderTexture_setActive(renderTexture: CValuesRef<sfRenderTexture>?, active: sfBool): sfBool {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _active = active
-        val res = kni_sfRenderTexture_setActive(_renderTexture, _active)
-        res
+    memScoped {
+        return kniBridge341(renderTexture?.getPointer(memScope).rawValue, active)
     }
 }
 
 fun sfRenderTexture_display(renderTexture: CValuesRef<sfRenderTexture>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_display(_renderTexture)
-        res
+    memScoped {
+        return kniBridge342(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_clear(renderTexture: CValuesRef<sfRenderTexture>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_clear(_renderTexture, _color)
-        res
+    memScoped {
+        return kniBridge343(renderTexture?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_setView(renderTexture: CValuesRef<sfRenderTexture>?, view: CValuesRef<sfView>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_setView(_renderTexture, _view)
-        res
+    memScoped {
+        return kniBridge344(renderTexture?.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_getView(renderTexture: CValuesRef<sfRenderTexture>?): CPointer<sfView>? {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_getView(_renderTexture)
-        interpretCPointer<sfView>(res)
+    memScoped {
+        return interpretCPointer<sfView>(kniBridge345(renderTexture?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderTexture_getDefaultView(renderTexture: CValuesRef<sfRenderTexture>?): CPointer<sfView>? {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_getDefaultView(_renderTexture)
-        interpretCPointer<sfView>(res)
+    memScoped {
+        return interpretCPointer<sfView>(kniBridge346(renderTexture?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderTexture_getViewport(renderTexture: CValuesRef<sfRenderTexture>?, view: CValuesRef<sfView>?): CValue<sfIntRect> {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_getViewport(_renderTexture, _view, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge347(renderTexture?.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderTexture_mapPixelToCoords(renderTexture: CValuesRef<sfRenderTexture>?, point: CValue<sfVector2i>, view: CValuesRef<sfView>?): CValue<sfVector2f> {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _point = point.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_mapPixelToCoords(_renderTexture, _point, _view, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge348(renderTexture?.getPointer(memScope).rawValue, point.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderTexture_mapCoordsToPixel(renderTexture: CValuesRef<sfRenderTexture>?, point: CValue<sfVector2f>, view: CValuesRef<sfView>?): CValue<sfVector2i> {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _point = point.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_mapCoordsToPixel(_renderTexture, _point, _view, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge349(renderTexture?.getPointer(memScope).rawValue, point.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderTexture_drawSprite(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfSprite>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawSprite(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge350(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawText(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfText>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawText(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge351(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawShape(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawShape(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge352(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawCircleShape(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfCircleShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawCircleShape(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge353(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawConvexShape(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfConvexShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawConvexShape(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge354(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawRectangleShape(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfRectangleShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawRectangleShape(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge355(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawVertexArray(renderTexture: CValuesRef<sfRenderTexture>?, `object`: CValuesRef<sfVertexArray>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawVertexArray(_renderTexture, _object, _states)
-        res
+    memScoped {
+        return kniBridge356(renderTexture?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_drawPrimitives(renderTexture: CValuesRef<sfRenderTexture>?, vertices: CValuesRef<sfVertex>?, vertexCount: size_t, type: sfPrimitiveType, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _vertices = vertices?.getPointer(memScope).rawValue
-        val _vertexCount = vertexCount
-        val _type = type.value
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_drawPrimitives(_renderTexture, _vertices, _vertexCount, _type, _states)
-        res
+    memScoped {
+        return kniBridge357(renderTexture?.getPointer(memScope).rawValue, vertices?.getPointer(memScope).rawValue, vertexCount, type, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_pushGLStates(renderTexture: CValuesRef<sfRenderTexture>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_pushGLStates(_renderTexture)
-        res
+    memScoped {
+        return kniBridge358(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_popGLStates(renderTexture: CValuesRef<sfRenderTexture>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_popGLStates(_renderTexture)
-        res
+    memScoped {
+        return kniBridge359(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_resetGLStates(renderTexture: CValuesRef<sfRenderTexture>?): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_resetGLStates(_renderTexture)
-        res
+    memScoped {
+        return kniBridge360(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_getTexture(renderTexture: CValuesRef<sfRenderTexture>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_getTexture(_renderTexture)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge361(renderTexture?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderTexture_setSmooth(renderTexture: CValuesRef<sfRenderTexture>?, smooth: sfBool): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _smooth = smooth
-        val res = kni_sfRenderTexture_setSmooth(_renderTexture, _smooth)
-        res
+    memScoped {
+        return kniBridge362(renderTexture?.getPointer(memScope).rawValue, smooth)
     }
 }
 
 fun sfRenderTexture_isSmooth(renderTexture: CValuesRef<sfRenderTexture>?): sfBool {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_isSmooth(_renderTexture)
-        res
+    memScoped {
+        return kniBridge363(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderTexture_setRepeated(renderTexture: CValuesRef<sfRenderTexture>?, repeated: sfBool): Unit {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val _repeated = repeated
-        val res = kni_sfRenderTexture_setRepeated(_renderTexture, _repeated)
-        res
+    memScoped {
+        return kniBridge364(renderTexture?.getPointer(memScope).rawValue, repeated)
     }
 }
 
 fun sfRenderTexture_isRepeated(renderTexture: CValuesRef<sfRenderTexture>?): sfBool {
-    return memScoped {
-        val _renderTexture = renderTexture?.getPointer(memScope).rawValue
-        val res = kni_sfRenderTexture_isRepeated(_renderTexture)
-        res
+    memScoped {
+        return kniBridge365(renderTexture?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfRenderTexture_generateMipmap(renderTexture: CValuesRef<sfRenderTexture>?): sfBool {
+    memScoped {
+        return kniBridge366(renderTexture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_create(mode: CValue<sfVideoMode>, title: String?, style: sfUint32, settings: CValuesRef<sfContextSettings>?): CPointer<sfRenderWindow>? {
-    return memScoped {
-        val _mode = mode.getPointer(memScope).rawValue
-        val _title = title?.cstr?.getPointer(memScope).rawValue
-        val _style = style
-        val _settings = settings?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_create(_mode, _title, _style, _settings)
-        interpretCPointer<sfRenderWindow>(res)
+    memScoped {
+        return interpretCPointer<sfRenderWindow>(kniBridge367(mode.getPointer(memScope).rawValue, title?.cstr?.getPointer(memScope).rawValue, style, settings?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderWindow_createUnicode(mode: CValue<sfVideoMode>, title: CValuesRef<sfUint32Var>?, style: sfUint32, settings: CValuesRef<sfContextSettings>?): CPointer<sfRenderWindow>? {
-    return memScoped {
-        val _mode = mode.getPointer(memScope).rawValue
-        val _title = title?.getPointer(memScope).rawValue
-        val _style = style
-        val _settings = settings?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_createUnicode(_mode, _title, _style, _settings)
-        interpretCPointer<sfRenderWindow>(res)
+    memScoped {
+        return interpretCPointer<sfRenderWindow>(kniBridge368(mode.getPointer(memScope).rawValue, title?.getPointer(memScope).rawValue, style, settings?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderWindow_createFromHandle(handle: sfWindowHandle, settings: CValuesRef<sfContextSettings>?): CPointer<sfRenderWindow>? {
-    return memScoped {
-        val _handle = handle
-        val _settings = settings?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_createFromHandle(_handle, _settings)
-        interpretCPointer<sfRenderWindow>(res)
+    memScoped {
+        return interpretCPointer<sfRenderWindow>(kniBridge369(handle, settings?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderWindow_destroy(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_destroy(_renderWindow)
-        res
+    memScoped {
+        return kniBridge370(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_close(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_close(_renderWindow)
-        res
+    memScoped {
+        return kniBridge371(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_isOpen(renderWindow: CValuesRef<sfRenderWindow>?): sfBool {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_isOpen(_renderWindow)
-        res
+    memScoped {
+        return kniBridge372(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_getSettings(renderWindow: CValuesRef<sfRenderWindow>?): CValue<sfContextSettings> {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getSettings(_renderWindow, alloc<sfContextSettings>().rawPtr)
-        interpretPointed<sfContextSettings>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfContextSettings>()
+        try {
+            kniBridge373(renderWindow?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderWindow_pollEvent(renderWindow: CValuesRef<sfRenderWindow>?, event: CValuesRef<sfEvent>?): sfBool {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _event = event?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_pollEvent(_renderWindow, _event)
-        res
+    memScoped {
+        return kniBridge374(renderWindow?.getPointer(memScope).rawValue, event?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_waitEvent(renderWindow: CValuesRef<sfRenderWindow>?, event: CValuesRef<sfEvent>?): sfBool {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _event = event?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_waitEvent(_renderWindow, _event)
-        res
+    memScoped {
+        return kniBridge375(renderWindow?.getPointer(memScope).rawValue, event?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_getPosition(renderWindow: CValuesRef<sfRenderWindow>?): CValue<sfVector2i> {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getPosition(_renderWindow, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge376(renderWindow?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderWindow_setPosition(renderWindow: CValuesRef<sfRenderWindow>?, position: CValue<sfVector2i>): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_setPosition(_renderWindow, _position)
-        res
+    memScoped {
+        return kniBridge377(renderWindow?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_getSize(renderWindow: CValuesRef<sfRenderWindow>?): CValue<sfVector2u> {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getSize(_renderWindow, alloc<sfVector2u>().rawPtr)
-        interpretPointed<sfVector2u>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2u>()
+        try {
+            kniBridge378(renderWindow?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderWindow_setSize(renderWindow: CValuesRef<sfRenderWindow>?, size: CValue<sfVector2u>): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _size = size.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_setSize(_renderWindow, _size)
-        res
+    memScoped {
+        return kniBridge379(renderWindow?.getPointer(memScope).rawValue, size.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_setTitle(renderWindow: CValuesRef<sfRenderWindow>?, title: String?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _title = title?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_setTitle(_renderWindow, _title)
-        res
+    memScoped {
+        return kniBridge380(renderWindow?.getPointer(memScope).rawValue, title?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_setUnicodeTitle(renderWindow: CValuesRef<sfRenderWindow>?, title: CValuesRef<sfUint32Var>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _title = title?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_setUnicodeTitle(_renderWindow, _title)
-        res
+    memScoped {
+        return kniBridge381(renderWindow?.getPointer(memScope).rawValue, title?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfRenderWindow_setIcon(renderWindow: CValuesRef<sfRenderWindow>?, width: Int, height: Int, pixels: CValuesRef<sfUint8Var>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _width = width
-        val _height = height
-        val _pixels = pixels?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_setIcon(_renderWindow, _width, _height, _pixels)
-        res
+fun sfRenderWindow_setIcon(renderWindow: CValuesRef<sfRenderWindow>?, width: UInt, height: UInt, pixels: CValuesRef<sfUint8Var>?): Unit {
+    memScoped {
+        return kniBridge382(renderWindow?.getPointer(memScope).rawValue, width, height, pixels?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_setVisible(renderWindow: CValuesRef<sfRenderWindow>?, visible: sfBool): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _visible = visible
-        val res = kni_sfRenderWindow_setVisible(_renderWindow, _visible)
-        res
-    }
-}
-
-fun sfRenderWindow_setMouseCursorVisible(renderWindow: CValuesRef<sfRenderWindow>?, show: sfBool): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _show = show
-        val res = kni_sfRenderWindow_setMouseCursorVisible(_renderWindow, _show)
-        res
+    memScoped {
+        return kniBridge383(renderWindow?.getPointer(memScope).rawValue, visible)
     }
 }
 
 fun sfRenderWindow_setVerticalSyncEnabled(renderWindow: CValuesRef<sfRenderWindow>?, enabled: sfBool): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _enabled = enabled
-        val res = kni_sfRenderWindow_setVerticalSyncEnabled(_renderWindow, _enabled)
-        res
+    memScoped {
+        return kniBridge384(renderWindow?.getPointer(memScope).rawValue, enabled)
+    }
+}
+
+fun sfRenderWindow_setMouseCursorVisible(renderWindow: CValuesRef<sfRenderWindow>?, show: sfBool): Unit {
+    memScoped {
+        return kniBridge385(renderWindow?.getPointer(memScope).rawValue, show)
+    }
+}
+
+fun sfRenderWindow_setMouseCursorGrabbed(renderWindow: CValuesRef<sfRenderWindow>?, grabbed: sfBool): Unit {
+    memScoped {
+        return kniBridge386(renderWindow?.getPointer(memScope).rawValue, grabbed)
     }
 }
 
 fun sfRenderWindow_setKeyRepeatEnabled(renderWindow: CValuesRef<sfRenderWindow>?, enabled: sfBool): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _enabled = enabled
-        val res = kni_sfRenderWindow_setKeyRepeatEnabled(_renderWindow, _enabled)
-        res
+    memScoped {
+        return kniBridge387(renderWindow?.getPointer(memScope).rawValue, enabled)
     }
 }
 
-fun sfRenderWindow_setActive(renderWindow: CValuesRef<sfRenderWindow>?, active: sfBool): sfBool {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _active = active
-        val res = kni_sfRenderWindow_setActive(_renderWindow, _active)
-        res
-    }
-}
-
-fun sfRenderWindow_requestFocus(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_requestFocus(_renderWindow)
-        res
-    }
-}
-
-fun sfRenderWindow_hasFocus(renderWindow: CValuesRef<sfRenderWindow>?): sfBool {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_hasFocus(_renderWindow)
-        res
-    }
-}
-
-fun sfRenderWindow_display(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_display(_renderWindow)
-        res
-    }
-}
-
-fun sfRenderWindow_setFramerateLimit(renderWindow: CValuesRef<sfRenderWindow>?, limit: Int): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _limit = limit
-        val res = kni_sfRenderWindow_setFramerateLimit(_renderWindow, _limit)
-        res
+fun sfRenderWindow_setFramerateLimit(renderWindow: CValuesRef<sfRenderWindow>?, limit: UInt): Unit {
+    memScoped {
+        return kniBridge388(renderWindow?.getPointer(memScope).rawValue, limit)
     }
 }
 
 fun sfRenderWindow_setJoystickThreshold(renderWindow: CValuesRef<sfRenderWindow>?, threshold: Float): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _threshold = threshold
-        val res = kni_sfRenderWindow_setJoystickThreshold(_renderWindow, _threshold)
-        res
+    memScoped {
+        return kniBridge389(renderWindow?.getPointer(memScope).rawValue, threshold)
+    }
+}
+
+fun sfRenderWindow_setActive(renderWindow: CValuesRef<sfRenderWindow>?, active: sfBool): sfBool {
+    memScoped {
+        return kniBridge390(renderWindow?.getPointer(memScope).rawValue, active)
+    }
+}
+
+fun sfRenderWindow_requestFocus(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
+    memScoped {
+        return kniBridge391(renderWindow?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfRenderWindow_hasFocus(renderWindow: CValuesRef<sfRenderWindow>?): sfBool {
+    memScoped {
+        return kniBridge392(renderWindow?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfRenderWindow_display(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
+    memScoped {
+        return kniBridge393(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_getSystemHandle(renderWindow: CValuesRef<sfRenderWindow>?): sfWindowHandle {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getSystemHandle(_renderWindow)
-        res
+    memScoped {
+        return kniBridge394(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_clear(renderWindow: CValuesRef<sfRenderWindow>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_clear(_renderWindow, _color)
-        res
+    memScoped {
+        return kniBridge395(renderWindow?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_setView(renderWindow: CValuesRef<sfRenderWindow>?, view: CValuesRef<sfView>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_setView(_renderWindow, _view)
-        res
+    memScoped {
+        return kniBridge396(renderWindow?.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_getView(renderWindow: CValuesRef<sfRenderWindow>?): CPointer<sfView>? {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getView(_renderWindow)
-        interpretCPointer<sfView>(res)
+    memScoped {
+        return interpretCPointer<sfView>(kniBridge397(renderWindow?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderWindow_getDefaultView(renderWindow: CValuesRef<sfRenderWindow>?): CPointer<sfView>? {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getDefaultView(_renderWindow)
-        interpretCPointer<sfView>(res)
+    memScoped {
+        return interpretCPointer<sfView>(kniBridge398(renderWindow?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfRenderWindow_getViewport(renderWindow: CValuesRef<sfRenderWindow>?, view: CValuesRef<sfView>?): CValue<sfIntRect> {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_getViewport(_renderWindow, _view, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge399(renderWindow?.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderWindow_mapPixelToCoords(renderWindow: CValuesRef<sfRenderWindow>?, point: CValue<sfVector2i>, view: CValuesRef<sfView>?): CValue<sfVector2f> {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _point = point.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_mapPixelToCoords(_renderWindow, _point, _view, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge400(renderWindow?.getPointer(memScope).rawValue, point.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderWindow_mapCoordsToPixel(renderWindow: CValuesRef<sfRenderWindow>?, point: CValue<sfVector2f>, view: CValuesRef<sfView>?): CValue<sfVector2i> {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _point = point.getPointer(memScope).rawValue
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_mapCoordsToPixel(_renderWindow, _point, _view, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge401(renderWindow?.getPointer(memScope).rawValue, point.getPointer(memScope).rawValue, view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfRenderWindow_drawSprite(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfSprite>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawSprite(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge402(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawText(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfText>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawText(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge403(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawShape(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawShape(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge404(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawCircleShape(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfCircleShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawCircleShape(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge405(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawConvexShape(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfConvexShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawConvexShape(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge406(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawRectangleShape(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfRectangleShape>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawRectangleShape(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge407(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawVertexArray(renderWindow: CValuesRef<sfRenderWindow>?, `object`: CValuesRef<sfVertexArray>?, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _object = `object`?.getPointer(memScope).rawValue
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawVertexArray(_renderWindow, _object, _states)
-        res
+    memScoped {
+        return kniBridge408(renderWindow?.getPointer(memScope).rawValue, `object`?.getPointer(memScope).rawValue, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_drawPrimitives(renderWindow: CValuesRef<sfRenderWindow>?, vertices: CValuesRef<sfVertex>?, vertexCount: size_t, type: sfPrimitiveType, states: CValuesRef<sfRenderStates>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _vertices = vertices?.getPointer(memScope).rawValue
-        val _vertexCount = vertexCount
-        val _type = type.value
-        val _states = states?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_drawPrimitives(_renderWindow, _vertices, _vertexCount, _type, _states)
-        res
+    memScoped {
+        return kniBridge409(renderWindow?.getPointer(memScope).rawValue, vertices?.getPointer(memScope).rawValue, vertexCount, type, states?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_pushGLStates(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_pushGLStates(_renderWindow)
-        res
+    memScoped {
+        return kniBridge410(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_popGLStates(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_popGLStates(_renderWindow)
-        res
+    memScoped {
+        return kniBridge411(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_resetGLStates(renderWindow: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_resetGLStates(_renderWindow)
-        res
+    memScoped {
+        return kniBridge412(renderWindow?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfRenderWindow_capture(renderWindow: CValuesRef<sfRenderWindow>?): CPointer<sfImage>? {
-    return memScoped {
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val res = kni_sfRenderWindow_capture(_renderWindow)
-        interpretCPointer<sfImage>(res)
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge413(renderWindow?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfMouse_getPositionRenderWindow(relativeTo: CValuesRef<sfRenderWindow>?): CValue<sfVector2i> {
-    return memScoped {
-        val _relativeTo = relativeTo?.getPointer(memScope).rawValue
-        val res = kni_sfMouse_getPositionRenderWindow(_relativeTo, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge414(relativeTo?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfMouse_setPositionRenderWindow(position: CValue<sfVector2i>, relativeTo: CValuesRef<sfRenderWindow>?): Unit {
-    return memScoped {
-        val _position = position.getPointer(memScope).rawValue
-        val _relativeTo = relativeTo?.getPointer(memScope).rawValue
-        val res = kni_sfMouse_setPositionRenderWindow(_position, _relativeTo)
-        res
+    memScoped {
+        return kniBridge415(position.getPointer(memScope).rawValue, relativeTo?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTouch_getPositionRenderWindow(finger: Int, relativeTo: CValuesRef<sfRenderWindow>?): CValue<sfVector2i> {
-    return memScoped {
-        val _finger = finger
-        val _relativeTo = relativeTo?.getPointer(memScope).rawValue
-        val res = kni_sfTouch_getPositionRenderWindow(_finger, _relativeTo, alloc<sfVector2i>().rawPtr)
-        interpretPointed<sfVector2i>(res).readValue()
+fun sfTouch_getPositionRenderWindow(finger: UInt, relativeTo: CValuesRef<sfRenderWindow>?): CValue<sfVector2i> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2i>()
+        try {
+            kniBridge416(finger, relativeTo?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-fun sfShader_createFromFile(vertexShaderFilename: String?, fragmentShaderFilename: String?): CPointer<sfShader>? {
-    return memScoped {
-        val _vertexShaderFilename = vertexShaderFilename?.cstr?.getPointer(memScope).rawValue
-        val _fragmentShaderFilename = fragmentShaderFilename?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfShader_createFromFile(_vertexShaderFilename, _fragmentShaderFilename)
-        interpretCPointer<sfShader>(res)
+fun sfShader_createFromFile(vertexShaderFilename: String?, geometryShaderFilename: String?, fragmentShaderFilename: String?): CPointer<sfShader>? {
+    memScoped {
+        return interpretCPointer<sfShader>(kniBridge417(vertexShaderFilename?.cstr?.getPointer(memScope).rawValue, geometryShaderFilename?.cstr?.getPointer(memScope).rawValue, fragmentShaderFilename?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfShader_createFromMemory(vertexShader: String?, fragmentShader: String?): CPointer<sfShader>? {
-    return memScoped {
-        val _vertexShader = vertexShader?.cstr?.getPointer(memScope).rawValue
-        val _fragmentShader = fragmentShader?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfShader_createFromMemory(_vertexShader, _fragmentShader)
-        interpretCPointer<sfShader>(res)
+fun sfShader_createFromMemory(vertexShader: String?, geometryShader: String?, fragmentShader: String?): CPointer<sfShader>? {
+    memScoped {
+        return interpretCPointer<sfShader>(kniBridge418(vertexShader?.cstr?.getPointer(memScope).rawValue, geometryShader?.cstr?.getPointer(memScope).rawValue, fragmentShader?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfShader_createFromStream(vertexShaderStream: CValuesRef<sfInputStream>?, fragmentShaderStream: CValuesRef<sfInputStream>?): CPointer<sfShader>? {
-    return memScoped {
-        val _vertexShaderStream = vertexShaderStream?.getPointer(memScope).rawValue
-        val _fragmentShaderStream = fragmentShaderStream?.getPointer(memScope).rawValue
-        val res = kni_sfShader_createFromStream(_vertexShaderStream, _fragmentShaderStream)
-        interpretCPointer<sfShader>(res)
+fun sfShader_createFromStream(vertexShaderStream: CValuesRef<sfInputStream>?, geometryShaderStream: CValuesRef<sfInputStream>?, fragmentShaderStream: CValuesRef<sfInputStream>?): CPointer<sfShader>? {
+    memScoped {
+        return interpretCPointer<sfShader>(kniBridge419(vertexShaderStream?.getPointer(memScope).rawValue, geometryShaderStream?.getPointer(memScope).rawValue, fragmentShaderStream?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfShader_destroy(shader: CValuesRef<sfShader>?): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val res = kni_sfShader_destroy(_shader)
-        res
+    memScoped {
+        return kniBridge420(shader?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setFloatUniform(shader: CValuesRef<sfShader>?, name: String?, x: Float): Unit {
+    memScoped {
+        return kniBridge421(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x)
+    }
+}
+
+fun sfShader_setVec2Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslVec2>): Unit {
+    memScoped {
+        return kniBridge422(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setVec3Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslVec3>): Unit {
+    memScoped {
+        return kniBridge423(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setVec4Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslVec4>): Unit {
+    memScoped {
+        return kniBridge424(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setColorUniform(shader: CValuesRef<sfShader>?, name: String?, color: CValue<sfColor>): Unit {
+    memScoped {
+        return kniBridge425(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setIntUniform(shader: CValuesRef<sfShader>?, name: String?, x: Int): Unit {
+    memScoped {
+        return kniBridge426(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x)
+    }
+}
+
+fun sfShader_setIvec2Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslIvec2>): Unit {
+    memScoped {
+        return kniBridge427(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setIvec3Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslIvec3>): Unit {
+    memScoped {
+        return kniBridge428(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setIvec4Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslIvec4>): Unit {
+    memScoped {
+        return kniBridge429(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setIntColorUniform(shader: CValuesRef<sfShader>?, name: String?, color: CValue<sfColor>): Unit {
+    memScoped {
+        return kniBridge430(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setBoolUniform(shader: CValuesRef<sfShader>?, name: String?, x: sfBool): Unit {
+    memScoped {
+        return kniBridge431(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x)
+    }
+}
+
+fun sfShader_setBvec2Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslBvec2>): Unit {
+    memScoped {
+        return kniBridge432(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setBvec3Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslBvec3>): Unit {
+    memScoped {
+        return kniBridge433(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setBvec4Uniform(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfGlslBvec4>): Unit {
+    memScoped {
+        return kniBridge434(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setMat3Uniform(shader: CValuesRef<sfShader>?, name: String?, matrix: CValuesRef<sfGlslMat3>?): Unit {
+    memScoped {
+        return kniBridge435(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, matrix?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setMat4Uniform(shader: CValuesRef<sfShader>?, name: String?, matrix: CValuesRef<sfGlslMat4>?): Unit {
+    memScoped {
+        return kniBridge436(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, matrix?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setTextureUniform(shader: CValuesRef<sfShader>?, name: String?, texture: CValuesRef<sfTexture>?): Unit {
+    memScoped {
+        return kniBridge437(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setCurrentTextureUniform(shader: CValuesRef<sfShader>?, name: String?): Unit {
+    memScoped {
+        return kniBridge438(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfShader_setFloatUniformArray(shader: CValuesRef<sfShader>?, name: String?, scalarArray: CValuesRef<FloatVar>?, length: size_t): Unit {
+    memScoped {
+        return kniBridge439(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, scalarArray?.getPointer(memScope).rawValue, length)
+    }
+}
+
+fun sfShader_setVec2UniformArray(shader: CValuesRef<sfShader>?, name: String?, vectorArray: CValuesRef<sfGlslVec2>?, length: size_t): Unit {
+    memScoped {
+        return kniBridge440(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vectorArray?.getPointer(memScope).rawValue, length)
+    }
+}
+
+fun sfShader_setVec3UniformArray(shader: CValuesRef<sfShader>?, name: String?, vectorArray: CValuesRef<sfGlslVec3>?, length: size_t): Unit {
+    memScoped {
+        return kniBridge441(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vectorArray?.getPointer(memScope).rawValue, length)
+    }
+}
+
+fun sfShader_setVec4UniformArray(shader: CValuesRef<sfShader>?, name: String?, vectorArray: CValuesRef<sfGlslVec4>?, length: size_t): Unit {
+    memScoped {
+        return kniBridge442(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vectorArray?.getPointer(memScope).rawValue, length)
+    }
+}
+
+fun sfShader_setMat3UniformArray(shader: CValuesRef<sfShader>?, name: String?, matrixArray: CValuesRef<sfGlslMat3>?, length: size_t): Unit {
+    memScoped {
+        return kniBridge443(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, matrixArray?.getPointer(memScope).rawValue, length)
+    }
+}
+
+fun sfShader_setMat4UniformArray(shader: CValuesRef<sfShader>?, name: String?, matrixArray: CValuesRef<sfGlslMat4>?, length: size_t): Unit {
+    memScoped {
+        return kniBridge444(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, matrixArray?.getPointer(memScope).rawValue, length)
     }
 }
 
 fun sfShader_setFloatParameter(shader: CValuesRef<sfShader>?, name: String?, x: Float): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _x = x
-        val res = kni_sfShader_setFloatParameter(_shader, _name, _x)
-        res
+    memScoped {
+        return kniBridge445(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x)
     }
 }
 
 fun sfShader_setFloat2Parameter(shader: CValuesRef<sfShader>?, name: String?, x: Float, y: Float): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfShader_setFloat2Parameter(_shader, _name, _x, _y)
-        res
+    memScoped {
+        return kniBridge446(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x, y)
     }
 }
 
 fun sfShader_setFloat3Parameter(shader: CValuesRef<sfShader>?, name: String?, x: Float, y: Float, z: Float): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val _z = z
-        val res = kni_sfShader_setFloat3Parameter(_shader, _name, _x, _y, _z)
-        res
+    memScoped {
+        return kniBridge447(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x, y, z)
     }
 }
 
 fun sfShader_setFloat4Parameter(shader: CValuesRef<sfShader>?, name: String?, x: Float, y: Float, z: Float, w: Float): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val _z = z
-        val _w = w
-        val res = kni_sfShader_setFloat4Parameter(_shader, _name, _x, _y, _z, _w)
-        res
+    memScoped {
+        return kniBridge448(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, x, y, z, w)
     }
 }
 
 fun sfShader_setVector2Parameter(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _vector = vector.getPointer(memScope).rawValue
-        val res = kni_sfShader_setVector2Parameter(_shader, _name, _vector)
-        res
+    memScoped {
+        return kniBridge449(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShader_setVector3Parameter(shader: CValuesRef<sfShader>?, name: String?, vector: CValue<sfVector3f>): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _vector = vector.getPointer(memScope).rawValue
-        val res = kni_sfShader_setVector3Parameter(_shader, _name, _vector)
-        res
+    memScoped {
+        return kniBridge450(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, vector.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShader_setColorParameter(shader: CValuesRef<sfShader>?, name: String?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfShader_setColorParameter(_shader, _name, _color)
-        res
+    memScoped {
+        return kniBridge451(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShader_setTransformParameter(shader: CValuesRef<sfShader>?, name: String?, transform: CValue<sfTransform>): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _transform = transform.getPointer(memScope).rawValue
-        val res = kni_sfShader_setTransformParameter(_shader, _name, _transform)
-        res
+    memScoped {
+        return kniBridge452(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, transform.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShader_setTextureParameter(shader: CValuesRef<sfShader>?, name: String?, texture: CValuesRef<sfTexture>?): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfShader_setTextureParameter(_shader, _name, _texture)
-        res
+    memScoped {
+        return kniBridge453(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShader_setCurrentTextureParameter(shader: CValuesRef<sfShader>?, name: String?): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfShader_setCurrentTextureParameter(_shader, _name)
-        res
+    memScoped {
+        return kniBridge454(shader?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfShader_getNativeHandle(shader: CValuesRef<sfShader>?): Int {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val res = kni_sfShader_getNativeHandle(_shader)
-        res
+fun sfShader_getNativeHandle(shader: CValuesRef<sfShader>?): UInt {
+    memScoped {
+        return kniBridge455(shader?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShader_bind(shader: CValuesRef<sfShader>?): Unit {
-    return memScoped {
-        val _shader = shader?.getPointer(memScope).rawValue
-        val res = kni_sfShader_bind(_shader)
-        res
+    memScoped {
+        return kniBridge456(shader?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfShader_isAvailable")
-external fun sfShader_isAvailable(): sfBool
+fun sfShader_isAvailable(): sfBool {
+    return kniBridge457()
+}
 
-@SymbolName("kni_sfml_sfShape_create")
-external fun sfShape_create(getPointCount: sfShapeGetPointCountCallback?, getPoint: sfShapeGetPointCallback?, userData: COpaquePointer?): CPointer<sfShape>?
+fun sfShader_isGeometryAvailable(): sfBool {
+    return kniBridge458()
+}
+
+fun sfShape_create(getPointCount: sfShapeGetPointCountCallback?, getPoint: sfShapeGetPointCallback?, userData: CValuesRef<*>?): CPointer<sfShape>? {
+    memScoped {
+        return interpretCPointer<sfShape>(kniBridge459(getPointCount.rawValue, getPoint.rawValue, userData?.getPointer(memScope).rawValue))
+    }
+}
 
 fun sfShape_destroy(shape: CValuesRef<sfShape>?): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_destroy(_shape)
-        res
+    memScoped {
+        return kniBridge460(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_setPosition(shape: CValuesRef<sfShape>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfShape_setPosition(_shape, _position)
-        res
+    memScoped {
+        return kniBridge461(shape?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_setRotation(shape: CValuesRef<sfShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfShape_setRotation(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge462(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfShape_setScale(shape: CValuesRef<sfShape>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfShape_setScale(_shape, _scale)
-        res
+    memScoped {
+        return kniBridge463(shape?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_setOrigin(shape: CValuesRef<sfShape>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfShape_setOrigin(_shape, _origin)
-        res
+    memScoped {
+        return kniBridge464(shape?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_getPosition(shape: CValuesRef<sfShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getPosition(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge465(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getRotation(shape: CValuesRef<sfShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getRotation(_shape)
-        res
+    memScoped {
+        return kniBridge466(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_getScale(shape: CValuesRef<sfShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getScale(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge467(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getOrigin(shape: CValuesRef<sfShape>?): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getOrigin(_shape, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge468(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_move(shape: CValuesRef<sfShape>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfShape_move(_shape, _offset)
-        res
+    memScoped {
+        return kniBridge469(shape?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_rotate(shape: CValuesRef<sfShape>?, angle: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfShape_rotate(_shape, _angle)
-        res
+    memScoped {
+        return kniBridge470(shape?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfShape_scale(shape: CValuesRef<sfShape>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfShape_scale(_shape, _factors)
-        res
+    memScoped {
+        return kniBridge471(shape?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_getTransform(shape: CValuesRef<sfShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge472(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getInverseTransform(shape: CValuesRef<sfShape>?): CValue<sfTransform> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getInverseTransform(_shape, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge473(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_setTexture(shape: CValuesRef<sfShape>?, texture: CValuesRef<sfTexture>?, resetRect: sfBool): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _resetRect = resetRect
-        val res = kni_sfShape_setTexture(_shape, _texture, _resetRect)
-        res
+    memScoped {
+        return kniBridge474(shape?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue, resetRect)
     }
 }
 
 fun sfShape_setTextureRect(shape: CValuesRef<sfShape>?, rect: CValue<sfIntRect>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _rect = rect.getPointer(memScope).rawValue
-        val res = kni_sfShape_setTextureRect(_shape, _rect)
-        res
+    memScoped {
+        return kniBridge475(shape?.getPointer(memScope).rawValue, rect.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_setFillColor(shape: CValuesRef<sfShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfShape_setFillColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge476(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_setOutlineColor(shape: CValuesRef<sfShape>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfShape_setOutlineColor(_shape, _color)
-        res
+    memScoped {
+        return kniBridge477(shape?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_setOutlineThickness(shape: CValuesRef<sfShape>?, thickness: Float): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _thickness = thickness
-        val res = kni_sfShape_setOutlineThickness(_shape, _thickness)
-        res
+    memScoped {
+        return kniBridge478(shape?.getPointer(memScope).rawValue, thickness)
     }
 }
 
 fun sfShape_getTexture(shape: CValuesRef<sfShape>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getTexture(_shape)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge479(shape?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfShape_getTextureRect(shape: CValuesRef<sfShape>?): CValue<sfIntRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getTextureRect(_shape, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge480(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getFillColor(shape: CValuesRef<sfShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getFillColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge481(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getOutlineColor(shape: CValuesRef<sfShape>?): CValue<sfColor> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getOutlineColor(_shape, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge482(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getOutlineThickness(shape: CValuesRef<sfShape>?): Float {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getOutlineThickness(_shape)
-        res
+    memScoped {
+        return kniBridge483(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_getPointCount(shape: CValuesRef<sfShape>?): size_t {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getPointCount(_shape)
-        res
+    memScoped {
+        return kniBridge484(shape?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfShape_getPoint(shape: CValuesRef<sfShape>?, index: size_t): CValue<sfVector2f> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfShape_getPoint(_shape, _index, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge485(shape?.getPointer(memScope).rawValue, index, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getLocalBounds(shape: CValuesRef<sfShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getLocalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge486(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_getGlobalBounds(shape: CValuesRef<sfShape>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_getGlobalBounds(_shape, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge487(shape?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfShape_update(shape: CValuesRef<sfShape>?): Unit {
-    return memScoped {
-        val _shape = shape?.getPointer(memScope).rawValue
-        val res = kni_sfShape_update(_shape)
-        res
+    memScoped {
+        return kniBridge488(shape?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfSprite_create")
-external fun sfSprite_create(): CPointer<sfSprite>?
+fun sfSprite_create(): CPointer<sfSprite>? {
+    return interpretCPointer<sfSprite>(kniBridge489())
+}
 
 fun sfSprite_copy(sprite: CValuesRef<sfSprite>?): CPointer<sfSprite>? {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_copy(_sprite)
-        interpretCPointer<sfSprite>(res)
+    memScoped {
+        return interpretCPointer<sfSprite>(kniBridge490(sprite?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSprite_destroy(sprite: CValuesRef<sfSprite>?): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_destroy(_sprite)
-        res
+    memScoped {
+        return kniBridge491(sprite?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_setPosition(sprite: CValuesRef<sfSprite>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfSprite_setPosition(_sprite, _position)
-        res
+    memScoped {
+        return kniBridge492(sprite?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_setRotation(sprite: CValuesRef<sfSprite>?, angle: Float): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfSprite_setRotation(_sprite, _angle)
-        res
+    memScoped {
+        return kniBridge493(sprite?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfSprite_setScale(sprite: CValuesRef<sfSprite>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfSprite_setScale(_sprite, _scale)
-        res
+    memScoped {
+        return kniBridge494(sprite?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_setOrigin(sprite: CValuesRef<sfSprite>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfSprite_setOrigin(_sprite, _origin)
-        res
+    memScoped {
+        return kniBridge495(sprite?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_getPosition(sprite: CValuesRef<sfSprite>?): CValue<sfVector2f> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getPosition(_sprite, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge496(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_getRotation(sprite: CValuesRef<sfSprite>?): Float {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getRotation(_sprite)
-        res
+    memScoped {
+        return kniBridge497(sprite?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_getScale(sprite: CValuesRef<sfSprite>?): CValue<sfVector2f> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getScale(_sprite, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge498(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_getOrigin(sprite: CValuesRef<sfSprite>?): CValue<sfVector2f> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getOrigin(_sprite, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge499(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_move(sprite: CValuesRef<sfSprite>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfSprite_move(_sprite, _offset)
-        res
+    memScoped {
+        return kniBridge500(sprite?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_rotate(sprite: CValuesRef<sfSprite>?, angle: Float): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfSprite_rotate(_sprite, _angle)
-        res
+    memScoped {
+        return kniBridge501(sprite?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfSprite_scale(sprite: CValuesRef<sfSprite>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfSprite_scale(_sprite, _factors)
-        res
+    memScoped {
+        return kniBridge502(sprite?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_getTransform(sprite: CValuesRef<sfSprite>?): CValue<sfTransform> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getTransform(_sprite, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge503(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_getInverseTransform(sprite: CValuesRef<sfSprite>?): CValue<sfTransform> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getInverseTransform(_sprite, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge504(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_setTexture(sprite: CValuesRef<sfSprite>?, texture: CValuesRef<sfTexture>?, resetRect: sfBool): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _resetRect = resetRect
-        val res = kni_sfSprite_setTexture(_sprite, _texture, _resetRect)
-        res
+    memScoped {
+        return kniBridge505(sprite?.getPointer(memScope).rawValue, texture?.getPointer(memScope).rawValue, resetRect)
     }
 }
 
 fun sfSprite_setTextureRect(sprite: CValuesRef<sfSprite>?, rectangle: CValue<sfIntRect>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _rectangle = rectangle.getPointer(memScope).rawValue
-        val res = kni_sfSprite_setTextureRect(_sprite, _rectangle)
-        res
+    memScoped {
+        return kniBridge506(sprite?.getPointer(memScope).rawValue, rectangle.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_setColor(sprite: CValuesRef<sfSprite>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfSprite_setColor(_sprite, _color)
-        res
+    memScoped {
+        return kniBridge507(sprite?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSprite_getTexture(sprite: CValuesRef<sfSprite>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getTexture(_sprite)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge508(sprite?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSprite_getTextureRect(sprite: CValuesRef<sfSprite>?): CValue<sfIntRect> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getTextureRect(_sprite, alloc<sfIntRect>().rawPtr)
-        interpretPointed<sfIntRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIntRect>()
+        try {
+            kniBridge509(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_getColor(sprite: CValuesRef<sfSprite>?): CValue<sfColor> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getColor(_sprite, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge510(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_getLocalBounds(sprite: CValuesRef<sfSprite>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getLocalBounds(_sprite, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge511(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfSprite_getGlobalBounds(sprite: CValuesRef<sfSprite>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _sprite = sprite?.getPointer(memScope).rawValue
-        val res = kni_sfSprite_getGlobalBounds(_sprite, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge512(sprite?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfText_create")
-external fun sfText_create(): CPointer<sfText>?
+fun sfText_create(): CPointer<sfText>? {
+    return interpretCPointer<sfText>(kniBridge513())
+}
 
 fun sfText_copy(text: CValuesRef<sfText>?): CPointer<sfText>? {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_copy(_text)
-        interpretCPointer<sfText>(res)
+    memScoped {
+        return interpretCPointer<sfText>(kniBridge514(text?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfText_destroy(text: CValuesRef<sfText>?): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_destroy(_text)
-        res
+    memScoped {
+        return kniBridge515(text?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_setPosition(text: CValuesRef<sfText>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfText_setPosition(_text, _position)
-        res
+    memScoped {
+        return kniBridge516(text?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_setRotation(text: CValuesRef<sfText>?, angle: Float): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfText_setRotation(_text, _angle)
-        res
+    memScoped {
+        return kniBridge517(text?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfText_setScale(text: CValuesRef<sfText>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfText_setScale(_text, _scale)
-        res
+    memScoped {
+        return kniBridge518(text?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_setOrigin(text: CValuesRef<sfText>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfText_setOrigin(_text, _origin)
-        res
+    memScoped {
+        return kniBridge519(text?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_getPosition(text: CValuesRef<sfText>?): CValue<sfVector2f> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getPosition(_text, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge520(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_getRotation(text: CValuesRef<sfText>?): Float {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getRotation(_text)
-        res
+    memScoped {
+        return kniBridge521(text?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_getScale(text: CValuesRef<sfText>?): CValue<sfVector2f> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getScale(_text, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge522(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_getOrigin(text: CValuesRef<sfText>?): CValue<sfVector2f> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getOrigin(_text, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge523(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_move(text: CValuesRef<sfText>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfText_move(_text, _offset)
-        res
+    memScoped {
+        return kniBridge524(text?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_rotate(text: CValuesRef<sfText>?, angle: Float): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfText_rotate(_text, _angle)
-        res
+    memScoped {
+        return kniBridge525(text?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfText_scale(text: CValuesRef<sfText>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfText_scale(_text, _factors)
-        res
+    memScoped {
+        return kniBridge526(text?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_getTransform(text: CValuesRef<sfText>?): CValue<sfTransform> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getTransform(_text, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge527(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_getInverseTransform(text: CValuesRef<sfText>?): CValue<sfTransform> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getInverseTransform(_text, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge528(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_setString(text: CValuesRef<sfText>?, string: String?): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _string = string?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfText_setString(_text, _string)
-        res
+    memScoped {
+        return kniBridge529(text?.getPointer(memScope).rawValue, string?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_setUnicodeString(text: CValuesRef<sfText>?, string: CValuesRef<sfUint32Var>?): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _string = string?.getPointer(memScope).rawValue
-        val res = kni_sfText_setUnicodeString(_text, _string)
-        res
+    memScoped {
+        return kniBridge530(text?.getPointer(memScope).rawValue, string?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_setFont(text: CValuesRef<sfText>?, font: CValuesRef<sfFont>?): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _font = font?.getPointer(memScope).rawValue
-        val res = kni_sfText_setFont(_text, _font)
-        res
+    memScoped {
+        return kniBridge531(text?.getPointer(memScope).rawValue, font?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfText_setCharacterSize(text: CValuesRef<sfText>?, size: Int): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _size = size
-        val res = kni_sfText_setCharacterSize(_text, _size)
-        res
+fun sfText_setCharacterSize(text: CValuesRef<sfText>?, size: UInt): Unit {
+    memScoped {
+        return kniBridge532(text?.getPointer(memScope).rawValue, size)
     }
 }
 
 fun sfText_setStyle(text: CValuesRef<sfText>?, style: sfUint32): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _style = style
-        val res = kni_sfText_setStyle(_text, _style)
-        res
+    memScoped {
+        return kniBridge533(text?.getPointer(memScope).rawValue, style)
     }
 }
 
 fun sfText_setColor(text: CValuesRef<sfText>?, color: CValue<sfColor>): Unit {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _color = color.getPointer(memScope).rawValue
-        val res = kni_sfText_setColor(_text, _color)
-        res
+    memScoped {
+        return kniBridge534(text?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfText_setFillColor(text: CValuesRef<sfText>?, color: CValue<sfColor>): Unit {
+    memScoped {
+        return kniBridge535(text?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfText_setOutlineColor(text: CValuesRef<sfText>?, color: CValue<sfColor>): Unit {
+    memScoped {
+        return kniBridge536(text?.getPointer(memScope).rawValue, color.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfText_setOutlineThickness(text: CValuesRef<sfText>?, thickness: Float): Unit {
+    memScoped {
+        return kniBridge537(text?.getPointer(memScope).rawValue, thickness)
     }
 }
 
 fun sfText_getString(text: CValuesRef<sfText>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getString(_text)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge538(text?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfText_getUnicodeString(text: CValuesRef<sfText>?): CPointer<sfUint32Var>? {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getUnicodeString(_text)
-        interpretCPointer<sfUint32Var>(res)
+    memScoped {
+        return interpretCPointer<sfUint32Var>(kniBridge539(text?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfText_getFont(text: CValuesRef<sfText>?): CPointer<sfFont>? {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getFont(_text)
-        interpretCPointer<sfFont>(res)
+    memScoped {
+        return interpretCPointer<sfFont>(kniBridge540(text?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfText_getCharacterSize(text: CValuesRef<sfText>?): Int {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getCharacterSize(_text)
-        res
+fun sfText_getCharacterSize(text: CValuesRef<sfText>?): UInt {
+    memScoped {
+        return kniBridge541(text?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_getStyle(text: CValuesRef<sfText>?): sfUint32 {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getStyle(_text)
-        res
+    memScoped {
+        return kniBridge542(text?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_getColor(text: CValuesRef<sfText>?): CValue<sfColor> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getColor(_text, alloc<sfColor>().rawPtr)
-        interpretPointed<sfColor>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge543(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
+    }
+}
+
+fun sfText_getFillColor(text: CValuesRef<sfText>?): CValue<sfColor> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge544(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
+    }
+}
+
+fun sfText_getOutlineColor(text: CValuesRef<sfText>?): CValue<sfColor> {
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfColor>()
+        try {
+            kniBridge545(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
+    }
+}
+
+fun sfText_getOutlineThickness(text: CValuesRef<sfText>?): Float {
+    memScoped {
+        return kniBridge546(text?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfText_findCharacterPos(text: CValuesRef<sfText>?, index: size_t): CValue<sfVector2f> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfText_findCharacterPos(_text, _index, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge547(text?.getPointer(memScope).rawValue, index, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_getLocalBounds(text: CValuesRef<sfText>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getLocalBounds(_text, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge548(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfText_getGlobalBounds(text: CValuesRef<sfText>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _text = text?.getPointer(memScope).rawValue
-        val res = kni_sfText_getGlobalBounds(_text, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge549(text?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfTexture_create")
-external fun sfTexture_create(width: Int, height: Int): CPointer<sfTexture>?
+fun sfTexture_create(width: UInt, height: UInt): CPointer<sfTexture>? {
+    return interpretCPointer<sfTexture>(kniBridge550(width, height))
+}
 
 fun sfTexture_createFromFile(filename: String?, area: CValuesRef<sfIntRect>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _filename = filename?.cstr?.getPointer(memScope).rawValue
-        val _area = area?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_createFromFile(_filename, _area)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge551(filename?.cstr?.getPointer(memScope).rawValue, area?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfTexture_createFromMemory(data: COpaquePointer?, sizeInBytes: size_t, area: CValuesRef<sfIntRect>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _data = data.rawValue
-        val _sizeInBytes = sizeInBytes
-        val _area = area?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_createFromMemory(_data, _sizeInBytes, _area)
-        interpretCPointer<sfTexture>(res)
+fun sfTexture_createFromMemory(data: CValuesRef<*>?, sizeInBytes: size_t, area: CValuesRef<sfIntRect>?): CPointer<sfTexture>? {
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge552(data?.getPointer(memScope).rawValue, sizeInBytes, area?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTexture_createFromStream(stream: CValuesRef<sfInputStream>?, area: CValuesRef<sfIntRect>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _stream = stream?.getPointer(memScope).rawValue
-        val _area = area?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_createFromStream(_stream, _area)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge553(stream?.getPointer(memScope).rawValue, area?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTexture_createFromImage(image: CValuesRef<sfImage>?, area: CValuesRef<sfIntRect>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _image = image?.getPointer(memScope).rawValue
-        val _area = area?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_createFromImage(_image, _area)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge554(image?.getPointer(memScope).rawValue, area?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTexture_copy(texture: CValuesRef<sfTexture>?): CPointer<sfTexture>? {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_copy(_texture)
-        interpretCPointer<sfTexture>(res)
+    memScoped {
+        return interpretCPointer<sfTexture>(kniBridge555(texture?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTexture_destroy(texture: CValuesRef<sfTexture>?): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_destroy(_texture)
-        res
+    memScoped {
+        return kniBridge556(texture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTexture_getSize(texture: CValuesRef<sfTexture>?): CValue<sfVector2u> {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_getSize(_texture, alloc<sfVector2u>().rawPtr)
-        interpretPointed<sfVector2u>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2u>()
+        try {
+            kniBridge557(texture?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTexture_copyToImage(texture: CValuesRef<sfTexture>?): CPointer<sfImage>? {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_copyToImage(_texture)
-        interpretCPointer<sfImage>(res)
+    memScoped {
+        return interpretCPointer<sfImage>(kniBridge558(texture?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfTexture_updateFromPixels(texture: CValuesRef<sfTexture>?, pixels: CValuesRef<sfUint8Var>?, width: Int, height: Int, x: Int, y: Int): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _pixels = pixels?.getPointer(memScope).rawValue
-        val _width = width
-        val _height = height
-        val _x = x
-        val _y = y
-        val res = kni_sfTexture_updateFromPixels(_texture, _pixels, _width, _height, _x, _y)
-        res
+fun sfTexture_updateFromPixels(texture: CValuesRef<sfTexture>?, pixels: CValuesRef<sfUint8Var>?, width: UInt, height: UInt, x: UInt, y: UInt): Unit {
+    memScoped {
+        return kniBridge559(texture?.getPointer(memScope).rawValue, pixels?.getPointer(memScope).rawValue, width, height, x, y)
     }
 }
 
-fun sfTexture_updateFromImage(texture: CValuesRef<sfTexture>?, image: CValuesRef<sfImage>?, x: Int, y: Int): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _image = image?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfTexture_updateFromImage(_texture, _image, _x, _y)
-        res
+fun sfTexture_updateFromImage(texture: CValuesRef<sfTexture>?, image: CValuesRef<sfImage>?, x: UInt, y: UInt): Unit {
+    memScoped {
+        return kniBridge560(texture?.getPointer(memScope).rawValue, image?.getPointer(memScope).rawValue, x, y)
     }
 }
 
-fun sfTexture_updateFromWindow(texture: CValuesRef<sfTexture>?, window: CValuesRef<sfWindow>?, x: Int, y: Int): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _window = window?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfTexture_updateFromWindow(_texture, _window, _x, _y)
-        res
+fun sfTexture_updateFromWindow(texture: CValuesRef<sfTexture>?, window: CValuesRef<sfWindow>?, x: UInt, y: UInt): Unit {
+    memScoped {
+        return kniBridge561(texture?.getPointer(memScope).rawValue, window?.getPointer(memScope).rawValue, x, y)
     }
 }
 
-fun sfTexture_updateFromRenderWindow(texture: CValuesRef<sfTexture>?, renderWindow: CValuesRef<sfRenderWindow>?, x: Int, y: Int): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _renderWindow = renderWindow?.getPointer(memScope).rawValue
-        val _x = x
-        val _y = y
-        val res = kni_sfTexture_updateFromRenderWindow(_texture, _renderWindow, _x, _y)
-        res
+fun sfTexture_updateFromRenderWindow(texture: CValuesRef<sfTexture>?, renderWindow: CValuesRef<sfRenderWindow>?, x: UInt, y: UInt): Unit {
+    memScoped {
+        return kniBridge562(texture?.getPointer(memScope).rawValue, renderWindow?.getPointer(memScope).rawValue, x, y)
     }
 }
 
 fun sfTexture_setSmooth(texture: CValuesRef<sfTexture>?, smooth: sfBool): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _smooth = smooth
-        val res = kni_sfTexture_setSmooth(_texture, _smooth)
-        res
+    memScoped {
+        return kniBridge563(texture?.getPointer(memScope).rawValue, smooth)
     }
 }
 
 fun sfTexture_isSmooth(texture: CValuesRef<sfTexture>?): sfBool {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_isSmooth(_texture)
-        res
+    memScoped {
+        return kniBridge564(texture?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfTexture_setSrgb(texture: CValuesRef<sfTexture>?, sRgb: sfBool): Unit {
+    memScoped {
+        return kniBridge565(texture?.getPointer(memScope).rawValue, sRgb)
+    }
+}
+
+fun sfTexture_isSrgb(texture: CValuesRef<sfTexture>?): sfBool {
+    memScoped {
+        return kniBridge566(texture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTexture_setRepeated(texture: CValuesRef<sfTexture>?, repeated: sfBool): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val _repeated = repeated
-        val res = kni_sfTexture_setRepeated(_texture, _repeated)
-        res
+    memScoped {
+        return kniBridge567(texture?.getPointer(memScope).rawValue, repeated)
     }
 }
 
 fun sfTexture_isRepeated(texture: CValuesRef<sfTexture>?): sfBool {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_isRepeated(_texture)
-        res
+    memScoped {
+        return kniBridge568(texture?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTexture_getNativeHandle(texture: CValuesRef<sfTexture>?): Int {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_getNativeHandle(_texture)
-        res
+fun sfTexture_generateMipmap(texture: CValuesRef<sfTexture>?): sfBool {
+    memScoped {
+        return kniBridge569(texture?.getPointer(memScope).rawValue)
+    }
+}
+
+fun sfTexture_getNativeHandle(texture: CValuesRef<sfTexture>?): UInt {
+    memScoped {
+        return kniBridge570(texture?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTexture_bind(texture: CValuesRef<sfTexture>?): Unit {
-    return memScoped {
-        val _texture = texture?.getPointer(memScope).rawValue
-        val res = kni_sfTexture_bind(_texture)
-        res
+    memScoped {
+        return kniBridge571(texture?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfTexture_getMaximumSize")
-external fun sfTexture_getMaximumSize(): Int
+fun sfTexture_getMaximumSize(): UInt {
+    return kniBridge572()
+}
 
-@SymbolName("kni_sfml_sfTransformable_create")
-external fun sfTransformable_create(): CPointer<sfTransformable>?
+fun sfTransformable_create(): CPointer<sfTransformable>? {
+    return interpretCPointer<sfTransformable>(kniBridge573())
+}
 
 fun sfTransformable_copy(transformable: CValuesRef<sfTransformable>?): CPointer<sfTransformable>? {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_copy(_transformable)
-        interpretCPointer<sfTransformable>(res)
+    memScoped {
+        return interpretCPointer<sfTransformable>(kniBridge574(transformable?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTransformable_destroy(transformable: CValuesRef<sfTransformable>?): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_destroy(_transformable)
-        res
+    memScoped {
+        return kniBridge575(transformable?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_setPosition(transformable: CValuesRef<sfTransformable>?, position: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _position = position.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_setPosition(_transformable, _position)
-        res
+    memScoped {
+        return kniBridge576(transformable?.getPointer(memScope).rawValue, position.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_setRotation(transformable: CValuesRef<sfTransformable>?, angle: Float): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfTransformable_setRotation(_transformable, _angle)
-        res
+    memScoped {
+        return kniBridge577(transformable?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfTransformable_setScale(transformable: CValuesRef<sfTransformable>?, scale: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _scale = scale.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_setScale(_transformable, _scale)
-        res
+    memScoped {
+        return kniBridge578(transformable?.getPointer(memScope).rawValue, scale.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_setOrigin(transformable: CValuesRef<sfTransformable>?, origin: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _origin = origin.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_setOrigin(_transformable, _origin)
-        res
+    memScoped {
+        return kniBridge579(transformable?.getPointer(memScope).rawValue, origin.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_getPosition(transformable: CValuesRef<sfTransformable>?): CValue<sfVector2f> {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_getPosition(_transformable, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge580(transformable?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransformable_getRotation(transformable: CValuesRef<sfTransformable>?): Float {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_getRotation(_transformable)
-        res
+    memScoped {
+        return kniBridge581(transformable?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_getScale(transformable: CValuesRef<sfTransformable>?): CValue<sfVector2f> {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_getScale(_transformable, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge582(transformable?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransformable_getOrigin(transformable: CValuesRef<sfTransformable>?): CValue<sfVector2f> {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_getOrigin(_transformable, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge583(transformable?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransformable_move(transformable: CValuesRef<sfTransformable>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_move(_transformable, _offset)
-        res
+    memScoped {
+        return kniBridge584(transformable?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_rotate(transformable: CValuesRef<sfTransformable>?, angle: Float): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfTransformable_rotate(_transformable, _angle)
-        res
+    memScoped {
+        return kniBridge585(transformable?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfTransformable_scale(transformable: CValuesRef<sfTransformable>?, factors: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val _factors = factors.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_scale(_transformable, _factors)
-        res
+    memScoped {
+        return kniBridge586(transformable?.getPointer(memScope).rawValue, factors.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTransformable_getTransform(transformable: CValuesRef<sfTransformable>?): CValue<sfTransform> {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_getTransform(_transformable, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge587(transformable?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfTransformable_getInverseTransform(transformable: CValuesRef<sfTransformable>?): CValue<sfTransform> {
-    return memScoped {
-        val _transformable = transformable?.getPointer(memScope).rawValue
-        val res = kni_sfTransformable_getInverseTransform(_transformable, alloc<sfTransform>().rawPtr)
-        interpretPointed<sfTransform>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfTransform>()
+        try {
+            kniBridge588(transformable?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfVertexArray_create")
-external fun sfVertexArray_create(): CPointer<sfVertexArray>?
+fun sfVertexArray_create(): CPointer<sfVertexArray>? {
+    return interpretCPointer<sfVertexArray>(kniBridge589())
+}
 
 fun sfVertexArray_copy(vertexArray: CValuesRef<sfVertexArray>?): CPointer<sfVertexArray>? {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_copy(_vertexArray)
-        interpretCPointer<sfVertexArray>(res)
+    memScoped {
+        return interpretCPointer<sfVertexArray>(kniBridge590(vertexArray?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfVertexArray_destroy(vertexArray: CValuesRef<sfVertexArray>?): Unit {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_destroy(_vertexArray)
-        res
+    memScoped {
+        return kniBridge591(vertexArray?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfVertexArray_getVertexCount(vertexArray: CValuesRef<sfVertexArray>?): size_t {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_getVertexCount(_vertexArray)
-        res
+    memScoped {
+        return kniBridge592(vertexArray?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfVertexArray_getVertex(vertexArray: CValuesRef<sfVertexArray>?, index: size_t): CPointer<sfVertex>? {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfVertexArray_getVertex(_vertexArray, _index)
-        interpretCPointer<sfVertex>(res)
+    memScoped {
+        return interpretCPointer<sfVertex>(kniBridge593(vertexArray?.getPointer(memScope).rawValue, index))
     }
 }
 
 fun sfVertexArray_clear(vertexArray: CValuesRef<sfVertexArray>?): Unit {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_clear(_vertexArray)
-        res
+    memScoped {
+        return kniBridge594(vertexArray?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfVertexArray_resize(vertexArray: CValuesRef<sfVertexArray>?, vertexCount: size_t): Unit {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val _vertexCount = vertexCount
-        val res = kni_sfVertexArray_resize(_vertexArray, _vertexCount)
-        res
+    memScoped {
+        return kniBridge595(vertexArray?.getPointer(memScope).rawValue, vertexCount)
     }
 }
 
 fun sfVertexArray_append(vertexArray: CValuesRef<sfVertexArray>?, vertex: CValue<sfVertex>): Unit {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val _vertex = vertex.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_append(_vertexArray, _vertex)
-        res
+    memScoped {
+        return kniBridge596(vertexArray?.getPointer(memScope).rawValue, vertex.getPointer(memScope).rawValue)
     }
 }
 
 fun sfVertexArray_setPrimitiveType(vertexArray: CValuesRef<sfVertexArray>?, type: sfPrimitiveType): Unit {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val _type = type.value
-        val res = kni_sfVertexArray_setPrimitiveType(_vertexArray, _type)
-        res
+    memScoped {
+        return kniBridge597(vertexArray?.getPointer(memScope).rawValue, type)
     }
 }
 
 fun sfVertexArray_getPrimitiveType(vertexArray: CValuesRef<sfVertexArray>?): sfPrimitiveType {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_getPrimitiveType(_vertexArray)
-        sfPrimitiveType.byValue(res)
+    memScoped {
+        return kniBridge598(vertexArray?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfVertexArray_getBounds(vertexArray: CValuesRef<sfVertexArray>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _vertexArray = vertexArray?.getPointer(memScope).rawValue
-        val res = kni_sfVertexArray_getBounds(_vertexArray, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge599(vertexArray?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-@SymbolName("kni_sfml_sfView_create")
-external fun sfView_create(): CPointer<sfView>?
+fun sfView_create(): CPointer<sfView>? {
+    return interpretCPointer<sfView>(kniBridge600())
+}
 
 fun sfView_createFromRect(rectangle: CValue<sfFloatRect>): CPointer<sfView>? {
-    return memScoped {
-        val _rectangle = rectangle.getPointer(memScope).rawValue
-        val res = kni_sfView_createFromRect(_rectangle)
-        interpretCPointer<sfView>(res)
+    memScoped {
+        return interpretCPointer<sfView>(kniBridge601(rectangle.getPointer(memScope).rawValue))
     }
 }
 
 fun sfView_copy(view: CValuesRef<sfView>?): CPointer<sfView>? {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfView_copy(_view)
-        interpretCPointer<sfView>(res)
+    memScoped {
+        return interpretCPointer<sfView>(kniBridge602(view?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfView_destroy(view: CValuesRef<sfView>?): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfView_destroy(_view)
-        res
+    memScoped {
+        return kniBridge603(view?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_setCenter(view: CValuesRef<sfView>?, center: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _center = center.getPointer(memScope).rawValue
-        val res = kni_sfView_setCenter(_view, _center)
-        res
+    memScoped {
+        return kniBridge604(view?.getPointer(memScope).rawValue, center.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_setSize(view: CValuesRef<sfView>?, size: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _size = size.getPointer(memScope).rawValue
-        val res = kni_sfView_setSize(_view, _size)
-        res
+    memScoped {
+        return kniBridge605(view?.getPointer(memScope).rawValue, size.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_setRotation(view: CValuesRef<sfView>?, angle: Float): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfView_setRotation(_view, _angle)
-        res
+    memScoped {
+        return kniBridge606(view?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfView_setViewport(view: CValuesRef<sfView>?, viewport: CValue<sfFloatRect>): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _viewport = viewport.getPointer(memScope).rawValue
-        val res = kni_sfView_setViewport(_view, _viewport)
-        res
+    memScoped {
+        return kniBridge607(view?.getPointer(memScope).rawValue, viewport.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_reset(view: CValuesRef<sfView>?, rectangle: CValue<sfFloatRect>): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _rectangle = rectangle.getPointer(memScope).rawValue
-        val res = kni_sfView_reset(_view, _rectangle)
-        res
+    memScoped {
+        return kniBridge608(view?.getPointer(memScope).rawValue, rectangle.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_getCenter(view: CValuesRef<sfView>?): CValue<sfVector2f> {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfView_getCenter(_view, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge609(view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfView_getSize(view: CValuesRef<sfView>?): CValue<sfVector2f> {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfView_getSize(_view, alloc<sfVector2f>().rawPtr)
-        interpretPointed<sfVector2f>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfVector2f>()
+        try {
+            kniBridge610(view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfView_getRotation(view: CValuesRef<sfView>?): Float {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfView_getRotation(_view)
-        res
+    memScoped {
+        return kniBridge611(view?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_getViewport(view: CValuesRef<sfView>?): CValue<sfFloatRect> {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val res = kni_sfView_getViewport(_view, alloc<sfFloatRect>().rawPtr)
-        interpretPointed<sfFloatRect>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfFloatRect>()
+        try {
+            kniBridge612(view?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfView_move(view: CValuesRef<sfView>?, offset: CValue<sfVector2f>): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _offset = offset.getPointer(memScope).rawValue
-        val res = kni_sfView_move(_view, _offset)
-        res
+    memScoped {
+        return kniBridge613(view?.getPointer(memScope).rawValue, offset.getPointer(memScope).rawValue)
     }
 }
 
 fun sfView_rotate(view: CValuesRef<sfView>?, angle: Float): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _angle = angle
-        val res = kni_sfView_rotate(_view, _angle)
-        res
+    memScoped {
+        return kniBridge614(view?.getPointer(memScope).rawValue, angle)
     }
 }
 
 fun sfView_zoom(view: CValuesRef<sfView>?, factor: Float): Unit {
-    return memScoped {
-        val _view = view?.getPointer(memScope).rawValue
-        val _factor = factor
-        val res = kni_sfView_zoom(_view, _factor)
-        res
+    memScoped {
+        return kniBridge615(view?.getPointer(memScope).rawValue, factor)
     }
 }
 
 fun sfIpAddress_fromString(address: String?): CValue<sfIpAddress> {
-    return memScoped {
-        val _address = address?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfIpAddress_fromString(_address, alloc<sfIpAddress>().rawPtr)
-        interpretPointed<sfIpAddress>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIpAddress>()
+        try {
+            kniBridge616(address?.cstr?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfIpAddress_fromBytes(byte0: sfUint8, byte1: sfUint8, byte2: sfUint8, byte3: sfUint8): CValue<sfIpAddress> {
-    return memScoped {
-        val _byte0 = byte0
-        val _byte1 = byte1
-        val _byte2 = byte2
-        val _byte3 = byte3
-        val res = kni_sfIpAddress_fromBytes(_byte0, _byte1, _byte2, _byte3, alloc<sfIpAddress>().rawPtr)
-        interpretPointed<sfIpAddress>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfIpAddress>()
+    try {
+        kniBridge617(byte0, byte1, byte2, byte3, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfIpAddress_fromInteger(address: sfUint32): CValue<sfIpAddress> {
-    return memScoped {
-        val _address = address
-        val res = kni_sfIpAddress_fromInteger(_address, alloc<sfIpAddress>().rawPtr)
-        interpretPointed<sfIpAddress>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfIpAddress>()
+    try {
+        kniBridge618(address, kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfIpAddress_toString(address: CValue<sfIpAddress>, string: CValuesRef<ByteVar>?): Unit {
-    return memScoped {
-        val _address = address.getPointer(memScope).rawValue
-        val _string = string?.getPointer(memScope).rawValue
-        val res = kni_sfIpAddress_toString(_address, _string)
-        res
+    memScoped {
+        return kniBridge619(address.getPointer(memScope).rawValue, string?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfIpAddress_toInteger(address: CValue<sfIpAddress>): sfUint32 {
-    return memScoped {
-        val _address = address.getPointer(memScope).rawValue
-        val res = kni_sfIpAddress_toInteger(_address)
-        res
+    memScoped {
+        return kniBridge620(address.getPointer(memScope).rawValue)
     }
 }
 
 fun sfIpAddress_getLocalAddress(): CValue<sfIpAddress> {
-    return memScoped {
-        val res = kni_sfIpAddress_getLocalAddress(alloc<sfIpAddress>().rawPtr)
-        interpretPointed<sfIpAddress>(res).readValue()
-    }
+    val kniRetVal = nativeHeap.alloc<sfIpAddress>()
+    try {
+        kniBridge621(kniRetVal.rawPtr)
+        return kniRetVal.readValue()
+    } finally { nativeHeap.free(kniRetVal) }
 }
 
 fun sfIpAddress_getPublicAddress(timeout: CValue<sfTime>): CValue<sfIpAddress> {
-    return memScoped {
-        val _timeout = timeout.getPointer(memScope).rawValue
-        val res = kni_sfIpAddress_getPublicAddress(_timeout, alloc<sfIpAddress>().rawPtr)
-        interpretPointed<sfIpAddress>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIpAddress>()
+        try {
+            kniBridge622(timeout.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
 fun sfFtpListingResponse_destroy(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): Unit {
-    return memScoped {
-        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpListingResponse_destroy(_ftpListingResponse)
-        res
+    memScoped {
+        return kniBridge623(ftpListingResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpListingResponse_isOk(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): sfBool {
-    return memScoped {
-        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpListingResponse_isOk(_ftpListingResponse)
-        res
+    memScoped {
+        return kniBridge624(ftpListingResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpListingResponse_getStatus(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): sfFtpStatus {
-    return memScoped {
-        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpListingResponse_getStatus(_ftpListingResponse)
-        res
+    memScoped {
+        return kniBridge625(ftpListingResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpListingResponse_getMessage(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpListingResponse_getMessage(_ftpListingResponse)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge626(ftpListingResponse?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtpListingResponse_getCount(ftpListingResponse: CValuesRef<sfFtpListingResponse>?): size_t {
-    return memScoped {
-        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpListingResponse_getCount(_ftpListingResponse)
-        res
+    memScoped {
+        return kniBridge627(ftpListingResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpListingResponse_getName(ftpListingResponse: CValuesRef<sfFtpListingResponse>?, index: size_t): CPointer<ByteVar>? {
-    return memScoped {
-        val _ftpListingResponse = ftpListingResponse?.getPointer(memScope).rawValue
-        val _index = index
-        val res = kni_sfFtpListingResponse_getName(_ftpListingResponse, _index)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge628(ftpListingResponse?.getPointer(memScope).rawValue, index))
     }
 }
 
 fun sfFtpDirectoryResponse_destroy(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): Unit {
-    return memScoped {
-        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpDirectoryResponse_destroy(_ftpDirectoryResponse)
-        res
+    memScoped {
+        return kniBridge629(ftpDirectoryResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpDirectoryResponse_isOk(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): sfBool {
-    return memScoped {
-        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpDirectoryResponse_isOk(_ftpDirectoryResponse)
-        res
+    memScoped {
+        return kniBridge630(ftpDirectoryResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpDirectoryResponse_getStatus(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): sfFtpStatus {
-    return memScoped {
-        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpDirectoryResponse_getStatus(_ftpDirectoryResponse)
-        res
+    memScoped {
+        return kniBridge631(ftpDirectoryResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpDirectoryResponse_getMessage(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpDirectoryResponse_getMessage(_ftpDirectoryResponse)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge632(ftpDirectoryResponse?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtpDirectoryResponse_getDirectory(ftpDirectoryResponse: CValuesRef<sfFtpDirectoryResponse>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _ftpDirectoryResponse = ftpDirectoryResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpDirectoryResponse_getDirectory(_ftpDirectoryResponse)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge633(ftpDirectoryResponse?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtpResponse_destroy(ftpResponse: CValuesRef<sfFtpResponse>?): Unit {
-    return memScoped {
-        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpResponse_destroy(_ftpResponse)
-        res
+    memScoped {
+        return kniBridge634(ftpResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpResponse_isOk(ftpResponse: CValuesRef<sfFtpResponse>?): sfBool {
-    return memScoped {
-        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpResponse_isOk(_ftpResponse)
-        res
+    memScoped {
+        return kniBridge635(ftpResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpResponse_getStatus(ftpResponse: CValuesRef<sfFtpResponse>?): sfFtpStatus {
-    return memScoped {
-        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpResponse_getStatus(_ftpResponse)
-        res
+    memScoped {
+        return kniBridge636(ftpResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfFtpResponse_getMessage(ftpResponse: CValuesRef<sfFtpResponse>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _ftpResponse = ftpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfFtpResponse_getMessage(_ftpResponse)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge637(ftpResponse?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfFtp_create")
-external fun sfFtp_create(): CPointer<sfFtp>?
+fun sfFtp_create(): CPointer<sfFtp>? {
+    return interpretCPointer<sfFtp>(kniBridge638())
+}
 
 fun sfFtp_destroy(ftp: CValuesRef<sfFtp>?): Unit {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_destroy(_ftp)
-        res
+    memScoped {
+        return kniBridge639(ftp?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfFtp_connect(ftp: CValuesRef<sfFtp>?, server: CValue<sfIpAddress>, port: Short, timeout: CValue<sfTime>): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _server = server.getPointer(memScope).rawValue
-        val _port = port
-        val _timeout = timeout.getPointer(memScope).rawValue
-        val res = kni_sfFtp_connect(_ftp, _server, _port, _timeout)
-        interpretCPointer<sfFtpResponse>(res)
+fun sfFtp_connect(ftp: CValuesRef<sfFtp>?, server: CValue<sfIpAddress>, port: UShort, timeout: CValue<sfTime>): CPointer<sfFtpResponse>? {
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge640(ftp?.getPointer(memScope).rawValue, server.getPointer(memScope).rawValue, port, timeout.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_loginAnonymous(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_loginAnonymous(_ftp)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge641(ftp?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfFtp_login(ftp: CValuesRef<sfFtp>?, userName: String?, password: String?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _userName = userName?.cstr?.getPointer(memScope).rawValue
-        val _password = password?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_login(_ftp, _userName, _password)
-        interpretCPointer<sfFtpResponse>(res)
+fun sfFtp_login(ftp: CValuesRef<sfFtp>?, name: String?, password: String?): CPointer<sfFtpResponse>? {
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge642(ftp?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue, password?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_disconnect(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_disconnect(_ftp)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge643(ftp?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_keepAlive(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_keepAlive(_ftp)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge644(ftp?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_getWorkingDirectory(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpDirectoryResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_getWorkingDirectory(_ftp)
-        interpretCPointer<sfFtpDirectoryResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpDirectoryResponse>(kniBridge645(ftp?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_getDirectoryListing(ftp: CValuesRef<sfFtp>?, directory: String?): CPointer<sfFtpListingResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _directory = directory?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_getDirectoryListing(_ftp, _directory)
-        interpretCPointer<sfFtpListingResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpListingResponse>(kniBridge646(ftp?.getPointer(memScope).rawValue, directory?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_changeDirectory(ftp: CValuesRef<sfFtp>?, directory: String?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _directory = directory?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_changeDirectory(_ftp, _directory)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge647(ftp?.getPointer(memScope).rawValue, directory?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_parentDirectory(ftp: CValuesRef<sfFtp>?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_parentDirectory(_ftp)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge648(ftp?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_createDirectory(ftp: CValuesRef<sfFtp>?, name: String?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_createDirectory(_ftp, _name)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge649(ftp?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_deleteDirectory(ftp: CValuesRef<sfFtp>?, name: String?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_deleteDirectory(_ftp, _name)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge650(ftp?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_renameFile(ftp: CValuesRef<sfFtp>?, file: String?, newName: String?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _file = file?.cstr?.getPointer(memScope).rawValue
-        val _newName = newName?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_renameFile(_ftp, _file, _newName)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge651(ftp?.getPointer(memScope).rawValue, file?.cstr?.getPointer(memScope).rawValue, newName?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfFtp_deleteFile(ftp: CValuesRef<sfFtp>?, name: String?): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _name = name?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfFtp_deleteFile(_ftp, _name)
-        interpretCPointer<sfFtpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge652(ftp?.getPointer(memScope).rawValue, name?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfFtp_download(ftp: CValuesRef<sfFtp>?, distantFile: String?, destPath: String?, mode: sfFtpTransferMode): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _distantFile = distantFile?.cstr?.getPointer(memScope).rawValue
-        val _destPath = destPath?.cstr?.getPointer(memScope).rawValue
-        val _mode = mode.value
-        val res = kni_sfFtp_download(_ftp, _distantFile, _destPath, _mode)
-        interpretCPointer<sfFtpResponse>(res)
+fun sfFtp_download(ftp: CValuesRef<sfFtp>?, remoteFile: String?, localPath: String?, mode: sfFtpTransferMode): CPointer<sfFtpResponse>? {
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge653(ftp?.getPointer(memScope).rawValue, remoteFile?.cstr?.getPointer(memScope).rawValue, localPath?.cstr?.getPointer(memScope).rawValue, mode.value))
     }
 }
 
-fun sfFtp_upload(ftp: CValuesRef<sfFtp>?, localFile: String?, destPath: String?, mode: sfFtpTransferMode): CPointer<sfFtpResponse>? {
-    return memScoped {
-        val _ftp = ftp?.getPointer(memScope).rawValue
-        val _localFile = localFile?.cstr?.getPointer(memScope).rawValue
-        val _destPath = destPath?.cstr?.getPointer(memScope).rawValue
-        val _mode = mode.value
-        val res = kni_sfFtp_upload(_ftp, _localFile, _destPath, _mode)
-        interpretCPointer<sfFtpResponse>(res)
+fun sfFtp_upload(ftp: CValuesRef<sfFtp>?, localFile: String?, remotePath: String?, mode: sfFtpTransferMode): CPointer<sfFtpResponse>? {
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge654(ftp?.getPointer(memScope).rawValue, localFile?.cstr?.getPointer(memScope).rawValue, remotePath?.cstr?.getPointer(memScope).rawValue, mode.value))
     }
 }
 
-@SymbolName("kni_sfml_sfHttpRequest_create")
-external fun sfHttpRequest_create(): CPointer<sfHttpRequest>?
+fun sfFtp_sendCommand(ftp: CValuesRef<sfFtp>?, command: String?, parameter: String?): CPointer<sfFtpResponse>? {
+    memScoped {
+        return interpretCPointer<sfFtpResponse>(kniBridge655(ftp?.getPointer(memScope).rawValue, command?.cstr?.getPointer(memScope).rawValue, parameter?.cstr?.getPointer(memScope).rawValue))
+    }
+}
+
+fun sfHttpRequest_create(): CPointer<sfHttpRequest>? {
+    return interpretCPointer<sfHttpRequest>(kniBridge656())
+}
 
 fun sfHttpRequest_destroy(httpRequest: CValuesRef<sfHttpRequest>?): Unit {
-    return memScoped {
-        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
-        val res = kni_sfHttpRequest_destroy(_httpRequest)
-        res
+    memScoped {
+        return kniBridge657(httpRequest?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfHttpRequest_setField(httpRequest: CValuesRef<sfHttpRequest>?, field: String?, value: String?): Unit {
-    return memScoped {
-        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
-        val _field = field?.cstr?.getPointer(memScope).rawValue
-        val _value = value?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfHttpRequest_setField(_httpRequest, _field, _value)
-        res
+    memScoped {
+        return kniBridge658(httpRequest?.getPointer(memScope).rawValue, field?.cstr?.getPointer(memScope).rawValue, value?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfHttpRequest_setMethod(httpRequest: CValuesRef<sfHttpRequest>?, method: sfHttpMethod): Unit {
-    return memScoped {
-        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
-        val _method = method.value
-        val res = kni_sfHttpRequest_setMethod(_httpRequest, _method)
-        res
+    memScoped {
+        return kniBridge659(httpRequest?.getPointer(memScope).rawValue, method.value)
     }
 }
 
 fun sfHttpRequest_setUri(httpRequest: CValuesRef<sfHttpRequest>?, uri: String?): Unit {
-    return memScoped {
-        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
-        val _uri = uri?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfHttpRequest_setUri(_httpRequest, _uri)
-        res
+    memScoped {
+        return kniBridge660(httpRequest?.getPointer(memScope).rawValue, uri?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfHttpRequest_setHttpVersion(httpRequest: CValuesRef<sfHttpRequest>?, major: Int, minor: Int): Unit {
-    return memScoped {
-        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
-        val _major = major
-        val _minor = minor
-        val res = kni_sfHttpRequest_setHttpVersion(_httpRequest, _major, _minor)
-        res
+fun sfHttpRequest_setHttpVersion(httpRequest: CValuesRef<sfHttpRequest>?, major: UInt, minor: UInt): Unit {
+    memScoped {
+        return kniBridge661(httpRequest?.getPointer(memScope).rawValue, major, minor)
     }
 }
 
 fun sfHttpRequest_setBody(httpRequest: CValuesRef<sfHttpRequest>?, body: String?): Unit {
-    return memScoped {
-        val _httpRequest = httpRequest?.getPointer(memScope).rawValue
-        val _body = body?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfHttpRequest_setBody(_httpRequest, _body)
-        res
+    memScoped {
+        return kniBridge662(httpRequest?.getPointer(memScope).rawValue, body?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfHttpResponse_destroy(httpResponse: CValuesRef<sfHttpResponse>?): Unit {
-    return memScoped {
-        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfHttpResponse_destroy(_httpResponse)
-        res
+    memScoped {
+        return kniBridge663(httpResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfHttpResponse_getField(httpResponse: CValuesRef<sfHttpResponse>?, field: String?): CPointer<ByteVar>? {
-    return memScoped {
-        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
-        val _field = field?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfHttpResponse_getField(_httpResponse, _field)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge664(httpResponse?.getPointer(memScope).rawValue, field?.cstr?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfHttpResponse_getStatus(httpResponse: CValuesRef<sfHttpResponse>?): sfHttpStatus {
-    return memScoped {
-        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfHttpResponse_getStatus(_httpResponse)
-        res
+    memScoped {
+        return kniBridge665(httpResponse?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfHttpResponse_getMajorVersion(httpResponse: CValuesRef<sfHttpResponse>?): Int {
-    return memScoped {
-        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfHttpResponse_getMajorVersion(_httpResponse)
-        res
+fun sfHttpResponse_getMajorVersion(httpResponse: CValuesRef<sfHttpResponse>?): UInt {
+    memScoped {
+        return kniBridge666(httpResponse?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfHttpResponse_getMinorVersion(httpResponse: CValuesRef<sfHttpResponse>?): Int {
-    return memScoped {
-        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfHttpResponse_getMinorVersion(_httpResponse)
-        res
+fun sfHttpResponse_getMinorVersion(httpResponse: CValuesRef<sfHttpResponse>?): UInt {
+    memScoped {
+        return kniBridge667(httpResponse?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfHttpResponse_getBody(httpResponse: CValuesRef<sfHttpResponse>?): CPointer<ByteVar>? {
-    return memScoped {
-        val _httpResponse = httpResponse?.getPointer(memScope).rawValue
-        val res = kni_sfHttpResponse_getBody(_httpResponse)
-        interpretCPointer<ByteVar>(res)
+    memScoped {
+        return interpretCPointer<ByteVar>(kniBridge668(httpResponse?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfHttp_create")
-external fun sfHttp_create(): CPointer<sfHttp>?
+fun sfHttp_create(): CPointer<sfHttp>? {
+    return interpretCPointer<sfHttp>(kniBridge669())
+}
 
 fun sfHttp_destroy(http: CValuesRef<sfHttp>?): Unit {
-    return memScoped {
-        val _http = http?.getPointer(memScope).rawValue
-        val res = kni_sfHttp_destroy(_http)
-        res
+    memScoped {
+        return kniBridge670(http?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfHttp_setHost(http: CValuesRef<sfHttp>?, host: String?, port: Short): Unit {
-    return memScoped {
-        val _http = http?.getPointer(memScope).rawValue
-        val _host = host?.cstr?.getPointer(memScope).rawValue
-        val _port = port
-        val res = kni_sfHttp_setHost(_http, _host, _port)
-        res
+fun sfHttp_setHost(http: CValuesRef<sfHttp>?, host: String?, port: UShort): Unit {
+    memScoped {
+        return kniBridge671(http?.getPointer(memScope).rawValue, host?.cstr?.getPointer(memScope).rawValue, port)
     }
 }
 
 fun sfHttp_sendRequest(http: CValuesRef<sfHttp>?, request: CValuesRef<sfHttpRequest>?, timeout: CValue<sfTime>): CPointer<sfHttpResponse>? {
-    return memScoped {
-        val _http = http?.getPointer(memScope).rawValue
-        val _request = request?.getPointer(memScope).rawValue
-        val _timeout = timeout.getPointer(memScope).rawValue
-        val res = kni_sfHttp_sendRequest(_http, _request, _timeout)
-        interpretCPointer<sfHttpResponse>(res)
+    memScoped {
+        return interpretCPointer<sfHttpResponse>(kniBridge672(http?.getPointer(memScope).rawValue, request?.getPointer(memScope).rawValue, timeout.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfPacket_create")
-external fun sfPacket_create(): CPointer<sfPacket>?
+fun sfPacket_create(): CPointer<sfPacket>? {
+    return interpretCPointer<sfPacket>(kniBridge673())
+}
 
 fun sfPacket_copy(packet: CValuesRef<sfPacket>?): CPointer<sfPacket>? {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_copy(_packet)
-        interpretCPointer<sfPacket>(res)
+    memScoped {
+        return interpretCPointer<sfPacket>(kniBridge674(packet?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfPacket_destroy(packet: CValuesRef<sfPacket>?): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_destroy(_packet)
-        res
+    memScoped {
+        return kniBridge675(packet?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfPacket_append(packet: CValuesRef<sfPacket>?, data: COpaquePointer?, sizeInBytes: size_t): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _data = data.rawValue
-        val _sizeInBytes = sizeInBytes
-        val res = kni_sfPacket_append(_packet, _data, _sizeInBytes)
-        res
+fun sfPacket_append(packet: CValuesRef<sfPacket>?, data: CValuesRef<*>?, sizeInBytes: size_t): Unit {
+    memScoped {
+        return kniBridge676(packet?.getPointer(memScope).rawValue, data?.getPointer(memScope).rawValue, sizeInBytes)
     }
 }
 
 fun sfPacket_clear(packet: CValuesRef<sfPacket>?): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_clear(_packet)
-        res
+    memScoped {
+        return kniBridge677(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_getData(packet: CValuesRef<sfPacket>?): COpaquePointer? {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_getData(_packet)
-        interpretCPointer<COpaque>(res)
+    memScoped {
+        return interpretCPointer<COpaque>(kniBridge678(packet?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfPacket_getDataSize(packet: CValuesRef<sfPacket>?): size_t {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_getDataSize(_packet)
-        res
+    memScoped {
+        return kniBridge679(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_endOfPacket(packet: CValuesRef<sfPacket>?): sfBool {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_endOfPacket(_packet)
-        res
+    memScoped {
+        return kniBridge680(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_canRead(packet: CValuesRef<sfPacket>?): sfBool {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_canRead(_packet)
-        res
+    memScoped {
+        return kniBridge681(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readBool(packet: CValuesRef<sfPacket>?): sfBool {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readBool(_packet)
-        res
+    memScoped {
+        return kniBridge682(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readInt8(packet: CValuesRef<sfPacket>?): sfInt8 {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readInt8(_packet)
-        res
+    memScoped {
+        return kniBridge683(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readUint8(packet: CValuesRef<sfPacket>?): sfUint8 {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readUint8(_packet)
-        res
+    memScoped {
+        return kniBridge684(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readInt16(packet: CValuesRef<sfPacket>?): sfInt16 {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readInt16(_packet)
-        res
+    memScoped {
+        return kniBridge685(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readUint16(packet: CValuesRef<sfPacket>?): sfUint16 {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readUint16(_packet)
-        res
+    memScoped {
+        return kniBridge686(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readInt32(packet: CValuesRef<sfPacket>?): sfInt32 {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readInt32(_packet)
-        res
+    memScoped {
+        return kniBridge687(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readUint32(packet: CValuesRef<sfPacket>?): sfUint32 {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readUint32(_packet)
-        res
+    memScoped {
+        return kniBridge688(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readFloat(packet: CValuesRef<sfPacket>?): Float {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readFloat(_packet)
-        res
+    memScoped {
+        return kniBridge689(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readDouble(packet: CValuesRef<sfPacket>?): Double {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readDouble(_packet)
-        res
+    memScoped {
+        return kniBridge690(packet?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readString(packet: CValuesRef<sfPacket>?, string: CValuesRef<ByteVar>?): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _string = string?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readString(_packet, _string)
-        res
+    memScoped {
+        return kniBridge691(packet?.getPointer(memScope).rawValue, string?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_readWideString(packet: CValuesRef<sfPacket>?, string: CValuesRef<wchar_tVar>?): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _string = string?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_readWideString(_packet, _string)
-        res
+    memScoped {
+        return kniBridge692(packet?.getPointer(memScope).rawValue, string?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_writeBool(packet: CValuesRef<sfPacket>?, arg1: sfBool): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeBool(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge693(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeInt8(packet: CValuesRef<sfPacket>?, arg1: sfInt8): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeInt8(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge694(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeUint8(packet: CValuesRef<sfPacket>?, arg1: sfUint8): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeUint8(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge695(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeInt16(packet: CValuesRef<sfPacket>?, arg1: sfInt16): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeInt16(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge696(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeUint16(packet: CValuesRef<sfPacket>?, arg1: sfUint16): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeUint16(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge697(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeInt32(packet: CValuesRef<sfPacket>?, arg1: sfInt32): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeInt32(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge698(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeUint32(packet: CValuesRef<sfPacket>?, arg1: sfUint32): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeUint32(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge699(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeFloat(packet: CValuesRef<sfPacket>?, arg1: Float): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeFloat(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge700(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeDouble(packet: CValuesRef<sfPacket>?, arg1: Double): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _arg1 = arg1
-        val res = kni_sfPacket_writeDouble(_packet, _arg1)
-        res
+    memScoped {
+        return kniBridge701(packet?.getPointer(memScope).rawValue, arg1)
     }
 }
 
 fun sfPacket_writeString(packet: CValuesRef<sfPacket>?, string: String?): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _string = string?.cstr?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_writeString(_packet, _string)
-        res
+    memScoped {
+        return kniBridge702(packet?.getPointer(memScope).rawValue, string?.cstr?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfPacket_writeWideString(packet: CValuesRef<sfPacket>?, string: CValuesRef<wchar_tVar>?): Unit {
-    return memScoped {
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _string = string?.getPointer(memScope).rawValue
-        val res = kni_sfPacket_writeWideString(_packet, _string)
-        res
+    memScoped {
+        return kniBridge703(packet?.getPointer(memScope).rawValue, string?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfSocketSelector_create")
-external fun sfSocketSelector_create(): CPointer<sfSocketSelector>?
+fun sfSocketSelector_create(): CPointer<sfSocketSelector>? {
+    return interpretCPointer<sfSocketSelector>(kniBridge704())
+}
 
 fun sfSocketSelector_copy(selector: CValuesRef<sfSocketSelector>?): CPointer<sfSocketSelector>? {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_copy(_selector)
-        interpretCPointer<sfSocketSelector>(res)
+    memScoped {
+        return interpretCPointer<sfSocketSelector>(kniBridge705(selector?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfSocketSelector_destroy(selector: CValuesRef<sfSocketSelector>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_destroy(_selector)
-        res
+    memScoped {
+        return kniBridge706(selector?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_addTcpListener(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpListener>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_addTcpListener(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge707(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_addTcpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpSocket>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_addTcpSocket(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge708(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_addUdpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfUdpSocket>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_addUdpSocket(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge709(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_removeTcpListener(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpListener>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_removeTcpListener(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge710(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_removeTcpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpSocket>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_removeTcpSocket(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge711(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_removeUdpSocket(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfUdpSocket>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_removeUdpSocket(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge712(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_clear(selector: CValuesRef<sfSocketSelector>?): Unit {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_clear(_selector)
-        res
+    memScoped {
+        return kniBridge713(selector?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_wait(selector: CValuesRef<sfSocketSelector>?, timeout: CValue<sfTime>): sfBool {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _timeout = timeout.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_wait(_selector, _timeout)
-        res
+    memScoped {
+        return kniBridge714(selector?.getPointer(memScope).rawValue, timeout.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_isTcpListenerReady(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpListener>?): sfBool {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_isTcpListenerReady(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge715(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_isTcpSocketReady(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfTcpSocket>?): sfBool {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_isTcpSocketReady(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge716(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfSocketSelector_isUdpSocketReady(selector: CValuesRef<sfSocketSelector>?, socket: CValuesRef<sfUdpSocket>?): sfBool {
-    return memScoped {
-        val _selector = selector?.getPointer(memScope).rawValue
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfSocketSelector_isUdpSocketReady(_selector, _socket)
-        res
+    memScoped {
+        return kniBridge717(selector?.getPointer(memScope).rawValue, socket?.getPointer(memScope).rawValue)
     }
 }
 
-@SymbolName("kni_sfml_sfTcpListener_create")
-external fun sfTcpListener_create(): CPointer<sfTcpListener>?
+fun sfTcpListener_create(): CPointer<sfTcpListener>? {
+    return interpretCPointer<sfTcpListener>(kniBridge718())
+}
 
 fun sfTcpListener_destroy(listener: CValuesRef<sfTcpListener>?): Unit {
-    return memScoped {
-        val _listener = listener?.getPointer(memScope).rawValue
-        val res = kni_sfTcpListener_destroy(_listener)
-        res
+    memScoped {
+        return kniBridge719(listener?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTcpListener_setBlocking(listener: CValuesRef<sfTcpListener>?, blocking: sfBool): Unit {
-    return memScoped {
-        val _listener = listener?.getPointer(memScope).rawValue
-        val _blocking = blocking
-        val res = kni_sfTcpListener_setBlocking(_listener, _blocking)
-        res
+    memScoped {
+        return kniBridge720(listener?.getPointer(memScope).rawValue, blocking)
     }
 }
 
 fun sfTcpListener_isBlocking(listener: CValuesRef<sfTcpListener>?): sfBool {
-    return memScoped {
-        val _listener = listener?.getPointer(memScope).rawValue
-        val res = kni_sfTcpListener_isBlocking(_listener)
-        res
+    memScoped {
+        return kniBridge721(listener?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTcpListener_getLocalPort(listener: CValuesRef<sfTcpListener>?): Short {
-    return memScoped {
-        val _listener = listener?.getPointer(memScope).rawValue
-        val res = kni_sfTcpListener_getLocalPort(_listener)
-        res
+fun sfTcpListener_getLocalPort(listener: CValuesRef<sfTcpListener>?): UShort {
+    memScoped {
+        return kniBridge722(listener?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTcpListener_listen(listener: CValuesRef<sfTcpListener>?, port: Short): sfSocketStatus {
-    return memScoped {
-        val _listener = listener?.getPointer(memScope).rawValue
-        val _port = port
-        val res = kni_sfTcpListener_listen(_listener, _port)
-        sfSocketStatus.byValue(res)
+fun sfTcpListener_listen(listener: CValuesRef<sfTcpListener>?, port: UShort, address: CValue<sfIpAddress>): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge723(listener?.getPointer(memScope).rawValue, port, address.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTcpListener_accept(listener: CValuesRef<sfTcpListener>?, connected: CValuesRef<CPointerVar<sfTcpSocket>>?): sfSocketStatus {
-    return memScoped {
-        val _listener = listener?.getPointer(memScope).rawValue
-        val _connected = connected?.getPointer(memScope).rawValue
-        val res = kni_sfTcpListener_accept(_listener, _connected)
-        sfSocketStatus.byValue(res)
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge724(listener?.getPointer(memScope).rawValue, connected?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfTcpSocket_create")
-external fun sfTcpSocket_create(): CPointer<sfTcpSocket>?
+fun sfTcpSocket_create(): CPointer<sfTcpSocket>? {
+    return interpretCPointer<sfTcpSocket>(kniBridge725())
+}
 
 fun sfTcpSocket_destroy(socket: CValuesRef<sfTcpSocket>?): Unit {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_destroy(_socket)
-        res
+    memScoped {
+        return kniBridge726(socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTcpSocket_setBlocking(socket: CValuesRef<sfTcpSocket>?, blocking: sfBool): Unit {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _blocking = blocking
-        val res = kni_sfTcpSocket_setBlocking(_socket, _blocking)
-        res
+    memScoped {
+        return kniBridge727(socket?.getPointer(memScope).rawValue, blocking)
     }
 }
 
 fun sfTcpSocket_isBlocking(socket: CValuesRef<sfTcpSocket>?): sfBool {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_isBlocking(_socket)
-        res
+    memScoped {
+        return kniBridge728(socket?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTcpSocket_getLocalPort(socket: CValuesRef<sfTcpSocket>?): Short {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_getLocalPort(_socket)
-        res
+fun sfTcpSocket_getLocalPort(socket: CValuesRef<sfTcpSocket>?): UShort {
+    memScoped {
+        return kniBridge729(socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfTcpSocket_getRemoteAddress(socket: CValuesRef<sfTcpSocket>?): CValue<sfIpAddress> {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_getRemoteAddress(_socket, alloc<sfIpAddress>().rawPtr)
-        interpretPointed<sfIpAddress>(res).readValue()
+    memScoped {
+        val kniRetVal = nativeHeap.alloc<sfIpAddress>()
+        try {
+            kniBridge730(socket?.getPointer(memScope).rawValue, kniRetVal.rawPtr)
+            return kniRetVal.readValue()
+        } finally { nativeHeap.free(kniRetVal) }
     }
 }
 
-fun sfTcpSocket_getRemotePort(socket: CValuesRef<sfTcpSocket>?): Short {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_getRemotePort(_socket)
-        res
+fun sfTcpSocket_getRemotePort(socket: CValuesRef<sfTcpSocket>?): UShort {
+    memScoped {
+        return kniBridge731(socket?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTcpSocket_connect(socket: CValuesRef<sfTcpSocket>?, host: CValue<sfIpAddress>, port: Short, timeout: CValue<sfTime>): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _host = host.getPointer(memScope).rawValue
-        val _port = port
-        val _timeout = timeout.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_connect(_socket, _host, _port, _timeout)
-        sfSocketStatus.byValue(res)
+fun sfTcpSocket_connect(socket: CValuesRef<sfTcpSocket>?, remoteAddress: CValue<sfIpAddress>, remotePort: UShort, timeout: CValue<sfTime>): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge732(socket?.getPointer(memScope).rawValue, remoteAddress.getPointer(memScope).rawValue, remotePort, timeout.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTcpSocket_disconnect(socket: CValuesRef<sfTcpSocket>?): Unit {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_disconnect(_socket)
-        res
+    memScoped {
+        return kniBridge733(socket?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfTcpSocket_send(socket: CValuesRef<sfTcpSocket>?, data: COpaquePointer?, size: size_t): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _data = data.rawValue
-        val _size = size
-        val res = kni_sfTcpSocket_send(_socket, _data, _size)
-        sfSocketStatus.byValue(res)
+fun sfTcpSocket_send(socket: CValuesRef<sfTcpSocket>?, data: CValuesRef<*>?, size: size_t): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge734(socket?.getPointer(memScope).rawValue, data?.getPointer(memScope).rawValue, size))
     }
 }
 
-fun sfTcpSocket_sendPartial(socket: CValuesRef<sfTcpSocket>?, data: COpaquePointer?, size: size_t, sent: CValuesRef<size_tVar>?): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _data = data.rawValue
-        val _size = size
-        val _sent = sent?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_sendPartial(_socket, _data, _size, _sent)
-        sfSocketStatus.byValue(res)
+fun sfTcpSocket_sendPartial(socket: CValuesRef<sfTcpSocket>?, data: CValuesRef<*>?, size: size_t, sent: CValuesRef<size_tVar>?): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge735(socket?.getPointer(memScope).rawValue, data?.getPointer(memScope).rawValue, size, sent?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfTcpSocket_receive(socket: CValuesRef<sfTcpSocket>?, data: COpaquePointer?, maxSize: size_t, sizeReceived: CValuesRef<size_tVar>?): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _data = data.rawValue
-        val _maxSize = maxSize
-        val _sizeReceived = sizeReceived?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_receive(_socket, _data, _maxSize, _sizeReceived)
-        sfSocketStatus.byValue(res)
+fun sfTcpSocket_receive(socket: CValuesRef<sfTcpSocket>?, data: CValuesRef<*>?, size: size_t, received: CValuesRef<size_tVar>?): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge736(socket?.getPointer(memScope).rawValue, data?.getPointer(memScope).rawValue, size, received?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTcpSocket_sendPacket(socket: CValuesRef<sfTcpSocket>?, packet: CValuesRef<sfPacket>?): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_sendPacket(_socket, _packet)
-        sfSocketStatus.byValue(res)
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge737(socket?.getPointer(memScope).rawValue, packet?.getPointer(memScope).rawValue))
     }
 }
 
 fun sfTcpSocket_receivePacket(socket: CValuesRef<sfTcpSocket>?, packet: CValuesRef<sfPacket>?): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _packet = packet?.getPointer(memScope).rawValue
-        val res = kni_sfTcpSocket_receivePacket(_socket, _packet)
-        sfSocketStatus.byValue(res)
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge738(socket?.getPointer(memScope).rawValue, packet?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfUdpSocket_create")
-external fun sfUdpSocket_create(): CPointer<sfUdpSocket>?
+fun sfUdpSocket_create(): CPointer<sfUdpSocket>? {
+    return interpretCPointer<sfUdpSocket>(kniBridge739())
+}
 
 fun sfUdpSocket_destroy(socket: CValuesRef<sfUdpSocket>?): Unit {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfUdpSocket_destroy(_socket)
-        res
+    memScoped {
+        return kniBridge740(socket?.getPointer(memScope).rawValue)
     }
 }
 
 fun sfUdpSocket_setBlocking(socket: CValuesRef<sfUdpSocket>?, blocking: sfBool): Unit {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _blocking = blocking
-        val res = kni_sfUdpSocket_setBlocking(_socket, _blocking)
-        res
+    memScoped {
+        return kniBridge741(socket?.getPointer(memScope).rawValue, blocking)
     }
 }
 
 fun sfUdpSocket_isBlocking(socket: CValuesRef<sfUdpSocket>?): sfBool {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfUdpSocket_isBlocking(_socket)
-        res
+    memScoped {
+        return kniBridge742(socket?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfUdpSocket_getLocalPort(socket: CValuesRef<sfUdpSocket>?): Short {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfUdpSocket_getLocalPort(_socket)
-        res
+fun sfUdpSocket_getLocalPort(socket: CValuesRef<sfUdpSocket>?): UShort {
+    memScoped {
+        return kniBridge743(socket?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfUdpSocket_bind(socket: CValuesRef<sfUdpSocket>?, port: Short): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _port = port
-        val res = kni_sfUdpSocket_bind(_socket, _port)
-        sfSocketStatus.byValue(res)
+fun sfUdpSocket_bind(socket: CValuesRef<sfUdpSocket>?, port: UShort, address: CValue<sfIpAddress>): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge744(socket?.getPointer(memScope).rawValue, port, address.getPointer(memScope).rawValue))
     }
 }
 
 fun sfUdpSocket_unbind(socket: CValuesRef<sfUdpSocket>?): Unit {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val res = kni_sfUdpSocket_unbind(_socket)
-        res
+    memScoped {
+        return kniBridge745(socket?.getPointer(memScope).rawValue)
     }
 }
 
-fun sfUdpSocket_send(socket: CValuesRef<sfUdpSocket>?, data: COpaquePointer?, size: size_t, address: CValue<sfIpAddress>, port: Short): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _data = data.rawValue
-        val _size = size
-        val _address = address.getPointer(memScope).rawValue
-        val _port = port
-        val res = kni_sfUdpSocket_send(_socket, _data, _size, _address, _port)
-        sfSocketStatus.byValue(res)
+fun sfUdpSocket_send(socket: CValuesRef<sfUdpSocket>?, data: CValuesRef<*>?, size: size_t, remoteAddress: CValue<sfIpAddress>, remotePort: UShort): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge746(socket?.getPointer(memScope).rawValue, data?.getPointer(memScope).rawValue, size, remoteAddress.getPointer(memScope).rawValue, remotePort))
     }
 }
 
-fun sfUdpSocket_receive(socket: CValuesRef<sfUdpSocket>?, data: COpaquePointer?, maxSize: size_t, sizeReceived: CValuesRef<size_tVar>?, address: CValuesRef<sfIpAddress>?, port: CValuesRef<ShortVar>?): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _data = data.rawValue
-        val _maxSize = maxSize
-        val _sizeReceived = sizeReceived?.getPointer(memScope).rawValue
-        val _address = address?.getPointer(memScope).rawValue
-        val _port = port?.getPointer(memScope).rawValue
-        val res = kni_sfUdpSocket_receive(_socket, _data, _maxSize, _sizeReceived, _address, _port)
-        sfSocketStatus.byValue(res)
+fun sfUdpSocket_receive(socket: CValuesRef<sfUdpSocket>?, data: CValuesRef<*>?, size: size_t, received: CValuesRef<size_tVar>?, remoteAddress: CValuesRef<sfIpAddress>?, remotePort: CValuesRef<UShortVar>?): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge747(socket?.getPointer(memScope).rawValue, data?.getPointer(memScope).rawValue, size, received?.getPointer(memScope).rawValue, remoteAddress?.getPointer(memScope).rawValue, remotePort?.getPointer(memScope).rawValue))
     }
 }
 
-fun sfUdpSocket_sendPacket(socket: CValuesRef<sfUdpSocket>?, packet: CValuesRef<sfPacket>?, address: CValue<sfIpAddress>, port: Short): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _address = address.getPointer(memScope).rawValue
-        val _port = port
-        val res = kni_sfUdpSocket_sendPacket(_socket, _packet, _address, _port)
-        sfSocketStatus.byValue(res)
+fun sfUdpSocket_sendPacket(socket: CValuesRef<sfUdpSocket>?, packet: CValuesRef<sfPacket>?, remoteAddress: CValue<sfIpAddress>, remotePort: UShort): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge748(socket?.getPointer(memScope).rawValue, packet?.getPointer(memScope).rawValue, remoteAddress.getPointer(memScope).rawValue, remotePort))
     }
 }
 
-fun sfUdpSocket_receivePacket(socket: CValuesRef<sfUdpSocket>?, packet: CValuesRef<sfPacket>?, address: CValuesRef<sfIpAddress>?, port: CValuesRef<ShortVar>?): sfSocketStatus {
-    return memScoped {
-        val _socket = socket?.getPointer(memScope).rawValue
-        val _packet = packet?.getPointer(memScope).rawValue
-        val _address = address?.getPointer(memScope).rawValue
-        val _port = port?.getPointer(memScope).rawValue
-        val res = kni_sfUdpSocket_receivePacket(_socket, _packet, _address, _port)
-        sfSocketStatus.byValue(res)
+fun sfUdpSocket_receivePacket(socket: CValuesRef<sfUdpSocket>?, packet: CValuesRef<sfPacket>?, remoteAddress: CValuesRef<sfIpAddress>?, remotePort: CValuesRef<UShortVar>?): sfSocketStatus {
+    memScoped {
+        return sfSocketStatus.byValue(kniBridge749(socket?.getPointer(memScope).rawValue, packet?.getPointer(memScope).rawValue, remoteAddress?.getPointer(memScope).rawValue, remotePort?.getPointer(memScope).rawValue))
     }
 }
 
-@SymbolName("kni_sfml_sfUdpSocket_maxDatagramSize")
-external fun sfUdpSocket_maxDatagramSize(): Int
+fun sfUdpSocket_maxDatagramSize(): UInt {
+    return kniBridge750()
+}
 
-val __llvm__: Int = 1
-val __clang__: Int = 1
-val __clang_major__: Int = 3
-val __clang_minor__: Int = 9
-val __clang_patchlevel__: Int = 0
-val __GNUC_MINOR__: Int = 2
-val __GNUC_PATCHLEVEL__: Int = 1
-val __GNUC__: Int = 4
-val __GXX_ABI_VERSION: Int = 1002
-val __ATOMIC_RELAXED: Int = 0
-val __ATOMIC_CONSUME: Int = 1
-val __ATOMIC_ACQUIRE: Int = 2
-val __ATOMIC_RELEASE: Int = 3
-val __ATOMIC_ACQ_REL: Int = 4
-val __ATOMIC_SEQ_CST: Int = 5
-val __PRAGMA_REDEFINE_EXTNAME: Int = 1
-val __CONSTANT_CFSTRINGS__: Int = 1
-val __ORDER_LITTLE_ENDIAN__: Int = 1234
-val __ORDER_BIG_ENDIAN__: Int = 4321
-val __ORDER_PDP_ENDIAN__: Int = 3412
-val __BYTE_ORDER__: Int = 1234
-val __LITTLE_ENDIAN__: Int = 1
-val _LP64: Int = 1
-val __LP64__: Int = 1
-val __CHAR_BIT__: Int = 8
-val __SCHAR_MAX__: Int = 127
-val __SHRT_MAX__: Int = 32767
-val __INT_MAX__: Int = 2147483647
-val __LONG_MAX__: Long = 9223372036854775807
-val __LONG_LONG_MAX__: Long = 9223372036854775807
-val __WCHAR_MAX__: Int = 2147483647
-val __INTMAX_MAX__: Long = 9223372036854775807
-val __SIZE_MAX__: Long = -1
-val __UINTMAX_MAX__: Long = -1
-val __PTRDIFF_MAX__: Long = 9223372036854775807
-val __INTPTR_MAX__: Long = 9223372036854775807
-val __UINTPTR_MAX__: Long = -1
-val __SIZEOF_DOUBLE__: Int = 8
-val __SIZEOF_FLOAT__: Int = 4
-val __SIZEOF_INT__: Int = 4
-val __SIZEOF_LONG__: Int = 8
-val __SIZEOF_LONG_DOUBLE__: Int = 16
-val __SIZEOF_LONG_LONG__: Int = 8
-val __SIZEOF_POINTER__: Int = 8
-val __SIZEOF_SHORT__: Int = 2
-val __SIZEOF_PTRDIFF_T__: Int = 8
-val __SIZEOF_SIZE_T__: Int = 8
-val __SIZEOF_WCHAR_T__: Int = 4
-val __SIZEOF_WINT_T__: Int = 4
-val __SIZEOF_INT128__: Int = 16
-val __INTMAX_WIDTH__: Int = 64
-val __PTRDIFF_WIDTH__: Int = 64
-val __INTPTR_WIDTH__: Int = 64
-val __SIZE_WIDTH__: Int = 64
-val __WCHAR_WIDTH__: Int = 32
-val __WINT_WIDTH__: Int = 32
-val __SIG_ATOMIC_WIDTH__: Int = 32
-val __SIG_ATOMIC_MAX__: Int = 2147483647
-val __UINTMAX_WIDTH__: Int = 64
-val __UINTPTR_WIDTH__: Int = 64
-val __FLT_DENORM_MIN__: Float = bitsToFloat(1) /* == 1.4E-45 */
-val __FLT_HAS_DENORM__: Int = 1
-val __FLT_DIG__: Int = 6
-val __FLT_DECIMAL_DIG__: Int = 9
-val __FLT_EPSILON__: Float = bitsToFloat(872415232) /* == 1.1920929E-7 */
-val __FLT_HAS_INFINITY__: Int = 1
-val __FLT_HAS_QUIET_NAN__: Int = 1
-val __FLT_MANT_DIG__: Int = 24
-val __FLT_MAX_10_EXP__: Int = 38
-val __FLT_MAX_EXP__: Int = 128
-val __FLT_MAX__: Float = bitsToFloat(2139095039) /* == 3.4028235E38 */
-val __FLT_MIN_10_EXP__: Int = -37
-val __FLT_MIN_EXP__: Int = -125
-val __FLT_MIN__: Float = bitsToFloat(8388608) /* == 1.17549435E-38 */
-val __DBL_DENORM_MIN__: Double = bitsToDouble(1) /* == 4.9E-324 */
-val __DBL_HAS_DENORM__: Int = 1
-val __DBL_DIG__: Int = 15
-val __DBL_DECIMAL_DIG__: Int = 17
-val __DBL_EPSILON__: Double = bitsToDouble(4372995238176751616) /* == 2.220446049250313E-16 */
-val __DBL_HAS_INFINITY__: Int = 1
-val __DBL_HAS_QUIET_NAN__: Int = 1
-val __DBL_MANT_DIG__: Int = 53
-val __DBL_MAX_10_EXP__: Int = 308
-val __DBL_MAX_EXP__: Int = 1024
-val __DBL_MAX__: Double = bitsToDouble(9218868437227405311) /* == 1.7976931348623157E308 */
-val __DBL_MIN_10_EXP__: Int = -307
-val __DBL_MIN_EXP__: Int = -1021
-val __DBL_MIN__: Double = bitsToDouble(4503599627370496) /* == 2.2250738585072014E-308 */
-val __LDBL_HAS_DENORM__: Int = 1
-val __LDBL_DIG__: Int = 18
-val __LDBL_DECIMAL_DIG__: Int = 21
-val __LDBL_HAS_INFINITY__: Int = 1
-val __LDBL_HAS_QUIET_NAN__: Int = 1
-val __LDBL_MANT_DIG__: Int = 64
-val __LDBL_MAX_10_EXP__: Int = 4932
-val __LDBL_MAX_EXP__: Int = 16384
-val __LDBL_MIN_10_EXP__: Int = -4931
-val __LDBL_MIN_EXP__: Int = -16381
-val __POINTER_WIDTH__: Int = 64
-val __BIGGEST_ALIGNMENT__: Int = 16
-val __WINT_UNSIGNED__: Int = 1
-val __UINT8_MAX__: Int = 255
-val __INT8_MAX__: Int = 127
-val __UINT16_MAX__: Int = 65535
-val __INT16_MAX__: Int = 32767
-val __UINT32_MAX__: Int = -1
-val __INT32_MAX__: Int = 2147483647
-val __UINT64_MAX__: Long = -1
-val __INT64_MAX__: Long = 9223372036854775807
-val __INT_LEAST8_MAX__: Int = 127
-val __UINT_LEAST8_MAX__: Int = 255
-val __INT_LEAST16_MAX__: Int = 32767
-val __UINT_LEAST16_MAX__: Int = 65535
-val __INT_LEAST32_MAX__: Int = 2147483647
-val __UINT_LEAST32_MAX__: Int = -1
-val __INT_LEAST64_MAX__: Long = 9223372036854775807
-val __UINT_LEAST64_MAX__: Long = -1
-val __INT_FAST8_MAX__: Int = 127
-val __UINT_FAST8_MAX__: Int = 255
-val __INT_FAST16_MAX__: Int = 32767
-val __UINT_FAST16_MAX__: Int = 65535
-val __INT_FAST32_MAX__: Int = 2147483647
-val __UINT_FAST32_MAX__: Int = -1
-val __INT_FAST64_MAX__: Long = 9223372036854775807
-val __UINT_FAST64_MAX__: Long = -1
-val __FINITE_MATH_ONLY__: Int = 0
-val __GNUC_STDC_INLINE__: Int = 1
-val __GCC_ATOMIC_TEST_AND_SET_TRUEVAL: Int = 1
-val __GCC_ATOMIC_BOOL_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_CHAR_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_CHAR16_T_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_CHAR32_T_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_WCHAR_T_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_SHORT_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_INT_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_LONG_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_LLONG_LOCK_FREE: Int = 2
-val __GCC_ATOMIC_POINTER_LOCK_FREE: Int = 2
-val __NO_INLINE__: Int = 1
-val __FLT_EVAL_METHOD__: Int = 0
-val __FLT_RADIX__: Int = 2
-val __DECIMAL_DIG__: Int = 21
-val __amd64__: Int = 1
-val __amd64: Int = 1
-val __x86_64: Int = 1
-val __x86_64__: Int = 1
-val __k8: Int = 1
-val __k8__: Int = 1
-val __tune_k8__: Int = 1
-val __NO_MATH_INLINES: Int = 1
-val __FXSR__: Int = 1
-val __SSE2__: Int = 1
-val __SSE2_MATH__: Int = 1
-val __SSE__: Int = 1
-val __SSE_MATH__: Int = 1
-val __MMX__: Int = 1
-val __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1: Int = 1
-val __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2: Int = 1
-val __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4: Int = 1
-val __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8: Int = 1
-val unix: Int = 1
-val __unix: Int = 1
-val __unix__: Int = 1
-val linux: Int = 1
-val __linux: Int = 1
-val __linux__: Int = 1
-val __gnu_linux__: Int = 1
-val __ELF__: Int = 1
-val __FLOAT128__: Int = 1
-val __STDC__: Int = 1
-val __STDC_HOSTED__: Int = 1
-val __STDC_VERSION__: Long = 201112
-val __STDC_UTF_16__: Int = 1
-val __STDC_UTF_32__: Int = 1
-val CSFML_VERSION_MAJOR: Int = 2
-val CSFML_VERSION_MINOR: Int = 3
-val CSFML_VERSION_PATCH: Int = 0
-val sfFalse: Int = 0
-val sfTrue: Int = 1
+const val CSFML_VERSION_MAJOR: Int = 2
 
-class sfTime(override val rawPtr: NativePtr) : CStructVar() {
+const val CSFML_VERSION_MINOR: Int = 4
+
+const val CSFML_VERSION_PATCH: Int = 0
+
+const val sfFalse: Int = 0
+
+const val sfTrue: Int = 1
+
+val sfTime_Zero: sfTime
+    get() = interpretPointed<sfTime>(kniBridge751())
+
+val sfBlendAlpha: sfBlendMode
+    get() = interpretPointed<sfBlendMode>(kniBridge752())
+
+val sfBlendAdd: sfBlendMode
+    get() = interpretPointed<sfBlendMode>(kniBridge753())
+
+val sfBlendMultiply: sfBlendMode
+    get() = interpretPointed<sfBlendMode>(kniBridge754())
+
+val sfBlendNone: sfBlendMode
+    get() = interpretPointed<sfBlendMode>(kniBridge755())
+
+val sfBlack: sfColor
+    get() = interpretPointed<sfColor>(kniBridge756())
+
+val sfWhite: sfColor
+    get() = interpretPointed<sfColor>(kniBridge757())
+
+val sfRed: sfColor
+    get() = interpretPointed<sfColor>(kniBridge758())
+
+val sfGreen: sfColor
+    get() = interpretPointed<sfColor>(kniBridge759())
+
+val sfBlue: sfColor
+    get() = interpretPointed<sfColor>(kniBridge760())
+
+val sfYellow: sfColor
+    get() = interpretPointed<sfColor>(kniBridge761())
+
+val sfMagenta: sfColor
+    get() = interpretPointed<sfColor>(kniBridge762())
+
+val sfCyan: sfColor
+    get() = interpretPointed<sfColor>(kniBridge763())
+
+val sfTransparent: sfColor
+    get() = interpretPointed<sfColor>(kniBridge764())
+
+val sfTransform_Identity: sfTransform
+    get() = interpretPointed<sfTransform>(kniBridge765())
+
+val sfIpAddress_None: sfIpAddress
+    get() = interpretPointed<sfIpAddress>(kniBridge766())
+
+val sfIpAddress_Any: sfIpAddress
+    get() = interpretPointed<sfIpAddress>(kniBridge767())
+
+val sfIpAddress_LocalHost: sfIpAddress
+    get() = interpretPointed<sfIpAddress>(kniBridge768())
+
+val sfIpAddress_Broadcast: sfIpAddress
+    get() = interpretPointed<sfIpAddress>(kniBridge769())
+
+class sfTime(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 8)
     
@@ -6048,13 +5039,10 @@ class sfTime(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfClock(override val rawPtr: NativePtr) : COpaque
 
-class sfMutex(override val rawPtr: NativePtr) : COpaque
 
-class sfThread(override val rawPtr: NativePtr) : COpaque
 
-class sfInputStream(override val rawPtr: NativePtr) : CStructVar() {
+class sfInputStream(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(40, 8)
     
@@ -6080,7 +5068,7 @@ class sfInputStream(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfVector2i(override val rawPtr: NativePtr) : CStructVar() {
+class sfVector2i(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 4)
     
@@ -6094,21 +5082,21 @@ class sfVector2i(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfVector2u(override val rawPtr: NativePtr) : CStructVar() {
+class sfVector2u(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 4)
     
-    var x: Int
-        get() = memberAt<IntVar>(0).value
-        set(value) { memberAt<IntVar>(0).value = value }
+    var x: UInt
+        get() = memberAt<UIntVar>(0).value
+        set(value) { memberAt<UIntVar>(0).value = value }
     
-    var y: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var y: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
 }
 
-class sfVector2f(override val rawPtr: NativePtr) : CStructVar() {
+class sfVector2f(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 4)
     
@@ -6122,7 +5110,7 @@ class sfVector2f(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfVector3f(override val rawPtr: NativePtr) : CStructVar() {
+class sfVector3f(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(12, 4)
     
@@ -6140,29 +5128,13 @@ class sfVector3f(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfMusic(override val rawPtr: NativePtr) : COpaque
 
-class sfSound(override val rawPtr: NativePtr) : COpaque
 
-class sfSoundBuffer(override val rawPtr: NativePtr) : COpaque
 
-class sfSoundBufferRecorder(override val rawPtr: NativePtr) : COpaque
 
-class sfSoundRecorder(override val rawPtr: NativePtr) : COpaque
 
-class sfSoundStream(override val rawPtr: NativePtr) : COpaque
 
-class max_align_t(override val rawPtr: NativePtr) : CStructVar() {
-    
-    companion object : Type(32, 16)
-    
-    var __clang_max_align_nonce1: Long
-        get() = memberAt<LongVar>(0).value
-        set(value) { memberAt<LongVar>(0).value = value }
-    
-}
-
-class sfSoundStreamChunk(override val rawPtr: NativePtr) : CStructVar() {
+class sfSoundStreamChunk(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 8)
     
@@ -6170,17 +5142,15 @@ class sfSoundStreamChunk(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<CPointerVar<sfInt16Var>>(0).value
         set(value) { memberAt<CPointerVar<sfInt16Var>>(0).value = value }
     
-    var sampleCount: Int
-        get() = memberAt<IntVar>(8).value
-        set(value) { memberAt<IntVar>(8).value = value }
+    var sampleCount: UInt
+        get() = memberAt<UIntVar>(8).value
+        set(value) { memberAt<UIntVar>(8).value = value }
     
 }
 
-class sfContext(override val rawPtr: NativePtr) : COpaque
 
-class sfWindow(override val rawPtr: NativePtr) : COpaque
 
-class sfJoystickIdentification(override val rawPtr: NativePtr) : CStructVar() {
+class sfJoystickIdentification(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 8)
     
@@ -6188,17 +5158,17 @@ class sfJoystickIdentification(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<CPointerVar<ByteVar>>(0).value
         set(value) { memberAt<CPointerVar<ByteVar>>(0).value = value }
     
-    var vendorId: Int
-        get() = memberAt<IntVar>(8).value
-        set(value) { memberAt<IntVar>(8).value = value }
+    var vendorId: UInt
+        get() = memberAt<UIntVar>(8).value
+        set(value) { memberAt<UIntVar>(8).value = value }
     
-    var productId: Int
-        get() = memberAt<IntVar>(12).value
-        set(value) { memberAt<IntVar>(12).value = value }
+    var productId: UInt
+        get() = memberAt<UIntVar>(12).value
+        set(value) { memberAt<UIntVar>(12).value = value }
     
 }
 
-class sfKeyEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfKeyEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(24, 4)
     
@@ -6228,7 +5198,7 @@ class sfKeyEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfTextEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfTextEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 4)
     
@@ -6242,7 +5212,7 @@ class sfTextEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfMouseMoveEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfMouseMoveEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(12, 4)
     
@@ -6260,7 +5230,7 @@ class sfMouseMoveEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfMouseButtonEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfMouseButtonEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 4)
     
@@ -6282,7 +5252,7 @@ class sfMouseButtonEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfMouseWheelEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfMouseWheelEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 4)
     
@@ -6304,7 +5274,7 @@ class sfMouseWheelEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfMouseWheelScrollEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfMouseWheelScrollEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(20, 4)
     
@@ -6330,7 +5300,7 @@ class sfMouseWheelScrollEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfJoystickMoveEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfJoystickMoveEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 4)
     
@@ -6338,9 +5308,9 @@ class sfJoystickMoveEvent(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<sfEventType.Var>(0).value
         set(value) { memberAt<sfEventType.Var>(0).value = value }
     
-    var joystickId: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var joystickId: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
     var axis: sfJoystickAxis
         get() = memberAt<sfJoystickAxis.Var>(8).value
@@ -6352,7 +5322,7 @@ class sfJoystickMoveEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfJoystickButtonEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfJoystickButtonEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(12, 4)
     
@@ -6360,17 +5330,17 @@ class sfJoystickButtonEvent(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<sfEventType.Var>(0).value
         set(value) { memberAt<sfEventType.Var>(0).value = value }
     
-    var joystickId: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var joystickId: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
-    var button: Int
-        get() = memberAt<IntVar>(8).value
-        set(value) { memberAt<IntVar>(8).value = value }
+    var button: UInt
+        get() = memberAt<UIntVar>(8).value
+        set(value) { memberAt<UIntVar>(8).value = value }
     
 }
 
-class sfJoystickConnectEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfJoystickConnectEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 4)
     
@@ -6378,13 +5348,13 @@ class sfJoystickConnectEvent(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<sfEventType.Var>(0).value
         set(value) { memberAt<sfEventType.Var>(0).value = value }
     
-    var joystickId: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var joystickId: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
 }
 
-class sfSizeEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfSizeEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(12, 4)
     
@@ -6392,17 +5362,17 @@ class sfSizeEvent(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<sfEventType.Var>(0).value
         set(value) { memberAt<sfEventType.Var>(0).value = value }
     
-    var width: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var width: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
-    var height: Int
-        get() = memberAt<IntVar>(8).value
-        set(value) { memberAt<IntVar>(8).value = value }
+    var height: UInt
+        get() = memberAt<UIntVar>(8).value
+        set(value) { memberAt<UIntVar>(8).value = value }
     
 }
 
-class sfTouchEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfTouchEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 4)
     
@@ -6410,9 +5380,9 @@ class sfTouchEvent(override val rawPtr: NativePtr) : CStructVar() {
         get() = memberAt<sfEventType.Var>(0).value
         set(value) { memberAt<sfEventType.Var>(0).value = value }
     
-    var finger: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var finger: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
     var x: Int
         get() = memberAt<IntVar>(8).value
@@ -6424,7 +5394,7 @@ class sfTouchEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfSensorEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfSensorEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(20, 4)
     
@@ -6450,7 +5420,7 @@ class sfSensorEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfEvent(override val rawPtr: NativePtr) : CStructVar() {
+class sfEvent(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(24, 4)
     
@@ -6496,55 +5466,59 @@ class sfEvent(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfVideoMode(override val rawPtr: NativePtr) : CStructVar() {
+class sfVideoMode(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(12, 4)
     
-    var width: Int
-        get() = memberAt<IntVar>(0).value
-        set(value) { memberAt<IntVar>(0).value = value }
+    var width: UInt
+        get() = memberAt<UIntVar>(0).value
+        set(value) { memberAt<UIntVar>(0).value = value }
     
-    var height: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var height: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
-    var bitsPerPixel: Int
-        get() = memberAt<IntVar>(8).value
-        set(value) { memberAt<IntVar>(8).value = value }
+    var bitsPerPixel: UInt
+        get() = memberAt<UIntVar>(8).value
+        set(value) { memberAt<UIntVar>(8).value = value }
     
 }
 
-class sfContextSettings(override val rawPtr: NativePtr) : CStructVar() {
+class sfContextSettings(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
-    companion object : Type(24, 4)
+    companion object : Type(28, 4)
     
-    var depthBits: Int
-        get() = memberAt<IntVar>(0).value
-        set(value) { memberAt<IntVar>(0).value = value }
+    var depthBits: UInt
+        get() = memberAt<UIntVar>(0).value
+        set(value) { memberAt<UIntVar>(0).value = value }
     
-    var stencilBits: Int
-        get() = memberAt<IntVar>(4).value
-        set(value) { memberAt<IntVar>(4).value = value }
+    var stencilBits: UInt
+        get() = memberAt<UIntVar>(4).value
+        set(value) { memberAt<UIntVar>(4).value = value }
     
-    var antialiasingLevel: Int
-        get() = memberAt<IntVar>(8).value
-        set(value) { memberAt<IntVar>(8).value = value }
+    var antialiasingLevel: UInt
+        get() = memberAt<UIntVar>(8).value
+        set(value) { memberAt<UIntVar>(8).value = value }
     
-    var majorVersion: Int
-        get() = memberAt<IntVar>(12).value
-        set(value) { memberAt<IntVar>(12).value = value }
+    var majorVersion: UInt
+        get() = memberAt<UIntVar>(12).value
+        set(value) { memberAt<UIntVar>(12).value = value }
     
-    var minorVersion: Int
-        get() = memberAt<IntVar>(16).value
-        set(value) { memberAt<IntVar>(16).value = value }
+    var minorVersion: UInt
+        get() = memberAt<UIntVar>(16).value
+        set(value) { memberAt<UIntVar>(16).value = value }
     
     var attributeFlags: sfUint32
         get() = memberAt<sfUint32Var>(20).value
         set(value) { memberAt<sfUint32Var>(20).value = value }
     
+    var sRgbCapable: sfBool
+        get() = memberAt<sfBoolVar>(24).value
+        set(value) { memberAt<sfBoolVar>(24).value = value }
+    
 }
 
-class sfBlendMode(override val rawPtr: NativePtr) : CStructVar() {
+class sfBlendMode(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(24, 4)
     
@@ -6574,7 +5548,7 @@ class sfBlendMode(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfColor(override val rawPtr: NativePtr) : CStructVar() {
+class sfColor(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(4, 1)
     
@@ -6596,7 +5570,7 @@ class sfColor(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfFloatRect(override val rawPtr: NativePtr) : CStructVar() {
+class sfFloatRect(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 4)
     
@@ -6618,7 +5592,7 @@ class sfFloatRect(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfIntRect(override val rawPtr: NativePtr) : CStructVar() {
+class sfIntRect(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 4)
     
@@ -6640,37 +5614,22 @@ class sfIntRect(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfCircleShape(override val rawPtr: NativePtr) : COpaque
 
-class sfConvexShape(override val rawPtr: NativePtr) : COpaque
 
-class sfFont(override val rawPtr: NativePtr) : COpaque
 
-class sfImage(override val rawPtr: NativePtr) : COpaque
 
-class sfShader(override val rawPtr: NativePtr) : COpaque
 
-class sfRectangleShape(override val rawPtr: NativePtr) : COpaque
 
-class sfRenderTexture(override val rawPtr: NativePtr) : COpaque
 
-class sfRenderWindow(override val rawPtr: NativePtr) : COpaque
 
-class sfShape(override val rawPtr: NativePtr) : COpaque
 
-class sfSprite(override val rawPtr: NativePtr) : COpaque
 
-class sfText(override val rawPtr: NativePtr) : COpaque
 
-class sfTexture(override val rawPtr: NativePtr) : COpaque
 
-class sfTransformable(override val rawPtr: NativePtr) : COpaque
 
-class sfVertexArray(override val rawPtr: NativePtr) : COpaque
 
-class sfView(override val rawPtr: NativePtr) : COpaque
 
-class sfTransform(override val rawPtr: NativePtr) : CStructVar() {
+class sfTransform(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(36, 4)
     
@@ -6679,7 +5638,7 @@ class sfTransform(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfFontInfo(override val rawPtr: NativePtr) : CStructVar() {
+class sfFontInfo(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(8, 8)
     
@@ -6689,7 +5648,7 @@ class sfFontInfo(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfGlyph(override val rawPtr: NativePtr) : CStructVar() {
+class sfGlyph(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(36, 4)
     
@@ -6705,7 +5664,7 @@ class sfGlyph(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfRenderStates(override val rawPtr: NativePtr) : CStructVar() {
+class sfRenderStates(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(80, 8)
     
@@ -6725,7 +5684,7 @@ class sfRenderStates(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfVertex(override val rawPtr: NativePtr) : CStructVar() {
+class sfVertex(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(20, 4)
     
@@ -6740,7 +5699,141 @@ class sfVertex(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfIpAddress(override val rawPtr: NativePtr) : CStructVar() {
+class sfGlslBvec2(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(8, 4)
+    
+    var x: sfBool
+        get() = memberAt<sfBoolVar>(0).value
+        set(value) { memberAt<sfBoolVar>(0).value = value }
+    
+    var y: sfBool
+        get() = memberAt<sfBoolVar>(4).value
+        set(value) { memberAt<sfBoolVar>(4).value = value }
+    
+}
+
+class sfGlslIvec3(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(12, 4)
+    
+    var x: Int
+        get() = memberAt<IntVar>(0).value
+        set(value) { memberAt<IntVar>(0).value = value }
+    
+    var y: Int
+        get() = memberAt<IntVar>(4).value
+        set(value) { memberAt<IntVar>(4).value = value }
+    
+    var z: Int
+        get() = memberAt<IntVar>(8).value
+        set(value) { memberAt<IntVar>(8).value = value }
+    
+}
+
+class sfGlslBvec3(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(12, 4)
+    
+    var x: sfBool
+        get() = memberAt<sfBoolVar>(0).value
+        set(value) { memberAt<sfBoolVar>(0).value = value }
+    
+    var y: sfBool
+        get() = memberAt<sfBoolVar>(4).value
+        set(value) { memberAt<sfBoolVar>(4).value = value }
+    
+    var z: sfBool
+        get() = memberAt<sfBoolVar>(8).value
+        set(value) { memberAt<sfBoolVar>(8).value = value }
+    
+}
+
+class sfGlslVec4(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(16, 4)
+    
+    var x: Float
+        get() = memberAt<FloatVar>(0).value
+        set(value) { memberAt<FloatVar>(0).value = value }
+    
+    var y: Float
+        get() = memberAt<FloatVar>(4).value
+        set(value) { memberAt<FloatVar>(4).value = value }
+    
+    var z: Float
+        get() = memberAt<FloatVar>(8).value
+        set(value) { memberAt<FloatVar>(8).value = value }
+    
+    var w: Float
+        get() = memberAt<FloatVar>(12).value
+        set(value) { memberAt<FloatVar>(12).value = value }
+    
+}
+
+class sfGlslIvec4(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(16, 4)
+    
+    var x: Int
+        get() = memberAt<IntVar>(0).value
+        set(value) { memberAt<IntVar>(0).value = value }
+    
+    var y: Int
+        get() = memberAt<IntVar>(4).value
+        set(value) { memberAt<IntVar>(4).value = value }
+    
+    var z: Int
+        get() = memberAt<IntVar>(8).value
+        set(value) { memberAt<IntVar>(8).value = value }
+    
+    var w: Int
+        get() = memberAt<IntVar>(12).value
+        set(value) { memberAt<IntVar>(12).value = value }
+    
+}
+
+class sfGlslBvec4(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(16, 4)
+    
+    var x: sfBool
+        get() = memberAt<sfBoolVar>(0).value
+        set(value) { memberAt<sfBoolVar>(0).value = value }
+    
+    var y: sfBool
+        get() = memberAt<sfBoolVar>(4).value
+        set(value) { memberAt<sfBoolVar>(4).value = value }
+    
+    var z: sfBool
+        get() = memberAt<sfBoolVar>(8).value
+        set(value) { memberAt<sfBoolVar>(8).value = value }
+    
+    var w: sfBool
+        get() = memberAt<sfBoolVar>(12).value
+        set(value) { memberAt<sfBoolVar>(12).value = value }
+    
+}
+
+class sfGlslMat3(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(36, 4)
+    
+    val array: CArrayPointer<FloatVar>
+        get() = arrayMemberAt(0)
+    
+}
+
+class sfGlslMat4(rawPtr: NativePtr) : CStructVar(rawPtr) {
+    
+    companion object : Type(64, 4)
+    
+    val array: CArrayPointer<FloatVar>
+        get() = arrayMemberAt(0)
+    
+}
+
+class sfIpAddress(rawPtr: NativePtr) : CStructVar(rawPtr) {
     
     companion object : Type(16, 1)
     
@@ -6749,501 +5842,482 @@ class sfIpAddress(override val rawPtr: NativePtr) : CStructVar() {
     
 }
 
-class sfFtpDirectoryResponse(override val rawPtr: NativePtr) : COpaque
 
-class sfFtpListingResponse(override val rawPtr: NativePtr) : COpaque
 
-class sfFtpResponse(override val rawPtr: NativePtr) : COpaque
 
-class sfFtp(override val rawPtr: NativePtr) : COpaque
 
-class sfHttpRequest(override val rawPtr: NativePtr) : COpaque
 
-class sfHttpResponse(override val rawPtr: NativePtr) : COpaque
 
-class sfHttp(override val rawPtr: NativePtr) : COpaque
 
-class sfPacket(override val rawPtr: NativePtr) : COpaque
 
-class sfSocketSelector(override val rawPtr: NativePtr) : COpaque
 
-class sfTcpListener(override val rawPtr: NativePtr) : COpaque
 
-class sfTcpSocket(override val rawPtr: NativePtr) : COpaque
 
-class sfUdpSocket(override val rawPtr: NativePtr) : COpaque
 
-enum class sfSoundStatus(override val value: Int) : CEnum {
-    sfStopped(0),
-    sfPaused(1),
-    sfPlaying(2),
+enum class sfSoundStatus(override val value: UInt) : CEnum {
+    sfStopped(0u),
+    sfPaused(1u),
+    sfPlaying(2u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfSoundStatus.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfSoundStatus.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfSoundStatus
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
 // enum (anonymous at /usr/include/SFML/Window/Joystick.h:39:1):
-val sfJoystickCount: Int = 8
-val sfJoystickButtonCount: Int = 32
-val sfJoystickAxisCount: Int = 8
+val sfJoystickCount: UInt get() = 8u
+val sfJoystickButtonCount: UInt get() = 32u
+val sfJoystickAxisCount: UInt get() = 8u
 
-enum class sfJoystickAxis(override val value: Int) : CEnum {
-    sfJoystickX(0),
-    sfJoystickY(1),
-    sfJoystickZ(2),
-    sfJoystickR(3),
-    sfJoystickU(4),
-    sfJoystickV(5),
-    sfJoystickPovX(6),
-    sfJoystickPovY(7),
+enum class sfJoystickAxis(override val value: UInt) : CEnum {
+    sfJoystickX(0u),
+    sfJoystickY(1u),
+    sfJoystickZ(2u),
+    sfJoystickR(3u),
+    sfJoystickU(4u),
+    sfJoystickV(5u),
+    sfJoystickPovX(6u),
+    sfJoystickPovY(7u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfJoystickAxis.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfJoystickAxis.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfJoystickAxis
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
 typealias sfKeyCodeVar = IntVarOf<sfKeyCode>
 typealias sfKeyCode = Int
 
-val sfKeyUnknown: sfKeyCode = -1
-val sfKeyA: sfKeyCode = 0
-val sfKeyB: sfKeyCode = 1
-val sfKeyC: sfKeyCode = 2
-val sfKeyD: sfKeyCode = 3
-val sfKeyE: sfKeyCode = 4
-val sfKeyF: sfKeyCode = 5
-val sfKeyG: sfKeyCode = 6
-val sfKeyH: sfKeyCode = 7
-val sfKeyI: sfKeyCode = 8
-val sfKeyJ: sfKeyCode = 9
-val sfKeyK: sfKeyCode = 10
-val sfKeyL: sfKeyCode = 11
-val sfKeyM: sfKeyCode = 12
-val sfKeyN: sfKeyCode = 13
-val sfKeyO: sfKeyCode = 14
-val sfKeyP: sfKeyCode = 15
-val sfKeyQ: sfKeyCode = 16
-val sfKeyR: sfKeyCode = 17
-val sfKeyS: sfKeyCode = 18
-val sfKeyT: sfKeyCode = 19
-val sfKeyU: sfKeyCode = 20
-val sfKeyV: sfKeyCode = 21
-val sfKeyW: sfKeyCode = 22
-val sfKeyX: sfKeyCode = 23
-val sfKeyY: sfKeyCode = 24
-val sfKeyZ: sfKeyCode = 25
-val sfKeyNum0: sfKeyCode = 26
-val sfKeyNum1: sfKeyCode = 27
-val sfKeyNum2: sfKeyCode = 28
-val sfKeyNum3: sfKeyCode = 29
-val sfKeyNum4: sfKeyCode = 30
-val sfKeyNum5: sfKeyCode = 31
-val sfKeyNum6: sfKeyCode = 32
-val sfKeyNum7: sfKeyCode = 33
-val sfKeyNum8: sfKeyCode = 34
-val sfKeyNum9: sfKeyCode = 35
-val sfKeyEscape: sfKeyCode = 36
-val sfKeyLControl: sfKeyCode = 37
-val sfKeyLShift: sfKeyCode = 38
-val sfKeyLAlt: sfKeyCode = 39
-val sfKeyLSystem: sfKeyCode = 40
-val sfKeyRControl: sfKeyCode = 41
-val sfKeyRShift: sfKeyCode = 42
-val sfKeyRAlt: sfKeyCode = 43
-val sfKeyRSystem: sfKeyCode = 44
-val sfKeyMenu: sfKeyCode = 45
-val sfKeyLBracket: sfKeyCode = 46
-val sfKeyRBracket: sfKeyCode = 47
-val sfKeySemiColon: sfKeyCode = 48
-val sfKeyComma: sfKeyCode = 49
-val sfKeyPeriod: sfKeyCode = 50
-val sfKeyQuote: sfKeyCode = 51
-val sfKeySlash: sfKeyCode = 52
-val sfKeyBackSlash: sfKeyCode = 53
-val sfKeyTilde: sfKeyCode = 54
-val sfKeyEqual: sfKeyCode = 55
-val sfKeyDash: sfKeyCode = 56
-val sfKeySpace: sfKeyCode = 57
-val sfKeyReturn: sfKeyCode = 58
-val sfKeyBack: sfKeyCode = 59
-val sfKeyTab: sfKeyCode = 60
-val sfKeyPageUp: sfKeyCode = 61
-val sfKeyPageDown: sfKeyCode = 62
-val sfKeyEnd: sfKeyCode = 63
-val sfKeyHome: sfKeyCode = 64
-val sfKeyInsert: sfKeyCode = 65
-val sfKeyDelete: sfKeyCode = 66
-val sfKeyAdd: sfKeyCode = 67
-val sfKeySubtract: sfKeyCode = 68
-val sfKeyMultiply: sfKeyCode = 69
-val sfKeyDivide: sfKeyCode = 70
-val sfKeyLeft: sfKeyCode = 71
-val sfKeyRight: sfKeyCode = 72
-val sfKeyUp: sfKeyCode = 73
-val sfKeyDown: sfKeyCode = 74
-val sfKeyNumpad0: sfKeyCode = 75
-val sfKeyNumpad1: sfKeyCode = 76
-val sfKeyNumpad2: sfKeyCode = 77
-val sfKeyNumpad3: sfKeyCode = 78
-val sfKeyNumpad4: sfKeyCode = 79
-val sfKeyNumpad5: sfKeyCode = 80
-val sfKeyNumpad6: sfKeyCode = 81
-val sfKeyNumpad7: sfKeyCode = 82
-val sfKeyNumpad8: sfKeyCode = 83
-val sfKeyNumpad9: sfKeyCode = 84
-val sfKeyF1: sfKeyCode = 85
-val sfKeyF2: sfKeyCode = 86
-val sfKeyF3: sfKeyCode = 87
-val sfKeyF4: sfKeyCode = 88
-val sfKeyF5: sfKeyCode = 89
-val sfKeyF6: sfKeyCode = 90
-val sfKeyF7: sfKeyCode = 91
-val sfKeyF8: sfKeyCode = 92
-val sfKeyF9: sfKeyCode = 93
-val sfKeyF10: sfKeyCode = 94
-val sfKeyF11: sfKeyCode = 95
-val sfKeyF12: sfKeyCode = 96
-val sfKeyF13: sfKeyCode = 97
-val sfKeyF14: sfKeyCode = 98
-val sfKeyF15: sfKeyCode = 99
-val sfKeyPause: sfKeyCode = 100
-val sfKeyCount: sfKeyCode = 101
+val sfKeyUnknown: sfKeyCode get() = -1
+val sfKeyA: sfKeyCode get() = 0
+val sfKeyB: sfKeyCode get() = 1
+val sfKeyC: sfKeyCode get() = 2
+val sfKeyD: sfKeyCode get() = 3
+val sfKeyE: sfKeyCode get() = 4
+val sfKeyF: sfKeyCode get() = 5
+val sfKeyG: sfKeyCode get() = 6
+val sfKeyH: sfKeyCode get() = 7
+val sfKeyI: sfKeyCode get() = 8
+val sfKeyJ: sfKeyCode get() = 9
+val sfKeyK: sfKeyCode get() = 10
+val sfKeyL: sfKeyCode get() = 11
+val sfKeyM: sfKeyCode get() = 12
+val sfKeyN: sfKeyCode get() = 13
+val sfKeyO: sfKeyCode get() = 14
+val sfKeyP: sfKeyCode get() = 15
+val sfKeyQ: sfKeyCode get() = 16
+val sfKeyR: sfKeyCode get() = 17
+val sfKeyS: sfKeyCode get() = 18
+val sfKeyT: sfKeyCode get() = 19
+val sfKeyU: sfKeyCode get() = 20
+val sfKeyV: sfKeyCode get() = 21
+val sfKeyW: sfKeyCode get() = 22
+val sfKeyX: sfKeyCode get() = 23
+val sfKeyY: sfKeyCode get() = 24
+val sfKeyZ: sfKeyCode get() = 25
+val sfKeyNum0: sfKeyCode get() = 26
+val sfKeyNum1: sfKeyCode get() = 27
+val sfKeyNum2: sfKeyCode get() = 28
+val sfKeyNum3: sfKeyCode get() = 29
+val sfKeyNum4: sfKeyCode get() = 30
+val sfKeyNum5: sfKeyCode get() = 31
+val sfKeyNum6: sfKeyCode get() = 32
+val sfKeyNum7: sfKeyCode get() = 33
+val sfKeyNum8: sfKeyCode get() = 34
+val sfKeyNum9: sfKeyCode get() = 35
+val sfKeyEscape: sfKeyCode get() = 36
+val sfKeyLControl: sfKeyCode get() = 37
+val sfKeyLShift: sfKeyCode get() = 38
+val sfKeyLAlt: sfKeyCode get() = 39
+val sfKeyLSystem: sfKeyCode get() = 40
+val sfKeyRControl: sfKeyCode get() = 41
+val sfKeyRShift: sfKeyCode get() = 42
+val sfKeyRAlt: sfKeyCode get() = 43
+val sfKeyRSystem: sfKeyCode get() = 44
+val sfKeyMenu: sfKeyCode get() = 45
+val sfKeyLBracket: sfKeyCode get() = 46
+val sfKeyRBracket: sfKeyCode get() = 47
+val sfKeySemiColon: sfKeyCode get() = 48
+val sfKeyComma: sfKeyCode get() = 49
+val sfKeyPeriod: sfKeyCode get() = 50
+val sfKeyQuote: sfKeyCode get() = 51
+val sfKeySlash: sfKeyCode get() = 52
+val sfKeyBackSlash: sfKeyCode get() = 53
+val sfKeyTilde: sfKeyCode get() = 54
+val sfKeyEqual: sfKeyCode get() = 55
+val sfKeyDash: sfKeyCode get() = 56
+val sfKeySpace: sfKeyCode get() = 57
+val sfKeyReturn: sfKeyCode get() = 58
+val sfKeyBack: sfKeyCode get() = 59
+val sfKeyTab: sfKeyCode get() = 60
+val sfKeyPageUp: sfKeyCode get() = 61
+val sfKeyPageDown: sfKeyCode get() = 62
+val sfKeyEnd: sfKeyCode get() = 63
+val sfKeyHome: sfKeyCode get() = 64
+val sfKeyInsert: sfKeyCode get() = 65
+val sfKeyDelete: sfKeyCode get() = 66
+val sfKeyAdd: sfKeyCode get() = 67
+val sfKeySubtract: sfKeyCode get() = 68
+val sfKeyMultiply: sfKeyCode get() = 69
+val sfKeyDivide: sfKeyCode get() = 70
+val sfKeyLeft: sfKeyCode get() = 71
+val sfKeyRight: sfKeyCode get() = 72
+val sfKeyUp: sfKeyCode get() = 73
+val sfKeyDown: sfKeyCode get() = 74
+val sfKeyNumpad0: sfKeyCode get() = 75
+val sfKeyNumpad1: sfKeyCode get() = 76
+val sfKeyNumpad2: sfKeyCode get() = 77
+val sfKeyNumpad3: sfKeyCode get() = 78
+val sfKeyNumpad4: sfKeyCode get() = 79
+val sfKeyNumpad5: sfKeyCode get() = 80
+val sfKeyNumpad6: sfKeyCode get() = 81
+val sfKeyNumpad7: sfKeyCode get() = 82
+val sfKeyNumpad8: sfKeyCode get() = 83
+val sfKeyNumpad9: sfKeyCode get() = 84
+val sfKeyF1: sfKeyCode get() = 85
+val sfKeyF2: sfKeyCode get() = 86
+val sfKeyF3: sfKeyCode get() = 87
+val sfKeyF4: sfKeyCode get() = 88
+val sfKeyF5: sfKeyCode get() = 89
+val sfKeyF6: sfKeyCode get() = 90
+val sfKeyF7: sfKeyCode get() = 91
+val sfKeyF8: sfKeyCode get() = 92
+val sfKeyF9: sfKeyCode get() = 93
+val sfKeyF10: sfKeyCode get() = 94
+val sfKeyF11: sfKeyCode get() = 95
+val sfKeyF12: sfKeyCode get() = 96
+val sfKeyF13: sfKeyCode get() = 97
+val sfKeyF14: sfKeyCode get() = 98
+val sfKeyF15: sfKeyCode get() = 99
+val sfKeyPause: sfKeyCode get() = 100
+val sfKeyCount: sfKeyCode get() = 101
 
-enum class sfMouseButton(override val value: Int) : CEnum {
-    sfMouseLeft(0),
-    sfMouseRight(1),
-    sfMouseMiddle(2),
-    sfMouseXButton1(3),
-    sfMouseXButton2(4),
-    sfMouseButtonCount(5),
+enum class sfMouseButton(override val value: UInt) : CEnum {
+    sfMouseLeft(0u),
+    sfMouseRight(1u),
+    sfMouseMiddle(2u),
+    sfMouseXButton1(3u),
+    sfMouseXButton2(4u),
+    sfMouseButtonCount(5u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfMouseButton.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfMouseButton.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfMouseButton
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-enum class sfMouseWheel(override val value: Int) : CEnum {
-    sfMouseVerticalWheel(0),
-    sfMouseHorizontalWheel(1),
+enum class sfMouseWheel(override val value: UInt) : CEnum {
+    sfMouseVerticalWheel(0u),
+    sfMouseHorizontalWheel(1u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfMouseWheel.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfMouseWheel.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfMouseWheel
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-enum class sfSensorType(override val value: Int) : CEnum {
-    sfSensorAccelerometer(0),
-    sfSensorGyroscope(1),
-    sfSensorMagnetometer(2),
-    sfSensorGravity(3),
-    sfSensorUserAcceleration(4),
-    sfSensorOrientation(5),
-    sfSensorCount(6),
+enum class sfSensorType(override val value: UInt) : CEnum {
+    sfSensorAccelerometer(0u),
+    sfSensorGyroscope(1u),
+    sfSensorMagnetometer(2u),
+    sfSensorGravity(3u),
+    sfSensorUserAcceleration(4u),
+    sfSensorOrientation(5u),
+    sfSensorCount(6u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfSensorType.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfSensorType.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfSensorType
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-enum class sfEventType(override val value: Int) : CEnum {
-    sfEvtClosed(0),
-    sfEvtResized(1),
-    sfEvtLostFocus(2),
-    sfEvtGainedFocus(3),
-    sfEvtTextEntered(4),
-    sfEvtKeyPressed(5),
-    sfEvtKeyReleased(6),
-    sfEvtMouseWheelMoved(7),
-    sfEvtMouseWheelScrolled(8),
-    sfEvtMouseButtonPressed(9),
-    sfEvtMouseButtonReleased(10),
-    sfEvtMouseMoved(11),
-    sfEvtMouseEntered(12),
-    sfEvtMouseLeft(13),
-    sfEvtJoystickButtonPressed(14),
-    sfEvtJoystickButtonReleased(15),
-    sfEvtJoystickMoved(16),
-    sfEvtJoystickConnected(17),
-    sfEvtJoystickDisconnected(18),
-    sfEvtTouchBegan(19),
-    sfEvtTouchMoved(20),
-    sfEvtTouchEnded(21),
-    sfEvtSensorChanged(22),
-    sfEvtCount(23),
+enum class sfEventType(override val value: UInt) : CEnum {
+    sfEvtClosed(0u),
+    sfEvtResized(1u),
+    sfEvtLostFocus(2u),
+    sfEvtGainedFocus(3u),
+    sfEvtTextEntered(4u),
+    sfEvtKeyPressed(5u),
+    sfEvtKeyReleased(6u),
+    sfEvtMouseWheelMoved(7u),
+    sfEvtMouseWheelScrolled(8u),
+    sfEvtMouseButtonPressed(9u),
+    sfEvtMouseButtonReleased(10u),
+    sfEvtMouseMoved(11u),
+    sfEvtMouseEntered(12u),
+    sfEvtMouseLeft(13u),
+    sfEvtJoystickButtonPressed(14u),
+    sfEvtJoystickButtonReleased(15u),
+    sfEvtJoystickMoved(16u),
+    sfEvtJoystickConnected(17u),
+    sfEvtJoystickDisconnected(18u),
+    sfEvtTouchBegan(19u),
+    sfEvtTouchMoved(20u),
+    sfEvtTouchEnded(21u),
+    sfEvtSensorChanged(22u),
+    sfEvtCount(23u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfEventType.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfEventType.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfEventType
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-typealias sfWindowStyleVar = IntVarOf<sfWindowStyle>
-typealias sfWindowStyle = Int
+typealias sfWindowStyleVar = UIntVarOf<sfWindowStyle>
+typealias sfWindowStyle = UInt
 
-val sfNone: sfWindowStyle = 0
-val sfTitlebar: sfWindowStyle = 1
-val sfResize: sfWindowStyle = 2
-val sfClose: sfWindowStyle = 4
-val sfFullscreen: sfWindowStyle = 8
-val sfDefaultStyle: sfWindowStyle = 7
+val sfNone: sfWindowStyle get() = 0u
+val sfTitlebar: sfWindowStyle get() = 1u
+val sfResize: sfWindowStyle get() = 2u
+val sfClose: sfWindowStyle get() = 4u
+val sfFullscreen: sfWindowStyle get() = 8u
+val sfDefaultStyle: sfWindowStyle get() = 7u
 
-typealias sfContextAttributeVar = IntVarOf<sfContextAttribute>
-typealias sfContextAttribute = Int
+typealias sfContextAttributeVar = UIntVarOf<sfContextAttribute>
+typealias sfContextAttribute = UInt
 
-val sfContextDefault: sfContextAttribute = 0
-val sfContextCore: sfContextAttribute = 1
-val sfContextDebug: sfContextAttribute = 4
+val sfContextDefault: sfContextAttribute get() = 0u
+val sfContextCore: sfContextAttribute get() = 1u
+val sfContextDebug: sfContextAttribute get() = 4u
 
-enum class sfBlendFactor(override val value: Int) : CEnum {
-    sfBlendFactorZero(0),
-    sfBlendFactorOne(1),
-    sfBlendFactorSrcColor(2),
-    sfBlendFactorOneMinusSrcColor(3),
-    sfBlendFactorDstColor(4),
-    sfBlendFactorOneMinusDstColor(5),
-    sfBlendFactorSrcAlpha(6),
-    sfBlendFactorOneMinusSrcAlpha(7),
-    sfBlendFactorDstAlpha(8),
-    sfBlendFactorOneMinusDstAlpha(9),
+enum class sfBlendFactor(override val value: UInt) : CEnum {
+    sfBlendFactorZero(0u),
+    sfBlendFactorOne(1u),
+    sfBlendFactorSrcColor(2u),
+    sfBlendFactorOneMinusSrcColor(3u),
+    sfBlendFactorDstColor(4u),
+    sfBlendFactorOneMinusDstColor(5u),
+    sfBlendFactorSrcAlpha(6u),
+    sfBlendFactorOneMinusSrcAlpha(7u),
+    sfBlendFactorDstAlpha(8u),
+    sfBlendFactorOneMinusDstAlpha(9u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfBlendFactor.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfBlendFactor.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfBlendFactor
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-enum class sfBlendEquation(override val value: Int) : CEnum {
-    sfBlendEquationAdd(0),
-    sfBlendEquationSubtract(1),
+enum class sfBlendEquation(override val value: UInt) : CEnum {
+    sfBlendEquationAdd(0u),
+    sfBlendEquationSubtract(1u),
+    sfBlendEquationReverseSubtract(2u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfBlendEquation.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfBlendEquation.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfBlendEquation
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-enum class sfPrimitiveType(override val value: Int) : CEnum {
-    sfPoints(0),
-    sfLines(1),
-    sfLinesStrip(2),
-    sfTriangles(3),
-    sfTrianglesStrip(4),
-    sfTrianglesFan(5),
-    sfQuads(6),
+typealias sfPrimitiveTypeVar = UIntVarOf<sfPrimitiveType>
+typealias sfPrimitiveType = UInt
+
+val sfPoints: sfPrimitiveType get() = 0u
+val sfLines: sfPrimitiveType get() = 1u
+val sfLineStrip: sfPrimitiveType get() = 2u
+val sfTriangles: sfPrimitiveType get() = 3u
+val sfTriangleStrip: sfPrimitiveType get() = 4u
+val sfTriangleFan: sfPrimitiveType get() = 5u
+val sfQuads: sfPrimitiveType get() = 6u
+val sfLinesStrip: sfPrimitiveType get() = 2u
+val sfTrianglesStrip: sfPrimitiveType get() = 4u
+val sfTrianglesFan: sfPrimitiveType get() = 5u
+
+typealias sfTextStyleVar = UIntVarOf<sfTextStyle>
+typealias sfTextStyle = UInt
+
+val sfTextRegular: sfTextStyle get() = 0u
+val sfTextBold: sfTextStyle get() = 1u
+val sfTextItalic: sfTextStyle get() = 2u
+val sfTextUnderlined: sfTextStyle get() = 4u
+val sfTextStrikeThrough: sfTextStyle get() = 8u
+
+enum class sfFtpTransferMode(override val value: UInt) : CEnum {
+    sfFtpBinary(0u),
+    sfFtpAscii(1u),
+    sfFtpEbcdic(2u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfPrimitiveType.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfFtpTransferMode.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
-        var value: sfPrimitiveType
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
-    }
-}
-
-typealias sfTextStyleVar = IntVarOf<sfTextStyle>
-typealias sfTextStyle = Int
-
-val sfTextRegular: sfTextStyle = 0
-val sfTextBold: sfTextStyle = 1
-val sfTextItalic: sfTextStyle = 2
-val sfTextUnderlined: sfTextStyle = 4
-val sfTextStrikeThrough: sfTextStyle = 8
-
-enum class sfFtpTransferMode(override val value: Int) : CEnum {
-    sfFtpBinary(0),
-    sfFtpAscii(1),
-    sfFtpEbcdic(2),
-    ;
-    
-    companion object {
-        fun byValue(value: Int) = sfFtpTransferMode.values().find { it.value == value }!!
-    }
-    
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfFtpTransferMode
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-typealias sfFtpStatusVar = IntVarOf<sfFtpStatus>
-typealias sfFtpStatus = Int
+typealias sfFtpStatusVar = UIntVarOf<sfFtpStatus>
+typealias sfFtpStatus = UInt
 
-val sfFtpRestartMarkerReply: sfFtpStatus = 110
-val sfFtpServiceReadySoon: sfFtpStatus = 120
-val sfFtpDataConnectionAlreadyOpened: sfFtpStatus = 125
-val sfFtpOpeningDataConnection: sfFtpStatus = 150
-val sfFtpOk: sfFtpStatus = 200
-val sfFtpPointlessCommand: sfFtpStatus = 202
-val sfFtpSystemStatus: sfFtpStatus = 211
-val sfFtpDirectoryStatus: sfFtpStatus = 212
-val sfFtpFileStatus: sfFtpStatus = 213
-val sfFtpHelpMessage: sfFtpStatus = 214
-val sfFtpSystemType: sfFtpStatus = 215
-val sfFtpServiceReady: sfFtpStatus = 220
-val sfFtpClosingConnection: sfFtpStatus = 221
-val sfFtpDataConnectionOpened: sfFtpStatus = 225
-val sfFtpClosingDataConnection: sfFtpStatus = 226
-val sfFtpEnteringPassiveMode: sfFtpStatus = 227
-val sfFtpLoggedIn: sfFtpStatus = 230
-val sfFtpFileActionOk: sfFtpStatus = 250
-val sfFtpDirectoryOk: sfFtpStatus = 257
-val sfFtpNeedPassword: sfFtpStatus = 331
-val sfFtpNeedAccountToLogIn: sfFtpStatus = 332
-val sfFtpNeedInformation: sfFtpStatus = 350
-val sfFtpServiceUnavailable: sfFtpStatus = 421
-val sfFtpDataConnectionUnavailable: sfFtpStatus = 425
-val sfFtpTransferAborted: sfFtpStatus = 426
-val sfFtpFileActionAborted: sfFtpStatus = 450
-val sfFtpLocalError: sfFtpStatus = 451
-val sfFtpInsufficientStorageSpace: sfFtpStatus = 452
-val sfFtpCommandUnknown: sfFtpStatus = 500
-val sfFtpParametersUnknown: sfFtpStatus = 501
-val sfFtpCommandNotImplemented: sfFtpStatus = 502
-val sfFtpBadCommandSequence: sfFtpStatus = 503
-val sfFtpParameterNotImplemented: sfFtpStatus = 504
-val sfFtpNotLoggedIn: sfFtpStatus = 530
-val sfFtpNeedAccountToStore: sfFtpStatus = 532
-val sfFtpFileUnavailable: sfFtpStatus = 550
-val sfFtpPageTypeUnknown: sfFtpStatus = 551
-val sfFtpNotEnoughMemory: sfFtpStatus = 552
-val sfFtpFilenameNotAllowed: sfFtpStatus = 553
-val sfFtpInvalidResponse: sfFtpStatus = 1000
-val sfFtpConnectionFailed: sfFtpStatus = 1001
-val sfFtpConnectionClosed: sfFtpStatus = 1002
-val sfFtpInvalidFile: sfFtpStatus = 1003
+val sfFtpRestartMarkerReply: sfFtpStatus get() = 110u
+val sfFtpServiceReadySoon: sfFtpStatus get() = 120u
+val sfFtpDataConnectionAlreadyOpened: sfFtpStatus get() = 125u
+val sfFtpOpeningDataConnection: sfFtpStatus get() = 150u
+val sfFtpOk: sfFtpStatus get() = 200u
+val sfFtpPointlessCommand: sfFtpStatus get() = 202u
+val sfFtpSystemStatus: sfFtpStatus get() = 211u
+val sfFtpDirectoryStatus: sfFtpStatus get() = 212u
+val sfFtpFileStatus: sfFtpStatus get() = 213u
+val sfFtpHelpMessage: sfFtpStatus get() = 214u
+val sfFtpSystemType: sfFtpStatus get() = 215u
+val sfFtpServiceReady: sfFtpStatus get() = 220u
+val sfFtpClosingConnection: sfFtpStatus get() = 221u
+val sfFtpDataConnectionOpened: sfFtpStatus get() = 225u
+val sfFtpClosingDataConnection: sfFtpStatus get() = 226u
+val sfFtpEnteringPassiveMode: sfFtpStatus get() = 227u
+val sfFtpLoggedIn: sfFtpStatus get() = 230u
+val sfFtpFileActionOk: sfFtpStatus get() = 250u
+val sfFtpDirectoryOk: sfFtpStatus get() = 257u
+val sfFtpNeedPassword: sfFtpStatus get() = 331u
+val sfFtpNeedAccountToLogIn: sfFtpStatus get() = 332u
+val sfFtpNeedInformation: sfFtpStatus get() = 350u
+val sfFtpServiceUnavailable: sfFtpStatus get() = 421u
+val sfFtpDataConnectionUnavailable: sfFtpStatus get() = 425u
+val sfFtpTransferAborted: sfFtpStatus get() = 426u
+val sfFtpFileActionAborted: sfFtpStatus get() = 450u
+val sfFtpLocalError: sfFtpStatus get() = 451u
+val sfFtpInsufficientStorageSpace: sfFtpStatus get() = 452u
+val sfFtpCommandUnknown: sfFtpStatus get() = 500u
+val sfFtpParametersUnknown: sfFtpStatus get() = 501u
+val sfFtpCommandNotImplemented: sfFtpStatus get() = 502u
+val sfFtpBadCommandSequence: sfFtpStatus get() = 503u
+val sfFtpParameterNotImplemented: sfFtpStatus get() = 504u
+val sfFtpNotLoggedIn: sfFtpStatus get() = 530u
+val sfFtpNeedAccountToStore: sfFtpStatus get() = 532u
+val sfFtpFileUnavailable: sfFtpStatus get() = 550u
+val sfFtpPageTypeUnknown: sfFtpStatus get() = 551u
+val sfFtpNotEnoughMemory: sfFtpStatus get() = 552u
+val sfFtpFilenameNotAllowed: sfFtpStatus get() = 553u
+val sfFtpInvalidResponse: sfFtpStatus get() = 1000u
+val sfFtpConnectionFailed: sfFtpStatus get() = 1001u
+val sfFtpConnectionClosed: sfFtpStatus get() = 1002u
+val sfFtpInvalidFile: sfFtpStatus get() = 1003u
 
-enum class sfHttpMethod(override val value: Int) : CEnum {
-    sfHttpGet(0),
-    sfHttpPost(1),
-    sfHttpHead(2),
-    sfHttpPut(3),
-    sfHttpDelete(4),
+enum class sfHttpMethod(override val value: UInt) : CEnum {
+    sfHttpGet(0u),
+    sfHttpPost(1u),
+    sfHttpHead(2u),
+    sfHttpPut(3u),
+    sfHttpDelete(4u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfHttpMethod.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfHttpMethod.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfHttpMethod
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
-typealias sfHttpStatusVar = IntVarOf<sfHttpStatus>
-typealias sfHttpStatus = Int
+typealias sfHttpStatusVar = UIntVarOf<sfHttpStatus>
+typealias sfHttpStatus = UInt
 
-val sfHttpOk: sfHttpStatus = 200
-val sfHttpCreated: sfHttpStatus = 201
-val sfHttpAccepted: sfHttpStatus = 202
-val sfHttpNoContent: sfHttpStatus = 204
-val sfHttpResetContent: sfHttpStatus = 205
-val sfHttpPartialContent: sfHttpStatus = 206
-val sfHttpMultipleChoices: sfHttpStatus = 300
-val sfHttpMovedPermanently: sfHttpStatus = 301
-val sfHttpMovedTemporarily: sfHttpStatus = 302
-val sfHttpNotModified: sfHttpStatus = 304
-val sfHttpBadRequest: sfHttpStatus = 400
-val sfHttpUnauthorized: sfHttpStatus = 401
-val sfHttpForbidden: sfHttpStatus = 403
-val sfHttpNotFound: sfHttpStatus = 404
-val sfHttpRangeNotSatisfiable: sfHttpStatus = 407
-val sfHttpInternalServerError: sfHttpStatus = 500
-val sfHttpNotImplemented: sfHttpStatus = 501
-val sfHttpBadGateway: sfHttpStatus = 502
-val sfHttpServiceNotAvailable: sfHttpStatus = 503
-val sfHttpGatewayTimeout: sfHttpStatus = 504
-val sfHttpVersionNotSupported: sfHttpStatus = 505
-val sfHttpInvalidResponse: sfHttpStatus = 1000
-val sfHttpConnectionFailed: sfHttpStatus = 1001
+val sfHttpOk: sfHttpStatus get() = 200u
+val sfHttpCreated: sfHttpStatus get() = 201u
+val sfHttpAccepted: sfHttpStatus get() = 202u
+val sfHttpNoContent: sfHttpStatus get() = 204u
+val sfHttpResetContent: sfHttpStatus get() = 205u
+val sfHttpPartialContent: sfHttpStatus get() = 206u
+val sfHttpMultipleChoices: sfHttpStatus get() = 300u
+val sfHttpMovedPermanently: sfHttpStatus get() = 301u
+val sfHttpMovedTemporarily: sfHttpStatus get() = 302u
+val sfHttpNotModified: sfHttpStatus get() = 304u
+val sfHttpBadRequest: sfHttpStatus get() = 400u
+val sfHttpUnauthorized: sfHttpStatus get() = 401u
+val sfHttpForbidden: sfHttpStatus get() = 403u
+val sfHttpNotFound: sfHttpStatus get() = 404u
+val sfHttpRangeNotSatisfiable: sfHttpStatus get() = 407u
+val sfHttpInternalServerError: sfHttpStatus get() = 500u
+val sfHttpNotImplemented: sfHttpStatus get() = 501u
+val sfHttpBadGateway: sfHttpStatus get() = 502u
+val sfHttpServiceNotAvailable: sfHttpStatus get() = 503u
+val sfHttpGatewayTimeout: sfHttpStatus get() = 504u
+val sfHttpVersionNotSupported: sfHttpStatus get() = 505u
+val sfHttpInvalidResponse: sfHttpStatus get() = 1000u
+val sfHttpConnectionFailed: sfHttpStatus get() = 1001u
 
-enum class sfSocketStatus(override val value: Int) : CEnum {
-    sfSocketDone(0),
-    sfSocketNotReady(1),
-    sfSocketPartial(2),
-    sfSocketDisconnected(3),
-    sfSocketError(4),
+enum class sfSocketStatus(override val value: UInt) : CEnum {
+    sfSocketDone(0u),
+    sfSocketNotReady(1u),
+    sfSocketPartial(2u),
+    sfSocketDisconnected(3u),
+    sfSocketError(4u),
     ;
     
     companion object {
-        fun byValue(value: Int) = sfSocketStatus.values().find { it.value == value }!!
+        fun byValue(value: UInt) = sfSocketStatus.values().find { it.value == value }!!
     }
     
-    class Var(override val rawPtr: NativePtr) : CEnumVar() {
-        companion object : Type(IntVar.size.toInt())
+    class Var(rawPtr: NativePtr) : CEnumVar(rawPtr) {
+        companion object : Type(UIntVar.size.toInt())
         var value: sfSocketStatus
-            get() = byValue(this.reinterpret<IntVar>().value)
-            set(value) { this.reinterpret<IntVar>().value = value.value }
+            get() = byValue(this.reinterpret<UIntVar>().value)
+            set(value) { this.reinterpret<UIntVar>().value = value.value }
     }
 }
 
@@ -7253,2060 +6327,1606 @@ typealias sfBool = Int
 typealias sfInt8Var = ByteVarOf<sfInt8>
 typealias sfInt8 = Byte
 
-typealias sfUint8Var = ByteVarOf<sfUint8>
-typealias sfUint8 = Byte
+typealias sfUint8Var = UByteVarOf<sfUint8>
+typealias sfUint8 = UByte
 
 typealias sfInt16Var = ShortVarOf<sfInt16>
 typealias sfInt16 = Short
 
-typealias sfUint16Var = ShortVarOf<sfUint16>
-typealias sfUint16 = Short
+typealias sfUint16Var = UShortVarOf<sfUint16>
+typealias sfUint16 = UShort
 
 typealias sfInt32Var = IntVarOf<sfInt32>
 typealias sfInt32 = Int
 
-typealias sfUint32Var = IntVarOf<sfUint32>
-typealias sfUint32 = Int
+typealias sfUint32Var = UIntVarOf<sfUint32>
+typealias sfUint32 = UInt
 
 typealias sfInt64Var = LongVarOf<sfInt64>
 typealias sfInt64 = Long
 
-typealias sfUint64Var = LongVarOf<sfUint64>
-typealias sfUint64 = Long
+typealias sfUint64Var = ULongVarOf<sfUint64>
+typealias sfUint64 = ULong
 
 typealias sfInputStreamReadFuncVar = CPointerVarOf<sfInputStreamReadFunc>
-typealias sfInputStreamReadFunc = CPointer<CFunction<CFunctionType8>>
+typealias sfInputStreamReadFunc = CPointer<CFunction<(COpaquePointer?, sfInt64, COpaquePointer?) -> sfInt64>>
 
 typealias sfInputStreamSeekFuncVar = CPointerVarOf<sfInputStreamSeekFunc>
-typealias sfInputStreamSeekFunc = CPointer<CFunction<CFunctionType9>>
+typealias sfInputStreamSeekFunc = CPointer<CFunction<(sfInt64, COpaquePointer?) -> sfInt64>>
 
 typealias sfInputStreamTellFuncVar = CPointerVarOf<sfInputStreamTellFunc>
-typealias sfInputStreamTellFunc = CPointer<CFunction<CFunctionType10>>
+typealias sfInputStreamTellFunc = CPointer<CFunction<(COpaquePointer?) -> sfInt64>>
 
 typealias sfInputStreamGetSizeFuncVar = CPointerVarOf<sfInputStreamGetSizeFunc>
-typealias sfInputStreamGetSizeFunc = CPointer<CFunction<CFunctionType10>>
-
-typealias ptrdiff_tVar = LongVarOf<ptrdiff_t>
-typealias ptrdiff_t = Long
-
-typealias size_tVar = LongVarOf<size_t>
-typealias size_t = Long
-
-typealias wchar_tVar = IntVarOf<wchar_t>
-typealias wchar_t = Int
+typealias sfInputStreamGetSizeFunc = CPointer<CFunction<(COpaquePointer?) -> sfInt64>>
 
 typealias sfSoundRecorderStartCallbackVar = CPointerVarOf<sfSoundRecorderStartCallback>
-typealias sfSoundRecorderStartCallback = CPointer<CFunction<CFunctionType2>>
+typealias sfSoundRecorderStartCallback = CPointer<CFunction<(COpaquePointer?) -> sfBool>>
 
 typealias sfSoundRecorderProcessCallbackVar = CPointerVarOf<sfSoundRecorderProcessCallback>
-typealias sfSoundRecorderProcessCallback = CPointer<CFunction<CFunctionType3>>
+typealias sfSoundRecorderProcessCallback = CPointer<CFunction<(CPointer<sfInt16Var>?, size_t, COpaquePointer?) -> sfBool>>
 
 typealias sfSoundRecorderStopCallbackVar = CPointerVarOf<sfSoundRecorderStopCallback>
-typealias sfSoundRecorderStopCallback = CPointer<CFunction<CFunctionType1>>
+typealias sfSoundRecorderStopCallback = CPointer<CFunction<(COpaquePointer?) -> Unit>>
 
 typealias sfSoundStreamGetDataCallbackVar = CPointerVarOf<sfSoundStreamGetDataCallback>
-typealias sfSoundStreamGetDataCallback = CPointer<CFunction<CFunctionType4>>
+typealias sfSoundStreamGetDataCallback = CPointer<CFunction<(CPointer<sfSoundStreamChunk>?, COpaquePointer?) -> sfBool>>
 
 typealias sfSoundStreamSeekCallbackVar = CPointerVarOf<sfSoundStreamSeekCallback>
-typealias sfSoundStreamSeekCallback = CPointer<CFunction<CFunctionType5>>
+typealias sfSoundStreamSeekCallback = CPointer<CFunction<(CValue<sfTime>, COpaquePointer?) -> Unit>>
 
-typealias sfWindowHandleVar = LongVarOf<sfWindowHandle>
-typealias sfWindowHandle = Long
+typealias sfWindowHandleVar = ULongVarOf<sfWindowHandle>
+typealias sfWindowHandle = ULong
+
+typealias sfGlslVec2 = sfVector2f
+
+typealias sfGlslIvec2 = sfVector2i
+
+typealias sfGlslVec3 = sfVector3f
 
 typealias sfShapeGetPointCountCallbackVar = CPointerVarOf<sfShapeGetPointCountCallback>
-typealias sfShapeGetPointCountCallback = CPointer<CFunction<CFunctionType6>>
+typealias sfShapeGetPointCountCallback = CPointer<CFunction<(COpaquePointer?) -> size_t>>
 
 typealias sfShapeGetPointCallbackVar = CPointerVarOf<sfShapeGetPointCallback>
-typealias sfShapeGetPointCallback = CPointer<CFunction<CFunctionType7>>
-
-object CFunctionType1 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Unit>()
-
-object CFunctionType2 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Int>()
-
-object CFunctionType3 : CTriviallyAdaptedFunctionType<(CPointer<ShortVar>?, Long, COpaquePointer?) -> Int>()
-
-object CFunctionType4 : CTriviallyAdaptedFunctionType<(CPointer<sfSoundStreamChunk>?, COpaquePointer?) -> Int>()
-
-object CFunctionType5 : CFunctionType {}
-
-object CFunctionType6 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Long>()
-
-object CFunctionType7 : CFunctionType {}
-
-object CFunctionType8 : CTriviallyAdaptedFunctionType<(COpaquePointer?, Long, COpaquePointer?) -> Long>()
-
-object CFunctionType9 : CTriviallyAdaptedFunctionType<(Long, COpaquePointer?) -> Long>()
-
-object CFunctionType10 : CTriviallyAdaptedFunctionType<(COpaquePointer?) -> Long>()
-
-@SymbolName("kni_sfml_sfTime_asSeconds")
-private external fun kni_sfTime_asSeconds(time: NativePtr): Float
-
-@SymbolName("kni_sfml_sfTime_asMilliseconds")
-private external fun kni_sfTime_asMilliseconds(time: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTime_asMicroseconds")
-private external fun kni_sfTime_asMicroseconds(time: NativePtr): Long
-
-@SymbolName("kni_sfml_sfSeconds")
-private external fun kni_sfSeconds(amount: Float, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMilliseconds")
-private external fun kni_sfMilliseconds(amount: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMicroseconds")
-private external fun kni_sfMicroseconds(amount: Long, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfClock_copy")
-private external fun kni_sfClock_copy(clock: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfClock_destroy")
-private external fun kni_sfClock_destroy(clock: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfClock_getElapsedTime")
-private external fun kni_sfClock_getElapsedTime(clock: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfClock_restart")
-private external fun kni_sfClock_restart(clock: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMutex_destroy")
-private external fun kni_sfMutex_destroy(mutex: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMutex_lock")
-private external fun kni_sfMutex_lock(mutex: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMutex_unlock")
-private external fun kni_sfMutex_unlock(mutex: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSleep")
-private external fun kni_sfSleep(duration: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfThread_destroy")
-private external fun kni_sfThread_destroy(thread: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfThread_launch")
-private external fun kni_sfThread_launch(thread: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfThread_wait")
-private external fun kni_sfThread_wait(thread: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfThread_terminate")
-private external fun kni_sfThread_terminate(thread: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfListener_setPosition")
-private external fun kni_sfListener_setPosition(position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfListener_getPosition")
-private external fun kni_sfListener_getPosition(retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfListener_setDirection")
-private external fun kni_sfListener_setDirection(direction: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfListener_getDirection")
-private external fun kni_sfListener_getDirection(retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfListener_setUpVector")
-private external fun kni_sfListener_setUpVector(upVector: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfListener_getUpVector")
-private external fun kni_sfListener_getUpVector(retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMusic_createFromFile")
-private external fun kni_sfMusic_createFromFile(filename: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMusic_createFromStream")
-private external fun kni_sfMusic_createFromStream(stream: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMusic_destroy")
-private external fun kni_sfMusic_destroy(music: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMusic_setLoop")
-private external fun kni_sfMusic_setLoop(music: NativePtr, loop: Int): Unit
-
-@SymbolName("kni_sfml_sfMusic_getLoop")
-private external fun kni_sfMusic_getLoop(music: NativePtr): Int
-
-@SymbolName("kni_sfml_sfMusic_getDuration")
-private external fun kni_sfMusic_getDuration(music: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMusic_play")
-private external fun kni_sfMusic_play(music: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMusic_pause")
-private external fun kni_sfMusic_pause(music: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMusic_stop")
-private external fun kni_sfMusic_stop(music: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMusic_getChannelCount")
-private external fun kni_sfMusic_getChannelCount(music: NativePtr): Int
-
-@SymbolName("kni_sfml_sfMusic_getSampleRate")
-private external fun kni_sfMusic_getSampleRate(music: NativePtr): Int
-
-@SymbolName("kni_sfml_sfMusic_getStatus")
-private external fun kni_sfMusic_getStatus(music: NativePtr): Int
-
-@SymbolName("kni_sfml_sfMusic_getPlayingOffset")
-private external fun kni_sfMusic_getPlayingOffset(music: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMusic_setPitch")
-private external fun kni_sfMusic_setPitch(music: NativePtr, pitch: Float): Unit
-
-@SymbolName("kni_sfml_sfMusic_setVolume")
-private external fun kni_sfMusic_setVolume(music: NativePtr, volume: Float): Unit
-
-@SymbolName("kni_sfml_sfMusic_setPosition")
-private external fun kni_sfMusic_setPosition(music: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMusic_setRelativeToListener")
-private external fun kni_sfMusic_setRelativeToListener(music: NativePtr, relative: Int): Unit
-
-@SymbolName("kni_sfml_sfMusic_setMinDistance")
-private external fun kni_sfMusic_setMinDistance(music: NativePtr, distance: Float): Unit
-
-@SymbolName("kni_sfml_sfMusic_setAttenuation")
-private external fun kni_sfMusic_setAttenuation(music: NativePtr, attenuation: Float): Unit
-
-@SymbolName("kni_sfml_sfMusic_setPlayingOffset")
-private external fun kni_sfMusic_setPlayingOffset(music: NativePtr, timeOffset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfMusic_getPitch")
-private external fun kni_sfMusic_getPitch(music: NativePtr): Float
-
-@SymbolName("kni_sfml_sfMusic_getVolume")
-private external fun kni_sfMusic_getVolume(music: NativePtr): Float
-
-@SymbolName("kni_sfml_sfMusic_getPosition")
-private external fun kni_sfMusic_getPosition(music: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMusic_isRelativeToListener")
-private external fun kni_sfMusic_isRelativeToListener(music: NativePtr): Int
-
-@SymbolName("kni_sfml_sfMusic_getMinDistance")
-private external fun kni_sfMusic_getMinDistance(music: NativePtr): Float
-
-@SymbolName("kni_sfml_sfMusic_getAttenuation")
-private external fun kni_sfMusic_getAttenuation(music: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSound_copy")
-private external fun kni_sfSound_copy(sound: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSound_destroy")
-private external fun kni_sfSound_destroy(sound: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_play")
-private external fun kni_sfSound_play(sound: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_pause")
-private external fun kni_sfSound_pause(sound: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_stop")
-private external fun kni_sfSound_stop(sound: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_setBuffer")
-private external fun kni_sfSound_setBuffer(sound: NativePtr, buffer: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_getBuffer")
-private external fun kni_sfSound_getBuffer(sound: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSound_setLoop")
-private external fun kni_sfSound_setLoop(sound: NativePtr, loop: Int): Unit
-
-@SymbolName("kni_sfml_sfSound_getLoop")
-private external fun kni_sfSound_getLoop(sound: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSound_getStatus")
-private external fun kni_sfSound_getStatus(sound: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSound_setPitch")
-private external fun kni_sfSound_setPitch(sound: NativePtr, pitch: Float): Unit
-
-@SymbolName("kni_sfml_sfSound_setVolume")
-private external fun kni_sfSound_setVolume(sound: NativePtr, volume: Float): Unit
-
-@SymbolName("kni_sfml_sfSound_setPosition")
-private external fun kni_sfSound_setPosition(sound: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_setRelativeToListener")
-private external fun kni_sfSound_setRelativeToListener(sound: NativePtr, relative: Int): Unit
-
-@SymbolName("kni_sfml_sfSound_setMinDistance")
-private external fun kni_sfSound_setMinDistance(sound: NativePtr, distance: Float): Unit
-
-@SymbolName("kni_sfml_sfSound_setAttenuation")
-private external fun kni_sfSound_setAttenuation(sound: NativePtr, attenuation: Float): Unit
-
-@SymbolName("kni_sfml_sfSound_setPlayingOffset")
-private external fun kni_sfSound_setPlayingOffset(sound: NativePtr, timeOffset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSound_getPitch")
-private external fun kni_sfSound_getPitch(sound: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSound_getVolume")
-private external fun kni_sfSound_getVolume(sound: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSound_getPosition")
-private external fun kni_sfSound_getPosition(sound: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSound_isRelativeToListener")
-private external fun kni_sfSound_isRelativeToListener(sound: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSound_getMinDistance")
-private external fun kni_sfSound_getMinDistance(sound: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSound_getAttenuation")
-private external fun kni_sfSound_getAttenuation(sound: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSound_getPlayingOffset")
-private external fun kni_sfSound_getPlayingOffset(sound: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBuffer_createFromFile")
-private external fun kni_sfSoundBuffer_createFromFile(filename: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBuffer_createFromStream")
-private external fun kni_sfSoundBuffer_createFromStream(stream: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBuffer_createFromSamples")
-private external fun kni_sfSoundBuffer_createFromSamples(samples: NativePtr, sampleCount: Long, channelCount: Int, sampleRate: Int): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBuffer_copy")
-private external fun kni_sfSoundBuffer_copy(soundBuffer: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBuffer_destroy")
-private external fun kni_sfSoundBuffer_destroy(soundBuffer: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundBuffer_saveToFile")
-private external fun kni_sfSoundBuffer_saveToFile(soundBuffer: NativePtr, filename: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundBuffer_getSamples")
-private external fun kni_sfSoundBuffer_getSamples(soundBuffer: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBuffer_getSampleCount")
-private external fun kni_sfSoundBuffer_getSampleCount(soundBuffer: NativePtr): Long
-
-@SymbolName("kni_sfml_sfSoundBuffer_getSampleRate")
-private external fun kni_sfSoundBuffer_getSampleRate(soundBuffer: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundBuffer_getChannelCount")
-private external fun kni_sfSoundBuffer_getChannelCount(soundBuffer: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundBuffer_getDuration")
-private external fun kni_sfSoundBuffer_getDuration(soundBuffer: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundBufferRecorder_destroy")
-private external fun kni_sfSoundBufferRecorder_destroy(soundBufferRecorder: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundBufferRecorder_start")
-private external fun kni_sfSoundBufferRecorder_start(soundBufferRecorder: NativePtr, sampleRate: Int): Unit
-
-@SymbolName("kni_sfml_sfSoundBufferRecorder_stop")
-private external fun kni_sfSoundBufferRecorder_stop(soundBufferRecorder: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundBufferRecorder_getSampleRate")
-private external fun kni_sfSoundBufferRecorder_getSampleRate(soundBufferRecorder: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundBufferRecorder_getBuffer")
-private external fun kni_sfSoundBufferRecorder_getBuffer(soundBufferRecorder: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundRecorder_destroy")
-private external fun kni_sfSoundRecorder_destroy(soundRecorder: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundRecorder_start")
-private external fun kni_sfSoundRecorder_start(soundRecorder: NativePtr, sampleRate: Int): Int
-
-@SymbolName("kni_sfml_sfSoundRecorder_stop")
-private external fun kni_sfSoundRecorder_stop(soundRecorder: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundRecorder_getSampleRate")
-private external fun kni_sfSoundRecorder_getSampleRate(soundRecorder: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundRecorder_setProcessingInterval")
-private external fun kni_sfSoundRecorder_setProcessingInterval(soundRecorder: NativePtr, interval: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundRecorder_getAvailableDevices")
-private external fun kni_sfSoundRecorder_getAvailableDevices(count: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundRecorder_setDevice")
-private external fun kni_sfSoundRecorder_setDevice(soundRecorder: NativePtr, name: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundRecorder_getDevice")
-private external fun kni_sfSoundRecorder_getDevice(soundRecorder: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundStream_destroy")
-private external fun kni_sfSoundStream_destroy(soundStream: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_play")
-private external fun kni_sfSoundStream_play(soundStream: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_pause")
-private external fun kni_sfSoundStream_pause(soundStream: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_stop")
-private external fun kni_sfSoundStream_stop(soundStream: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_getStatus")
-private external fun kni_sfSoundStream_getStatus(soundStream: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundStream_getChannelCount")
-private external fun kni_sfSoundStream_getChannelCount(soundStream: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundStream_getSampleRate")
-private external fun kni_sfSoundStream_getSampleRate(soundStream: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundStream_setPitch")
-private external fun kni_sfSoundStream_setPitch(soundStream: NativePtr, pitch: Float): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setVolume")
-private external fun kni_sfSoundStream_setVolume(soundStream: NativePtr, volume: Float): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setPosition")
-private external fun kni_sfSoundStream_setPosition(soundStream: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setRelativeToListener")
-private external fun kni_sfSoundStream_setRelativeToListener(soundStream: NativePtr, relative: Int): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setMinDistance")
-private external fun kni_sfSoundStream_setMinDistance(soundStream: NativePtr, distance: Float): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setAttenuation")
-private external fun kni_sfSoundStream_setAttenuation(soundStream: NativePtr, attenuation: Float): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setPlayingOffset")
-private external fun kni_sfSoundStream_setPlayingOffset(soundStream: NativePtr, timeOffset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_setLoop")
-private external fun kni_sfSoundStream_setLoop(soundStream: NativePtr, loop: Int): Unit
-
-@SymbolName("kni_sfml_sfSoundStream_getPitch")
-private external fun kni_sfSoundStream_getPitch(soundStream: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSoundStream_getVolume")
-private external fun kni_sfSoundStream_getVolume(soundStream: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSoundStream_getPosition")
-private external fun kni_sfSoundStream_getPosition(soundStream: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSoundStream_isRelativeToListener")
-private external fun kni_sfSoundStream_isRelativeToListener(soundStream: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundStream_getMinDistance")
-private external fun kni_sfSoundStream_getMinDistance(soundStream: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSoundStream_getAttenuation")
-private external fun kni_sfSoundStream_getAttenuation(soundStream: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSoundStream_getLoop")
-private external fun kni_sfSoundStream_getLoop(soundStream: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSoundStream_getPlayingOffset")
-private external fun kni_sfSoundStream_getPlayingOffset(soundStream: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfContext_destroy")
-private external fun kni_sfContext_destroy(context: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfContext_setActive")
-private external fun kni_sfContext_setActive(context: NativePtr, active: Int): Unit
-
-@SymbolName("kni_sfml_sfJoystick_getIdentification")
-private external fun kni_sfJoystick_getIdentification(joystick: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMouse_getPosition")
-private external fun kni_sfMouse_getPosition(relativeTo: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMouse_setPosition")
-private external fun kni_sfMouse_setPosition(position: NativePtr, relativeTo: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSensor_getValue")
-private external fun kni_sfSensor_getValue(sensor: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTouch_getPosition")
-private external fun kni_sfTouch_getPosition(finger: Int, relativeTo: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfVideoMode_getDesktopMode")
-private external fun kni_sfVideoMode_getDesktopMode(retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfVideoMode_getFullscreenModes")
-private external fun kni_sfVideoMode_getFullscreenModes(Count: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfVideoMode_isValid")
-private external fun kni_sfVideoMode_isValid(mode: NativePtr): Int
-
-@SymbolName("kni_sfml_sfWindow_create")
-private external fun kni_sfWindow_create(mode: NativePtr, title: NativePtr, style: Int, settings: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfWindow_createUnicode")
-private external fun kni_sfWindow_createUnicode(mode: NativePtr, title: NativePtr, style: Int, settings: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfWindow_createFromHandle")
-private external fun kni_sfWindow_createFromHandle(handle: Long, settings: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfWindow_destroy")
-private external fun kni_sfWindow_destroy(window: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_close")
-private external fun kni_sfWindow_close(window: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_isOpen")
-private external fun kni_sfWindow_isOpen(window: NativePtr): Int
-
-@SymbolName("kni_sfml_sfWindow_getSettings")
-private external fun kni_sfWindow_getSettings(window: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfWindow_pollEvent")
-private external fun kni_sfWindow_pollEvent(window: NativePtr, event: NativePtr): Int
-
-@SymbolName("kni_sfml_sfWindow_waitEvent")
-private external fun kni_sfWindow_waitEvent(window: NativePtr, event: NativePtr): Int
-
-@SymbolName("kni_sfml_sfWindow_getPosition")
-private external fun kni_sfWindow_getPosition(window: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfWindow_setPosition")
-private external fun kni_sfWindow_setPosition(window: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_getSize")
-private external fun kni_sfWindow_getSize(window: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfWindow_setSize")
-private external fun kni_sfWindow_setSize(window: NativePtr, size: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_setTitle")
-private external fun kni_sfWindow_setTitle(window: NativePtr, title: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_setUnicodeTitle")
-private external fun kni_sfWindow_setUnicodeTitle(window: NativePtr, title: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_setIcon")
-private external fun kni_sfWindow_setIcon(window: NativePtr, width: Int, height: Int, pixels: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_setVisible")
-private external fun kni_sfWindow_setVisible(window: NativePtr, visible: Int): Unit
-
-@SymbolName("kni_sfml_sfWindow_setMouseCursorVisible")
-private external fun kni_sfWindow_setMouseCursorVisible(window: NativePtr, visible: Int): Unit
-
-@SymbolName("kni_sfml_sfWindow_setVerticalSyncEnabled")
-private external fun kni_sfWindow_setVerticalSyncEnabled(window: NativePtr, enabled: Int): Unit
-
-@SymbolName("kni_sfml_sfWindow_setKeyRepeatEnabled")
-private external fun kni_sfWindow_setKeyRepeatEnabled(window: NativePtr, enabled: Int): Unit
-
-@SymbolName("kni_sfml_sfWindow_setActive")
-private external fun kni_sfWindow_setActive(window: NativePtr, active: Int): Int
-
-@SymbolName("kni_sfml_sfWindow_requestFocus")
-private external fun kni_sfWindow_requestFocus(window: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_hasFocus")
-private external fun kni_sfWindow_hasFocus(window: NativePtr): Int
-
-@SymbolName("kni_sfml_sfWindow_display")
-private external fun kni_sfWindow_display(window: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfWindow_setFramerateLimit")
-private external fun kni_sfWindow_setFramerateLimit(window: NativePtr, limit: Int): Unit
-
-@SymbolName("kni_sfml_sfWindow_setJoystickThreshold")
-private external fun kni_sfWindow_setJoystickThreshold(window: NativePtr, threshold: Float): Unit
-
-@SymbolName("kni_sfml_sfWindow_getSystemHandle")
-private external fun kni_sfWindow_getSystemHandle(window: NativePtr): Long
-
-@SymbolName("kni_sfml_sfColor_fromRGB")
-private external fun kni_sfColor_fromRGB(red: Byte, green: Byte, blue: Byte, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfColor_fromRGBA")
-private external fun kni_sfColor_fromRGBA(red: Byte, green: Byte, blue: Byte, alpha: Byte, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfColor_fromInteger")
-private external fun kni_sfColor_fromInteger(color: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfColor_toInteger")
-private external fun kni_sfColor_toInteger(color: NativePtr): Int
-
-@SymbolName("kni_sfml_sfColor_add")
-private external fun kni_sfColor_add(color1: NativePtr, color2: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfColor_subtract")
-private external fun kni_sfColor_subtract(color1: NativePtr, color2: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfColor_modulate")
-private external fun kni_sfColor_modulate(color1: NativePtr, color2: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFloatRect_contains")
-private external fun kni_sfFloatRect_contains(rect: NativePtr, x: Float, y: Float): Int
-
-@SymbolName("kni_sfml_sfIntRect_contains")
-private external fun kni_sfIntRect_contains(rect: NativePtr, x: Int, y: Int): Int
-
-@SymbolName("kni_sfml_sfFloatRect_intersects")
-private external fun kni_sfFloatRect_intersects(rect1: NativePtr, rect2: NativePtr, intersection: NativePtr): Int
-
-@SymbolName("kni_sfml_sfIntRect_intersects")
-private external fun kni_sfIntRect_intersects(rect1: NativePtr, rect2: NativePtr, intersection: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTransform_fromMatrix")
-private external fun kni_sfTransform_fromMatrix(a00: Float, a01: Float, a02: Float, a10: Float, a11: Float, a12: Float, a20: Float, a21: Float, a22: Float, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransform_getMatrix")
-private external fun kni_sfTransform_getMatrix(transform: NativePtr, matrix: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransform_getInverse")
-private external fun kni_sfTransform_getInverse(transform: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransform_transformPoint")
-private external fun kni_sfTransform_transformPoint(transform: NativePtr, point: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransform_transformRect")
-private external fun kni_sfTransform_transformRect(transform: NativePtr, rectangle: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransform_combine")
-private external fun kni_sfTransform_combine(transform: NativePtr, other: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransform_translate")
-private external fun kni_sfTransform_translate(transform: NativePtr, x: Float, y: Float): Unit
-
-@SymbolName("kni_sfml_sfTransform_rotate")
-private external fun kni_sfTransform_rotate(transform: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfTransform_rotateWithCenter")
-private external fun kni_sfTransform_rotateWithCenter(transform: NativePtr, angle: Float, centerX: Float, centerY: Float): Unit
-
-@SymbolName("kni_sfml_sfTransform_scale")
-private external fun kni_sfTransform_scale(transform: NativePtr, scaleX: Float, scaleY: Float): Unit
-
-@SymbolName("kni_sfml_sfTransform_scaleWithCenter")
-private external fun kni_sfTransform_scaleWithCenter(transform: NativePtr, scaleX: Float, scaleY: Float, centerX: Float, centerY: Float): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_copy")
-private external fun kni_sfCircleShape_copy(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_destroy")
-private external fun kni_sfCircleShape_destroy(shape: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setPosition")
-private external fun kni_sfCircleShape_setPosition(shape: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setRotation")
-private external fun kni_sfCircleShape_setRotation(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setScale")
-private external fun kni_sfCircleShape_setScale(shape: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setOrigin")
-private external fun kni_sfCircleShape_setOrigin(shape: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_getPosition")
-private external fun kni_sfCircleShape_getPosition(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getRotation")
-private external fun kni_sfCircleShape_getRotation(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfCircleShape_getScale")
-private external fun kni_sfCircleShape_getScale(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getOrigin")
-private external fun kni_sfCircleShape_getOrigin(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_move")
-private external fun kni_sfCircleShape_move(shape: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_rotate")
-private external fun kni_sfCircleShape_rotate(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_scale")
-private external fun kni_sfCircleShape_scale(shape: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_getTransform")
-private external fun kni_sfCircleShape_getTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getInverseTransform")
-private external fun kni_sfCircleShape_getInverseTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_setTexture")
-private external fun kni_sfCircleShape_setTexture(shape: NativePtr, texture: NativePtr, resetRect: Int): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setTextureRect")
-private external fun kni_sfCircleShape_setTextureRect(shape: NativePtr, rect: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setFillColor")
-private external fun kni_sfCircleShape_setFillColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setOutlineColor")
-private external fun kni_sfCircleShape_setOutlineColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_setOutlineThickness")
-private external fun kni_sfCircleShape_setOutlineThickness(shape: NativePtr, thickness: Float): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_getTexture")
-private external fun kni_sfCircleShape_getTexture(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getTextureRect")
-private external fun kni_sfCircleShape_getTextureRect(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getFillColor")
-private external fun kni_sfCircleShape_getFillColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getOutlineColor")
-private external fun kni_sfCircleShape_getOutlineColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getOutlineThickness")
-private external fun kni_sfCircleShape_getOutlineThickness(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfCircleShape_getPointCount")
-private external fun kni_sfCircleShape_getPointCount(shape: NativePtr): Long
-
-@SymbolName("kni_sfml_sfCircleShape_getPoint")
-private external fun kni_sfCircleShape_getPoint(shape: NativePtr, index: Long, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_setRadius")
-private external fun kni_sfCircleShape_setRadius(shape: NativePtr, radius: Float): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_getRadius")
-private external fun kni_sfCircleShape_getRadius(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfCircleShape_setPointCount")
-private external fun kni_sfCircleShape_setPointCount(shape: NativePtr, count: Long): Unit
-
-@SymbolName("kni_sfml_sfCircleShape_getLocalBounds")
-private external fun kni_sfCircleShape_getLocalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfCircleShape_getGlobalBounds")
-private external fun kni_sfCircleShape_getGlobalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_copy")
-private external fun kni_sfConvexShape_copy(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_destroy")
-private external fun kni_sfConvexShape_destroy(shape: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setPosition")
-private external fun kni_sfConvexShape_setPosition(shape: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setRotation")
-private external fun kni_sfConvexShape_setRotation(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setScale")
-private external fun kni_sfConvexShape_setScale(shape: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setOrigin")
-private external fun kni_sfConvexShape_setOrigin(shape: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_getPosition")
-private external fun kni_sfConvexShape_getPosition(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getRotation")
-private external fun kni_sfConvexShape_getRotation(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfConvexShape_getScale")
-private external fun kni_sfConvexShape_getScale(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getOrigin")
-private external fun kni_sfConvexShape_getOrigin(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_move")
-private external fun kni_sfConvexShape_move(shape: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_rotate")
-private external fun kni_sfConvexShape_rotate(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_scale")
-private external fun kni_sfConvexShape_scale(shape: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_getTransform")
-private external fun kni_sfConvexShape_getTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getInverseTransform")
-private external fun kni_sfConvexShape_getInverseTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_setTexture")
-private external fun kni_sfConvexShape_setTexture(shape: NativePtr, texture: NativePtr, resetRect: Int): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setTextureRect")
-private external fun kni_sfConvexShape_setTextureRect(shape: NativePtr, rect: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setFillColor")
-private external fun kni_sfConvexShape_setFillColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setOutlineColor")
-private external fun kni_sfConvexShape_setOutlineColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setOutlineThickness")
-private external fun kni_sfConvexShape_setOutlineThickness(shape: NativePtr, thickness: Float): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_getTexture")
-private external fun kni_sfConvexShape_getTexture(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getTextureRect")
-private external fun kni_sfConvexShape_getTextureRect(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getFillColor")
-private external fun kni_sfConvexShape_getFillColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getOutlineColor")
-private external fun kni_sfConvexShape_getOutlineColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getOutlineThickness")
-private external fun kni_sfConvexShape_getOutlineThickness(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfConvexShape_getPointCount")
-private external fun kni_sfConvexShape_getPointCount(shape: NativePtr): Long
-
-@SymbolName("kni_sfml_sfConvexShape_getPoint")
-private external fun kni_sfConvexShape_getPoint(shape: NativePtr, index: Long, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_setPointCount")
-private external fun kni_sfConvexShape_setPointCount(shape: NativePtr, count: Long): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_setPoint")
-private external fun kni_sfConvexShape_setPoint(shape: NativePtr, index: Long, point: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfConvexShape_getLocalBounds")
-private external fun kni_sfConvexShape_getLocalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfConvexShape_getGlobalBounds")
-private external fun kni_sfConvexShape_getGlobalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFont_createFromFile")
-private external fun kni_sfFont_createFromFile(filename: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFont_createFromStream")
-private external fun kni_sfFont_createFromStream(stream: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFont_copy")
-private external fun kni_sfFont_copy(font: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFont_destroy")
-private external fun kni_sfFont_destroy(font: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfFont_getGlyph")
-private external fun kni_sfFont_getGlyph(font: NativePtr, codePoint: Int, characterSize: Int, bold: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFont_getKerning")
-private external fun kni_sfFont_getKerning(font: NativePtr, first: Int, second: Int, characterSize: Int): Float
-
-@SymbolName("kni_sfml_sfFont_getLineSpacing")
-private external fun kni_sfFont_getLineSpacing(font: NativePtr, characterSize: Int): Float
-
-@SymbolName("kni_sfml_sfFont_getUnderlinePosition")
-private external fun kni_sfFont_getUnderlinePosition(font: NativePtr, characterSize: Int): Float
-
-@SymbolName("kni_sfml_sfFont_getUnderlineThickness")
-private external fun kni_sfFont_getUnderlineThickness(font: NativePtr, characterSize: Int): Float
-
-@SymbolName("kni_sfml_sfFont_getTexture")
-private external fun kni_sfFont_getTexture(font: NativePtr, characterSize: Int): NativePtr
-
-@SymbolName("kni_sfml_sfFont_getInfo")
-private external fun kni_sfFont_getInfo(font: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_createFromColor")
-private external fun kni_sfImage_createFromColor(width: Int, height: Int, color: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_createFromPixels")
-private external fun kni_sfImage_createFromPixels(width: Int, height: Int, pixels: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_createFromFile")
-private external fun kni_sfImage_createFromFile(filename: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_createFromStream")
-private external fun kni_sfImage_createFromStream(stream: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_copy")
-private external fun kni_sfImage_copy(image: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_destroy")
-private external fun kni_sfImage_destroy(image: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfImage_saveToFile")
-private external fun kni_sfImage_saveToFile(image: NativePtr, filename: NativePtr): Int
-
-@SymbolName("kni_sfml_sfImage_getSize")
-private external fun kni_sfImage_getSize(image: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_createMaskFromColor")
-private external fun kni_sfImage_createMaskFromColor(image: NativePtr, color: NativePtr, alpha: Byte): Unit
-
-@SymbolName("kni_sfml_sfImage_copyImage")
-private external fun kni_sfImage_copyImage(image: NativePtr, source: NativePtr, destX: Int, destY: Int, sourceRect: NativePtr, applyAlpha: Int): Unit
-
-@SymbolName("kni_sfml_sfImage_setPixel")
-private external fun kni_sfImage_setPixel(image: NativePtr, x: Int, y: Int, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfImage_getPixel")
-private external fun kni_sfImage_getPixel(image: NativePtr, x: Int, y: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_getPixelsPtr")
-private external fun kni_sfImage_getPixelsPtr(image: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfImage_flipHorizontally")
-private external fun kni_sfImage_flipHorizontally(image: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfImage_flipVertically")
-private external fun kni_sfImage_flipVertically(image: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_copy")
-private external fun kni_sfRectangleShape_copy(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_destroy")
-private external fun kni_sfRectangleShape_destroy(shape: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setPosition")
-private external fun kni_sfRectangleShape_setPosition(shape: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setRotation")
-private external fun kni_sfRectangleShape_setRotation(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setScale")
-private external fun kni_sfRectangleShape_setScale(shape: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setOrigin")
-private external fun kni_sfRectangleShape_setOrigin(shape: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_getPosition")
-private external fun kni_sfRectangleShape_getPosition(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getRotation")
-private external fun kni_sfRectangleShape_getRotation(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfRectangleShape_getScale")
-private external fun kni_sfRectangleShape_getScale(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getOrigin")
-private external fun kni_sfRectangleShape_getOrigin(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_move")
-private external fun kni_sfRectangleShape_move(shape: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_rotate")
-private external fun kni_sfRectangleShape_rotate(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_scale")
-private external fun kni_sfRectangleShape_scale(shape: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_getTransform")
-private external fun kni_sfRectangleShape_getTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getInverseTransform")
-private external fun kni_sfRectangleShape_getInverseTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_setTexture")
-private external fun kni_sfRectangleShape_setTexture(shape: NativePtr, texture: NativePtr, resetRect: Int): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setTextureRect")
-private external fun kni_sfRectangleShape_setTextureRect(shape: NativePtr, rect: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setFillColor")
-private external fun kni_sfRectangleShape_setFillColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setOutlineColor")
-private external fun kni_sfRectangleShape_setOutlineColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_setOutlineThickness")
-private external fun kni_sfRectangleShape_setOutlineThickness(shape: NativePtr, thickness: Float): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_getTexture")
-private external fun kni_sfRectangleShape_getTexture(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getTextureRect")
-private external fun kni_sfRectangleShape_getTextureRect(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getFillColor")
-private external fun kni_sfRectangleShape_getFillColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getOutlineColor")
-private external fun kni_sfRectangleShape_getOutlineColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getOutlineThickness")
-private external fun kni_sfRectangleShape_getOutlineThickness(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfRectangleShape_getPointCount")
-private external fun kni_sfRectangleShape_getPointCount(shape: NativePtr): Long
-
-@SymbolName("kni_sfml_sfRectangleShape_getPoint")
-private external fun kni_sfRectangleShape_getPoint(shape: NativePtr, index: Long, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_setSize")
-private external fun kni_sfRectangleShape_setSize(shape: NativePtr, size: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRectangleShape_getSize")
-private external fun kni_sfRectangleShape_getSize(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getLocalBounds")
-private external fun kni_sfRectangleShape_getLocalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRectangleShape_getGlobalBounds")
-private external fun kni_sfRectangleShape_getGlobalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_destroy")
-private external fun kni_sfRenderTexture_destroy(renderTexture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_getSize")
-private external fun kni_sfRenderTexture_getSize(renderTexture: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_setActive")
-private external fun kni_sfRenderTexture_setActive(renderTexture: NativePtr, active: Int): Int
-
-@SymbolName("kni_sfml_sfRenderTexture_display")
-private external fun kni_sfRenderTexture_display(renderTexture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_clear")
-private external fun kni_sfRenderTexture_clear(renderTexture: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_setView")
-private external fun kni_sfRenderTexture_setView(renderTexture: NativePtr, view: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_getView")
-private external fun kni_sfRenderTexture_getView(renderTexture: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_getDefaultView")
-private external fun kni_sfRenderTexture_getDefaultView(renderTexture: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_getViewport")
-private external fun kni_sfRenderTexture_getViewport(renderTexture: NativePtr, view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_mapPixelToCoords")
-private external fun kni_sfRenderTexture_mapPixelToCoords(renderTexture: NativePtr, point: NativePtr, view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_mapCoordsToPixel")
-private external fun kni_sfRenderTexture_mapCoordsToPixel(renderTexture: NativePtr, point: NativePtr, view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_drawSprite")
-private external fun kni_sfRenderTexture_drawSprite(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawText")
-private external fun kni_sfRenderTexture_drawText(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawShape")
-private external fun kni_sfRenderTexture_drawShape(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawCircleShape")
-private external fun kni_sfRenderTexture_drawCircleShape(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawConvexShape")
-private external fun kni_sfRenderTexture_drawConvexShape(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawRectangleShape")
-private external fun kni_sfRenderTexture_drawRectangleShape(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawVertexArray")
-private external fun kni_sfRenderTexture_drawVertexArray(renderTexture: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_drawPrimitives")
-private external fun kni_sfRenderTexture_drawPrimitives(renderTexture: NativePtr, vertices: NativePtr, vertexCount: Long, type: Int, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_pushGLStates")
-private external fun kni_sfRenderTexture_pushGLStates(renderTexture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_popGLStates")
-private external fun kni_sfRenderTexture_popGLStates(renderTexture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_resetGLStates")
-private external fun kni_sfRenderTexture_resetGLStates(renderTexture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_getTexture")
-private external fun kni_sfRenderTexture_getTexture(renderTexture: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderTexture_setSmooth")
-private external fun kni_sfRenderTexture_setSmooth(renderTexture: NativePtr, smooth: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_isSmooth")
-private external fun kni_sfRenderTexture_isSmooth(renderTexture: NativePtr): Int
-
-@SymbolName("kni_sfml_sfRenderTexture_setRepeated")
-private external fun kni_sfRenderTexture_setRepeated(renderTexture: NativePtr, repeated: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderTexture_isRepeated")
-private external fun kni_sfRenderTexture_isRepeated(renderTexture: NativePtr): Int
-
-@SymbolName("kni_sfml_sfRenderWindow_create")
-private external fun kni_sfRenderWindow_create(mode: NativePtr, title: NativePtr, style: Int, settings: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_createUnicode")
-private external fun kni_sfRenderWindow_createUnicode(mode: NativePtr, title: NativePtr, style: Int, settings: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_createFromHandle")
-private external fun kni_sfRenderWindow_createFromHandle(handle: Long, settings: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_destroy")
-private external fun kni_sfRenderWindow_destroy(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_close")
-private external fun kni_sfRenderWindow_close(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_isOpen")
-private external fun kni_sfRenderWindow_isOpen(renderWindow: NativePtr): Int
-
-@SymbolName("kni_sfml_sfRenderWindow_getSettings")
-private external fun kni_sfRenderWindow_getSettings(renderWindow: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_pollEvent")
-private external fun kni_sfRenderWindow_pollEvent(renderWindow: NativePtr, event: NativePtr): Int
-
-@SymbolName("kni_sfml_sfRenderWindow_waitEvent")
-private external fun kni_sfRenderWindow_waitEvent(renderWindow: NativePtr, event: NativePtr): Int
-
-@SymbolName("kni_sfml_sfRenderWindow_getPosition")
-private external fun kni_sfRenderWindow_getPosition(renderWindow: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_setPosition")
-private external fun kni_sfRenderWindow_setPosition(renderWindow: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_getSize")
-private external fun kni_sfRenderWindow_getSize(renderWindow: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_setSize")
-private external fun kni_sfRenderWindow_setSize(renderWindow: NativePtr, size: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setTitle")
-private external fun kni_sfRenderWindow_setTitle(renderWindow: NativePtr, title: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setUnicodeTitle")
-private external fun kni_sfRenderWindow_setUnicodeTitle(renderWindow: NativePtr, title: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setIcon")
-private external fun kni_sfRenderWindow_setIcon(renderWindow: NativePtr, width: Int, height: Int, pixels: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setVisible")
-private external fun kni_sfRenderWindow_setVisible(renderWindow: NativePtr, visible: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setMouseCursorVisible")
-private external fun kni_sfRenderWindow_setMouseCursorVisible(renderWindow: NativePtr, show: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setVerticalSyncEnabled")
-private external fun kni_sfRenderWindow_setVerticalSyncEnabled(renderWindow: NativePtr, enabled: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setKeyRepeatEnabled")
-private external fun kni_sfRenderWindow_setKeyRepeatEnabled(renderWindow: NativePtr, enabled: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setActive")
-private external fun kni_sfRenderWindow_setActive(renderWindow: NativePtr, active: Int): Int
-
-@SymbolName("kni_sfml_sfRenderWindow_requestFocus")
-private external fun kni_sfRenderWindow_requestFocus(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_hasFocus")
-private external fun kni_sfRenderWindow_hasFocus(renderWindow: NativePtr): Int
-
-@SymbolName("kni_sfml_sfRenderWindow_display")
-private external fun kni_sfRenderWindow_display(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setFramerateLimit")
-private external fun kni_sfRenderWindow_setFramerateLimit(renderWindow: NativePtr, limit: Int): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setJoystickThreshold")
-private external fun kni_sfRenderWindow_setJoystickThreshold(renderWindow: NativePtr, threshold: Float): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_getSystemHandle")
-private external fun kni_sfRenderWindow_getSystemHandle(renderWindow: NativePtr): Long
-
-@SymbolName("kni_sfml_sfRenderWindow_clear")
-private external fun kni_sfRenderWindow_clear(renderWindow: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_setView")
-private external fun kni_sfRenderWindow_setView(renderWindow: NativePtr, view: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_getView")
-private external fun kni_sfRenderWindow_getView(renderWindow: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_getDefaultView")
-private external fun kni_sfRenderWindow_getDefaultView(renderWindow: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_getViewport")
-private external fun kni_sfRenderWindow_getViewport(renderWindow: NativePtr, view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_mapPixelToCoords")
-private external fun kni_sfRenderWindow_mapPixelToCoords(renderWindow: NativePtr, point: NativePtr, view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_mapCoordsToPixel")
-private external fun kni_sfRenderWindow_mapCoordsToPixel(renderWindow: NativePtr, point: NativePtr, view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfRenderWindow_drawSprite")
-private external fun kni_sfRenderWindow_drawSprite(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawText")
-private external fun kni_sfRenderWindow_drawText(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawShape")
-private external fun kni_sfRenderWindow_drawShape(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawCircleShape")
-private external fun kni_sfRenderWindow_drawCircleShape(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawConvexShape")
-private external fun kni_sfRenderWindow_drawConvexShape(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawRectangleShape")
-private external fun kni_sfRenderWindow_drawRectangleShape(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawVertexArray")
-private external fun kni_sfRenderWindow_drawVertexArray(renderWindow: NativePtr, `object`: NativePtr, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_drawPrimitives")
-private external fun kni_sfRenderWindow_drawPrimitives(renderWindow: NativePtr, vertices: NativePtr, vertexCount: Long, type: Int, states: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_pushGLStates")
-private external fun kni_sfRenderWindow_pushGLStates(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_popGLStates")
-private external fun kni_sfRenderWindow_popGLStates(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_resetGLStates")
-private external fun kni_sfRenderWindow_resetGLStates(renderWindow: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfRenderWindow_capture")
-private external fun kni_sfRenderWindow_capture(renderWindow: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMouse_getPositionRenderWindow")
-private external fun kni_sfMouse_getPositionRenderWindow(relativeTo: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfMouse_setPositionRenderWindow")
-private external fun kni_sfMouse_setPositionRenderWindow(position: NativePtr, relativeTo: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTouch_getPositionRenderWindow")
-private external fun kni_sfTouch_getPositionRenderWindow(finger: Int, relativeTo: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShader_createFromFile")
-private external fun kni_sfShader_createFromFile(vertexShaderFilename: NativePtr, fragmentShaderFilename: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShader_createFromMemory")
-private external fun kni_sfShader_createFromMemory(vertexShader: NativePtr, fragmentShader: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShader_createFromStream")
-private external fun kni_sfShader_createFromStream(vertexShaderStream: NativePtr, fragmentShaderStream: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShader_destroy")
-private external fun kni_sfShader_destroy(shader: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_setFloatParameter")
-private external fun kni_sfShader_setFloatParameter(shader: NativePtr, name: NativePtr, x: Float): Unit
-
-@SymbolName("kni_sfml_sfShader_setFloat2Parameter")
-private external fun kni_sfShader_setFloat2Parameter(shader: NativePtr, name: NativePtr, x: Float, y: Float): Unit
-
-@SymbolName("kni_sfml_sfShader_setFloat3Parameter")
-private external fun kni_sfShader_setFloat3Parameter(shader: NativePtr, name: NativePtr, x: Float, y: Float, z: Float): Unit
-
-@SymbolName("kni_sfml_sfShader_setFloat4Parameter")
-private external fun kni_sfShader_setFloat4Parameter(shader: NativePtr, name: NativePtr, x: Float, y: Float, z: Float, w: Float): Unit
-
-@SymbolName("kni_sfml_sfShader_setVector2Parameter")
-private external fun kni_sfShader_setVector2Parameter(shader: NativePtr, name: NativePtr, vector: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_setVector3Parameter")
-private external fun kni_sfShader_setVector3Parameter(shader: NativePtr, name: NativePtr, vector: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_setColorParameter")
-private external fun kni_sfShader_setColorParameter(shader: NativePtr, name: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_setTransformParameter")
-private external fun kni_sfShader_setTransformParameter(shader: NativePtr, name: NativePtr, transform: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_setTextureParameter")
-private external fun kni_sfShader_setTextureParameter(shader: NativePtr, name: NativePtr, texture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_setCurrentTextureParameter")
-private external fun kni_sfShader_setCurrentTextureParameter(shader: NativePtr, name: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShader_getNativeHandle")
-private external fun kni_sfShader_getNativeHandle(shader: NativePtr): Int
-
-@SymbolName("kni_sfml_sfShader_bind")
-private external fun kni_sfShader_bind(shader: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_destroy")
-private external fun kni_sfShape_destroy(shape: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_setPosition")
-private external fun kni_sfShape_setPosition(shape: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_setRotation")
-private external fun kni_sfShape_setRotation(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfShape_setScale")
-private external fun kni_sfShape_setScale(shape: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_setOrigin")
-private external fun kni_sfShape_setOrigin(shape: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_getPosition")
-private external fun kni_sfShape_getPosition(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getRotation")
-private external fun kni_sfShape_getRotation(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfShape_getScale")
-private external fun kni_sfShape_getScale(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getOrigin")
-private external fun kni_sfShape_getOrigin(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_move")
-private external fun kni_sfShape_move(shape: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_rotate")
-private external fun kni_sfShape_rotate(shape: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfShape_scale")
-private external fun kni_sfShape_scale(shape: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_getTransform")
-private external fun kni_sfShape_getTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getInverseTransform")
-private external fun kni_sfShape_getInverseTransform(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_setTexture")
-private external fun kni_sfShape_setTexture(shape: NativePtr, texture: NativePtr, resetRect: Int): Unit
-
-@SymbolName("kni_sfml_sfShape_setTextureRect")
-private external fun kni_sfShape_setTextureRect(shape: NativePtr, rect: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_setFillColor")
-private external fun kni_sfShape_setFillColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_setOutlineColor")
-private external fun kni_sfShape_setOutlineColor(shape: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfShape_setOutlineThickness")
-private external fun kni_sfShape_setOutlineThickness(shape: NativePtr, thickness: Float): Unit
-
-@SymbolName("kni_sfml_sfShape_getTexture")
-private external fun kni_sfShape_getTexture(shape: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getTextureRect")
-private external fun kni_sfShape_getTextureRect(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getFillColor")
-private external fun kni_sfShape_getFillColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getOutlineColor")
-private external fun kni_sfShape_getOutlineColor(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getOutlineThickness")
-private external fun kni_sfShape_getOutlineThickness(shape: NativePtr): Float
-
-@SymbolName("kni_sfml_sfShape_getPointCount")
-private external fun kni_sfShape_getPointCount(shape: NativePtr): Long
-
-@SymbolName("kni_sfml_sfShape_getPoint")
-private external fun kni_sfShape_getPoint(shape: NativePtr, index: Long, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getLocalBounds")
-private external fun kni_sfShape_getLocalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_getGlobalBounds")
-private external fun kni_sfShape_getGlobalBounds(shape: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfShape_update")
-private external fun kni_sfShape_update(shape: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_copy")
-private external fun kni_sfSprite_copy(sprite: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_destroy")
-private external fun kni_sfSprite_destroy(sprite: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_setPosition")
-private external fun kni_sfSprite_setPosition(sprite: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_setRotation")
-private external fun kni_sfSprite_setRotation(sprite: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfSprite_setScale")
-private external fun kni_sfSprite_setScale(sprite: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_setOrigin")
-private external fun kni_sfSprite_setOrigin(sprite: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_getPosition")
-private external fun kni_sfSprite_getPosition(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getRotation")
-private external fun kni_sfSprite_getRotation(sprite: NativePtr): Float
-
-@SymbolName("kni_sfml_sfSprite_getScale")
-private external fun kni_sfSprite_getScale(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getOrigin")
-private external fun kni_sfSprite_getOrigin(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_move")
-private external fun kni_sfSprite_move(sprite: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_rotate")
-private external fun kni_sfSprite_rotate(sprite: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfSprite_scale")
-private external fun kni_sfSprite_scale(sprite: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_getTransform")
-private external fun kni_sfSprite_getTransform(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getInverseTransform")
-private external fun kni_sfSprite_getInverseTransform(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_setTexture")
-private external fun kni_sfSprite_setTexture(sprite: NativePtr, texture: NativePtr, resetRect: Int): Unit
-
-@SymbolName("kni_sfml_sfSprite_setTextureRect")
-private external fun kni_sfSprite_setTextureRect(sprite: NativePtr, rectangle: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_setColor")
-private external fun kni_sfSprite_setColor(sprite: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSprite_getTexture")
-private external fun kni_sfSprite_getTexture(sprite: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getTextureRect")
-private external fun kni_sfSprite_getTextureRect(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getColor")
-private external fun kni_sfSprite_getColor(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getLocalBounds")
-private external fun kni_sfSprite_getLocalBounds(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSprite_getGlobalBounds")
-private external fun kni_sfSprite_getGlobalBounds(sprite: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_copy")
-private external fun kni_sfText_copy(text: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_destroy")
-private external fun kni_sfText_destroy(text: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_setPosition")
-private external fun kni_sfText_setPosition(text: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_setRotation")
-private external fun kni_sfText_setRotation(text: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfText_setScale")
-private external fun kni_sfText_setScale(text: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_setOrigin")
-private external fun kni_sfText_setOrigin(text: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_getPosition")
-private external fun kni_sfText_getPosition(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getRotation")
-private external fun kni_sfText_getRotation(text: NativePtr): Float
-
-@SymbolName("kni_sfml_sfText_getScale")
-private external fun kni_sfText_getScale(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getOrigin")
-private external fun kni_sfText_getOrigin(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_move")
-private external fun kni_sfText_move(text: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_rotate")
-private external fun kni_sfText_rotate(text: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfText_scale")
-private external fun kni_sfText_scale(text: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_getTransform")
-private external fun kni_sfText_getTransform(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getInverseTransform")
-private external fun kni_sfText_getInverseTransform(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_setString")
-private external fun kni_sfText_setString(text: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_setUnicodeString")
-private external fun kni_sfText_setUnicodeString(text: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_setFont")
-private external fun kni_sfText_setFont(text: NativePtr, font: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_setCharacterSize")
-private external fun kni_sfText_setCharacterSize(text: NativePtr, size: Int): Unit
-
-@SymbolName("kni_sfml_sfText_setStyle")
-private external fun kni_sfText_setStyle(text: NativePtr, style: Int): Unit
-
-@SymbolName("kni_sfml_sfText_setColor")
-private external fun kni_sfText_setColor(text: NativePtr, color: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfText_getString")
-private external fun kni_sfText_getString(text: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getUnicodeString")
-private external fun kni_sfText_getUnicodeString(text: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getFont")
-private external fun kni_sfText_getFont(text: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getCharacterSize")
-private external fun kni_sfText_getCharacterSize(text: NativePtr): Int
-
-@SymbolName("kni_sfml_sfText_getStyle")
-private external fun kni_sfText_getStyle(text: NativePtr): Int
-
-@SymbolName("kni_sfml_sfText_getColor")
-private external fun kni_sfText_getColor(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_findCharacterPos")
-private external fun kni_sfText_findCharacterPos(text: NativePtr, index: Long, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getLocalBounds")
-private external fun kni_sfText_getLocalBounds(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfText_getGlobalBounds")
-private external fun kni_sfText_getGlobalBounds(text: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_createFromFile")
-private external fun kni_sfTexture_createFromFile(filename: NativePtr, area: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_createFromMemory")
-private external fun kni_sfTexture_createFromMemory(data: NativePtr, sizeInBytes: Long, area: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_createFromStream")
-private external fun kni_sfTexture_createFromStream(stream: NativePtr, area: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_createFromImage")
-private external fun kni_sfTexture_createFromImage(image: NativePtr, area: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_copy")
-private external fun kni_sfTexture_copy(texture: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_destroy")
-private external fun kni_sfTexture_destroy(texture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTexture_getSize")
-private external fun kni_sfTexture_getSize(texture: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_copyToImage")
-private external fun kni_sfTexture_copyToImage(texture: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTexture_updateFromPixels")
-private external fun kni_sfTexture_updateFromPixels(texture: NativePtr, pixels: NativePtr, width: Int, height: Int, x: Int, y: Int): Unit
-
-@SymbolName("kni_sfml_sfTexture_updateFromImage")
-private external fun kni_sfTexture_updateFromImage(texture: NativePtr, image: NativePtr, x: Int, y: Int): Unit
-
-@SymbolName("kni_sfml_sfTexture_updateFromWindow")
-private external fun kni_sfTexture_updateFromWindow(texture: NativePtr, window: NativePtr, x: Int, y: Int): Unit
-
-@SymbolName("kni_sfml_sfTexture_updateFromRenderWindow")
-private external fun kni_sfTexture_updateFromRenderWindow(texture: NativePtr, renderWindow: NativePtr, x: Int, y: Int): Unit
-
-@SymbolName("kni_sfml_sfTexture_setSmooth")
-private external fun kni_sfTexture_setSmooth(texture: NativePtr, smooth: Int): Unit
-
-@SymbolName("kni_sfml_sfTexture_isSmooth")
-private external fun kni_sfTexture_isSmooth(texture: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTexture_setRepeated")
-private external fun kni_sfTexture_setRepeated(texture: NativePtr, repeated: Int): Unit
-
-@SymbolName("kni_sfml_sfTexture_isRepeated")
-private external fun kni_sfTexture_isRepeated(texture: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTexture_getNativeHandle")
-private external fun kni_sfTexture_getNativeHandle(texture: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTexture_bind")
-private external fun kni_sfTexture_bind(texture: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_copy")
-private external fun kni_sfTransformable_copy(transformable: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransformable_destroy")
-private external fun kni_sfTransformable_destroy(transformable: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_setPosition")
-private external fun kni_sfTransformable_setPosition(transformable: NativePtr, position: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_setRotation")
-private external fun kni_sfTransformable_setRotation(transformable: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfTransformable_setScale")
-private external fun kni_sfTransformable_setScale(transformable: NativePtr, scale: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_setOrigin")
-private external fun kni_sfTransformable_setOrigin(transformable: NativePtr, origin: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_getPosition")
-private external fun kni_sfTransformable_getPosition(transformable: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransformable_getRotation")
-private external fun kni_sfTransformable_getRotation(transformable: NativePtr): Float
-
-@SymbolName("kni_sfml_sfTransformable_getScale")
-private external fun kni_sfTransformable_getScale(transformable: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransformable_getOrigin")
-private external fun kni_sfTransformable_getOrigin(transformable: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransformable_move")
-private external fun kni_sfTransformable_move(transformable: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_rotate")
-private external fun kni_sfTransformable_rotate(transformable: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfTransformable_scale")
-private external fun kni_sfTransformable_scale(transformable: NativePtr, factors: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTransformable_getTransform")
-private external fun kni_sfTransformable_getTransform(transformable: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTransformable_getInverseTransform")
-private external fun kni_sfTransformable_getInverseTransform(transformable: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfVertexArray_copy")
-private external fun kni_sfVertexArray_copy(vertexArray: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfVertexArray_destroy")
-private external fun kni_sfVertexArray_destroy(vertexArray: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfVertexArray_getVertexCount")
-private external fun kni_sfVertexArray_getVertexCount(vertexArray: NativePtr): Long
-
-@SymbolName("kni_sfml_sfVertexArray_getVertex")
-private external fun kni_sfVertexArray_getVertex(vertexArray: NativePtr, index: Long): NativePtr
-
-@SymbolName("kni_sfml_sfVertexArray_clear")
-private external fun kni_sfVertexArray_clear(vertexArray: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfVertexArray_resize")
-private external fun kni_sfVertexArray_resize(vertexArray: NativePtr, vertexCount: Long): Unit
-
-@SymbolName("kni_sfml_sfVertexArray_append")
-private external fun kni_sfVertexArray_append(vertexArray: NativePtr, vertex: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfVertexArray_setPrimitiveType")
-private external fun kni_sfVertexArray_setPrimitiveType(vertexArray: NativePtr, type: Int): Unit
-
-@SymbolName("kni_sfml_sfVertexArray_getPrimitiveType")
-private external fun kni_sfVertexArray_getPrimitiveType(vertexArray: NativePtr): Int
-
-@SymbolName("kni_sfml_sfVertexArray_getBounds")
-private external fun kni_sfVertexArray_getBounds(vertexArray: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfView_createFromRect")
-private external fun kni_sfView_createFromRect(rectangle: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfView_copy")
-private external fun kni_sfView_copy(view: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfView_destroy")
-private external fun kni_sfView_destroy(view: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfView_setCenter")
-private external fun kni_sfView_setCenter(view: NativePtr, center: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfView_setSize")
-private external fun kni_sfView_setSize(view: NativePtr, size: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfView_setRotation")
-private external fun kni_sfView_setRotation(view: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfView_setViewport")
-private external fun kni_sfView_setViewport(view: NativePtr, viewport: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfView_reset")
-private external fun kni_sfView_reset(view: NativePtr, rectangle: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfView_getCenter")
-private external fun kni_sfView_getCenter(view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfView_getSize")
-private external fun kni_sfView_getSize(view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfView_getRotation")
-private external fun kni_sfView_getRotation(view: NativePtr): Float
-
-@SymbolName("kni_sfml_sfView_getViewport")
-private external fun kni_sfView_getViewport(view: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfView_move")
-private external fun kni_sfView_move(view: NativePtr, offset: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfView_rotate")
-private external fun kni_sfView_rotate(view: NativePtr, angle: Float): Unit
-
-@SymbolName("kni_sfml_sfView_zoom")
-private external fun kni_sfView_zoom(view: NativePtr, factor: Float): Unit
-
-@SymbolName("kni_sfml_sfIpAddress_fromString")
-private external fun kni_sfIpAddress_fromString(address: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfIpAddress_fromBytes")
-private external fun kni_sfIpAddress_fromBytes(byte0: Byte, byte1: Byte, byte2: Byte, byte3: Byte, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfIpAddress_fromInteger")
-private external fun kni_sfIpAddress_fromInteger(address: Int, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfIpAddress_toString")
-private external fun kni_sfIpAddress_toString(address: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfIpAddress_toInteger")
-private external fun kni_sfIpAddress_toInteger(address: NativePtr): Int
-
-@SymbolName("kni_sfml_sfIpAddress_getLocalAddress")
-private external fun kni_sfIpAddress_getLocalAddress(retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfIpAddress_getPublicAddress")
-private external fun kni_sfIpAddress_getPublicAddress(timeout: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtpListingResponse_destroy")
-private external fun kni_sfFtpListingResponse_destroy(ftpListingResponse: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfFtpListingResponse_isOk")
-private external fun kni_sfFtpListingResponse_isOk(ftpListingResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfFtpListingResponse_getStatus")
-private external fun kni_sfFtpListingResponse_getStatus(ftpListingResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfFtpListingResponse_getMessage")
-private external fun kni_sfFtpListingResponse_getMessage(ftpListingResponse: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtpListingResponse_getCount")
-private external fun kni_sfFtpListingResponse_getCount(ftpListingResponse: NativePtr): Long
-
-@SymbolName("kni_sfml_sfFtpListingResponse_getName")
-private external fun kni_sfFtpListingResponse_getName(ftpListingResponse: NativePtr, index: Long): NativePtr
-
-@SymbolName("kni_sfml_sfFtpDirectoryResponse_destroy")
-private external fun kni_sfFtpDirectoryResponse_destroy(ftpDirectoryResponse: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfFtpDirectoryResponse_isOk")
-private external fun kni_sfFtpDirectoryResponse_isOk(ftpDirectoryResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfFtpDirectoryResponse_getStatus")
-private external fun kni_sfFtpDirectoryResponse_getStatus(ftpDirectoryResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfFtpDirectoryResponse_getMessage")
-private external fun kni_sfFtpDirectoryResponse_getMessage(ftpDirectoryResponse: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtpDirectoryResponse_getDirectory")
-private external fun kni_sfFtpDirectoryResponse_getDirectory(ftpDirectoryResponse: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtpResponse_destroy")
-private external fun kni_sfFtpResponse_destroy(ftpResponse: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfFtpResponse_isOk")
-private external fun kni_sfFtpResponse_isOk(ftpResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfFtpResponse_getStatus")
-private external fun kni_sfFtpResponse_getStatus(ftpResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfFtpResponse_getMessage")
-private external fun kni_sfFtpResponse_getMessage(ftpResponse: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_destroy")
-private external fun kni_sfFtp_destroy(ftp: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfFtp_connect")
-private external fun kni_sfFtp_connect(ftp: NativePtr, server: NativePtr, port: Short, timeout: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_loginAnonymous")
-private external fun kni_sfFtp_loginAnonymous(ftp: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_login")
-private external fun kni_sfFtp_login(ftp: NativePtr, userName: NativePtr, password: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_disconnect")
-private external fun kni_sfFtp_disconnect(ftp: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_keepAlive")
-private external fun kni_sfFtp_keepAlive(ftp: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_getWorkingDirectory")
-private external fun kni_sfFtp_getWorkingDirectory(ftp: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_getDirectoryListing")
-private external fun kni_sfFtp_getDirectoryListing(ftp: NativePtr, directory: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_changeDirectory")
-private external fun kni_sfFtp_changeDirectory(ftp: NativePtr, directory: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_parentDirectory")
-private external fun kni_sfFtp_parentDirectory(ftp: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_createDirectory")
-private external fun kni_sfFtp_createDirectory(ftp: NativePtr, name: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_deleteDirectory")
-private external fun kni_sfFtp_deleteDirectory(ftp: NativePtr, name: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_renameFile")
-private external fun kni_sfFtp_renameFile(ftp: NativePtr, file: NativePtr, newName: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_deleteFile")
-private external fun kni_sfFtp_deleteFile(ftp: NativePtr, name: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_download")
-private external fun kni_sfFtp_download(ftp: NativePtr, distantFile: NativePtr, destPath: NativePtr, mode: Int): NativePtr
-
-@SymbolName("kni_sfml_sfFtp_upload")
-private external fun kni_sfFtp_upload(ftp: NativePtr, localFile: NativePtr, destPath: NativePtr, mode: Int): NativePtr
-
-@SymbolName("kni_sfml_sfHttpRequest_destroy")
-private external fun kni_sfHttpRequest_destroy(httpRequest: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfHttpRequest_setField")
-private external fun kni_sfHttpRequest_setField(httpRequest: NativePtr, field: NativePtr, value: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfHttpRequest_setMethod")
-private external fun kni_sfHttpRequest_setMethod(httpRequest: NativePtr, method: Int): Unit
-
-@SymbolName("kni_sfml_sfHttpRequest_setUri")
-private external fun kni_sfHttpRequest_setUri(httpRequest: NativePtr, uri: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfHttpRequest_setHttpVersion")
-private external fun kni_sfHttpRequest_setHttpVersion(httpRequest: NativePtr, major: Int, minor: Int): Unit
-
-@SymbolName("kni_sfml_sfHttpRequest_setBody")
-private external fun kni_sfHttpRequest_setBody(httpRequest: NativePtr, body: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfHttpResponse_destroy")
-private external fun kni_sfHttpResponse_destroy(httpResponse: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfHttpResponse_getField")
-private external fun kni_sfHttpResponse_getField(httpResponse: NativePtr, field: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfHttpResponse_getStatus")
-private external fun kni_sfHttpResponse_getStatus(httpResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfHttpResponse_getMajorVersion")
-private external fun kni_sfHttpResponse_getMajorVersion(httpResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfHttpResponse_getMinorVersion")
-private external fun kni_sfHttpResponse_getMinorVersion(httpResponse: NativePtr): Int
-
-@SymbolName("kni_sfml_sfHttpResponse_getBody")
-private external fun kni_sfHttpResponse_getBody(httpResponse: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfHttp_destroy")
-private external fun kni_sfHttp_destroy(http: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfHttp_setHost")
-private external fun kni_sfHttp_setHost(http: NativePtr, host: NativePtr, port: Short): Unit
-
-@SymbolName("kni_sfml_sfHttp_sendRequest")
-private external fun kni_sfHttp_sendRequest(http: NativePtr, request: NativePtr, timeout: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfPacket_copy")
-private external fun kni_sfPacket_copy(packet: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfPacket_destroy")
-private external fun kni_sfPacket_destroy(packet: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfPacket_append")
-private external fun kni_sfPacket_append(packet: NativePtr, data: NativePtr, sizeInBytes: Long): Unit
-
-@SymbolName("kni_sfml_sfPacket_clear")
-private external fun kni_sfPacket_clear(packet: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfPacket_getData")
-private external fun kni_sfPacket_getData(packet: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfPacket_getDataSize")
-private external fun kni_sfPacket_getDataSize(packet: NativePtr): Long
-
-@SymbolName("kni_sfml_sfPacket_endOfPacket")
-private external fun kni_sfPacket_endOfPacket(packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfPacket_canRead")
-private external fun kni_sfPacket_canRead(packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfPacket_readBool")
-private external fun kni_sfPacket_readBool(packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfPacket_readInt8")
-private external fun kni_sfPacket_readInt8(packet: NativePtr): Byte
-
-@SymbolName("kni_sfml_sfPacket_readUint8")
-private external fun kni_sfPacket_readUint8(packet: NativePtr): Byte
-
-@SymbolName("kni_sfml_sfPacket_readInt16")
-private external fun kni_sfPacket_readInt16(packet: NativePtr): Short
-
-@SymbolName("kni_sfml_sfPacket_readUint16")
-private external fun kni_sfPacket_readUint16(packet: NativePtr): Short
-
-@SymbolName("kni_sfml_sfPacket_readInt32")
-private external fun kni_sfPacket_readInt32(packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfPacket_readUint32")
-private external fun kni_sfPacket_readUint32(packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfPacket_readFloat")
-private external fun kni_sfPacket_readFloat(packet: NativePtr): Float
-
-@SymbolName("kni_sfml_sfPacket_readDouble")
-private external fun kni_sfPacket_readDouble(packet: NativePtr): Double
-
-@SymbolName("kni_sfml_sfPacket_readString")
-private external fun kni_sfPacket_readString(packet: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfPacket_readWideString")
-private external fun kni_sfPacket_readWideString(packet: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeBool")
-private external fun kni_sfPacket_writeBool(packet: NativePtr, arg1: Int): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeInt8")
-private external fun kni_sfPacket_writeInt8(packet: NativePtr, arg1: Byte): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeUint8")
-private external fun kni_sfPacket_writeUint8(packet: NativePtr, arg1: Byte): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeInt16")
-private external fun kni_sfPacket_writeInt16(packet: NativePtr, arg1: Short): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeUint16")
-private external fun kni_sfPacket_writeUint16(packet: NativePtr, arg1: Short): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeInt32")
-private external fun kni_sfPacket_writeInt32(packet: NativePtr, arg1: Int): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeUint32")
-private external fun kni_sfPacket_writeUint32(packet: NativePtr, arg1: Int): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeFloat")
-private external fun kni_sfPacket_writeFloat(packet: NativePtr, arg1: Float): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeDouble")
-private external fun kni_sfPacket_writeDouble(packet: NativePtr, arg1: Double): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeString")
-private external fun kni_sfPacket_writeString(packet: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfPacket_writeWideString")
-private external fun kni_sfPacket_writeWideString(packet: NativePtr, string: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_copy")
-private external fun kni_sfSocketSelector_copy(selector: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfSocketSelector_destroy")
-private external fun kni_sfSocketSelector_destroy(selector: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_addTcpListener")
-private external fun kni_sfSocketSelector_addTcpListener(selector: NativePtr, socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_addTcpSocket")
-private external fun kni_sfSocketSelector_addTcpSocket(selector: NativePtr, socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_addUdpSocket")
-private external fun kni_sfSocketSelector_addUdpSocket(selector: NativePtr, socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_removeTcpListener")
-private external fun kni_sfSocketSelector_removeTcpListener(selector: NativePtr, socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_removeTcpSocket")
-private external fun kni_sfSocketSelector_removeTcpSocket(selector: NativePtr, socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_removeUdpSocket")
-private external fun kni_sfSocketSelector_removeUdpSocket(selector: NativePtr, socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_clear")
-private external fun kni_sfSocketSelector_clear(selector: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfSocketSelector_wait")
-private external fun kni_sfSocketSelector_wait(selector: NativePtr, timeout: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSocketSelector_isTcpListenerReady")
-private external fun kni_sfSocketSelector_isTcpListenerReady(selector: NativePtr, socket: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSocketSelector_isTcpSocketReady")
-private external fun kni_sfSocketSelector_isTcpSocketReady(selector: NativePtr, socket: NativePtr): Int
-
-@SymbolName("kni_sfml_sfSocketSelector_isUdpSocketReady")
-private external fun kni_sfSocketSelector_isUdpSocketReady(selector: NativePtr, socket: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpListener_destroy")
-private external fun kni_sfTcpListener_destroy(listener: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTcpListener_setBlocking")
-private external fun kni_sfTcpListener_setBlocking(listener: NativePtr, blocking: Int): Unit
-
-@SymbolName("kni_sfml_sfTcpListener_isBlocking")
-private external fun kni_sfTcpListener_isBlocking(listener: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpListener_getLocalPort")
-private external fun kni_sfTcpListener_getLocalPort(listener: NativePtr): Short
-
-@SymbolName("kni_sfml_sfTcpListener_listen")
-private external fun kni_sfTcpListener_listen(listener: NativePtr, port: Short): Int
-
-@SymbolName("kni_sfml_sfTcpListener_accept")
-private external fun kni_sfTcpListener_accept(listener: NativePtr, connected: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_destroy")
-private external fun kni_sfTcpSocket_destroy(socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTcpSocket_setBlocking")
-private external fun kni_sfTcpSocket_setBlocking(socket: NativePtr, blocking: Int): Unit
-
-@SymbolName("kni_sfml_sfTcpSocket_isBlocking")
-private external fun kni_sfTcpSocket_isBlocking(socket: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_getLocalPort")
-private external fun kni_sfTcpSocket_getLocalPort(socket: NativePtr): Short
-
-@SymbolName("kni_sfml_sfTcpSocket_getRemoteAddress")
-private external fun kni_sfTcpSocket_getRemoteAddress(socket: NativePtr, retValPlacement: NativePtr): NativePtr
-
-@SymbolName("kni_sfml_sfTcpSocket_getRemotePort")
-private external fun kni_sfTcpSocket_getRemotePort(socket: NativePtr): Short
-
-@SymbolName("kni_sfml_sfTcpSocket_connect")
-private external fun kni_sfTcpSocket_connect(socket: NativePtr, host: NativePtr, port: Short, timeout: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_disconnect")
-private external fun kni_sfTcpSocket_disconnect(socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfTcpSocket_send")
-private external fun kni_sfTcpSocket_send(socket: NativePtr, data: NativePtr, size: Long): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_sendPartial")
-private external fun kni_sfTcpSocket_sendPartial(socket: NativePtr, data: NativePtr, size: Long, sent: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_receive")
-private external fun kni_sfTcpSocket_receive(socket: NativePtr, data: NativePtr, maxSize: Long, sizeReceived: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_sendPacket")
-private external fun kni_sfTcpSocket_sendPacket(socket: NativePtr, packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfTcpSocket_receivePacket")
-private external fun kni_sfTcpSocket_receivePacket(socket: NativePtr, packet: NativePtr): Int
-
-@SymbolName("kni_sfml_sfUdpSocket_destroy")
-private external fun kni_sfUdpSocket_destroy(socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfUdpSocket_setBlocking")
-private external fun kni_sfUdpSocket_setBlocking(socket: NativePtr, blocking: Int): Unit
-
-@SymbolName("kni_sfml_sfUdpSocket_isBlocking")
-private external fun kni_sfUdpSocket_isBlocking(socket: NativePtr): Int
-
-@SymbolName("kni_sfml_sfUdpSocket_getLocalPort")
-private external fun kni_sfUdpSocket_getLocalPort(socket: NativePtr): Short
-
-@SymbolName("kni_sfml_sfUdpSocket_bind")
-private external fun kni_sfUdpSocket_bind(socket: NativePtr, port: Short): Int
-
-@SymbolName("kni_sfml_sfUdpSocket_unbind")
-private external fun kni_sfUdpSocket_unbind(socket: NativePtr): Unit
-
-@SymbolName("kni_sfml_sfUdpSocket_send")
-private external fun kni_sfUdpSocket_send(socket: NativePtr, data: NativePtr, size: Long, address: NativePtr, port: Short): Int
-
-@SymbolName("kni_sfml_sfUdpSocket_receive")
-private external fun kni_sfUdpSocket_receive(socket: NativePtr, data: NativePtr, maxSize: Long, sizeReceived: NativePtr, address: NativePtr, port: NativePtr): Int
-
-@SymbolName("kni_sfml_sfUdpSocket_sendPacket")
-private external fun kni_sfUdpSocket_sendPacket(socket: NativePtr, packet: NativePtr, address: NativePtr, port: Short): Int
-
-@SymbolName("kni_sfml_sfUdpSocket_receivePacket")
-private external fun kni_sfUdpSocket_receivePacket(socket: NativePtr, packet: NativePtr, address: NativePtr, port: NativePtr): Int
-
+typealias sfShapeGetPointCallback = CPointer<CFunction<(size_t, COpaquePointer?) -> CValue<sfVector2f>>>
+
+@SymbolName("sfml_kniBridge0")
+private external fun kniBridge0(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge1")
+private external fun kniBridge1(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge2")
+private external fun kniBridge2(p0: NativePtr): Long
+@SymbolName("sfml_kniBridge3")
+private external fun kniBridge3(p0: Float, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge4")
+private external fun kniBridge4(p0: Int, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge5")
+private external fun kniBridge5(p0: Long, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge6")
+private external fun kniBridge6(): NativePtr
+@SymbolName("sfml_kniBridge7")
+private external fun kniBridge7(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge8")
+private external fun kniBridge8(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge9")
+private external fun kniBridge9(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge10")
+private external fun kniBridge10(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge11")
+private external fun kniBridge11(): NativePtr
+@SymbolName("sfml_kniBridge12")
+private external fun kniBridge12(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge13")
+private external fun kniBridge13(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge14")
+private external fun kniBridge14(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge15")
+private external fun kniBridge15(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge16")
+private external fun kniBridge16(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge17")
+private external fun kniBridge17(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge18")
+private external fun kniBridge18(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge19")
+private external fun kniBridge19(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge20")
+private external fun kniBridge20(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge21")
+private external fun kniBridge21(p0: Float): Unit
+@SymbolName("sfml_kniBridge22")
+private external fun kniBridge22(): Float
+@SymbolName("sfml_kniBridge23")
+private external fun kniBridge23(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge24")
+private external fun kniBridge24(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge25")
+private external fun kniBridge25(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge26")
+private external fun kniBridge26(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge27")
+private external fun kniBridge27(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge28")
+private external fun kniBridge28(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge29")
+private external fun kniBridge29(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge30")
+private external fun kniBridge30(p0: NativePtr, p1: ULong): NativePtr
+@SymbolName("sfml_kniBridge31")
+private external fun kniBridge31(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge32")
+private external fun kniBridge32(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge33")
+private external fun kniBridge33(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge34")
+private external fun kniBridge34(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge35")
+private external fun kniBridge35(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge36")
+private external fun kniBridge36(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge37")
+private external fun kniBridge37(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge38")
+private external fun kniBridge38(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge39")
+private external fun kniBridge39(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge40")
+private external fun kniBridge40(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge41")
+private external fun kniBridge41(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge42")
+private external fun kniBridge42(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge43")
+private external fun kniBridge43(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge44")
+private external fun kniBridge44(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge45")
+private external fun kniBridge45(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge46")
+private external fun kniBridge46(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge47")
+private external fun kniBridge47(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge48")
+private external fun kniBridge48(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge49")
+private external fun kniBridge49(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge50")
+private external fun kniBridge50(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge51")
+private external fun kniBridge51(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge52")
+private external fun kniBridge52(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge53")
+private external fun kniBridge53(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge54")
+private external fun kniBridge54(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge55")
+private external fun kniBridge55(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge56")
+private external fun kniBridge56(): NativePtr
+@SymbolName("sfml_kniBridge57")
+private external fun kniBridge57(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge58")
+private external fun kniBridge58(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge59")
+private external fun kniBridge59(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge60")
+private external fun kniBridge60(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge61")
+private external fun kniBridge61(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge62")
+private external fun kniBridge62(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge63")
+private external fun kniBridge63(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge64")
+private external fun kniBridge64(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge65")
+private external fun kniBridge65(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge66")
+private external fun kniBridge66(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge67")
+private external fun kniBridge67(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge68")
+private external fun kniBridge68(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge69")
+private external fun kniBridge69(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge70")
+private external fun kniBridge70(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge71")
+private external fun kniBridge71(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge72")
+private external fun kniBridge72(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge73")
+private external fun kniBridge73(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge74")
+private external fun kniBridge74(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge75")
+private external fun kniBridge75(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge76")
+private external fun kniBridge76(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge77")
+private external fun kniBridge77(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge78")
+private external fun kniBridge78(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge79")
+private external fun kniBridge79(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge80")
+private external fun kniBridge80(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge81")
+private external fun kniBridge81(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge82")
+private external fun kniBridge82(p0: NativePtr, p1: ULong): NativePtr
+@SymbolName("sfml_kniBridge83")
+private external fun kniBridge83(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge84")
+private external fun kniBridge84(p0: NativePtr, p1: ULong, p2: UInt, p3: UInt): NativePtr
+@SymbolName("sfml_kniBridge85")
+private external fun kniBridge85(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge86")
+private external fun kniBridge86(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge87")
+private external fun kniBridge87(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge88")
+private external fun kniBridge88(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge89")
+private external fun kniBridge89(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge90")
+private external fun kniBridge90(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge91")
+private external fun kniBridge91(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge92")
+private external fun kniBridge92(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge93")
+private external fun kniBridge93(): NativePtr
+@SymbolName("sfml_kniBridge94")
+private external fun kniBridge94(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge95")
+private external fun kniBridge95(p0: NativePtr, p1: UInt): Int
+@SymbolName("sfml_kniBridge96")
+private external fun kniBridge96(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge97")
+private external fun kniBridge97(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge98")
+private external fun kniBridge98(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge99")
+private external fun kniBridge99(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge100")
+private external fun kniBridge100(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge101")
+private external fun kniBridge101(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge102")
+private external fun kniBridge102(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge103")
+private external fun kniBridge103(p0: NativePtr, p1: UInt): Int
+@SymbolName("sfml_kniBridge104")
+private external fun kniBridge104(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge105")
+private external fun kniBridge105(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge106")
+private external fun kniBridge106(): Int
+@SymbolName("sfml_kniBridge107")
+private external fun kniBridge107(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge108")
+private external fun kniBridge108(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge109")
+private external fun kniBridge109(): NativePtr
+@SymbolName("sfml_kniBridge110")
+private external fun kniBridge110(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge111")
+private external fun kniBridge111(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge112")
+private external fun kniBridge112(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge113")
+private external fun kniBridge113(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge114")
+private external fun kniBridge114(p0: NativePtr, p1: NativePtr, p2: UInt, p3: UInt, p4: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge115")
+private external fun kniBridge115(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge116")
+private external fun kniBridge116(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge117")
+private external fun kniBridge117(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge118")
+private external fun kniBridge118(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge119")
+private external fun kniBridge119(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge120")
+private external fun kniBridge120(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge121")
+private external fun kniBridge121(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge122")
+private external fun kniBridge122(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge123")
+private external fun kniBridge123(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge124")
+private external fun kniBridge124(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge125")
+private external fun kniBridge125(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge126")
+private external fun kniBridge126(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge127")
+private external fun kniBridge127(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge128")
+private external fun kniBridge128(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge129")
+private external fun kniBridge129(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge130")
+private external fun kniBridge130(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge131")
+private external fun kniBridge131(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge132")
+private external fun kniBridge132(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge133")
+private external fun kniBridge133(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge134")
+private external fun kniBridge134(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge135")
+private external fun kniBridge135(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge136")
+private external fun kniBridge136(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge137")
+private external fun kniBridge137(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge138")
+private external fun kniBridge138(p0: UInt): Int
+@SymbolName("sfml_kniBridge139")
+private external fun kniBridge139(p0: UInt): UInt
+@SymbolName("sfml_kniBridge140")
+private external fun kniBridge140(p0: UInt, p1: UInt): Int
+@SymbolName("sfml_kniBridge141")
+private external fun kniBridge141(p0: UInt, p1: UInt): Int
+@SymbolName("sfml_kniBridge142")
+private external fun kniBridge142(p0: UInt, p1: UInt): Float
+@SymbolName("sfml_kniBridge143")
+private external fun kniBridge143(p0: UInt, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge144")
+private external fun kniBridge144(): Unit
+@SymbolName("sfml_kniBridge145")
+private external fun kniBridge145(p0: Int): Int
+@SymbolName("sfml_kniBridge146")
+private external fun kniBridge146(p0: Int): Unit
+@SymbolName("sfml_kniBridge147")
+private external fun kniBridge147(p0: UInt): Int
+@SymbolName("sfml_kniBridge148")
+private external fun kniBridge148(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge149")
+private external fun kniBridge149(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge150")
+private external fun kniBridge150(p0: UInt): Int
+@SymbolName("sfml_kniBridge151")
+private external fun kniBridge151(p0: UInt, p1: Int): Unit
+@SymbolName("sfml_kniBridge152")
+private external fun kniBridge152(p0: UInt, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge153")
+private external fun kniBridge153(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge154")
+private external fun kniBridge154(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge155")
+private external fun kniBridge155(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge156")
+private external fun kniBridge156(p0: NativePtr, p1: NativePtr, p2: UInt, p3: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge157")
+private external fun kniBridge157(p0: NativePtr, p1: NativePtr, p2: UInt, p3: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge158")
+private external fun kniBridge158(p0: ULong, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge159")
+private external fun kniBridge159(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge160")
+private external fun kniBridge160(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge161")
+private external fun kniBridge161(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge162")
+private external fun kniBridge162(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge163")
+private external fun kniBridge163(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge164")
+private external fun kniBridge164(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge165")
+private external fun kniBridge165(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge166")
+private external fun kniBridge166(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge167")
+private external fun kniBridge167(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge168")
+private external fun kniBridge168(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge169")
+private external fun kniBridge169(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge170")
+private external fun kniBridge170(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge171")
+private external fun kniBridge171(p0: NativePtr, p1: UInt, p2: UInt, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge172")
+private external fun kniBridge172(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge173")
+private external fun kniBridge173(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge174")
+private external fun kniBridge174(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge175")
+private external fun kniBridge175(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge176")
+private external fun kniBridge176(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge177")
+private external fun kniBridge177(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge178")
+private external fun kniBridge178(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge179")
+private external fun kniBridge179(p0: NativePtr, p1: Int): Int
+@SymbolName("sfml_kniBridge180")
+private external fun kniBridge180(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge181")
+private external fun kniBridge181(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge182")
+private external fun kniBridge182(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge183")
+private external fun kniBridge183(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge184")
+private external fun kniBridge184(): NativePtr
+@SymbolName("sfml_kniBridge185")
+private external fun kniBridge185(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge186")
+private external fun kniBridge186(p0: NativePtr, p1: Int): Int
+@SymbolName("sfml_kniBridge187")
+private external fun kniBridge187(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge188")
+private external fun kniBridge188(p0: UInt): Int
+@SymbolName("sfml_kniBridge189")
+private external fun kniBridge189(p0: UInt, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge190")
+private external fun kniBridge190(p0: UByte, p1: UByte, p2: UByte, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge191")
+private external fun kniBridge191(p0: UByte, p1: UByte, p2: UByte, p3: UByte, p4: NativePtr): Unit
+@SymbolName("sfml_kniBridge192")
+private external fun kniBridge192(p0: UInt, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge193")
+private external fun kniBridge193(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge194")
+private external fun kniBridge194(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge195")
+private external fun kniBridge195(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge196")
+private external fun kniBridge196(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge197")
+private external fun kniBridge197(p0: NativePtr, p1: Float, p2: Float): Int
+@SymbolName("sfml_kniBridge198")
+private external fun kniBridge198(p0: NativePtr, p1: Int, p2: Int): Int
+@SymbolName("sfml_kniBridge199")
+private external fun kniBridge199(p0: NativePtr, p1: NativePtr, p2: NativePtr): Int
+@SymbolName("sfml_kniBridge200")
+private external fun kniBridge200(p0: NativePtr, p1: NativePtr, p2: NativePtr): Int
+@SymbolName("sfml_kniBridge201")
+private external fun kniBridge201(p0: Float, p1: Float, p2: Float, p3: Float, p4: Float, p5: Float, p6: Float, p7: Float, p8: Float, p9: NativePtr): Unit
+@SymbolName("sfml_kniBridge202")
+private external fun kniBridge202(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge203")
+private external fun kniBridge203(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge204")
+private external fun kniBridge204(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge205")
+private external fun kniBridge205(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge206")
+private external fun kniBridge206(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge207")
+private external fun kniBridge207(p0: NativePtr, p1: Float, p2: Float): Unit
+@SymbolName("sfml_kniBridge208")
+private external fun kniBridge208(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge209")
+private external fun kniBridge209(p0: NativePtr, p1: Float, p2: Float, p3: Float): Unit
+@SymbolName("sfml_kniBridge210")
+private external fun kniBridge210(p0: NativePtr, p1: Float, p2: Float): Unit
+@SymbolName("sfml_kniBridge211")
+private external fun kniBridge211(p0: NativePtr, p1: Float, p2: Float, p3: Float, p4: Float): Unit
+@SymbolName("sfml_kniBridge212")
+private external fun kniBridge212(): NativePtr
+@SymbolName("sfml_kniBridge213")
+private external fun kniBridge213(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge214")
+private external fun kniBridge214(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge215")
+private external fun kniBridge215(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge216")
+private external fun kniBridge216(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge217")
+private external fun kniBridge217(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge218")
+private external fun kniBridge218(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge219")
+private external fun kniBridge219(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge220")
+private external fun kniBridge220(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge221")
+private external fun kniBridge221(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge222")
+private external fun kniBridge222(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge223")
+private external fun kniBridge223(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge224")
+private external fun kniBridge224(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge225")
+private external fun kniBridge225(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge226")
+private external fun kniBridge226(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge227")
+private external fun kniBridge227(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge228")
+private external fun kniBridge228(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge229")
+private external fun kniBridge229(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge230")
+private external fun kniBridge230(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge231")
+private external fun kniBridge231(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge232")
+private external fun kniBridge232(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge233")
+private external fun kniBridge233(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge234")
+private external fun kniBridge234(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge235")
+private external fun kniBridge235(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge236")
+private external fun kniBridge236(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge237")
+private external fun kniBridge237(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge238")
+private external fun kniBridge238(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge239")
+private external fun kniBridge239(p0: NativePtr, p1: ULong, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge240")
+private external fun kniBridge240(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge241")
+private external fun kniBridge241(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge242")
+private external fun kniBridge242(p0: NativePtr, p1: ULong): Unit
+@SymbolName("sfml_kniBridge243")
+private external fun kniBridge243(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge244")
+private external fun kniBridge244(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge245")
+private external fun kniBridge245(): NativePtr
+@SymbolName("sfml_kniBridge246")
+private external fun kniBridge246(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge247")
+private external fun kniBridge247(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge248")
+private external fun kniBridge248(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge249")
+private external fun kniBridge249(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge250")
+private external fun kniBridge250(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge251")
+private external fun kniBridge251(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge252")
+private external fun kniBridge252(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge253")
+private external fun kniBridge253(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge254")
+private external fun kniBridge254(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge255")
+private external fun kniBridge255(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge256")
+private external fun kniBridge256(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge257")
+private external fun kniBridge257(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge258")
+private external fun kniBridge258(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge259")
+private external fun kniBridge259(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge260")
+private external fun kniBridge260(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge261")
+private external fun kniBridge261(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge262")
+private external fun kniBridge262(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge263")
+private external fun kniBridge263(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge264")
+private external fun kniBridge264(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge265")
+private external fun kniBridge265(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge266")
+private external fun kniBridge266(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge267")
+private external fun kniBridge267(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge268")
+private external fun kniBridge268(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge269")
+private external fun kniBridge269(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge270")
+private external fun kniBridge270(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge271")
+private external fun kniBridge271(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge272")
+private external fun kniBridge272(p0: NativePtr, p1: ULong, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge273")
+private external fun kniBridge273(p0: NativePtr, p1: ULong): Unit
+@SymbolName("sfml_kniBridge274")
+private external fun kniBridge274(p0: NativePtr, p1: ULong, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge275")
+private external fun kniBridge275(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge276")
+private external fun kniBridge276(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge277")
+private external fun kniBridge277(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge278")
+private external fun kniBridge278(p0: NativePtr, p1: ULong): NativePtr
+@SymbolName("sfml_kniBridge279")
+private external fun kniBridge279(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge280")
+private external fun kniBridge280(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge281")
+private external fun kniBridge281(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge282")
+private external fun kniBridge282(p0: NativePtr, p1: UInt, p2: UInt, p3: Int, p4: Float, p5: NativePtr): Unit
+@SymbolName("sfml_kniBridge283")
+private external fun kniBridge283(p0: NativePtr, p1: UInt, p2: UInt, p3: UInt): Float
+@SymbolName("sfml_kniBridge284")
+private external fun kniBridge284(p0: NativePtr, p1: UInt): Float
+@SymbolName("sfml_kniBridge285")
+private external fun kniBridge285(p0: NativePtr, p1: UInt): Float
+@SymbolName("sfml_kniBridge286")
+private external fun kniBridge286(p0: NativePtr, p1: UInt): Float
+@SymbolName("sfml_kniBridge287")
+private external fun kniBridge287(p0: NativePtr, p1: UInt): NativePtr
+@SymbolName("sfml_kniBridge288")
+private external fun kniBridge288(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge289")
+private external fun kniBridge289(p0: UInt, p1: UInt): NativePtr
+@SymbolName("sfml_kniBridge290")
+private external fun kniBridge290(p0: UInt, p1: UInt, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge291")
+private external fun kniBridge291(p0: UInt, p1: UInt, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge292")
+private external fun kniBridge292(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge293")
+private external fun kniBridge293(p0: NativePtr, p1: ULong): NativePtr
+@SymbolName("sfml_kniBridge294")
+private external fun kniBridge294(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge295")
+private external fun kniBridge295(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge296")
+private external fun kniBridge296(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge297")
+private external fun kniBridge297(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge298")
+private external fun kniBridge298(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge299")
+private external fun kniBridge299(p0: NativePtr, p1: NativePtr, p2: UByte): Unit
+@SymbolName("sfml_kniBridge300")
+private external fun kniBridge300(p0: NativePtr, p1: NativePtr, p2: UInt, p3: UInt, p4: NativePtr, p5: Int): Unit
+@SymbolName("sfml_kniBridge301")
+private external fun kniBridge301(p0: NativePtr, p1: UInt, p2: UInt, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge302")
+private external fun kniBridge302(p0: NativePtr, p1: UInt, p2: UInt, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge303")
+private external fun kniBridge303(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge304")
+private external fun kniBridge304(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge305")
+private external fun kniBridge305(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge306")
+private external fun kniBridge306(): NativePtr
+@SymbolName("sfml_kniBridge307")
+private external fun kniBridge307(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge308")
+private external fun kniBridge308(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge309")
+private external fun kniBridge309(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge310")
+private external fun kniBridge310(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge311")
+private external fun kniBridge311(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge312")
+private external fun kniBridge312(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge313")
+private external fun kniBridge313(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge314")
+private external fun kniBridge314(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge315")
+private external fun kniBridge315(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge316")
+private external fun kniBridge316(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge317")
+private external fun kniBridge317(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge318")
+private external fun kniBridge318(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge319")
+private external fun kniBridge319(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge320")
+private external fun kniBridge320(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge321")
+private external fun kniBridge321(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge322")
+private external fun kniBridge322(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge323")
+private external fun kniBridge323(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge324")
+private external fun kniBridge324(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge325")
+private external fun kniBridge325(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge326")
+private external fun kniBridge326(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge327")
+private external fun kniBridge327(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge328")
+private external fun kniBridge328(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge329")
+private external fun kniBridge329(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge330")
+private external fun kniBridge330(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge331")
+private external fun kniBridge331(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge332")
+private external fun kniBridge332(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge333")
+private external fun kniBridge333(p0: NativePtr, p1: ULong, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge334")
+private external fun kniBridge334(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge335")
+private external fun kniBridge335(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge336")
+private external fun kniBridge336(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge337")
+private external fun kniBridge337(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge338")
+private external fun kniBridge338(p0: UInt, p1: UInt, p2: Int): NativePtr
+@SymbolName("sfml_kniBridge339")
+private external fun kniBridge339(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge340")
+private external fun kniBridge340(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge341")
+private external fun kniBridge341(p0: NativePtr, p1: Int): Int
+@SymbolName("sfml_kniBridge342")
+private external fun kniBridge342(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge343")
+private external fun kniBridge343(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge344")
+private external fun kniBridge344(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge345")
+private external fun kniBridge345(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge346")
+private external fun kniBridge346(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge347")
+private external fun kniBridge347(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge348")
+private external fun kniBridge348(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge349")
+private external fun kniBridge349(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge350")
+private external fun kniBridge350(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge351")
+private external fun kniBridge351(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge352")
+private external fun kniBridge352(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge353")
+private external fun kniBridge353(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge354")
+private external fun kniBridge354(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge355")
+private external fun kniBridge355(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge356")
+private external fun kniBridge356(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge357")
+private external fun kniBridge357(p0: NativePtr, p1: NativePtr, p2: ULong, p3: UInt, p4: NativePtr): Unit
+@SymbolName("sfml_kniBridge358")
+private external fun kniBridge358(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge359")
+private external fun kniBridge359(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge360")
+private external fun kniBridge360(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge361")
+private external fun kniBridge361(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge362")
+private external fun kniBridge362(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge363")
+private external fun kniBridge363(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge364")
+private external fun kniBridge364(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge365")
+private external fun kniBridge365(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge366")
+private external fun kniBridge366(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge367")
+private external fun kniBridge367(p0: NativePtr, p1: NativePtr, p2: UInt, p3: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge368")
+private external fun kniBridge368(p0: NativePtr, p1: NativePtr, p2: UInt, p3: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge369")
+private external fun kniBridge369(p0: ULong, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge370")
+private external fun kniBridge370(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge371")
+private external fun kniBridge371(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge372")
+private external fun kniBridge372(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge373")
+private external fun kniBridge373(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge374")
+private external fun kniBridge374(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge375")
+private external fun kniBridge375(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge376")
+private external fun kniBridge376(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge377")
+private external fun kniBridge377(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge378")
+private external fun kniBridge378(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge379")
+private external fun kniBridge379(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge380")
+private external fun kniBridge380(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge381")
+private external fun kniBridge381(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge382")
+private external fun kniBridge382(p0: NativePtr, p1: UInt, p2: UInt, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge383")
+private external fun kniBridge383(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge384")
+private external fun kniBridge384(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge385")
+private external fun kniBridge385(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge386")
+private external fun kniBridge386(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge387")
+private external fun kniBridge387(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge388")
+private external fun kniBridge388(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge389")
+private external fun kniBridge389(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge390")
+private external fun kniBridge390(p0: NativePtr, p1: Int): Int
+@SymbolName("sfml_kniBridge391")
+private external fun kniBridge391(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge392")
+private external fun kniBridge392(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge393")
+private external fun kniBridge393(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge394")
+private external fun kniBridge394(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge395")
+private external fun kniBridge395(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge396")
+private external fun kniBridge396(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge397")
+private external fun kniBridge397(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge398")
+private external fun kniBridge398(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge399")
+private external fun kniBridge399(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge400")
+private external fun kniBridge400(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge401")
+private external fun kniBridge401(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: NativePtr): Unit
+@SymbolName("sfml_kniBridge402")
+private external fun kniBridge402(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge403")
+private external fun kniBridge403(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge404")
+private external fun kniBridge404(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge405")
+private external fun kniBridge405(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge406")
+private external fun kniBridge406(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge407")
+private external fun kniBridge407(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge408")
+private external fun kniBridge408(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge409")
+private external fun kniBridge409(p0: NativePtr, p1: NativePtr, p2: ULong, p3: UInt, p4: NativePtr): Unit
+@SymbolName("sfml_kniBridge410")
+private external fun kniBridge410(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge411")
+private external fun kniBridge411(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge412")
+private external fun kniBridge412(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge413")
+private external fun kniBridge413(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge414")
+private external fun kniBridge414(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge415")
+private external fun kniBridge415(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge416")
+private external fun kniBridge416(p0: UInt, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge417")
+private external fun kniBridge417(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge418")
+private external fun kniBridge418(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge419")
+private external fun kniBridge419(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge420")
+private external fun kniBridge420(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge421")
+private external fun kniBridge421(p0: NativePtr, p1: NativePtr, p2: Float): Unit
+@SymbolName("sfml_kniBridge422")
+private external fun kniBridge422(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge423")
+private external fun kniBridge423(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge424")
+private external fun kniBridge424(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge425")
+private external fun kniBridge425(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge426")
+private external fun kniBridge426(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge427")
+private external fun kniBridge427(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge428")
+private external fun kniBridge428(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge429")
+private external fun kniBridge429(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge430")
+private external fun kniBridge430(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge431")
+private external fun kniBridge431(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge432")
+private external fun kniBridge432(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge433")
+private external fun kniBridge433(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge434")
+private external fun kniBridge434(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge435")
+private external fun kniBridge435(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge436")
+private external fun kniBridge436(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge437")
+private external fun kniBridge437(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge438")
+private external fun kniBridge438(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge439")
+private external fun kniBridge439(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: ULong): Unit
+@SymbolName("sfml_kniBridge440")
+private external fun kniBridge440(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: ULong): Unit
+@SymbolName("sfml_kniBridge441")
+private external fun kniBridge441(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: ULong): Unit
+@SymbolName("sfml_kniBridge442")
+private external fun kniBridge442(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: ULong): Unit
+@SymbolName("sfml_kniBridge443")
+private external fun kniBridge443(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: ULong): Unit
+@SymbolName("sfml_kniBridge444")
+private external fun kniBridge444(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: ULong): Unit
+@SymbolName("sfml_kniBridge445")
+private external fun kniBridge445(p0: NativePtr, p1: NativePtr, p2: Float): Unit
+@SymbolName("sfml_kniBridge446")
+private external fun kniBridge446(p0: NativePtr, p1: NativePtr, p2: Float, p3: Float): Unit
+@SymbolName("sfml_kniBridge447")
+private external fun kniBridge447(p0: NativePtr, p1: NativePtr, p2: Float, p3: Float, p4: Float): Unit
+@SymbolName("sfml_kniBridge448")
+private external fun kniBridge448(p0: NativePtr, p1: NativePtr, p2: Float, p3: Float, p4: Float, p5: Float): Unit
+@SymbolName("sfml_kniBridge449")
+private external fun kniBridge449(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge450")
+private external fun kniBridge450(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge451")
+private external fun kniBridge451(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge452")
+private external fun kniBridge452(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge453")
+private external fun kniBridge453(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge454")
+private external fun kniBridge454(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge455")
+private external fun kniBridge455(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge456")
+private external fun kniBridge456(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge457")
+private external fun kniBridge457(): Int
+@SymbolName("sfml_kniBridge458")
+private external fun kniBridge458(): Int
+@SymbolName("sfml_kniBridge459")
+private external fun kniBridge459(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge460")
+private external fun kniBridge460(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge461")
+private external fun kniBridge461(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge462")
+private external fun kniBridge462(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge463")
+private external fun kniBridge463(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge464")
+private external fun kniBridge464(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge465")
+private external fun kniBridge465(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge466")
+private external fun kniBridge466(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge467")
+private external fun kniBridge467(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge468")
+private external fun kniBridge468(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge469")
+private external fun kniBridge469(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge470")
+private external fun kniBridge470(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge471")
+private external fun kniBridge471(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge472")
+private external fun kniBridge472(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge473")
+private external fun kniBridge473(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge474")
+private external fun kniBridge474(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge475")
+private external fun kniBridge475(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge476")
+private external fun kniBridge476(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge477")
+private external fun kniBridge477(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge478")
+private external fun kniBridge478(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge479")
+private external fun kniBridge479(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge480")
+private external fun kniBridge480(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge481")
+private external fun kniBridge481(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge482")
+private external fun kniBridge482(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge483")
+private external fun kniBridge483(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge484")
+private external fun kniBridge484(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge485")
+private external fun kniBridge485(p0: NativePtr, p1: ULong, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge486")
+private external fun kniBridge486(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge487")
+private external fun kniBridge487(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge488")
+private external fun kniBridge488(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge489")
+private external fun kniBridge489(): NativePtr
+@SymbolName("sfml_kniBridge490")
+private external fun kniBridge490(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge491")
+private external fun kniBridge491(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge492")
+private external fun kniBridge492(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge493")
+private external fun kniBridge493(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge494")
+private external fun kniBridge494(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge495")
+private external fun kniBridge495(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge496")
+private external fun kniBridge496(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge497")
+private external fun kniBridge497(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge498")
+private external fun kniBridge498(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge499")
+private external fun kniBridge499(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge500")
+private external fun kniBridge500(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge501")
+private external fun kniBridge501(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge502")
+private external fun kniBridge502(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge503")
+private external fun kniBridge503(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge504")
+private external fun kniBridge504(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge505")
+private external fun kniBridge505(p0: NativePtr, p1: NativePtr, p2: Int): Unit
+@SymbolName("sfml_kniBridge506")
+private external fun kniBridge506(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge507")
+private external fun kniBridge507(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge508")
+private external fun kniBridge508(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge509")
+private external fun kniBridge509(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge510")
+private external fun kniBridge510(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge511")
+private external fun kniBridge511(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge512")
+private external fun kniBridge512(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge513")
+private external fun kniBridge513(): NativePtr
+@SymbolName("sfml_kniBridge514")
+private external fun kniBridge514(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge515")
+private external fun kniBridge515(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge516")
+private external fun kniBridge516(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge517")
+private external fun kniBridge517(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge518")
+private external fun kniBridge518(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge519")
+private external fun kniBridge519(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge520")
+private external fun kniBridge520(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge521")
+private external fun kniBridge521(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge522")
+private external fun kniBridge522(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge523")
+private external fun kniBridge523(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge524")
+private external fun kniBridge524(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge525")
+private external fun kniBridge525(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge526")
+private external fun kniBridge526(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge527")
+private external fun kniBridge527(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge528")
+private external fun kniBridge528(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge529")
+private external fun kniBridge529(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge530")
+private external fun kniBridge530(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge531")
+private external fun kniBridge531(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge532")
+private external fun kniBridge532(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge533")
+private external fun kniBridge533(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge534")
+private external fun kniBridge534(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge535")
+private external fun kniBridge535(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge536")
+private external fun kniBridge536(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge537")
+private external fun kniBridge537(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge538")
+private external fun kniBridge538(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge539")
+private external fun kniBridge539(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge540")
+private external fun kniBridge540(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge541")
+private external fun kniBridge541(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge542")
+private external fun kniBridge542(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge543")
+private external fun kniBridge543(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge544")
+private external fun kniBridge544(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge545")
+private external fun kniBridge545(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge546")
+private external fun kniBridge546(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge547")
+private external fun kniBridge547(p0: NativePtr, p1: ULong, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge548")
+private external fun kniBridge548(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge549")
+private external fun kniBridge549(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge550")
+private external fun kniBridge550(p0: UInt, p1: UInt): NativePtr
+@SymbolName("sfml_kniBridge551")
+private external fun kniBridge551(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge552")
+private external fun kniBridge552(p0: NativePtr, p1: ULong, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge553")
+private external fun kniBridge553(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge554")
+private external fun kniBridge554(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge555")
+private external fun kniBridge555(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge556")
+private external fun kniBridge556(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge557")
+private external fun kniBridge557(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge558")
+private external fun kniBridge558(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge559")
+private external fun kniBridge559(p0: NativePtr, p1: NativePtr, p2: UInt, p3: UInt, p4: UInt, p5: UInt): Unit
+@SymbolName("sfml_kniBridge560")
+private external fun kniBridge560(p0: NativePtr, p1: NativePtr, p2: UInt, p3: UInt): Unit
+@SymbolName("sfml_kniBridge561")
+private external fun kniBridge561(p0: NativePtr, p1: NativePtr, p2: UInt, p3: UInt): Unit
+@SymbolName("sfml_kniBridge562")
+private external fun kniBridge562(p0: NativePtr, p1: NativePtr, p2: UInt, p3: UInt): Unit
+@SymbolName("sfml_kniBridge563")
+private external fun kniBridge563(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge564")
+private external fun kniBridge564(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge565")
+private external fun kniBridge565(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge566")
+private external fun kniBridge566(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge567")
+private external fun kniBridge567(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge568")
+private external fun kniBridge568(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge569")
+private external fun kniBridge569(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge570")
+private external fun kniBridge570(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge571")
+private external fun kniBridge571(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge572")
+private external fun kniBridge572(): UInt
+@SymbolName("sfml_kniBridge573")
+private external fun kniBridge573(): NativePtr
+@SymbolName("sfml_kniBridge574")
+private external fun kniBridge574(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge575")
+private external fun kniBridge575(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge576")
+private external fun kniBridge576(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge577")
+private external fun kniBridge577(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge578")
+private external fun kniBridge578(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge579")
+private external fun kniBridge579(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge580")
+private external fun kniBridge580(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge581")
+private external fun kniBridge581(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge582")
+private external fun kniBridge582(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge583")
+private external fun kniBridge583(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge584")
+private external fun kniBridge584(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge585")
+private external fun kniBridge585(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge586")
+private external fun kniBridge586(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge587")
+private external fun kniBridge587(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge588")
+private external fun kniBridge588(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge589")
+private external fun kniBridge589(): NativePtr
+@SymbolName("sfml_kniBridge590")
+private external fun kniBridge590(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge591")
+private external fun kniBridge591(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge592")
+private external fun kniBridge592(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge593")
+private external fun kniBridge593(p0: NativePtr, p1: ULong): NativePtr
+@SymbolName("sfml_kniBridge594")
+private external fun kniBridge594(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge595")
+private external fun kniBridge595(p0: NativePtr, p1: ULong): Unit
+@SymbolName("sfml_kniBridge596")
+private external fun kniBridge596(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge597")
+private external fun kniBridge597(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge598")
+private external fun kniBridge598(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge599")
+private external fun kniBridge599(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge600")
+private external fun kniBridge600(): NativePtr
+@SymbolName("sfml_kniBridge601")
+private external fun kniBridge601(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge602")
+private external fun kniBridge602(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge603")
+private external fun kniBridge603(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge604")
+private external fun kniBridge604(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge605")
+private external fun kniBridge605(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge606")
+private external fun kniBridge606(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge607")
+private external fun kniBridge607(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge608")
+private external fun kniBridge608(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge609")
+private external fun kniBridge609(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge610")
+private external fun kniBridge610(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge611")
+private external fun kniBridge611(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge612")
+private external fun kniBridge612(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge613")
+private external fun kniBridge613(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge614")
+private external fun kniBridge614(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge615")
+private external fun kniBridge615(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge616")
+private external fun kniBridge616(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge617")
+private external fun kniBridge617(p0: UByte, p1: UByte, p2: UByte, p3: UByte, p4: NativePtr): Unit
+@SymbolName("sfml_kniBridge618")
+private external fun kniBridge618(p0: UInt, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge619")
+private external fun kniBridge619(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge620")
+private external fun kniBridge620(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge621")
+private external fun kniBridge621(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge622")
+private external fun kniBridge622(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge623")
+private external fun kniBridge623(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge624")
+private external fun kniBridge624(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge625")
+private external fun kniBridge625(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge626")
+private external fun kniBridge626(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge627")
+private external fun kniBridge627(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge628")
+private external fun kniBridge628(p0: NativePtr, p1: ULong): NativePtr
+@SymbolName("sfml_kniBridge629")
+private external fun kniBridge629(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge630")
+private external fun kniBridge630(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge631")
+private external fun kniBridge631(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge632")
+private external fun kniBridge632(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge633")
+private external fun kniBridge633(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge634")
+private external fun kniBridge634(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge635")
+private external fun kniBridge635(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge636")
+private external fun kniBridge636(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge637")
+private external fun kniBridge637(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge638")
+private external fun kniBridge638(): NativePtr
+@SymbolName("sfml_kniBridge639")
+private external fun kniBridge639(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge640")
+private external fun kniBridge640(p0: NativePtr, p1: NativePtr, p2: UShort, p3: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge641")
+private external fun kniBridge641(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge642")
+private external fun kniBridge642(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge643")
+private external fun kniBridge643(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge644")
+private external fun kniBridge644(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge645")
+private external fun kniBridge645(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge646")
+private external fun kniBridge646(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge647")
+private external fun kniBridge647(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge648")
+private external fun kniBridge648(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge649")
+private external fun kniBridge649(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge650")
+private external fun kniBridge650(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge651")
+private external fun kniBridge651(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge652")
+private external fun kniBridge652(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge653")
+private external fun kniBridge653(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: UInt): NativePtr
+@SymbolName("sfml_kniBridge654")
+private external fun kniBridge654(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: UInt): NativePtr
+@SymbolName("sfml_kniBridge655")
+private external fun kniBridge655(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge656")
+private external fun kniBridge656(): NativePtr
+@SymbolName("sfml_kniBridge657")
+private external fun kniBridge657(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge658")
+private external fun kniBridge658(p0: NativePtr, p1: NativePtr, p2: NativePtr): Unit
+@SymbolName("sfml_kniBridge659")
+private external fun kniBridge659(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge660")
+private external fun kniBridge660(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge661")
+private external fun kniBridge661(p0: NativePtr, p1: UInt, p2: UInt): Unit
+@SymbolName("sfml_kniBridge662")
+private external fun kniBridge662(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge663")
+private external fun kniBridge663(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge664")
+private external fun kniBridge664(p0: NativePtr, p1: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge665")
+private external fun kniBridge665(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge666")
+private external fun kniBridge666(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge667")
+private external fun kniBridge667(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge668")
+private external fun kniBridge668(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge669")
+private external fun kniBridge669(): NativePtr
+@SymbolName("sfml_kniBridge670")
+private external fun kniBridge670(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge671")
+private external fun kniBridge671(p0: NativePtr, p1: NativePtr, p2: UShort): Unit
+@SymbolName("sfml_kniBridge672")
+private external fun kniBridge672(p0: NativePtr, p1: NativePtr, p2: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge673")
+private external fun kniBridge673(): NativePtr
+@SymbolName("sfml_kniBridge674")
+private external fun kniBridge674(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge675")
+private external fun kniBridge675(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge676")
+private external fun kniBridge676(p0: NativePtr, p1: NativePtr, p2: ULong): Unit
+@SymbolName("sfml_kniBridge677")
+private external fun kniBridge677(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge678")
+private external fun kniBridge678(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge679")
+private external fun kniBridge679(p0: NativePtr): ULong
+@SymbolName("sfml_kniBridge680")
+private external fun kniBridge680(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge681")
+private external fun kniBridge681(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge682")
+private external fun kniBridge682(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge683")
+private external fun kniBridge683(p0: NativePtr): Byte
+@SymbolName("sfml_kniBridge684")
+private external fun kniBridge684(p0: NativePtr): UByte
+@SymbolName("sfml_kniBridge685")
+private external fun kniBridge685(p0: NativePtr): Short
+@SymbolName("sfml_kniBridge686")
+private external fun kniBridge686(p0: NativePtr): UShort
+@SymbolName("sfml_kniBridge687")
+private external fun kniBridge687(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge688")
+private external fun kniBridge688(p0: NativePtr): UInt
+@SymbolName("sfml_kniBridge689")
+private external fun kniBridge689(p0: NativePtr): Float
+@SymbolName("sfml_kniBridge690")
+private external fun kniBridge690(p0: NativePtr): Double
+@SymbolName("sfml_kniBridge691")
+private external fun kniBridge691(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge692")
+private external fun kniBridge692(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge693")
+private external fun kniBridge693(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge694")
+private external fun kniBridge694(p0: NativePtr, p1: Byte): Unit
+@SymbolName("sfml_kniBridge695")
+private external fun kniBridge695(p0: NativePtr, p1: UByte): Unit
+@SymbolName("sfml_kniBridge696")
+private external fun kniBridge696(p0: NativePtr, p1: Short): Unit
+@SymbolName("sfml_kniBridge697")
+private external fun kniBridge697(p0: NativePtr, p1: UShort): Unit
+@SymbolName("sfml_kniBridge698")
+private external fun kniBridge698(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge699")
+private external fun kniBridge699(p0: NativePtr, p1: UInt): Unit
+@SymbolName("sfml_kniBridge700")
+private external fun kniBridge700(p0: NativePtr, p1: Float): Unit
+@SymbolName("sfml_kniBridge701")
+private external fun kniBridge701(p0: NativePtr, p1: Double): Unit
+@SymbolName("sfml_kniBridge702")
+private external fun kniBridge702(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge703")
+private external fun kniBridge703(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge704")
+private external fun kniBridge704(): NativePtr
+@SymbolName("sfml_kniBridge705")
+private external fun kniBridge705(p0: NativePtr): NativePtr
+@SymbolName("sfml_kniBridge706")
+private external fun kniBridge706(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge707")
+private external fun kniBridge707(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge708")
+private external fun kniBridge708(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge709")
+private external fun kniBridge709(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge710")
+private external fun kniBridge710(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge711")
+private external fun kniBridge711(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge712")
+private external fun kniBridge712(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge713")
+private external fun kniBridge713(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge714")
+private external fun kniBridge714(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge715")
+private external fun kniBridge715(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge716")
+private external fun kniBridge716(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge717")
+private external fun kniBridge717(p0: NativePtr, p1: NativePtr): Int
+@SymbolName("sfml_kniBridge718")
+private external fun kniBridge718(): NativePtr
+@SymbolName("sfml_kniBridge719")
+private external fun kniBridge719(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge720")
+private external fun kniBridge720(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge721")
+private external fun kniBridge721(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge722")
+private external fun kniBridge722(p0: NativePtr): UShort
+@SymbolName("sfml_kniBridge723")
+private external fun kniBridge723(p0: NativePtr, p1: UShort, p2: NativePtr): UInt
+@SymbolName("sfml_kniBridge724")
+private external fun kniBridge724(p0: NativePtr, p1: NativePtr): UInt
+@SymbolName("sfml_kniBridge725")
+private external fun kniBridge725(): NativePtr
+@SymbolName("sfml_kniBridge726")
+private external fun kniBridge726(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge727")
+private external fun kniBridge727(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge728")
+private external fun kniBridge728(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge729")
+private external fun kniBridge729(p0: NativePtr): UShort
+@SymbolName("sfml_kniBridge730")
+private external fun kniBridge730(p0: NativePtr, p1: NativePtr): Unit
+@SymbolName("sfml_kniBridge731")
+private external fun kniBridge731(p0: NativePtr): UShort
+@SymbolName("sfml_kniBridge732")
+private external fun kniBridge732(p0: NativePtr, p1: NativePtr, p2: UShort, p3: NativePtr): UInt
+@SymbolName("sfml_kniBridge733")
+private external fun kniBridge733(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge734")
+private external fun kniBridge734(p0: NativePtr, p1: NativePtr, p2: ULong): UInt
+@SymbolName("sfml_kniBridge735")
+private external fun kniBridge735(p0: NativePtr, p1: NativePtr, p2: ULong, p3: NativePtr): UInt
+@SymbolName("sfml_kniBridge736")
+private external fun kniBridge736(p0: NativePtr, p1: NativePtr, p2: ULong, p3: NativePtr): UInt
+@SymbolName("sfml_kniBridge737")
+private external fun kniBridge737(p0: NativePtr, p1: NativePtr): UInt
+@SymbolName("sfml_kniBridge738")
+private external fun kniBridge738(p0: NativePtr, p1: NativePtr): UInt
+@SymbolName("sfml_kniBridge739")
+private external fun kniBridge739(): NativePtr
+@SymbolName("sfml_kniBridge740")
+private external fun kniBridge740(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge741")
+private external fun kniBridge741(p0: NativePtr, p1: Int): Unit
+@SymbolName("sfml_kniBridge742")
+private external fun kniBridge742(p0: NativePtr): Int
+@SymbolName("sfml_kniBridge743")
+private external fun kniBridge743(p0: NativePtr): UShort
+@SymbolName("sfml_kniBridge744")
+private external fun kniBridge744(p0: NativePtr, p1: UShort, p2: NativePtr): UInt
+@SymbolName("sfml_kniBridge745")
+private external fun kniBridge745(p0: NativePtr): Unit
+@SymbolName("sfml_kniBridge746")
+private external fun kniBridge746(p0: NativePtr, p1: NativePtr, p2: ULong, p3: NativePtr, p4: UShort): UInt
+@SymbolName("sfml_kniBridge747")
+private external fun kniBridge747(p0: NativePtr, p1: NativePtr, p2: ULong, p3: NativePtr, p4: NativePtr, p5: NativePtr): UInt
+@SymbolName("sfml_kniBridge748")
+private external fun kniBridge748(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: UShort): UInt
+@SymbolName("sfml_kniBridge749")
+private external fun kniBridge749(p0: NativePtr, p1: NativePtr, p2: NativePtr, p3: NativePtr): UInt
+@SymbolName("sfml_kniBridge750")
+private external fun kniBridge750(): UInt
+@SymbolName("sfml_kniBridge751")
+private external fun kniBridge751(): NativePtr
+@SymbolName("sfml_kniBridge752")
+private external fun kniBridge752(): NativePtr
+@SymbolName("sfml_kniBridge753")
+private external fun kniBridge753(): NativePtr
+@SymbolName("sfml_kniBridge754")
+private external fun kniBridge754(): NativePtr
+@SymbolName("sfml_kniBridge755")
+private external fun kniBridge755(): NativePtr
+@SymbolName("sfml_kniBridge756")
+private external fun kniBridge756(): NativePtr
+@SymbolName("sfml_kniBridge757")
+private external fun kniBridge757(): NativePtr
+@SymbolName("sfml_kniBridge758")
+private external fun kniBridge758(): NativePtr
+@SymbolName("sfml_kniBridge759")
+private external fun kniBridge759(): NativePtr
+@SymbolName("sfml_kniBridge760")
+private external fun kniBridge760(): NativePtr
+@SymbolName("sfml_kniBridge761")
+private external fun kniBridge761(): NativePtr
+@SymbolName("sfml_kniBridge762")
+private external fun kniBridge762(): NativePtr
+@SymbolName("sfml_kniBridge763")
+private external fun kniBridge763(): NativePtr
+@SymbolName("sfml_kniBridge764")
+private external fun kniBridge764(): NativePtr
+@SymbolName("sfml_kniBridge765")
+private external fun kniBridge765(): NativePtr
+@SymbolName("sfml_kniBridge766")
+private external fun kniBridge766(): NativePtr
+@SymbolName("sfml_kniBridge767")
+private external fun kniBridge767(): NativePtr
+@SymbolName("sfml_kniBridge768")
+private external fun kniBridge768(): NativePtr
+@SymbolName("sfml_kniBridge769")
+private external fun kniBridge769(): NativePtr
