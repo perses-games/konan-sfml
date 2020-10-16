@@ -1,4 +1,4 @@
-package games.perses.sfml
+package linuxMain.kotlin.games.perses.sfml
 
 /**
  * User: rnentjes

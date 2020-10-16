@@ -1,4 +1,4 @@
-package games.perses.sfml.text
+package linuxMain.kotlin.games.perses.sfml.text
 
 import kotlinx.cinterop.*
 import kotlinx.cinterop.nativeHeap.free

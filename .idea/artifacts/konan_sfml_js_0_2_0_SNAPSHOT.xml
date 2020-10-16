@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="konan-sfml-js-0.2.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="konan-sfml-js-0.2.0-SNAPSHOT.jar">
+      <element id="module-output" name="konan-sfml.jsMain" />
+    </root>
+  </artifact>
+</component>

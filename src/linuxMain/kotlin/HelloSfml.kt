@@ -1,7 +1,7 @@
-import games.perses.sfml.sprite.Sprites
-import games.perses.sfml.sprite.Textures
-import games.perses.sfml.text.Font
-import games.perses.sfml.text.Text
+import linuxMain.kotlin.games.perses.sfml.sprite.Sprites
+import linuxMain.kotlin.games.perses.sfml.sprite.Textures
+import linuxMain.kotlin.games.perses.sfml.text.Font
+import linuxMain.kotlin.games.perses.sfml.text.Text
 import kotlinx.cinterop.*
 import sfml.*
 
@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     val music = sfMusic_createFromFile("data/music/DST-TechnoBasic.ogg")
 
     val font = Font("data/fonts/COMPUTERRobot.ttf")
-    val helloKonan = Text(font, 50f, 50f, "Hello Konan!", 76, 255.toByte(), 255.toByte(), 0.toByte())
+    val helloKonan = Text(font, 50f, 50f, "Hello Kotlin/native!", 76, 255.toByte(), 255.toByte(), 0.toByte())
 
     sfMusic_setLoop(music, 1)
     sfMusic_play(music)

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../build/classes/kotlin/linux/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/linuxMain">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxMain/kotlin" type="kotlin-source" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - stdlib" level="project" />
+    <orderEntry type="module" module-name="konan-sfml.commonMain" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - builtin [linux_x64]" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - iconv [linux_x64]" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - linux [linux_x64]" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - org.jetbrains.kotlinx.kotlinx-cli" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - posix [linux_x64]" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Kotlin/Native 1.4.10 - zlib [linux_x64]" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../build/classes/kotlin/linux/main/konan-sfml-cinterop-sfml.klib!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.4.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.4.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+  </component>
+</module>
