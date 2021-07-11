@@ -6,4 +6,4 @@ More info on [Kotlin native](https://github.com/JetBrains/kotlin-native)
 
 More info on [SFML](https://www.sfml-dev.org/)
 
-Updated example to gradle with kotlin dsl and kotlin 1.4 
+Updated example to gradle with kotlin dsl and kotlin 1.5 
