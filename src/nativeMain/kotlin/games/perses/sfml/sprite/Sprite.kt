@@ -1,4 +1,4 @@
-package linuxMain.kotlin.games.perses.sfml.sprite
+package games.perses.sfml.sprite
 
 import kotlinx.cinterop.*
 import sfml.*

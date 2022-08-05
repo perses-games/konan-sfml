@@ -1,2 +1,3 @@
 # SFML/Audio.h SFML/Config.h SFML/Graphics.h SFML/Network.h SFML/OpenGL.h SFML/System.h SFML/Window.h
 headers = SFML/Audio.h SFML/Config.h SFML/Graphics.h SFML/Network.h SFML/System.h SFML/Window.h
+package = sfml

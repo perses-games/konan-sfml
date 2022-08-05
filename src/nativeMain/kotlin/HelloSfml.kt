@@ -1,9 +1,34 @@
-import linuxMain.kotlin.games.perses.sfml.sprite.Sprites
-import linuxMain.kotlin.games.perses.sfml.sprite.Textures
-import linuxMain.kotlin.games.perses.sfml.text.Font
-import linuxMain.kotlin.games.perses.sfml.text.Text
+import games.perses.sfml.sprite.Sprites
+import games.perses.sfml.sprite.Textures
+import games.perses.sfml.text.Font
+import games.perses.sfml.text.Text
 import kotlinx.cinterop.*
-import sfml.*
+import sfml.sfCircleShape_create
+import sfml.sfCircleShape_destroy
+import sfml.sfCircleShape_setFillColor
+import sfml.sfCircleShape_setOutlineColor
+import sfml.sfCircleShape_setOutlineThickness
+import sfml.sfCircleShape_setPosition
+import sfml.sfCircleShape_setRadius
+import sfml.sfColor_fromRGB
+import sfml.sfDefaultStyle
+import sfml.sfEvent
+import sfml.sfEventType
+import sfml.sfMusic_createFromFile
+import sfml.sfMusic_destroy
+import sfml.sfMusic_play
+import sfml.sfMusic_setLoop
+import sfml.sfRenderWindow_clear
+import sfml.sfRenderWindow_close
+import sfml.sfRenderWindow_create
+import sfml.sfRenderWindow_destroy
+import sfml.sfRenderWindow_display
+import sfml.sfRenderWindow_drawCircleShape
+import sfml.sfRenderWindow_isOpen
+import sfml.sfRenderWindow_pollEvent
+import sfml.sfRenderWindow_setVerticalSyncEnabled
+import sfml.sfVector2f
+import sfml.sfVideoMode
 
 fun main(args: Array<String>) {
 
@@ -22,7 +47,8 @@ fun main(args: Array<String>) {
         videoMode.height = 600u
         videoMode.bitsPerPixel = 24u
 
-        val window = sfRenderWindow_create(videoMode.readValue(), "It works!", sfDefaultStyle, null)
+        val window = sfRenderWindow_create(videoMode.readValue(), "It works!",
+            sfDefaultStyle, null)
 
         if (window == null) {
             println("Unable to create render window (returned null).")

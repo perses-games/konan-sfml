@@ -9,5 +9,3 @@ pluginManagement {
 }
 
 rootProject.name = "kotlin-sfml"
-
-enableFeaturePreview("GRADLE_METADATA")
